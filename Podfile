@@ -18,6 +18,7 @@ pod 'FBSDKLoginKit'
 pod 'GoogleSignIn'
 
 pod 'SwiftyJSON'
+pod 'Alamofire'
 
   target 'CapstoneTrailTests' do
     inherit! :complete

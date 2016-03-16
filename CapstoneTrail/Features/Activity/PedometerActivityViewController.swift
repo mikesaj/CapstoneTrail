@@ -156,11 +156,6 @@ class PedometerActivityViewController: UIViewController {
                     let StepsData      = Int(pedData.numberOfSteps)
                     self.numberOfSteps = StepsData + self.Steps
                     
-                    
-                    //save steps in healthkit
-                    self.userHealthData.startHealthShit(startDate: self.startDate, endDate: Date(),
-                                                        steps: StepsData - self.numberOfSteps)
-                    
                     self.startDate = Date()
                 } else {
                     self.stepsLabel.text = "Steps: Not Available"
@@ -175,6 +170,10 @@ class PedometerActivityViewController: UIViewController {
             //Stop the pedometer
             pedometer.stopUpdates()
             stopTimer() // stop the timer
+            
+            //save steps in healthkit
+            self.userHealthData.startHealthShit(startDate: self.startDate, endDate: Date(), steps: self.numberOfSteps)
+
             //Toggle the UI to off state
             //statusTitle.text = "Pedometer Off: "
             sender.backgroundColor = startColor

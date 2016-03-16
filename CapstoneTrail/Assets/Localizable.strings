@@ -15,3 +15,29 @@
 
 // Trail detail
 "Trail detail info" = "On %@ (%@)\r\n%.0fm trail, covered with %@ surface, will take around %.1f minutes";
+
+// Schedule profile annotation pin
+"Schedule_pin" = "%.0f m, %.0f minutes";
+
+// Schedule Profile
+"Schedule_Time" = "at %@";
+"Index_Message" = "%@ day to walk";
+"Excellent" = "Excellent";
+"Good" = "Good";
+"Moderate" = "Moderate";
+"Bad" = "Bad";
+"Horrible" = "Horrible";
+"Index_Point" = "%d of 10 Point";
+
+"Temp_Text" = "Temperature:";
+"Temp_Value" = "%.1f °C";
+"FeelsLike_Text" = "Feels Like:";
+"FeelsLike_Value" = "%.1f °C";
+"Wind_Text" = "Wind:";
+"Wind_Value" = "%.1f km/h";
+"Cloud_Text" = "Cloud:";
+"Cloud_Value" = "%d %%";
+"Precip_Text" = "Precipitation:";
+"Precip_Value" = "%.1f mm";
+"Humidity_Text" = "Humidity:";
+"Humidity_Value" = "%d %%";
