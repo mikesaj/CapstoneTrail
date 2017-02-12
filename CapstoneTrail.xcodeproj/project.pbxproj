@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087731E4E1149007A8BE0 /* LoginViewController.swift */; };
+		446087761E4E115D007A8BE0 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087751E4E115D007A8BE0 /* UserLogin.swift */; };
+		446087781E4E116A007A8BE0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087771E4E116A007A8BE0 /* User.swift */; };
+		4460877F1E4E1456007A8BE0 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4460877E1E4E1456007A8BE0 /* CreateAccountViewController.swift */; };
+		446087811E4E1771007A8BE0 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 446087801E4E1771007A8BE0 /* SignIn.storyboard */; };
+		446087851E4E1967007A8BE0 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087831E4E1967007A8BE0 /* SettingsController.swift */; };
+		446087861E4E1967007A8BE0 /* SettingCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087841E4E1967007A8BE0 /* SettingCellController.swift */; };
+		446087891E4E28E1007A8BE0 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087881E4E28E1007A8BE0 /* DashBoardViewController.swift */; };
+		4460878D1E4E2C96007A8BE0 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4460878C1E4E2C96007A8BE0 /* DashBoard.storyboard */; };
 		65E7EEE2D0A127F42608855C /* Pods_CapstoneTrail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FA64D3EB2D622B0A7EC696 /* Pods_CapstoneTrail.framework */; };
 		A900F3511E4A075A00556D79 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A900F3501E4A075A00556D79 /* MapKit.framework */; };
 		A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A9FB931D1E4A0BBA0053F6E3 /* README.md */; };
@@ -36,6 +45,15 @@
 /* Begin PBXFileReference section */
 		1D6EA5CAAD52FAA0D9CDCCDE /* Pods-CapstoneTrail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.release.xcconfig"; sourceTree = "<group>"; };
 		2731D46A09543C153A6C31D3 /* Pods-CapstoneTrailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.release.xcconfig"; sourceTree = "<group>"; };
+		446087731E4E1149007A8BE0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		446087751E4E115D007A8BE0 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
+		446087771E4E116A007A8BE0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4460877E1E4E1456007A8BE0 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		446087801E4E1771007A8BE0 /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		446087831E4E1967007A8BE0 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		446087841E4E1967007A8BE0 /* SettingCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCellController.swift; sourceTree = "<group>"; };
+		446087881E4E28E1007A8BE0 /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
+		4460878C1E4E2C96007A8BE0 /* DashBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DashBoard.storyboard; sourceTree = "<group>"; };
 		85BDD1C74E4267286E511B7F /* Pods-CapstoneTrailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.debug.xcconfig"; sourceTree = "<group>"; };
 		93C0CBAFEF495B65F5778885 /* Pods-CapstoneTrail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.debug.xcconfig"; sourceTree = "<group>"; };
 		A900F3501E4A075A00556D79 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -80,6 +98,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		446087791E4E11CD007A8BE0 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				446087801E4E1771007A8BE0 /* SignIn.storyboard */,
+				446087821E4E1933007A8BE0 /* Settings */,
+				4460877B1E4E124D007A8BE0 /* SignIn */,
+				4460877A1E4E11FB007A8BE0 /* SignUp */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		4460877A1E4E11FB007A8BE0 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				4460877E1E4E1456007A8BE0 /* CreateAccountViewController.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		4460877B1E4E124D007A8BE0 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				446087771E4E116A007A8BE0 /* User.swift */,
+				446087731E4E1149007A8BE0 /* LoginViewController.swift */,
+				446087751E4E115D007A8BE0 /* UserLogin.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		446087821E4E1933007A8BE0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				446087831E4E1967007A8BE0 /* SettingsController.swift */,
+				446087841E4E1967007A8BE0 /* SettingCellController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		446087871E4E285D007A8BE0 /* DashBoard */ = {
+			isa = PBXGroup;
+			children = (
+				446087881E4E28E1007A8BE0 /* DashBoardViewController.swift */,
+				4460878C1E4E2C96007A8BE0 /* DashBoard.storyboard */,
+			);
+			path = DashBoard;
+			sourceTree = "<group>";
+		};
 		A900F34F1E4A075A00556D79 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +158,8 @@
 		A900F3521E4A077400556D79 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				446087871E4E285D007A8BE0 /* DashBoard */,
+				446087791E4E11CD007A8BE0 /* User */,
 				D23B65791E4A7CE100957B1E /* LoginDemo */,
 				A900F3531E4A077B00556D79 /* Main */,
 			);
@@ -296,8 +363,10 @@
 				B66C8E1A7401C833BE35C2A3 /* Images.xcassets in Resources */,
 				A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */,
 				B66C875384EF1325BC0D7110 /* LaunchScreen.storyboard in Resources */,
+				4460878D1E4E2C96007A8BE0 /* DashBoard.storyboard in Resources */,
 				B66C8A93363E18079BF25D47 /* Main.storyboard in Resources */,
 				B66C8E8C8FFE2F1F9BB34360 /* Localizable.strings in Resources */,
+				446087811E4E1771007A8BE0 /* SignIn.storyboard in Resources */,
 				D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,10 +479,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				446087861E4E1967007A8BE0 /* SettingCellController.swift in Sources */,
+				446087851E4E1967007A8BE0 /* SettingsController.swift in Sources */,
 				A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */,
 				D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */,
+				446087761E4E115D007A8BE0 /* UserLogin.swift in Sources */,
 				B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */,
+				4460877F1E4E1456007A8BE0 /* CreateAccountViewController.swift in Sources */,
+				446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */,
+				446087891E4E28E1007A8BE0 /* DashBoardViewController.swift in Sources */,
 				B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */,
+				446087781E4E116A007A8BE0 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

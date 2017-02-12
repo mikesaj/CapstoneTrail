@@ -62,14 +62,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 return
             }
             
-            guard let uid = user?.uid else { return }
+            guard let uid = user?.uid else { return }              // For client-side use only!
             
+
             print("Successfully logged into Firebase with Google", uid)
             
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            self.window?.makeKeyAndVisible()
-            self.window?.rootViewController = UINavigationController(rootViewController: ViewController())
+            // guard let idToken = user?.refreshToken else { return } // Safe to send to the server
+            guard let name = user?.displayName else { return }
+            guard let email = user?.email else { return }
             
+            print("Welcome: \n \(uid) \n \(name) \n \(email)")
+            
+            // self.window = UIWindow(frame: UIScreen.main.bounds)
+            // self.window?.makeKeyAndVisible()
+            // self.window?.rootViewController = UINavigationController(rootViewController: ViewController())
+            
+
+            //switch view to DashBoard Storyboard
+            let dashboard = LoginViewController()
+            dashboard.switchToDashBoardView()
+
         })
         
     }
