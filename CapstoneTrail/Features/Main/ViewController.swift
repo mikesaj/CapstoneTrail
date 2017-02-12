@@ -22,20 +22,24 @@ class ViewController: UIViewController {
     }()
     
     lazy var deleteButton: UIButton = {
+        
         let button = UIButton(type: UIButtonType.system)
-        button.backgroundColor = UIColor.red
+        /*button.backgroundColor = UIColor.red
         button.setTitle("Delete Account", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         
         button.addTarget(self, action: #selector(deleteAccount), for: .touchUpInside)
-        
+        */
         return button
+        
     }()
     
     lazy var updateButton: UIButton = {
+        
         let button = UIButton(type: UIButtonType.system)
+        /*
         button.backgroundColor = UIColor.blue
         button.setTitle("Save", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -43,14 +47,15 @@ class ViewController: UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         
         button.addTarget(self, action: #selector(updateAccount), for: .touchUpInside)
-        
+        */
         return button
+ 
     }()
 
     override func viewDidLoad() {
     super.viewDidLoad()
     
-        view.backgroundColor = UIColor.gray
+        /*view.backgroundColor = UIColor.gray
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         
@@ -63,6 +68,7 @@ class ViewController: UIViewController {
         setupEmailTextField()
         
         checkIfUserIsLoggedIn()
+        */
     }
     
     func checkIfUserIsLoggedIn(){
