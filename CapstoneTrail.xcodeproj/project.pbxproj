@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4423ED121E50E72700344B6D /* HikeGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4423ED111E50E72700344B6D /* HikeGroup.storyboard */; };
+		443DB8D91E52356200F90C17 /* HikerInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443DB8D81E52356200F90C17 /* HikerInvitation.swift */; };
+		443DB8DB1E533B5100F90C17 /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443DB8DA1E533B5100F90C17 /* AddressBook.swift */; };
 		446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087731E4E1149007A8BE0 /* LoginViewController.swift */; };
 		446087761E4E115D007A8BE0 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087751E4E115D007A8BE0 /* UserLogin.swift */; };
 		446087781E4E116A007A8BE0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087771E4E116A007A8BE0 /* User.swift */; };
@@ -45,6 +48,9 @@
 /* Begin PBXFileReference section */
 		1D6EA5CAAD52FAA0D9CDCCDE /* Pods-CapstoneTrail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.release.xcconfig"; sourceTree = "<group>"; };
 		2731D46A09543C153A6C31D3 /* Pods-CapstoneTrailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.release.xcconfig"; sourceTree = "<group>"; };
+		4423ED111E50E72700344B6D /* HikeGroup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HikeGroup.storyboard; path = HikeGroup/HikeGroup.storyboard; sourceTree = "<group>"; };
+		443DB8D81E52356200F90C17 /* HikerInvitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HikerInvitation.swift; path = HikeGroup/HikerInvitation.swift; sourceTree = "<group>"; };
+		443DB8DA1E533B5100F90C17 /* AddressBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBook.swift; sourceTree = "<group>"; };
 		446087731E4E1149007A8BE0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		446087751E4E115D007A8BE0 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		446087771E4E116A007A8BE0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -98,6 +104,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4423ED101E50E6FF00344B6D /* HikeGroup */ = {
+			isa = PBXGroup;
+			children = (
+				443DB8DA1E533B5100F90C17 /* AddressBook.swift */,
+				443DB8D81E52356200F90C17 /* HikerInvitation.swift */,
+				4423ED111E50E72700344B6D /* HikeGroup.storyboard */,
+			);
+			name = HikeGroup;
+			sourceTree = "<group>";
+		};
 		446087791E4E11CD007A8BE0 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +174,7 @@
 		A900F3521E4A077400556D79 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				4423ED101E50E6FF00344B6D /* HikeGroup */,
 				446087871E4E285D007A8BE0 /* DashBoard */,
 				446087791E4E11CD007A8BE0 /* User */,
 				D23B65791E4A7CE100957B1E /* LoginDemo */,
@@ -364,6 +381,7 @@
 				A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */,
 				B66C875384EF1325BC0D7110 /* LaunchScreen.storyboard in Resources */,
 				4460878D1E4E2C96007A8BE0 /* DashBoard.storyboard in Resources */,
+				4423ED121E50E72700344B6D /* HikeGroup.storyboard in Resources */,
 				B66C8A93363E18079BF25D47 /* Main.storyboard in Resources */,
 				B66C8E8C8FFE2F1F9BB34360 /* Localizable.strings in Resources */,
 				446087811E4E1771007A8BE0 /* SignIn.storyboard in Resources */,
@@ -479,6 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				443DB8D91E52356200F90C17 /* HikerInvitation.swift in Sources */,
 				446087861E4E1967007A8BE0 /* SettingCellController.swift in Sources */,
 				446087851E4E1967007A8BE0 /* SettingsController.swift in Sources */,
 				A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */,
@@ -488,6 +507,7 @@
 				4460877F1E4E1456007A8BE0 /* CreateAccountViewController.swift in Sources */,
 				446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */,
 				446087891E4E28E1007A8BE0 /* DashBoardViewController.swift in Sources */,
+				443DB8DB1E533B5100F90C17 /* AddressBook.swift in Sources */,
 				B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */,
 				446087781E4E116A007A8BE0 /* User.swift in Sources */,
 			);
