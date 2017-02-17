@@ -14,10 +14,12 @@ let messageBody = "Sending Message through in Swift"
 
 
 // This class is for composing text & email message invitations
-class HikerInvitation: UIViewController, MFMailComposeViewControllerDelegate {
+public class HikerInvitation: UIViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var textMessage: UITextField!
     @IBOutlet weak var emailRecipient: UITextField!
+    
+    public var locationName : String = ""
     
     // for pre-populating the recipients list
     var MessageRecipients = [""]
@@ -80,11 +82,12 @@ class HikerInvitation: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     // MARK: MFMailComposeViewControllerDelegate Method
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
+        print("Initializer works " + locationName)
         super.viewDidLoad()
     }
 }

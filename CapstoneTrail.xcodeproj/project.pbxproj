@@ -19,6 +19,8 @@
 		446087861E4E1967007A8BE0 /* SettingCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087841E4E1967007A8BE0 /* SettingCellController.swift */; };
 		446087891E4E28E1007A8BE0 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087881E4E28E1007A8BE0 /* DashBoardViewController.swift */; };
 		4460878D1E4E2C96007A8BE0 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4460878C1E4E2C96007A8BE0 /* DashBoard.storyboard */; };
+		449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */; };
+		449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */; };
 		65E7EEE2D0A127F42608855C /* Pods_CapstoneTrail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FA64D3EB2D622B0A7EC696 /* Pods_CapstoneTrail.framework */; };
 		A900F3511E4A075A00556D79 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A900F3501E4A075A00556D79 /* MapKit.framework */; };
 		A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A9FB931D1E4A0BBA0053F6E3 /* README.md */; };
@@ -60,6 +62,8 @@
 		446087841E4E1967007A8BE0 /* SettingCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCellController.swift; sourceTree = "<group>"; };
 		446087881E4E28E1007A8BE0 /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		4460878C1E4E2C96007A8BE0 /* DashBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DashBoard.storyboard; sourceTree = "<group>"; };
+		449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HikeGroupViewController.swift; path = HikeGroup/HikeGroupViewController.swift; sourceTree = "<group>"; };
+		449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		85BDD1C74E4267286E511B7F /* Pods-CapstoneTrailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.debug.xcconfig"; sourceTree = "<group>"; };
 		93C0CBAFEF495B65F5778885 /* Pods-CapstoneTrail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.debug.xcconfig"; sourceTree = "<group>"; };
 		A900F3501E4A075A00556D79 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -107,9 +111,11 @@
 		4423ED101E50E6FF00344B6D /* HikeGroup */ = {
 			isa = PBXGroup;
 			children = (
+				449ACFCD1E565E5D00B84118 /* AddGroup */,
 				443DB8DA1E533B5100F90C17 /* AddressBook.swift */,
 				443DB8D81E52356200F90C17 /* HikerInvitation.swift */,
 				4423ED111E50E72700344B6D /* HikeGroup.storyboard */,
+				449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */,
 			);
 			name = HikeGroup;
 			sourceTree = "<group>";
@@ -159,6 +165,15 @@
 				4460878C1E4E2C96007A8BE0 /* DashBoard.storyboard */,
 			);
 			path = DashBoard;
+			sourceTree = "<group>";
+		};
+		449ACFCD1E565E5D00B84118 /* AddGroup */ = {
+			isa = PBXGroup;
+			children = (
+				449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */,
+			);
+			name = AddGroup;
+			path = HikeGroup/AddGroup;
 			sourceTree = "<group>";
 		};
 		A900F34F1E4A075A00556D79 /* Frameworks */ = {
@@ -506,7 +521,9 @@
 				B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */,
 				4460877F1E4E1456007A8BE0 /* CreateAccountViewController.swift in Sources */,
 				446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */,
+				449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */,
 				446087891E4E28E1007A8BE0 /* DashBoardViewController.swift in Sources */,
+				449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */,
 				443DB8DB1E533B5100F90C17 /* AddressBook.swift in Sources */,
 				B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */,
 				446087781E4E116A007A8BE0 /* User.swift in Sources */,
