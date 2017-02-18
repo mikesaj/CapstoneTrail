@@ -20,10 +20,10 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         
+        super.viewDidLoad()
+        
         // default location text
         locationLabel.text = currentLocation
-        
-        super.viewDidLoad()
         
         // Calls the location manager to get co-ordinate
         getLocation()
@@ -49,7 +49,14 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate {
         
         let myVC = storyboard?.instantiateViewController(withIdentifier: "HikerInvitation") as! HikerInvitation
         myVC.locationName = currentLocation
-        navigationController?.pushViewController(myVC, animated: true)
+        
+        // for slide view, without navigation
+        self.present(myVC, animated: true, completion: nil)
+        
+        //allows navigation appear
+        //navigationController?.pushViewController(myVC, animated: true)
+        
+        //navigationController?.present(myVC, animated: true)
     return
     }
     

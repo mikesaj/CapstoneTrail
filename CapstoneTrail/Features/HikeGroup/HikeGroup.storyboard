@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LvS-1d-fkA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,15 +23,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSc-0L-hm6">
+                                <rect key="frame" x="1" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="New Group" id="Goa-fN-3Rm"/>
+                                </items>
+                            </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dfM-ty-oHA">
-                                <rect key="frame" x="44" y="271" width="284" height="30"/>
+                                <rect key="frame" x="44" y="316" width="284" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ly-gs-ZR6">
-                                <rect key="frame" x="157" y="420" width="62" height="30"/>
+                                <rect key="frame" x="157" y="465" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create"/>
                                 <connections>
@@ -39,14 +46,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8l4-EW-Rej">
-                                <rect key="frame" x="5" y="367" width="364" height="28"/>
+                                <rect key="frame" x="5" y="412" width="364" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ezy-cL-CJI">
-                                <rect key="frame" x="127" y="318" width="121" height="29"/>
+                                <rect key="frame" x="127" y="363" width="121" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Public"/>
@@ -54,7 +61,7 @@
                                 </segments>
                             </segmentedControl>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="4vx-Vo-uah">
-                                <rect key="frame" x="118" y="91" width="140" height="136"/>
+                                <rect key="frame" x="118" y="136" width="140" height="136"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -63,6 +70,7 @@
                     <navigationItem key="navigationItem" title="Create Group" id="J0f-Pf-43c">
                         <barButtonItem key="backBarButtonItem" title="Back" id="6wY-io-tsa"/>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="locationLabel" destination="8l4-EW-Rej" id="BvB-ef-ECW"/>
                     </connections>
@@ -145,7 +153,7 @@
         <!--Invite Hikers-->
         <scene sceneID="sMj-81-fVN">
             <objects>
-                <viewController id="fJI-yf-wuO" customClass="HikerInvitation" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HikerInvitation" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fJI-yf-wuO" customClass="HikerInvitation" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xYv-BK-fAM"/>
                         <viewControllerLayoutGuide type="bottom" id="1Ys-0A-E7s"/>
@@ -190,7 +198,7 @@
                     <navigationItem key="navigationItem" title="Invite Hikers" id="60a-xV-cDh"/>
                     <connections>
                         <outlet property="emailRecipient" destination="y00-D7-R9y" id="Xyy-lT-Jsl"/>
-                        <outlet property="textMessage" destination="KtZ-GR-njc" id="aWK-N6-qbS"/>
+                        <outlet property="textRecipient" destination="KtZ-GR-njc" id="Lcy-eY-rbh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S2e-lY-9Qd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -277,10 +285,10 @@
             </objects>
             <point key="canvasLocation" x="833" y="636"/>
         </scene>
-        <!--Groups-->
+        <!--Hike Group View Controller-->
         <scene sceneID="VeI-Hu-Q78">
             <objects>
-                <viewController id="Xvv-nK-Pdr" customClass="HikeGroup" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HikeGroup" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Xvv-nK-Pdr" customClass="HikeGroupViewController" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mVM-ln-enP"/>
                         <viewControllerLayoutGuide type="bottom" id="xi7-4f-QVo"/>
@@ -289,37 +297,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pLw-FQ-KsL">
-                                <rect key="frame" x="0.0" y="72" width="375" height="459"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pLw-FQ-KsL">
+                                <rect key="frame" x="0.0" y="28" width="375" height="467"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zJF-cC-uHl">
-                                        <rect key="frame" x="0.0" y="-64" width="375" height="459"/>
+                                    <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahj-zG-F1D">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <items>
+                                            <navigationItem title="Groups" id="nzP-nw-yKE"/>
+                                        </items>
+                                    </navigationBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zJF-cC-uHl">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="423"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="zJF-cC-uHl" secondAttribute="height" multiplier="125:153" id="jAt-PJ-XJu"/>
-                                        </constraints>
                                     </tableView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="pLw-FQ-KsL" secondAttribute="height" multiplier="125:153" id="4OV-c5-Ccy"/>
-                                    <constraint firstAttribute="bottom" secondItem="zJF-cC-uHl" secondAttribute="bottom" id="4Tf-xa-Tga"/>
-                                    <constraint firstItem="zJF-cC-uHl" firstAttribute="leading" secondItem="pLw-FQ-KsL" secondAttribute="leading" id="8u1-Mo-RBn"/>
-                                    <constraint firstAttribute="trailing" secondItem="zJF-cC-uHl" secondAttribute="trailing" id="Uof-sz-Ksg"/>
-                                    <constraint firstItem="zJF-cC-uHl" firstAttribute="top" secondItem="pLw-FQ-KsL" secondAttribute="top" id="jUU-P7-qx4"/>
-                                </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obS-ul-0QX">
-                                <rect key="frame" x="0.0" y="539" width="375" height="52"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="obS-ul-0QX" secondAttribute="height" multiplier="375:52" id="ePz-f5-17E"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obS-ul-0QX">
+                                <rect key="frame" x="0.0" y="503" width="375" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Search Groups"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWt-6F-j0h">
-                                <rect key="frame" x="0.0" y="607" width="375" height="52"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="KWt-6F-j0h" secondAttribute="height" multiplier="375:52" id="HuN-x1-mv3"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWt-6F-j0h">
+                                <rect key="frame" x="0.0" y="563" width="375" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="New Group"/>
                                 <connections>
                                     <segue destination="8Pj-41-ien" kind="show" id="m4o-gq-YSF"/>
@@ -327,31 +330,17 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="obS-ul-0QX" firstAttribute="leading" secondItem="TR4-ks-XS8" secondAttribute="leading" id="9rz-Uu-Bld"/>
-                            <constraint firstAttribute="trailing" secondItem="KWt-6F-j0h" secondAttribute="trailing" id="ByZ-EV-oK7"/>
-                            <constraint firstAttribute="trailing" secondItem="obS-ul-0QX" secondAttribute="trailing" id="Gi9-Lp-GQl"/>
-                            <constraint firstItem="obS-ul-0QX" firstAttribute="top" secondItem="pLw-FQ-KsL" secondAttribute="bottom" constant="8" id="IV2-oo-ydd"/>
-                            <constraint firstItem="pLw-FQ-KsL" firstAttribute="leading" secondItem="TR4-ks-XS8" secondAttribute="leading" id="Ks7-9D-oF8"/>
-                            <constraint firstItem="KWt-6F-j0h" firstAttribute="top" secondItem="obS-ul-0QX" secondAttribute="bottom" constant="16" id="Ogr-Dd-CD8"/>
-                            <constraint firstItem="pLw-FQ-KsL" firstAttribute="top" secondItem="mVM-ln-enP" secondAttribute="bottom" constant="8" id="Ogw-xI-0i6"/>
-                            <constraint firstItem="KWt-6F-j0h" firstAttribute="leading" secondItem="TR4-ks-XS8" secondAttribute="leading" id="U0n-rZ-3kM"/>
-                            <constraint firstItem="xi7-4f-QVo" firstAttribute="top" secondItem="KWt-6F-j0h" secondAttribute="bottom" constant="8" id="fvx-uK-CUn"/>
-                            <constraint firstItem="KWt-6F-j0h" firstAttribute="top" secondItem="obS-ul-0QX" secondAttribute="bottom" constant="16" id="hAe-m0-kh2"/>
-                            <constraint firstItem="obS-ul-0QX" firstAttribute="top" secondItem="pLw-FQ-KsL" secondAttribute="bottom" constant="8" id="msK-On-Vuf"/>
-                            <constraint firstAttribute="trailing" secondItem="pLw-FQ-KsL" secondAttribute="trailing" id="qXA-Ve-QcE"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Groups" id="LXp-CI-3pP"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aq6-8Z-HyO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="833" y="-858"/>
+            <point key="canvasLocation" x="832.79999999999995" y="-858.62068965517244"/>
         </scene>
-        <!--Add Hikers to Group-->
+        <!--Add Friends to Group-->
         <scene sceneID="M8U-PJ-4zM">
             <objects>
-                <viewController storyboardIdentifier="HikerInvitation" id="adY-wL-Wrg" customClass="HikerInvitation" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="adY-wL-Wrg" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bpo-tu-TIZ"/>
                         <viewControllerLayoutGuide type="bottom" id="OR7-Qd-Xwh"/>
@@ -375,13 +364,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Hikers to Group" id="CuU-qS-44Q">
+                    <navigationItem key="navigationItem" title="Add Friends to Group" id="CuU-qS-44Q">
                         <barButtonItem key="backBarButtonItem" title="Back" id="KNo-WH-4GF"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uuO-9I-7pu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3173.5999999999999" y="-836.13193403298362"/>
+            <point key="canvasLocation" x="4044" y="-918"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="cEA-iK-v22">
@@ -399,7 +388,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N7b-6C-lTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4044" y="-821"/>
+            <point key="canvasLocation" x="4983.1999999999998" y="-821.28935532233891"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1uI-xc-DiK">
@@ -438,22 +427,22 @@
             <point key="canvasLocation" x="3174" y="-179"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="rjB-Y1-3Xa">
+        <scene sceneID="dc4-nS-4B8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4XN-vL-Rz9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LvS-1d-fkA" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4ev-Qs-EyZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5uz-93-1eV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="tdk-r9-99d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Xvv-nK-Pdr" kind="relationship" relationship="rootViewController" id="i17-Vp-KaB"/>
+                        <segue destination="adY-wL-Wrg" kind="relationship" relationship="rootViewController" id="cWa-Uf-Bhz"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QcL-EM-18M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-71" y="-859"/>
+            <point key="canvasLocation" x="3173.5999999999999" y="-836.13193403298362"/>
         </scene>
     </scenes>
     <resources>

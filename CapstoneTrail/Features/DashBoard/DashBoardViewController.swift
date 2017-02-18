@@ -1,64 +1,62 @@
 //
-//  dashBoardController.swift
-//  capstone
+//  TabbedDashBoardViewController.swift
+//  CapstoneTrail
 //
-//  Created by Michael Sajuyigbe on 2017-01-30.
+//  Created by Michael Sajuyigbe on 2017-02-18.
 //  Copyright © 2017 MSD. All rights reserved.
 //
 
 import UIKit
 
-class DashBoardViewController: UIViewController {
-    
-    @IBOutlet weak var dashBoardScrollView: UIScrollView!
+class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        sliderView()
-    }
-    
-    // This method enables view sliding (LEFT <--> RIGHT)
-    func sliderView(){
-    
-        // View 1
-        let V1 = self.storyboard?.instantiateViewController(withIdentifier: "V1") as UIViewController!
-        self.addChildViewController(V1!)
-        self.dashBoardScrollView.addSubview(V1!.view)
-        V1?.didMove(toParentViewController: self)
-        V1?.view.frame = dashBoardScrollView.bounds
         
-        // View 2
-        let V2 = self.storyboard?.instantiateViewController(withIdentifier: "V2") as UIViewController!
-        self.addChildViewController(V2!)
-        self.dashBoardScrollView.addSubview(V2!.view)
-        V2?.didMove(toParentViewController: self)
-        V2?.view.frame = dashBoardScrollView.bounds
-        
-        var V2Frame: CGRect = V2!.view.frame
-        V2Frame.origin.x = self.view.frame.width
-        V2!.view.frame = V2Frame
-        
-        // View 3
-        let V3 = self.storyboard?.instantiateViewController(withIdentifier: "V3") as UIViewController!
-        self.addChildViewController(V3!)
-        self.dashBoardScrollView.addSubview(V3!.view)
-        V3?.didMove(toParentViewController: self)
-        V3?.view.frame = dashBoardScrollView.bounds
-        
-        var V3Frame: CGRect = V3!.view.frame
-        V3Frame.origin.x = 2 * self.view.frame.width
-        V3!.view.frame = V3Frame
-        
-        
-        // Set initial Controller View
-        self.dashBoardScrollView.contentSize   = CGSize(width: (self.view.frame.width) * 3, height: (self.view.frame.height))
-        //self.dashBoardScrollView.contentOffset = CGPoint(x:(self.view.frame.width) * 1, y: (self.view.frame.height)) // * 1: means skip one view and start from the second view
-    
+        //Assign self for delegate for that ViewController can respond to UITabBarControllerDelegate methods
+        self.delegate = self
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Create Tab one
+        // Tab Bar Item: Profile
+        
+        let SignInStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
+        let profileTab : AnyObject! = SignInStoryboard.instantiateViewController(withIdentifier: "Profile")        
+        let tabOneBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
+        
+        let uprofileTab = profileTab as! UIViewController
+        uprofileTab.tabBarItem = tabOneBarItem
+        
+        
+        // Create Tab two
+        // Tab Bar Item: Groups
+        let HikeGroupStoryboard = UIStoryboard(name: "HikeGroup", bundle: nil)
+        let HikeGroupTab : AnyObject! = HikeGroupStoryboard.instantiateViewController(withIdentifier: "HikeGroup")
+        let tabtwoBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+        let GroupTab = HikeGroupTab as! UIViewController
+        GroupTab.tabBarItem = tabtwoBarItem
+        
+        
+        // Create Tab three
+        // Tab Bar Item: bookmarks (demo)
+        let tab3 = TabTwoViewController()
+        let tabTwoBarItem2 = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 2)
+        tab3.tabBarItem = tabTwoBarItem2
+        
+        //Add to tabBarController bottom menu
+        self.viewControllers = [uprofileTab, GroupTab, tab3]
+        
+    }
+    
+    // UITabBarControllerDelegate method
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        //print("Selected \(viewController.title!)")
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -75,4 +73,33 @@ class DashBoardViewController: UIViewController {
     }
     */
 
+}
+
+class TabOneViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor.blue
+        self.title = "Tab 1"
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+}
+
+class TabTwoViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor.red
+        self.title = "Tab 2"
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }

@@ -10,32 +10,33 @@ import Foundation
 import UIKit
 import MessageUI
 
-let messageBody = "Sending Message through in Swift"
-
+let subject = "Invitation to hiking App"
+let messageBody = "Join our fast growing hiking App today"
+var MessageRecipients = [""]
 
 // This class is for composing text & email message invitations
 public class HikerInvitation: UIViewController, MFMailComposeViewControllerDelegate {
     
-    @IBOutlet weak var textMessage: UITextField!
+    @IBOutlet weak var textRecipient: UITextField!
     @IBOutlet weak var emailRecipient: UITextField!
     
     public var locationName : String = ""
     
     // for pre-populating the recipients list
-    var MessageRecipients = [""]
-    let subject = "Subject of the mail"
+    // var MessageRecipients = [""]
+    // let subject = "Subject of the mail"
     
-    // Create a MessageComposer
+    // Instantiate a MessageComposer
     let messageComposer = MessageComposer()
     
     // Text message invite action
     @IBAction func sendTextMessageButtonTapped(_ sender: UIButton) {
         
         // Initializing text message body
-        guard let Recipients = textMessage.text else { return }
+        guard let Recipients = textRecipient.text else { return }
         
         // get recipient from textfield
-        self.MessageRecipients = [Recipients]
+        MessageRecipients = [Recipients]
 
         // Make sure the device can send text messages
         if (messageComposer.canSendText()) {
@@ -53,6 +54,8 @@ public class HikerInvitation: UIViewController, MFMailComposeViewControllerDeleg
     
     // Email message invite action
     @IBAction func sendEmailButtonTapped(_ sender: UIButton) {
+        
+        // Instantiate compose view controller
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
             self.present(mailComposeViewController, animated: true, completion: nil)
@@ -67,10 +70,10 @@ public class HikerInvitation: UIViewController, MFMailComposeViewControllerDeleg
         
         
         let Recipients = emailRecipient.text
-        self.MessageRecipients = [Recipients!]
+        MessageRecipients = [Recipients!]
 
-        mailComposerVC.setToRecipients( self.MessageRecipients )
-        mailComposerVC.setSubject( self.subject)
+        mailComposerVC.setToRecipients( MessageRecipients )
+        mailComposerVC.setSubject( subject)
         mailComposerVC.setMessageBody( messageBody, isHTML: false)
         
         return mailComposerVC
@@ -105,7 +108,7 @@ class MessageComposer: NSObject, MFMessageComposeViewControllerDelegate {
     func configuredMessageComposeViewController() -> MFMessageComposeViewController {
         let messageComposeVC = MFMessageComposeViewController()
         messageComposeVC.messageComposeDelegate = self  //  Make sure to set this property to self, so that the controller can be dismissed!
-        messageComposeVC.recipients = HikerInvitation().MessageRecipients
+        messageComposeVC.recipients = MessageRecipients
         messageComposeVC.body =  messageBody
         return messageComposeVC
     }
