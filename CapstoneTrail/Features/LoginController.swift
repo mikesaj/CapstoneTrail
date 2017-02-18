@@ -61,10 +61,8 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDe
             if error != nil{
                 self.displayMessage(ttl: "Error", msg: "Login or password invalid")
             } else{
-                //self.viewController?.populateUserInfo()
-                //self.viewController?.emailTextField.text = email
-                //self.viewController?.navigationItem.title = email
-                self.dismiss(animated: true, completion: nil)
+                let profileController = ViewController()
+                self.present(profileController, animated: true, completion: nil)
             }
             
         })
@@ -94,9 +92,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDe
                     return;
                 }
                 
-                let imageName = NSUUID().uuidString
-                
-                let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpg")
+                let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(uid).jpg")
                 
                 //if let uploadData = UIImagePNGRepresentation(self.userImageView.image!){
                 if let uploadData = UIImageJPEGRepresentation(self.userImageView.image!, 0.1){
@@ -135,10 +131,8 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDe
                 return
             }else{
                 
-                //self.viewController?.populateUserInfo()
-                self.viewController?.emailTextField.text = values["email"] as! String?
-                self.viewController?.navigationItem.title = values["name"] as! String?
-                self.dismiss(animated: true, completion: nil)
+                let profileController = ViewController()
+                self.present(profileController, animated: true, completion: nil)
             }
         })
 
@@ -292,12 +286,8 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDe
                 return
             }
             
-            print(result)
-            
-            let data:[String:AnyObject] = result as! [String : AnyObject]
-            self.viewController?.emailTextField.text = (data["email"] as! String?)
-            
-            self.dismiss(animated: true, completion: nil)
+            let profileController = ViewController()
+            self.present(profileController, animated: true, completion: nil)
         }
     }
     

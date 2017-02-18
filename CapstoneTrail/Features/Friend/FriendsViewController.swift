@@ -262,8 +262,12 @@ class FriendsViewController: UITableViewController, UISearchBarDelegate {
 
     
     func viewProfileFriend(tapGestureRecognizer: UITapGestureRecognizer){
+        self.searchController.dismiss(animated: true, completion: nil)
+        
         let friend_uid = tapGestureRecognizer.accessibilityHint
         let profileController = ViewController()
+        profileController.friend_uid = friend_uid
+        
         self.present(profileController, animated: true, completion: nil)
     }
     

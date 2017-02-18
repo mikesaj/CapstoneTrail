@@ -86,30 +86,66 @@ class ViewController: UIViewController {
         
         return button
     }()
+    
+    lazy var logoutButton: UIButton = {
+        let button = UIButton(type: UIButtonType.system)
+        button.backgroundColor = UIColor.blue
+        button.setTitle("Log Out", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        button.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    lazy var myProfileButton: UIButton = {
+        let button = UIButton(type: UIButtonType.system)
+        button.backgroundColor = UIColor.blue
+        button.setTitle("My Profile", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        button.addTarget(self, action: #selector(populateUserInfo), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    var friend_uid: String! = nil
 
     override func viewDidLoad() {
     super.viewDidLoad()
     
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         
         view.backgroundColor = UIColor.white
         
+        view.addSubview(profileImageView)
+        view.addSubview(logoutButton)
+        view.addSubview(peopleButton)
+        view.addSubview(emailTextField)
         view.addSubview(updateButton)
         view.addSubview(deleteButton)
-        view.addSubview(emailTextField)
-        view.addSubview(peopleButton)
         view.addSubview(friendButton)
-        view.addSubview(profileImageView)
+        view.addSubview(myProfileButton)
         
+        setupPeopleButton()
+        setupLogoutButton()
+        setupProfileImageView()
+        setupEmailTextField()
         setupUpdateButton()
         setupDeleteButton()
-        setupEmailTextField()
-        setupPeopleButton()
         setupFriendButton()
-        setupProfileImageView()
+        setupMyProfileButton()
         
-        handleLogout()
-        
-        checkIfUserIsLoggedIn()
+        if friend_uid == nil{
+            checkIfUserIsLoggedIn()
+        }
+        else{
+            populateFriendInfo()
+        }
     }
     
     func checkIfUserIsLoggedIn(){
@@ -155,6 +191,43 @@ class ViewController: UIViewController {
                 self.navigationItem.title = dic["name"] as! String?
                 let value = dic["email"] as! String?
                 self.emailTextField.text = value!
+                
+                let url = dic["profileImageUrl"] as! String?
+                
+                if let profileImageUrl = url {
+                    self.profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageUrl)
+                }
+                
+                self.myProfileButton.isHidden = true
+                self.updateButton.isHidden = false
+                self.deleteButton.isHidden = false
+                self.friendButton.isHidden = false
+                self.peopleButton.isHidden = false
+            }
+            
+        })
+    }
+    
+    func populateFriendInfo(){
+        
+        FIRDatabase.database().reference().child("users").child(friend_uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dic = snapshot.value as? [String: AnyObject] {
+                
+                self.navigationItem.title = dic["name"] as! String?
+                let value = dic["email"] as! String?
+                self.emailTextField.text = value!
+                
+                let url = dic["profileImageUrl"] as! String?
+                
+                if let profileImageUrl = url {
+                    self.profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageUrl)
+                }
+                
+                self.updateButton.isHidden = true
+                self.deleteButton.isHidden = true
+                self.friendButton.isHidden = true
+                self.peopleButton.isHidden = true
             }
             
         })
@@ -168,13 +241,38 @@ class ViewController: UIViewController {
             if  error != nil {
                 print("Erro to try to update account")
             }else{
-                let alert = UIAlertController(title: "Update account", message: "Account was updated succefully", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                
             }
         })
         
+        guard let uid = user?.uid else{
+            return;
+        }
+        
+        let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(uid).jpg")
+        
+        if let uploadData = UIImageJPEGRepresentation(self.profileImageView.image!, 0.1){
+            
+            storageRef.put(uploadData, metadata: nil, completion: { (metada, error) in
+                
+                if error != nil{
+                    print(error)
+                    return
+                }
+                
+                if let profileImageUrl = metada?.downloadURL()?.absoluteString {
+                    
+                    let ref = FIRDatabase.database().reference()
+                    let usersReference = ref.child("users").child(uid)
+                    usersReference.child("profileImageUrl").setValue(profileImageUrl)
+                    
+                    let alert = UIAlertController(title: "Update account", message: "Account was updated succefully", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }
+                
+            })
+        }
     }
     
     func deleteAccount(){
@@ -199,11 +297,14 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        //if animated {
-        populateUserInfo()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        //if animated == false{
+            //if friend_uid == nil{
+               // checkIfUserIsLoggedIn()
+            //}
+            //else{
+              // populateFriendInfo()
+            //}
         //}
-        
     }
 
 }

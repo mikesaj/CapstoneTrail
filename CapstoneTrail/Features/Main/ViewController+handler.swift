@@ -43,7 +43,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("cancel")
+        dismiss(animated: true, completion: nil)
     }
     
     func handleLogout(){
@@ -114,6 +114,21 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         friendButton.topAnchor.constraint(equalTo: peopleButton.bottomAnchor, constant: 20).isActive = true
         friendButton.widthAnchor.constraint(equalTo: updateButton.widthAnchor).isActive = true
         friendButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
+    }
+    
+    func setupLogoutButton(){
+        logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        logoutButton.topAnchor.constraint(equalTo: deleteButton.bottomAnchor, constant: 10).isActive = true
+        logoutButton.widthAnchor.constraint(equalTo: updateButton.widthAnchor).isActive = true
+        logoutButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
+    }
+    
+    func setupMyProfileButton()
+    {
+        myProfileButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        myProfileButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
+        myProfileButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        myProfileButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
     }
 
 }
