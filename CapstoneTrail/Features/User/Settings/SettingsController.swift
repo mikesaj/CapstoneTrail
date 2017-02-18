@@ -22,6 +22,7 @@ class SettingsController: UIViewController, UITableViewDelegate, UITableViewData
 
         //tableView.dataSource = self
         //tableView.delegate = self
+
         // Do any additional setup after loading the view.
     }
 

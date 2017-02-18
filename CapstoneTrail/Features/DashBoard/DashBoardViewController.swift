@@ -9,14 +9,14 @@
 import UIKit
 
 class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Assign self for delegate for that ViewController can respond to UITabBarControllerDelegate methods
         self.delegate = self
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -24,7 +24,7 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         // Tab Bar Item: Profile
         
         let SignInStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
-        let profileTab : AnyObject! = SignInStoryboard.instantiateViewController(withIdentifier: "Profile")        
+        let profileTab : AnyObject! = SignInStoryboard.instantiateViewController(withIdentifier: "Profile")
         let tabOneBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
         
         let uprofileTab = profileTab as! UIViewController
@@ -62,17 +62,17 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 class TabOneViewController: UIViewController {
