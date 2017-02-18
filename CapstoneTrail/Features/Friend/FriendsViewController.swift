@@ -19,6 +19,10 @@ class FriendsViewController: UITableViewController, UISearchBarDelegate {
     
     var usersSearched = [User]()
     
+    var friends = [Friend]()
+    
+    let ref = FIRDatabase.database().reference()
+    
     func createSearchbar(){
         
         searchController.searchBar.delegate = self
@@ -73,52 +77,7 @@ class FriendsViewController: UITableViewController, UISearchBarDelegate {
     
     func fetchUsers(){
         
-        let ref = FIRDatabase.database().reference()
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        
-        var friends = [Friend]()
-        
-        ref.child("friends").queryOrdered(byChild: "sender_uid").queryEqual(toValue: userID).observe(.childAdded, with: { (snapshot) in
-            
-            let value = snapshot.value as? [String: AnyObject]
-            
-            if value != nil{
-                
-                let friend = Friend()
-                
-                friend.uid = snapshot.key
-                friend.sender_uid = value?["sender_uid"] as? String
-                friend.receiver_uid = value?["receiver_uid"] as? String
-                friend.isAccepted = value?["isAccepted"] as? Bool
-                friend.isBlocked = value?["isBlocked"] as? Bool
-                
-                friends.append(friend)
-            }
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        
-        ref.child("friends").queryOrdered(byChild: "receiver_uid").queryEqual(toValue: userID).observe(.childAdded, with: { (snapshot) in
-            
-            let value = snapshot.value as? [String: AnyObject]
-            
-            if value != nil{
-                
-                let friend = Friend()
-                
-                friend.uid = snapshot.key
-                friend.sender_uid = value?["sender_uid"] as? String
-                friend.receiver_uid = value?["receiver_uid"] as? String
-                friend.isAccepted = value?["isAccepted"] as? Bool
-                friend.isBlocked = value?["isBlocked"] as? Bool
-                
-                friends.append(friend)
-            }
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+        self.populateFriends()
         
         ref.child("users").observe(.childAdded, with: { (snapshot) in
             
@@ -127,16 +86,16 @@ class FriendsViewController: UITableViewController, UISearchBarDelegate {
                 var isFriend: Bool = false
                 var friendship_uid: String = ""
                 
-                if friends.count > 0 {
+                if self.friends.count > 0 {
                     
                     var i = 0
                     
-                    for t in stride(from: 0, through: friends.count - 1, by: 1) {
+                    for t in stride(from: 0, through: self.friends.count - 1, by: 1) {
                         
-                        if((friends[i].receiver_uid == snapshot.key || friends[i].sender_uid == snapshot.key) &&
-                            friends[i].isAccepted == true && friends[i].isBlocked == false){
+                        if((self.friends[i].receiver_uid == snapshot.key || self.friends[i].sender_uid == snapshot.key) &&
+                            self.friends[i].isAccepted == true && self.friends[i].isBlocked == false){
                             
-                            friendship_uid = friends[i].uid!
+                            friendship_uid = self.friends[i].uid!
                             isFriend = true
                             break
                         }
@@ -171,6 +130,50 @@ class FriendsViewController: UITableViewController, UISearchBarDelegate {
             
             }, withCancel: nil)
         
+    }
+    
+    func poplateSingleFriend(key: String, value: [String: AnyObject]){
+        
+        let friend = Friend()
+        
+        friend.uid = key
+        friend.sender_uid = value["sender_uid"] as? String
+        friend.receiver_uid = value["receiver_uid"] as? String
+        friend.isAccepted = value["isAccepted"] as? Bool
+        friend.isBlocked = value["isBlocked"] as? Bool
+        
+        self.friends.append(friend)
+        
+    }
+    
+    func populateFriends(){
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        ref.child("friends").queryOrdered(byChild: "sender_uid").queryEqual(toValue: userID).observe(.childAdded, with: { (snapshot) in
+            
+            let value = snapshot.value as? [String: AnyObject]
+            
+            if value != nil{
+                self.poplateSingleFriend(key: snapshot.key, value: value!)
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        ref.child("friends").queryOrdered(byChild: "receiver_uid").queryEqual(toValue: userID).observe(.childAdded, with: { (snapshot) in
+            
+            let value = snapshot.value as? [String: AnyObject]
+            
+            if value != nil{
+                self.poplateSingleFriend(key: snapshot.key, value: value!)
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+
     }
     
     func handleCancel()
@@ -221,46 +224,6 @@ class FriendsViewController: UITableViewController, UISearchBarDelegate {
         return cell
     }
     
-    func rejectFriend(sender:UIButton){
-        let friend_uid = sender.titleLabel?.text
-        
-        var friendship_uid = ""
-        
-        var i = 0
-        
-        for t in stride(from: 0, through: self.users.count, by: 1) {
-            
-            if(self.users[i].uid == friend_uid){
-                friendship_uid = self.users[i].friendship_uid!
-                self.users.remove(at: i)
-                break
-            }
-            
-            i += 1
-        }
-        
-        i = 0
-        
-        for _ in stride(from: 0, through: self.usersSearched.count, by: 1) {
-            
-            if(self.usersSearched[i].uid == friend_uid){
-                
-                self.usersSearched.remove(at: i)
-                self.tableView.reloadData()
-                break
-            }
-            
-            i += 1
-        }
-        
-        let ref = FIRDatabase.database().reference()
-        
-        let friendsReference = ref.child("friends").child(friendship_uid)
-        
-        friendsReference.removeValue()
-    }
-
-    
     func viewProfileFriend(tapGestureRecognizer: UITapGestureRecognizer){
         self.searchController.dismiss(animated: true, completion: nil)
         
@@ -271,9 +234,17 @@ class FriendsViewController: UITableViewController, UISearchBarDelegate {
         self.present(profileController, animated: true, completion: nil)
     }
     
+    func rejectFriend(sender:UIButton){
+        
+        self.updateFriend(friend_uid: (sender.titleLabel?.text!)!, isToblock: false)
+    }
+    
     func blockFriend(sender:UIButton){
         
-        let friend_uid = sender.titleLabel?.text
+        self.updateFriend(friend_uid: (sender.titleLabel?.text!)!, isToblock: true)
+    }
+    
+    func updateFriend(friend_uid: String, isToblock: Bool){
         
         var friendship_uid = ""
         
@@ -304,11 +275,14 @@ class FriendsViewController: UITableViewController, UISearchBarDelegate {
             i += 1
         }
         
-        
-        let ref = FIRDatabase.database().reference()
-        
         let friendsReference = ref.child("friends").child(friendship_uid)
-        friendsReference.child("isBlocked").setValue(true)
+        
+        if isToblock == true {
+            friendsReference.child("isBlocked").setValue(true)
+        }
+        else{
+            friendsReference.removeValue()
+        }
     }
 
 }

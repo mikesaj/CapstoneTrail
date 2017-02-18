@@ -277,18 +277,51 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDe
             
             print("Successfully logged in with our user: ", user)
             
-        })
-        
-        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "email, name, gender, id"]).start { (connection, result, err) in
-            
-            if err != nil{
-                print("Failed to start graph request:", err)
-                return
+            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "email, name, gender, id"]).start { (connection, result, err) in
+                
+                if err != nil{
+                    print("Failed to start graph request:", err)
+                    return
+                }
+                
+                let uid = user?.uid
+                
+                let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(uid).jpg")
+                
+                if let uploadData = UIImageJPEGRepresentation(self.userImageView.image!, 0.1){
+                    
+                    storageRef.put(uploadData, metadata: nil, completion: { (metada, error) in
+                        
+                        if error != nil{
+                            print(error)
+                            return
+                        }
+                        
+                        let data:[String:AnyObject] = result as! [String : AnyObject]
+                        let name = (data["name"] as! String?)
+                        let email = (data["email"] as! String?)
+                        
+                        if let profileImageUrl = metada?.downloadURL()?.absoluteString {
+                            
+                            let ref = FIRDatabase.database().reference(fromURL: "https://capstoneproject-54304.firebaseio.com/")
+                            
+                            let userReference = ref.child("users").child(uid!)
+                            
+                            userReference.child("name").setValue(name)
+                            userReference.child("email").setValue(email)
+                            userReference.child("profileImageUrl").setValue(profileImageUrl)
+                            
+                            let profileController = ViewController()
+                            self.present(profileController, animated: true, completion: nil)
+                            
+                        }
+                        
+                    })
+                    
+                }
             }
             
-            let profileController = ViewController()
-            self.present(profileController, animated: true, completion: nil)
-        }
+        })
     }
     
     func setuploginRegisterSegmentedControl(){

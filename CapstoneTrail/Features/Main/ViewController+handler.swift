@@ -74,6 +74,11 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         self.present(friendController, animated: true, completion: nil)
     }
     
+    func populateMyProfile(){
+        friend_uid = nil
+        populateUserInfo()
+    }
+    
     func setupEmailTextField(){
         emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         emailTextField.bottomAnchor.constraint(equalTo: updateButton.topAnchor, constant: -200).isActive = true

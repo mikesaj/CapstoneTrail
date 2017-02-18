@@ -108,7 +108,7 @@ class ViewController: UIViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         
-        button.addTarget(self, action: #selector(populateUserInfo), for: .touchUpInside)
+        button.addTarget(self, action: #selector(populateMyProfile), for: .touchUpInside)
         
         return button
     }()
@@ -140,12 +140,7 @@ class ViewController: UIViewController {
         setupFriendButton()
         setupMyProfileButton()
         
-        if friend_uid == nil{
-            checkIfUserIsLoggedIn()
-        }
-        else{
-            populateFriendInfo()
-        }
+        checkIfUserIsLoggedIn()
     }
     
     func checkIfUserIsLoggedIn(){
@@ -157,80 +152,96 @@ class ViewController: UIViewController {
         }
     }
     
+    func checkUserGmail(uid: String){
+        
+            let userImage = UIImage(named: "user")
+            
+            let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(uid).jpg")
+            
+            if let uploadData = UIImageJPEGRepresentation(userImage!, 0.1){
+                
+                storageRef.put(uploadData, metadata: nil, completion: { (metada, error) in
+                    
+                    if error != nil{
+                        print(error)
+                        return
+                    }
+                    
+                    if let profileImageUrl = metada?.downloadURL()?.absoluteString {
+                        
+                        let ref = FIRDatabase.database().reference(fromURL: "https://capstoneproject-54304.firebaseio.com/")
+                        
+                        let userReference = ref.child("users").child(uid)
+                        
+                        let email = GIDSignIn.sharedInstance().currentUser?.profile.email
+                        let name = GIDSignIn.sharedInstance().currentUser?.profile.name
+                        
+                        userReference.child("name").setValue(name)
+                        userReference.child("email").setValue(email)
+                        userReference.child("profileImageUrl").setValue(profileImageUrl)
+                        
+                        self.navigationItem.title = name
+                        self.emailTextField.text = email
+                        
+                        let url = profileImageUrl as! String?
+                        
+                        if let profileUrl = url {
+                            self.profileImageView.loadImageUsingCacheWithUrlString(urlString: profileUrl)
+                        }
+                        
+                    }
+                    
+                })
+        }
+    }
+    
     func populateUserInfo(){
         
-        let email = GIDSignIn.sharedInstance().currentUser?.profile.email
-        
-        if email != nil{
-            self.emailTextField.text = email;
-            self.navigationItem.title = email
-            return;
-        }
-        
-        if(FBSDKAccessToken.current() != nil){
-            
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email"]).start(completionHandler: { (connection, result, error) -> Void in
-                if (error == nil){
-                    let data:[String:AnyObject] = result as! [String : AnyObject]
-                    self.emailTextField.text = (data["email"] as! String?)
-                    self.navigationItem.title = (data["name"] as! String?)
-                }
-            })
-            
-            return;
-        }
-        
-        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+        guard var uid = FIRAuth.auth()?.currentUser?.uid else {
             return
         }
         
-        FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+        if friend_uid != nil {
+            uid = friend_uid
             
-            if let dic = snapshot.value as? [String: AnyObject] {
-                
-                self.navigationItem.title = dic["name"] as! String?
-                let value = dic["email"] as! String?
-                self.emailTextField.text = value!
-                
-                let url = dic["profileImageUrl"] as! String?
-                
-                if let profileImageUrl = url {
-                    self.profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageUrl)
-                }
-                
-                self.myProfileButton.isHidden = true
-                self.updateButton.isHidden = false
-                self.deleteButton.isHidden = false
-                self.friendButton.isHidden = false
-                self.peopleButton.isHidden = false
-            }
+            self.myProfileButton.isHidden = false
             
-        })
-    }
-    
-    func populateFriendInfo(){
+            self.updateButton.isHidden = true
+            self.deleteButton.isHidden = true
+            self.friendButton.isHidden = true
+            self.peopleButton.isHidden = true
+        }
+        else{
+            self.myProfileButton.isHidden = true
+            
+            self.updateButton.isHidden = false
+            self.deleteButton.isHidden = false
+            self.friendButton.isHidden = false
+            self.peopleButton.isHidden = false
+        }
         
-        FIRDatabase.database().reference().child("users").child(friend_uid).observeSingleEvent(of: .value, with: { (snapshot) in
+        if friend_uid == nil && GIDSignIn.sharedInstance().currentUser?.profile.email != nil{
+            self.checkUserGmail(uid: uid)
+        }
+        else{
             
-            if let dic = snapshot.value as? [String: AnyObject] {
+            FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+                if let dic = snapshot.value as? [String: AnyObject] {
                 
-                self.navigationItem.title = dic["name"] as! String?
-                let value = dic["email"] as! String?
-                self.emailTextField.text = value!
+                    self.navigationItem.title = dic["name"] as! String?
+                    let value = dic["email"] as! String?
+                    self.emailTextField.text = value!
                 
-                let url = dic["profileImageUrl"] as! String?
+                    let url = dic["profileImageUrl"] as! String?
                 
-                if let profileImageUrl = url {
-                    self.profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageUrl)
+                    if let profileImageUrl = url {
+                        self.profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageUrl)
+                    }
                 }
-                
-                self.updateButton.isHidden = true
-                self.deleteButton.isHidden = true
-                self.friendButton.isHidden = true
-                self.peopleButton.isHidden = true
-            }
             
-        })
+            })
+        }
     }
     
     func updateAccount(){
@@ -278,7 +289,13 @@ class ViewController: UIViewController {
     func deleteAccount(){
         
         let user = FIRAuth.auth()?.currentUser
+        
+        let ref = FIRDatabase.database().reference()
+        let userReference = ref.child("users").child((user?.uid)!)
+        userReference.removeValue()
+        
         user?.delete(completion: { (error) in
+            
             if  error != nil {
                 print("Erro to try to delete account")
             }else{
@@ -297,14 +314,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        //if animated == false{
-            //if friend_uid == nil{
-               // checkIfUserIsLoggedIn()
-            //}
-            //else{
-              // populateFriendInfo()
-            //}
-        //}
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
     }
 
 }
