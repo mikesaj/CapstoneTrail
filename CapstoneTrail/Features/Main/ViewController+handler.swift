@@ -69,6 +69,11 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         self.present(peopleController, animated: true, completion: nil)
     }
     
+    func myFriends(){
+        let friendController = FriendsViewController()
+        self.present(friendController, animated: true, completion: nil)
+    }
+    
     func setupEmailTextField(){
         emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         emailTextField.bottomAnchor.constraint(equalTo: updateButton.topAnchor, constant: -200).isActive = true
@@ -102,6 +107,13 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         profileImageView.bottomAnchor.constraint(equalTo: emailTextField.topAnchor, constant: -12).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+    }
+    
+    func setupFriendButton(){
+        friendButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        friendButton.topAnchor.constraint(equalTo: peopleButton.bottomAnchor, constant: 20).isActive = true
+        friendButton.widthAnchor.constraint(equalTo: updateButton.widthAnchor).isActive = true
+        friendButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
     }
 
 }

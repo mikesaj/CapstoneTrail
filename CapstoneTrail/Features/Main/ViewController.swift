@@ -73,6 +73,19 @@ class ViewController: UIViewController {
         
         return button
     }()
+    
+    lazy var friendButton: UIButton = {
+        let button = UIButton(type: UIButtonType.system)
+        button.backgroundColor = UIColor.blue
+        button.setTitle("My Friends", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        button.addTarget(self, action: #selector(myFriends), for: .touchUpInside)
+        
+        return button
+    }()
 
     override func viewDidLoad() {
     super.viewDidLoad()
@@ -84,15 +97,17 @@ class ViewController: UIViewController {
         view.addSubview(deleteButton)
         view.addSubview(emailTextField)
         view.addSubview(peopleButton)
+        view.addSubview(friendButton)
         view.addSubview(profileImageView)
         
         setupUpdateButton()
         setupDeleteButton()
         setupEmailTextField()
         setupPeopleButton()
+        setupFriendButton()
         setupProfileImageView()
         
-        //gghandleLogout()
+        handleLogout()
         
         checkIfUserIsLoggedIn()
     }

@@ -21,6 +21,8 @@
 		D21766BC1E57B6EC00B5396B /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21766BB1E57B6EC00B5396B /* Friend.swift */; };
 		D21766BF1E57E26400B5396B /* reject.ico in Resources */ = {isa = PBXBuildFile; fileRef = D21766BD1E57E26400B5396B /* reject.ico */; };
 		D21766C01E57E26400B5396B /* accept.ico in Resources */ = {isa = PBXBuildFile; fileRef = D21766BE1E57E26400B5396B /* accept.ico */; };
+		D21766C41E58190B00B5396B /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21766C31E58190B00B5396B /* FriendsViewController.swift */; };
+		D21766CA1E58210200B5396B /* block.ico in Resources */ = {isa = PBXBuildFile; fileRef = D21766C91E58210200B5396B /* block.ico */; };
 		D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D24784471E4A8C7A00A0AFCF /* GoogleService-Info.plist */; };
 		D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24784491E4A8D5E00A0AFCF /* LoginController.swift */; };
 		D2915F371E4D4FF900EBAA05 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2915F361E4D4FF900EBAA05 /* PeopleViewController.swift */; };
@@ -67,6 +69,8 @@
 		D21766BB1E57B6EC00B5396B /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		D21766BD1E57E26400B5396B /* reject.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = reject.ico; sourceTree = "<group>"; };
 		D21766BE1E57E26400B5396B /* accept.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = accept.ico; sourceTree = "<group>"; };
+		D21766C31E58190B00B5396B /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		D21766C91E58210200B5396B /* block.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = block.ico; sourceTree = "<group>"; };
 		D24784471E4A8C7A00A0AFCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D24784491E4A8D5E00A0AFCF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		D2915F361E4D4FF900EBAA05 /* PeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 		A900F3541E4A07A000556D79 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D21766C91E58210200B5396B /* block.ico */,
 				D21766BD1E57E26400B5396B /* reject.ico */,
 				D21766BE1E57E26400B5396B /* accept.ico */,
 				D29CB67A1E50E1B10023DB96 /* addFriend.png */,
@@ -218,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				D2915F361E4D4FF900EBAA05 /* PeopleViewController.swift */,
+				D21766C31E58190B00B5396B /* FriendsViewController.swift */,
 			);
 			name = Friend;
 			path = /Users/Alessandro/GitHub/CapstoneTrail/CapstoneTrail/Features/Friend;
@@ -351,6 +357,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D21766CA1E58210200B5396B /* block.ico in Resources */,
 				B66C8E1A7401C833BE35C2A3 /* Images.xcassets in Resources */,
 				D29CB67B1E50E1B10023DB96 /* addFriend.png in Resources */,
 				D21766BF1E57E26400B5396B /* reject.ico in Resources */,
@@ -478,6 +485,7 @@
 				D29CB6791E4FB5820023DB96 /* Extensions.swift in Sources */,
 				D2915F3A1E4D577100EBAA05 /* User.swift in Sources */,
 				D2ED47291E5688E4009209CF /* StringExtension.swift in Sources */,
+				D21766C41E58190B00B5396B /* FriendsViewController.swift in Sources */,
 				D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */,
 				D21766BC1E57B6EC00B5396B /* Friend.swift in Sources */,
 				B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */,
