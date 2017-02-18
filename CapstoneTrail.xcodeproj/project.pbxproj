@@ -18,8 +18,18 @@
 		B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C80D3D9049E6DECDBF27F /* ViewController.swift */; };
 		B66C8E1A7401C833BE35C2A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B66C8FFA2195697D1BA6415F /* Images.xcassets */; };
 		B66C8E8C8FFE2F1F9BB34360 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B66C8C866F8BFE32C7F9EDC4 /* Localizable.strings */; };
+		D21766BC1E57B6EC00B5396B /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21766BB1E57B6EC00B5396B /* Friend.swift */; };
+		D21766BF1E57E26400B5396B /* reject.ico in Resources */ = {isa = PBXBuildFile; fileRef = D21766BD1E57E26400B5396B /* reject.ico */; };
+		D21766C01E57E26400B5396B /* accept.ico in Resources */ = {isa = PBXBuildFile; fileRef = D21766BE1E57E26400B5396B /* accept.ico */; };
 		D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D24784471E4A8C7A00A0AFCF /* GoogleService-Info.plist */; };
 		D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24784491E4A8D5E00A0AFCF /* LoginController.swift */; };
+		D2915F371E4D4FF900EBAA05 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2915F361E4D4FF900EBAA05 /* PeopleViewController.swift */; };
+		D2915F3A1E4D577100EBAA05 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2915F391E4D577100EBAA05 /* User.swift */; };
+		D29CB6731E4E96E60023DB96 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = D29CB6721E4E96E60023DB96 /* user.png */; };
+		D29CB6751E4E987C0023DB96 /* ViewController+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29CB6741E4E987C0023DB96 /* ViewController+handler.swift */; };
+		D29CB6791E4FB5820023DB96 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29CB6781E4FB5820023DB96 /* Extensions.swift */; };
+		D29CB67B1E50E1B10023DB96 /* addFriend.png in Resources */ = {isa = PBXBuildFile; fileRef = D29CB67A1E50E1B10023DB96 /* addFriend.png */; };
+		D2ED47291E5688E4009209CF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ED47281E5688E4009209CF /* StringExtension.swift */; };
 		F3A5266CCD7930CF069AECDD /* Pods_CapstoneTrailTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84E3F6471D45FB5637C3E7E /* Pods_CapstoneTrailTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,9 +64,19 @@
 		B66C8FFA2195697D1BA6415F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B84E3F6471D45FB5637C3E7E /* Pods_CapstoneTrailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneTrailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1FA64D3EB2D622B0A7EC696 /* Pods_CapstoneTrail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneTrail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D21766BB1E57B6EC00B5396B /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		D21766BD1E57E26400B5396B /* reject.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = reject.ico; sourceTree = "<group>"; };
+		D21766BE1E57E26400B5396B /* accept.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = accept.ico; sourceTree = "<group>"; };
 		D24784471E4A8C7A00A0AFCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D24784491E4A8D5E00A0AFCF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		D2915F361E4D4FF900EBAA05 /* PeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		D2915F391E4D577100EBAA05 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D29CB6721E4E96E60023DB96 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		D29CB6741E4E987C0023DB96 /* ViewController+handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+handler.swift"; sourceTree = "<group>"; };
+		D29CB6781E4FB5820023DB96 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D29CB67A1E50E1B10023DB96 /* addFriend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addFriend.png; sourceTree = "<group>"; };
 		D2A6FACC1E4A863E00F7AB22 /* CapstoneTrail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CapstoneTrail.entitlements; sourceTree = "<group>"; };
+		D2ED47281E5688E4009209CF /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +113,7 @@
 		A900F3521E4A077400556D79 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D2915F351E4D4FC300EBAA05 /* Friend */,
 				D23B65791E4A7CE100957B1E /* LoginDemo */,
 				A900F3531E4A077B00556D79 /* Main */,
 			);
@@ -106,6 +127,7 @@
 				B66C80D3D9049E6DECDBF27F /* ViewController.swift */,
 				B66C82EA8971FB9C46435BE3 /* LaunchScreen.storyboard */,
 				B66C842C3146213CC47FE05D /* Main.storyboard */,
+				D29CB6741E4E987C0023DB96 /* ViewController+handler.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -113,6 +135,10 @@
 		A900F3541E4A07A000556D79 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D21766BD1E57E26400B5396B /* reject.ico */,
+				D21766BE1E57E26400B5396B /* accept.ico */,
+				D29CB67A1E50E1B10023DB96 /* addFriend.png */,
+				D29CB6721E4E96E60023DB96 /* user.png */,
 				B66C8FFA2195697D1BA6415F /* Images.xcassets */,
 				B66C8C866F8BFE32C7F9EDC4 /* Localizable.strings */,
 			);
@@ -140,6 +166,8 @@
 		B66C811D063DF5892D42683B /* CapstoneTrail */ = {
 			isa = PBXGroup;
 			children = (
+				D29CB6771E4FB5630023DB96 /* Helpers */,
+				D2915F381E4D575B00EBAA05 /* Model */,
 				D2A6FACC1E4A863E00F7AB22 /* CapstoneTrail.entitlements */,
 				A900F3521E4A077400556D79 /* Features */,
 				A900F3541E4A07A000556D79 /* Assets */,
@@ -184,6 +212,33 @@
 				D24784491E4A8D5E00A0AFCF /* LoginController.swift */,
 			);
 			name = LoginDemo;
+			sourceTree = "<group>";
+		};
+		D2915F351E4D4FC300EBAA05 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				D2915F361E4D4FF900EBAA05 /* PeopleViewController.swift */,
+			);
+			name = Friend;
+			path = /Users/Alessandro/GitHub/CapstoneTrail/CapstoneTrail/Features/Friend;
+			sourceTree = "<absolute>";
+		};
+		D2915F381E4D575B00EBAA05 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2915F391E4D577100EBAA05 /* User.swift */,
+				D21766BB1E57B6EC00B5396B /* Friend.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D29CB6771E4FB5630023DB96 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D29CB6781E4FB5820023DB96 /* Extensions.swift */,
+				D2ED47281E5688E4009209CF /* StringExtension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		EBAE0BBC5398A07AF3F2ED75 /* Pods */ = {
@@ -259,6 +314,9 @@
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
 						};
 					};
 				};
@@ -294,9 +352,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B66C8E1A7401C833BE35C2A3 /* Images.xcassets in Resources */,
+				D29CB67B1E50E1B10023DB96 /* addFriend.png in Resources */,
+				D21766BF1E57E26400B5396B /* reject.ico in Resources */,
 				A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */,
 				B66C875384EF1325BC0D7110 /* LaunchScreen.storyboard in Resources */,
 				B66C8A93363E18079BF25D47 /* Main.storyboard in Resources */,
+				D29CB6731E4E96E60023DB96 /* user.png in Resources */,
+				D21766C01E57E26400B5396B /* accept.ico in Resources */,
 				B66C8E8C8FFE2F1F9BB34360 /* Localizable.strings in Resources */,
 				D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */,
 			);
@@ -410,8 +472,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2915F371E4D4FF900EBAA05 /* PeopleViewController.swift in Sources */,
+				D29CB6751E4E987C0023DB96 /* ViewController+handler.swift in Sources */,
 				A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */,
+				D29CB6791E4FB5820023DB96 /* Extensions.swift in Sources */,
+				D2915F3A1E4D577100EBAA05 /* User.swift in Sources */,
+				D2ED47291E5688E4009209CF /* StringExtension.swift in Sources */,
 				D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */,
+				D21766BC1E57B6EC00B5396B /* Friend.swift in Sources */,
 				B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */,
 				B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */,
 			);

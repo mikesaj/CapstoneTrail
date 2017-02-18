@@ -12,6 +12,8 @@ import GoogleSignIn
 
 class LoginController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
     
+    var viewController: ViewController?
+    
     let inputsContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
@@ -19,6 +21,12 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDe
         view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
         return view
+    }()
+    
+    lazy var userImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "user")
+        return imageView
     }()
     
     lazy var loginRegisterButton: UIButton = {
@@ -53,6 +61,9 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDe
             if error != nil{
                 self.displayMessage(ttl: "Error", msg: "Login or password invalid")
             } else{
+                //self.viewController?.populateUserInfo()
+                //self.viewController?.emailTextField.text = email
+                //self.viewController?.navigationItem.title = email
                 self.dismiss(animated: true, completion: nil)
             }
             
@@ -79,26 +90,59 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDe
                 return
             }else{
                 
-                let ref = FIRDatabase.database().reference(fromURL: "https://capstoneproject-54304.firebaseio.com/")
+                guard let uid = user?.uid else{
+                    return;
+                }
                 
-                let usersReference = ref.child("users").child(user!.uid)
+                let imageName = NSUUID().uuidString
                 
-                let values = ["name": name, "email": email]
+                let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpg")
                 
-                
-                usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                    if err != nil{
-                        print(err)
-                        return
-                    }else{
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                })
-                
-                print("Login Successful")
-                return
+                //if let uploadData = UIImagePNGRepresentation(self.userImageView.image!){
+                if let uploadData = UIImageJPEGRepresentation(self.userImageView.image!, 0.1){
+                    
+                    storageRef.put(uploadData, metadata: nil, completion: { (metada, error) in
+                        
+                        if error != nil{
+                            print(error)
+                            return
+                        }
+                        
+                        if let profileImageUrl = metada?.downloadURL()?.absoluteString {
+                        
+                            let values = ["name": name, "email": email, "profileImageUrl": profileImageUrl] as [String : Any]
+
+                            self.registerUserIntoDatababase(uid: uid, values: values as [String : AnyObject])
+                            
+                        }
+                        
+                    })
+                    
+                }
             }
         })
+    }
+    
+    private func registerUserIntoDatababase(uid: String, values: [String: AnyObject]){
+    
+        let ref = FIRDatabase.database().reference(fromURL: "https://capstoneproject-54304.firebaseio.com/")
+        
+        let usersReference = ref.child("users").child(uid)
+        
+        usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+            if err != nil{
+                print(err)
+                return
+            }else{
+                
+                //self.viewController?.populateUserInfo()
+                self.viewController?.emailTextField.text = values["email"] as! String?
+                self.viewController?.navigationItem.title = values["name"] as! String?
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
+
+    
     }
     
     let nameTextField: UITextField = {
@@ -135,14 +179,6 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDe
         tf.isSecureTextEntry = true
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
-    }()
-    
-    let profileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "hiking")
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleToFill
-        return imageView
     }()
     
     lazy var loginRegisterSegmentedControl: UISegmentedControl = {
@@ -188,13 +224,11 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDe
         view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
         
         view.addSubview(inputsContainerView)
-        view.addSubview(loginRegisterButton)
-        view.addSubview(profileImageView)
+        view.addSubview(loginRegisterButton)        
         view.addSubview(loginRegisterSegmentedControl)
         
         setupInputsContainerView()
-        setupLoginRegisterButton()
-        setupProfileImageView()
+        setupLoginRegisterButton()        
         setuploginRegisterSegmentedControl()
         
         setupFacebookButtons()
@@ -260,6 +294,9 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDe
             
             print(result)
             
+            let data:[String:AnyObject] = result as! [String : AnyObject]
+            self.viewController?.emailTextField.text = (data["email"] as! String?)
+            
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -270,13 +307,6 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDe
         loginRegisterSegmentedControl.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         loginRegisterSegmentedControl.heightAnchor.constraint(equalToConstant: 36).isActive = true
         
-    }
-    
-    func setupProfileImageView(){
-        profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        profileImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -12).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        profileImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }
     
     func setupLoginRegisterButton(){
