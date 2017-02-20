@@ -113,6 +113,19 @@ class ViewController: UIViewController {
         return button
     }()
     
+    lazy var walkingScheduleButton: UIButton = {
+        let button = UIButton(type: UIButtonType.system)
+        button.backgroundColor = UIColor.blue
+        button.setTitle("Walking Schedule", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        button.addTarget(self, action: #selector(populateWalkingSchedule), for: .touchUpInside)
+        
+        return button
+    }()
+    
     var friend_uid: String! = nil
 
     override func viewDidLoad() {
@@ -130,6 +143,7 @@ class ViewController: UIViewController {
         view.addSubview(deleteButton)
         view.addSubview(friendButton)
         view.addSubview(myProfileButton)
+        view.addSubview(walkingScheduleButton)
         
         setupPeopleButton()
         setupLogoutButton()
@@ -139,6 +153,7 @@ class ViewController: UIViewController {
         setupDeleteButton()
         setupFriendButton()
         setupMyProfileButton()
+        setupWalkingScheduleButton()
         
         checkIfUserIsLoggedIn()
     }
@@ -210,6 +225,7 @@ class ViewController: UIViewController {
             self.deleteButton.isHidden = true
             self.friendButton.isHidden = true
             self.peopleButton.isHidden = true
+            self.walkingScheduleButton.isHidden = true
         }
         else{
             self.myProfileButton.isHidden = true
@@ -218,6 +234,9 @@ class ViewController: UIViewController {
             self.deleteButton.isHidden = false
             self.friendButton.isHidden = false
             self.peopleButton.isHidden = false
+            self.walkingScheduleButton.isHidden = false
+            
+            self.checkFriendRequests(userID: uid)
         }
         
         if friend_uid == nil && GIDSignIn.sharedInstance().currentUser?.profile.email != nil{
@@ -315,6 +334,28 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+    }
+    
+    func checkFriendRequests(userID: String){
+        
+        let ref = FIRDatabase.database().reference()
+        
+        ref.child("friends").queryOrdered(byChild: "receiver_uid").queryEqual(toValue: userID).observe(.childAdded, with: { (snapshot) in
+            
+            let value = snapshot.value as? [String: AnyObject]
+            
+            if value != nil{
+                
+                let alert = UIAlertController(title: "Warning", message: "You have new friend request(s)", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
 
 }

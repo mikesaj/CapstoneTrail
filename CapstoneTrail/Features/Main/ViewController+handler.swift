@@ -79,6 +79,11 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         populateUserInfo()
     }
     
+    func populateWalkingSchedule(){
+        let walkingScheduleController = WalkingScheduleViewController()
+        self.present(walkingScheduleController, animated: true, completion: nil)
+    }
+    
     func setupEmailTextField(){
         emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         emailTextField.bottomAnchor.constraint(equalTo: updateButton.topAnchor, constant: -200).isActive = true
@@ -98,6 +103,13 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         peopleButton.bottomAnchor.constraint(equalTo: updateButton.topAnchor, constant: -110).isActive = true
         peopleButton.widthAnchor.constraint(equalTo: updateButton.widthAnchor).isActive = true
         peopleButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
+    }
+    
+    func setupWalkingScheduleButton(){
+        walkingScheduleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        walkingScheduleButton.topAnchor.constraint(equalTo: friendButton.bottomAnchor, constant: 15).isActive = true
+        walkingScheduleButton.widthAnchor.constraint(equalTo: friendButton.widthAnchor).isActive = true
+        walkingScheduleButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
     }
     
     func setupDeleteButton(){

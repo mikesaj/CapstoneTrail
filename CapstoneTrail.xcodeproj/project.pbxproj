@@ -25,6 +25,8 @@
 		D21766CA1E58210200B5396B /* block.ico in Resources */ = {isa = PBXBuildFile; fileRef = D21766C91E58210200B5396B /* block.ico */; };
 		D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D24784471E4A8C7A00A0AFCF /* GoogleService-Info.plist */; };
 		D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24784491E4A8D5E00A0AFCF /* LoginController.swift */; };
+		D28AC7DE1E5B785F005FAAE9 /* WalkingScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28AC7DD1E5B785F005FAAE9 /* WalkingScheduleViewController.swift */; };
+		D28AC7E01E5B7A50005FAAE9 /* WalkingSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28AC7DF1E5B7A50005FAAE9 /* WalkingSchedule.swift */; };
 		D2915F371E4D4FF900EBAA05 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2915F361E4D4FF900EBAA05 /* PeopleViewController.swift */; };
 		D2915F3A1E4D577100EBAA05 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2915F391E4D577100EBAA05 /* User.swift */; };
 		D29CB6731E4E96E60023DB96 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = D29CB6721E4E96E60023DB96 /* user.png */; };
@@ -73,6 +75,8 @@
 		D21766C91E58210200B5396B /* block.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = block.ico; sourceTree = "<group>"; };
 		D24784471E4A8C7A00A0AFCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D24784491E4A8D5E00A0AFCF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		D28AC7DD1E5B785F005FAAE9 /* WalkingScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingScheduleViewController.swift; sourceTree = "<group>"; };
+		D28AC7DF1E5B7A50005FAAE9 /* WalkingSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingSchedule.swift; sourceTree = "<group>"; };
 		D2915F361E4D4FF900EBAA05 /* PeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		D2915F391E4D577100EBAA05 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D29CB6721E4E96E60023DB96 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 		A900F3521E4A077400556D79 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D28AC7DC1E5B778A005FAAE9 /* Walking Schedule */,
 				D2915F351E4D4FC300EBAA05 /* Friend */,
 				D23B65791E4A7CE100957B1E /* LoginDemo */,
 				A900F3531E4A077B00556D79 /* Main */,
@@ -219,6 +224,14 @@
 			name = LoginDemo;
 			sourceTree = "<group>";
 		};
+		D28AC7DC1E5B778A005FAAE9 /* Walking Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				D28AC7DD1E5B785F005FAAE9 /* WalkingScheduleViewController.swift */,
+			);
+			name = "Walking Schedule";
+			sourceTree = "<group>";
+		};
 		D2915F351E4D4FC300EBAA05 /* Friend */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +247,7 @@
 			children = (
 				D2915F391E4D577100EBAA05 /* User.swift */,
 				D21766BB1E57B6EC00B5396B /* Friend.swift */,
+				D28AC7DF1E5B7A50005FAAE9 /* WalkingSchedule.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -482,9 +496,11 @@
 				D2915F371E4D4FF900EBAA05 /* PeopleViewController.swift in Sources */,
 				D29CB6751E4E987C0023DB96 /* ViewController+handler.swift in Sources */,
 				A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */,
+				D28AC7DE1E5B785F005FAAE9 /* WalkingScheduleViewController.swift in Sources */,
 				D29CB6791E4FB5820023DB96 /* Extensions.swift in Sources */,
 				D2915F3A1E4D577100EBAA05 /* User.swift in Sources */,
 				D2ED47291E5688E4009209CF /* StringExtension.swift in Sources */,
+				D28AC7E01E5B7A50005FAAE9 /* WalkingSchedule.swift in Sources */,
 				D21766C41E58190B00B5396B /* FriendsViewController.swift in Sources */,
 				D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */,
 				D21766BC1E57B6EC00B5396B /* Friend.swift in Sources */,

@@ -45,10 +45,20 @@ class PeopleViewController: UITableViewController, UISearchBarDelegate {
             usersSearched.removeAll()
             
             for u in users {
-            
+                
                 if u.name?.startsWith(string: textSearched) == true {
                     self.usersSearched.append(u)
                     continue
+                }
+                
+                let fullName = u.name?.components(separatedBy: " ")
+                if (fullName?.count)! > 1{
+                    var lastName: String = fullName![1]
+                    
+                    if lastName.startsWith(string: textSearched) == true {
+                        self.usersSearched.append(u)
+                        continue
+                    }
                 }
                 
                 if u.email?.startsWith(string: textSearched) == true {
@@ -57,12 +67,14 @@ class PeopleViewController: UITableViewController, UISearchBarDelegate {
             }
         }
         
+        self.usersSearched = self.usersSearched.sorted { $0.0.isFriendRequested == true }
         self.tableView.reloadData()
     }
     
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-       usersSearched = users
+       self.usersSearched = self.users
+       self.usersSearched = self.usersSearched.sorted { $0.0.isFriendRequested == true }
        self.tableView.reloadData()
     }
     
