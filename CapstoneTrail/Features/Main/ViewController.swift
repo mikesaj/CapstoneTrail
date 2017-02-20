@@ -346,11 +346,16 @@ class ViewController: UIViewController {
             
             if value != nil{
                 
-                let alert = UIAlertController(title: "Warning", message: "You have new friend request(s)", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                let isAccepted = value?["isAccepted"] as? Bool
+                let isBlocked = value?["isBlocked"] as? Bool
                 
-                return
+                if isAccepted == false && isBlocked == false {
+                    let alert = UIAlertController(title: "Warning", message: "You have new friend request(s)", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                
+                    return
+                }
             }
             
         }) { (error) in
