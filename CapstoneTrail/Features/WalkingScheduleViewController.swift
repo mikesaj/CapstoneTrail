@@ -11,38 +11,50 @@ import Firebase
 
 class WalkingScheduleViewController: UITableViewController {
     
+    //identifier for each cell in the table
     let cellId = "cellId"
     
+    // Database reference
     let ref = FIRDatabase.database().reference()
     
+    //id of the user logged in
     let userID = FIRAuth.auth()?.currentUser?.uid
     
+    //collection of walking schedule
     var schedules = [WalkingShedule]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //populating table with walking schedule data
         fetchShecules()
         
+        //registering table with our custom UITableViewCell
         tableView.register(WalkingSheduleCell.self, forCellReuseIdentifier: cellId)
         
+        //creating a cancel button on the navigation bar
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         
     }
     
     func fetchShecules(){
         
+        //retreiving data from database
         ref.child("walkingSchedules").child(userID!).observe(.childAdded, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 
                 let schedule = WalkingShedule()
-                    
+                
+                //Assigning retrieved values to the schedule object
                 schedule.trail_id = snapshot.key
                 schedule.trail = dictionary["trail"] as? String
                 schedule.date = dictionary["date"] as? String
-                        
+                
+                //Appending shedule object to collection
                 self.schedules.append(schedule)
+                
+                //refreshing table after populating collection
                 self.tableView.reloadData()
             }
             
@@ -50,40 +62,49 @@ class WalkingScheduleViewController: UITableViewController {
         
     }
     
+    //method to close the controller
     func handleCancel()
     {
         dismiss(animated: true, completion: nil)
     }
     
+    //setting table size
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return schedules.count
     }
     
+    
+    //setting values from the collection to table
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        //retreiving current cell
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! WalkingSheduleCell
         
+        //getting collection item from current row index
         let schedule = schedules[indexPath.row]
         
+        //setting value to the cell
         cell.textLabel?.text = schedule.trail
         cell.detailTextLabel?.text = "Date: " + schedule.date!
         
         return cell
     }
     
+    //method for resizing cell height
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72
     }
 
 }
 
+//custom  UITableViewCell class
 class WalkingSheduleCell: UITableViewCell{
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        //setting layout for text and detail fields
         textLabel?.frame = CGRect(x: 20, y: textLabel!.frame.origin.y - 2, width: textLabel!.frame.width, height: textLabel!.frame.height)
-        
         detailTextLabel?.frame = CGRect(x: 20, y: detailTextLabel!.frame.origin.y + 2, width: detailTextLabel!.frame.width, height: detailTextLabel!.frame.height)
     }
     

@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Represents the users collection of the database
 class User: NSObject {
 
     var uid: String?

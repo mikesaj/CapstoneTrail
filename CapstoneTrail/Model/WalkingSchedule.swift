@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Represents the walkingShedule collection of the database
 class WalkingShedule: NSObject {
     
     var uid: String?

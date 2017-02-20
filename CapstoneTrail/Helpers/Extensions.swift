@@ -6,12 +6,16 @@
 //  Copyright © 2017 MSD. All rights reserved.
 //
 
+
+//This class assists to store images in cache, for saving time and data to display all images
+
 import UIKit
 
 let imageCache = NSCache<AnyObject, AnyObject>()
 
 extension UIImageView {
 
+    //this method stores images in cache
     func loadImageUsingCacheWithUrlString(urlString: String){
     
         self.image = nil

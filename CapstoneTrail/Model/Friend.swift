@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Represents the friends collection of the database
 class Friend: NSObject {
     
     var uid: String?
