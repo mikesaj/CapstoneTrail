@@ -9,7 +9,10 @@
 import UIKit
 import Firebase
 
-class WalkingScheduleViewController: UITableViewController {
+class WalkingScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    //declaring tableView
+    var tableView: UITableView = UITableView()
     
     //identifier for each cell in the table
     let cellId = "cellId"
@@ -26,15 +29,29 @@ class WalkingScheduleViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor.white
+        
+        //creating a cancel button on the navigation bar
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        
+        //TableView Settings
+        let screenSize: CGRect = UIScreen.main.bounds
+        
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        
+        tableView.frame = CGRect(x: 0, y: 15, width: screenWidth, height: screenHeight)
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         //populating table with walking schedule data
         fetchShecules()
         
         //registering table with our custom UITableViewCell
         tableView.register(WalkingSheduleCell.self, forCellReuseIdentifier: cellId)
         
-        //creating a cancel button on the navigation bar
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-        
+        //Adding tableView object to the View
+        self.view.addSubview(tableView)
     }
     
     func fetchShecules(){
@@ -69,13 +86,13 @@ class WalkingScheduleViewController: UITableViewController {
     }
     
     //setting table size
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return schedules.count
     }
     
     
     //setting values from the collection to table
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //retreiving current cell
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! WalkingSheduleCell
@@ -91,7 +108,7 @@ class WalkingScheduleViewController: UITableViewController {
     }
     
     //method for resizing cell height
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72
     }
 

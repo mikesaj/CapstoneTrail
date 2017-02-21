@@ -9,7 +9,10 @@
 import UIKit
 import Firebase
 
-class FriendsViewController: UITableViewController, UISearchBarDelegate {
+class FriendsViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
+    
+    //declaring tableView
+    var tableView: UITableView = UITableView()
     
     //search bar for being added to table view
     let searchController = UISearchController(searchResultsController: nil)
@@ -93,6 +96,18 @@ class FriendsViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor.white
+        
+        //TableView Settings
+        let screenSize: CGRect = UIScreen.main.bounds
+        
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        
+        tableView.frame = CGRect(x: 0, y: 30, width: screenWidth, height: screenHeight)
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         //populating table with friendships data
         fetchUsers()
         
@@ -101,6 +116,9 @@ class FriendsViewController: UITableViewController, UISearchBarDelegate {
         
         //adding searchbar to table view
         createSearchbar()
+        
+        //Adding tableView object to the View
+        self.view.addSubview(tableView)
         
         //creating a cancel button on the navigation bar
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
@@ -226,7 +244,7 @@ class FriendsViewController: UITableViewController, UISearchBarDelegate {
     }
     
     //method for resizing cell height
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72
     }
     
@@ -237,12 +255,12 @@ class FriendsViewController: UITableViewController, UISearchBarDelegate {
     }
     
     //setting table size
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return usersSearched.count
     }
     
     //setting values from the collection to table
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //retreiving current cell
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! UserCell
