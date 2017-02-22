@@ -5,3 +5,7 @@
   Created by Joohyung Ryu on 2017. 2. 7..
   Copyright (c) 2017 MSD. All rights reserved.
 */
+
+// Cell data
+"StreetName" = "On %@";
+"TrailBrief" = "%.0fm of %@";

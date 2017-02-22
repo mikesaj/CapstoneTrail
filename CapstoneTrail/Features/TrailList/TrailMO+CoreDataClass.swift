@@ -1,5 +1,5 @@
 //
-//  Trail+CoreDataClass.swift
+//  TrailMO+CoreDataClass.swift
 //  CapstoneTrail
 //
 //  Created by Joohyung Ryu on 2017. 2. 22..
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(Trail)
-public class Trail: NSManagedObject {
+@objc(TrailMO)
+public class TrailMO: NSManagedObject {
 
 }
