@@ -13,6 +13,7 @@ target 'CapstoneTrail' do
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
   pod 'GoogleSignIn'
+  pod 'SwiftyJSON'
 
   # Pods for CapstoneTrail
 
