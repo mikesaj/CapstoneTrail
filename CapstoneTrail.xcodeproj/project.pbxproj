@@ -16,13 +16,15 @@
 		446087811E4E1771007A8BE0 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 446087801E4E1771007A8BE0 /* SignIn.storyboard */; };
 		446087851E4E1967007A8BE0 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087831E4E1967007A8BE0 /* SettingsController.swift */; };
 		446087861E4E1967007A8BE0 /* SettingCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087841E4E1967007A8BE0 /* SettingCellController.swift */; };
-
 		4460878D1E4E2C96007A8BE0 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4460878C1E4E2C96007A8BE0 /* DashBoard.storyboard */; };
 		449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */; };
 		449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */; };
 		449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFD41E58758900B84118 /* DashBoardViewController.swift */; };
 		65E7EEE2D0A127F42608855C /* Pods_CapstoneTrail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FA64D3EB2D622B0A7EC696 /* Pods_CapstoneTrail.framework */; };
 		A900F3511E4A075A00556D79 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A900F3501E4A075A00556D79 /* MapKit.framework */; };
+		A97979D81E5DE1BB002DC4D2 /* Trails.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97979D61E5DE1BB002DC4D2 /* Trails.xcdatamodeld */; };
+		A97979DB1E5DE27B002DC4D2 /* Trail+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979D91E5DE27B002DC4D2 /* Trail+CoreDataClass.swift */; };
+		A97979DC1E5DE27B002DC4D2 /* Trail+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979DA1E5DE27B002DC4D2 /* Trail+CoreDataProperties.swift */; };
 		A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A9FB931D1E4A0BBA0053F6E3 /* README.md */; };
 		A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */; };
 		B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8A82BC1ABAFB0F9D0E10 /* AppDelegate.swift */; };
@@ -52,7 +54,6 @@
 		2731D46A09543C153A6C31D3 /* Pods-CapstoneTrailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.release.xcconfig"; sourceTree = "<group>"; };
 		4423ED111E50E72700344B6D /* HikeGroup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HikeGroup.storyboard; path = HikeGroup/HikeGroup.storyboard; sourceTree = "<group>"; };
 		443DB8D81E52356200F90C17 /* HikerInvitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HikerInvitation.swift; path = HikeGroup/HikerInvitation.swift; sourceTree = "<group>"; };
-
 		446087731E4E1149007A8BE0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		446087751E4E115D007A8BE0 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		446087771E4E116A007A8BE0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -64,10 +65,12 @@
 		449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HikeGroupViewController.swift; path = HikeGroup/HikeGroupViewController.swift; sourceTree = "<group>"; };
 		449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		449ACFD41E58758900B84118 /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
-
 		85BDD1C74E4267286E511B7F /* Pods-CapstoneTrailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.debug.xcconfig"; sourceTree = "<group>"; };
 		93C0CBAFEF495B65F5778885 /* Pods-CapstoneTrail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.debug.xcconfig"; sourceTree = "<group>"; };
 		A900F3501E4A075A00556D79 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A97979D71E5DE1BB002DC4D2 /* Trails.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Trails.xcdatamodel; sourceTree = "<group>"; };
+		A97979D91E5DE27B002DC4D2 /* Trail+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trail+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A97979DA1E5DE27B002DC4D2 /* Trail+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trail+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A9FB931D1E4A0BBA0053F6E3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		B66C80D3D9049E6DECDBF27F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,7 +123,6 @@
 			name = HikeGroup;
 			sourceTree = "<group>";
 		};
-
 		446087791E4E11CD007A8BE0 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +192,7 @@
 		A900F3521E4A077400556D79 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				A97979D51E5DE177002DC4D2 /* TrailList */,
 				4423ED101E50E6FF00344B6D /* HikeGroup */,
 				446087871E4E285D007A8BE0 /* DashBoard */,
 				446087791E4E11CD007A8BE0 /* User */,
@@ -215,6 +218,7 @@
 			children = (
 				B66C8FFA2195697D1BA6415F /* Images.xcassets */,
 				B66C8C866F8BFE32C7F9EDC4 /* Localizable.strings */,
+				A97979D61E5DE1BB002DC4D2 /* Trails.xcdatamodeld */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -235,6 +239,15 @@
 				A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */,
 			);
 			path = Credentials;
+			sourceTree = "<group>";
+		};
+		A97979D51E5DE177002DC4D2 /* TrailList */ = {
+			isa = PBXGroup;
+			children = (
+				A97979D91E5DE27B002DC4D2 /* Trail+CoreDataClass.swift */,
+				A97979DA1E5DE27B002DC4D2 /* Trail+CoreDataProperties.swift */,
+			);
+			path = TrailList;
 			sourceTree = "<group>";
 		};
 		B66C811D063DF5892D42683B /* CapstoneTrail */ = {
@@ -514,8 +527,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				443DB8D91E52356200F90C17 /* HikerInvitation.swift in Sources */,
+				A97979D81E5DE1BB002DC4D2 /* Trails.xcdatamodeld in Sources */,
 				446087861E4E1967007A8BE0 /* SettingCellController.swift in Sources */,
 				446087851E4E1967007A8BE0 /* SettingsController.swift in Sources */,
+				A97979DB1E5DE27B002DC4D2 /* Trail+CoreDataClass.swift in Sources */,
 				A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */,
 				449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */,
 				D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */,
@@ -525,6 +540,7 @@
 				446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */,
 				449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */,
 				449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */,
+				A97979DC1E5DE27B002DC4D2 /* Trail+CoreDataProperties.swift in Sources */,
 				B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */,
 				446087781E4E116A007A8BE0 /* User.swift in Sources */,
 			);
@@ -742,6 +758,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A97979D61E5DE1BB002DC4D2 /* Trails.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A97979D71E5DE1BB002DC4D2 /* Trails.xcdatamodel */,
+			);
+			currentVersion = A97979D71E5DE1BB002DC4D2 /* Trails.xcdatamodel */;
+			path = Trails.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B66C8B94777728DFEB7964D7 /* Project object */;
 }
