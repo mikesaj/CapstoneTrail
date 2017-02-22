@@ -30,7 +30,92 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FBSDKApplicationDelegate.sharedInstance()
                                 .application(application, didFinishLaunchingWithOptions: launchOptions)
 
+        // Customize navigation bar
+        let navigationBarAppearance = UINavigationBar.appearance()
+        navigationBarAppearance.barTintColor = UIColor.blue()
+        navigationBarAppearance.tintColor = UIColor.white
+        navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+
+        // MARK: Populate trail data on CoreData
+        // User defaults for map version
+        let userDefaults = UserDefaults.standard
+        // Fetch trail data from JSON files
+        let supportingArea = ["Kitchener", "Waterloo"]
+        var areaData = [String: JSON]()
+        for area in supportingArea {
+            let startTime = DispatchTime.now()
+            areaData[area] = getJSON(nameOf: area)
+            let elapsedTime = Double(DispatchTime.now().uptimeNanoseconds - startTime.uptimeNanoseconds) / 1_000_000_000
+            debugPrint("\(area) map file fetched in \(elapsedTime) seconds")
+        }
+
+        // Check map data exists
+        if let mapVersion = userDefaults.value(forKey: "mapVersion") as? Int {
+            debugPrint("Current Version:\(mapVersion)")
+            if mapVersion == areaData[supportingArea[0]]!["MAP_INFO"]["DATA_VERSION"].intValue {
+                debugPrint("Versions are identical")
+            } else {
+                debugPrint("Versions are not identical")
+            }
+        } else {
+            debugPrint("No map data exists")
+            for area in supportingArea {
+                // Set current map version to UserDefaults
+                userDefaults.setValue(areaData[area]!["MAP_INFO"]["DATA_VERSION"].intValue, forKey: "mapVersion")
+                // Store single data to CoreData with Trail object
+                let startTime = DispatchTime.now()
+                for (_, trail) in areaData[area]!["TRAILS"] { storeOnCoreData(dataOf: trail, nameOf: area) }
+                let elapsedTime = Double(DispatchTime.now().uptimeNanoseconds - startTime.uptimeNanoseconds) / 1_000_000_000
+                debugPrint("\(area) map data created in \(elapsedTime) seconds")
+            }
+        }
+
         return true
+    }
+
+    // MARK: Populate trail data on CoreData
+    // Get JSON data from file
+    private func getJSON(nameOf area: String) -> JSON {
+
+        guard let path = Bundle.main.path(forResource: area, ofType: "json") else {
+            debugPrint("No such file")
+
+            return JSON.null
+        }
+
+        let fileData = NSData(contentsOfFile: path)
+        let trailJSON = JSON(data: fileData as! Data)
+
+        return trailJSON
+    }
+
+    // Store single data to CoreData
+    func storeOnCoreData(dataOf trail: JSON, nameOf area: String) {
+
+        // Setup for storing
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let trailEntity = NSEntityDescription.entity(forEntityName: "Trail", in: managedContext)
+        let trailMO = NSManagedObject(entity: trailEntity!, insertInto: managedContext) as! TrailMO
+
+        // Assign data
+        trailMO.id = trail["ID"].int32Value
+        trailMO.area = area
+        trailMO.street = trail["STREET"].stringValue
+        trailMO.status = trail["STATUS"].stringValue
+        trailMO.surface = trail["SURFACE"].stringValue
+        trailMO.owner = trail["OWNER"].stringValue
+        trailMO.pathType = trail["PATH_TYPE"].stringValue
+        trailMO.length = trail["LENGTH"].doubleValue
+        trailMO.coordinates = trail["COORDINATES"].arrayObject as NSObject?
+
+        do {
+            // Saving data
+            try managedContext.save()
+        } catch let error as NSError {
+            debugPrint("Could not save. \(error), \(error.userInfo)")
+        }
     }
 
 
@@ -150,5 +235,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
+    }
+}
+
+extension UIColor {
+    static func blue() -> UIColor {
+
+        return UIColor(red: (0.0/255.0), green: (118.0/255.0), blue: (255.0/255.0), alpha: 1.0)
     }
 }
