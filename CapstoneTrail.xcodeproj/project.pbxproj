@@ -30,6 +30,7 @@
 		A97979E71E5DE6D8002DC4D2 /* TrailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979E61E5DE6D8002DC4D2 /* TrailTableViewCell.swift */; };
 		A97979EA1E5DE9C6002DC4D2 /* TrailMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979E81E5DE9C6002DC4D2 /* TrailMO+CoreDataClass.swift */; };
 		A97979EB1E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979E91E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift */; };
+		A97EB5701E5E08E900CCCF31 /* TrailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB56F1E5E08E900CCCF31 /* TrailDetailViewController.swift */; };
 		A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */; };
 		B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8A82BC1ABAFB0F9D0E10 /* AppDelegate.swift */; };
 		B66C875384EF1325BC0D7110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66C82EA8971FB9C46435BE3 /* LaunchScreen.storyboard */; };
@@ -80,6 +81,7 @@
 		A97979E61E5DE6D8002DC4D2 /* TrailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailTableViewCell.swift; sourceTree = "<group>"; };
 		A97979E81E5DE9C6002DC4D2 /* TrailMO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrailMO+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A97979E91E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrailMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A97EB56F1E5E08E900CCCF31 /* TrailDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailDetailViewController.swift; sourceTree = "<group>"; };
 		A9FB931D1E4A0BBA0053F6E3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		B66C80D3D9049E6DECDBF27F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */,
 				A97979DF1E5DE342002DC4D2 /* TrailListTableViewController.swift */,
 				A97979E61E5DE6D8002DC4D2 /* TrailTableViewCell.swift */,
+				A97EB56F1E5E08E900CCCF31 /* TrailDetailViewController.swift */,
 			);
 			path = TrailList;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */,
 				D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */,
 				446087761E4E115D007A8BE0 /* UserLogin.swift in Sources */,
+				A97EB5701E5E08E900CCCF31 /* TrailDetailViewController.swift in Sources */,
 				B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */,
 				4460877F1E4E1456007A8BE0 /* CreateAccountViewController.swift in Sources */,
 				446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */,

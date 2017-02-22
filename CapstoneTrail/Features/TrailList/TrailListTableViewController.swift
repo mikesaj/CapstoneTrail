@@ -75,4 +75,31 @@ class TrailListTableViewController: UITableViewController {
 
         return cell
     }
+
+    //MARK: - Navigation
+    // Prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        super.prepare(for: segue, sender: sender)
+
+        switch (segue.identifier ?? "") {
+            case "CheckTrailDetail":
+                // Create destination
+                guard let trailDetailViewController = segue.destination as? TrailDetailViewController else {
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                guard let selectedTrailCell = sender as? TrailTableViewCell else {
+                    fatalError("Unexpected sender: \(sender)")
+                }
+                guard let indexPath = tableView.indexPath(for: selectedTrailCell) else {
+                    fatalError("The selected cell is not being displayed by the table")
+                }
+
+                let selectedTrail = trails[indexPath.row]
+                trailDetailViewController.trail = selectedTrail
+
+            default:
+                fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+        }
+    }
 }
