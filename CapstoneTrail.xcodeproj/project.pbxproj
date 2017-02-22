@@ -30,7 +30,6 @@
 		A97979E71E5DE6D8002DC4D2 /* TrailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979E61E5DE6D8002DC4D2 /* TrailTableViewCell.swift */; };
 		A97979EA1E5DE9C6002DC4D2 /* TrailMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979E81E5DE9C6002DC4D2 /* TrailMO+CoreDataClass.swift */; };
 		A97979EB1E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979E91E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift */; };
-		A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A9FB931D1E4A0BBA0053F6E3 /* README.md */; };
 		A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */; };
 		B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8A82BC1ABAFB0F9D0E10 /* AppDelegate.swift */; };
 		B66C875384EF1325BC0D7110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66C82EA8971FB9C46435BE3 /* LaunchScreen.storyboard */; };
@@ -557,7 +556,6 @@
 				A97979D81E5DE1BB002DC4D2 /* Trails.xcdatamodeld in Sources */,
 				446087861E4E1967007A8BE0 /* SettingCellController.swift in Sources */,
 				446087851E4E1967007A8BE0 /* SettingsController.swift in Sources */,
-				A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */,
 				449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */,
 				D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */,
 				446087761E4E115D007A8BE0 /* UserLogin.swift in Sources */,

@@ -69,7 +69,7 @@ class TrailListTableViewController: UITableViewController {
         let trailType = trail.value(forKey: "pathType") as! String
 
         // Assign values
-        cell.areaLogoImage.image = UIImage(named: areaName)
+        cell.areaLogoImage.image = UIImage(named: "Area\(areaName)")
         cell.streetNameLabel.text = String(format: streetNameString, streetName)
         cell.trailBriefLabel.text = String(format: trailBriefString, length, trailType.capitalized)
 
