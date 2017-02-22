@@ -25,6 +25,10 @@
 		A97979D81E5DE1BB002DC4D2 /* Trails.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97979D61E5DE1BB002DC4D2 /* Trails.xcdatamodeld */; };
 		A97979DB1E5DE27B002DC4D2 /* Trail+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979D91E5DE27B002DC4D2 /* Trail+CoreDataClass.swift */; };
 		A97979DC1E5DE27B002DC4D2 /* Trail+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979DA1E5DE27B002DC4D2 /* Trail+CoreDataProperties.swift */; };
+		A97979DE1E5DE318002DC4D2 /* TrailList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */; };
+		A97979E01E5DE342002DC4D2 /* TrailListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979DF1E5DE342002DC4D2 /* TrailListTableViewController.swift */; };
+		A97979E41E5DE402002DC4D2 /* Kitchener.json in Resources */ = {isa = PBXBuildFile; fileRef = A97979E21E5DE402002DC4D2 /* Kitchener.json */; };
+		A97979E51E5DE402002DC4D2 /* Waterloo.json in Resources */ = {isa = PBXBuildFile; fileRef = A97979E31E5DE402002DC4D2 /* Waterloo.json */; };
 		A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A9FB931D1E4A0BBA0053F6E3 /* README.md */; };
 		A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */; };
 		B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8A82BC1ABAFB0F9D0E10 /* AppDelegate.swift */; };
@@ -71,6 +75,10 @@
 		A97979D71E5DE1BB002DC4D2 /* Trails.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Trails.xcdatamodel; sourceTree = "<group>"; };
 		A97979D91E5DE27B002DC4D2 /* Trail+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trail+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A97979DA1E5DE27B002DC4D2 /* Trail+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trail+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrailList.storyboard; sourceTree = "<group>"; };
+		A97979DF1E5DE342002DC4D2 /* TrailListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailListTableViewController.swift; sourceTree = "<group>"; };
+		A97979E21E5DE402002DC4D2 /* Kitchener.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Kitchener.json; sourceTree = "<group>"; };
+		A97979E31E5DE402002DC4D2 /* Waterloo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Waterloo.json; sourceTree = "<group>"; };
 		A9FB931D1E4A0BBA0053F6E3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		B66C80D3D9049E6DECDBF27F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +224,7 @@
 		A900F3541E4A07A000556D79 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				A97979E11E5DE402002DC4D2 /* TrailData */,
 				B66C8FFA2195697D1BA6415F /* Images.xcassets */,
 				B66C8C866F8BFE32C7F9EDC4 /* Localizable.strings */,
 				A97979D61E5DE1BB002DC4D2 /* Trails.xcdatamodeld */,
@@ -246,8 +255,19 @@
 			children = (
 				A97979D91E5DE27B002DC4D2 /* Trail+CoreDataClass.swift */,
 				A97979DA1E5DE27B002DC4D2 /* Trail+CoreDataProperties.swift */,
+				A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */,
+				A97979DF1E5DE342002DC4D2 /* TrailListTableViewController.swift */,
 			);
 			path = TrailList;
+			sourceTree = "<group>";
+		};
+		A97979E11E5DE402002DC4D2 /* TrailData */ = {
+			isa = PBXGroup;
+			children = (
+				A97979E21E5DE402002DC4D2 /* Kitchener.json */,
+				A97979E31E5DE402002DC4D2 /* Waterloo.json */,
+			);
+			path = TrailData;
 			sourceTree = "<group>";
 		};
 		B66C811D063DF5892D42683B /* CapstoneTrail */ = {
@@ -407,12 +427,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B66C8E1A7401C833BE35C2A3 /* Images.xcassets in Resources */,
+				A97979E41E5DE402002DC4D2 /* Kitchener.json in Resources */,
 				A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */,
 				B66C875384EF1325BC0D7110 /* LaunchScreen.storyboard in Resources */,
 				4460878D1E4E2C96007A8BE0 /* DashBoard.storyboard in Resources */,
 				4423ED121E50E72700344B6D /* HikeGroup.storyboard in Resources */,
+				A97979E51E5DE402002DC4D2 /* Waterloo.json in Resources */,
 				B66C8A93363E18079BF25D47 /* Main.storyboard in Resources */,
 				B66C8E8C8FFE2F1F9BB34360 /* Localizable.strings in Resources */,
+				A97979DE1E5DE318002DC4D2 /* TrailList.storyboard in Resources */,
 				446087811E4E1771007A8BE0 /* SignIn.storyboard in Resources */,
 				D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */,
 			);
@@ -538,6 +561,7 @@
 				B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */,
 				4460877F1E4E1456007A8BE0 /* CreateAccountViewController.swift in Sources */,
 				446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */,
+				A97979E01E5DE342002DC4D2 /* TrailListTableViewController.swift in Sources */,
 				449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */,
 				449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */,
 				A97979DC1E5DE27B002DC4D2 /* Trail+CoreDataProperties.swift in Sources */,
