@@ -16,6 +16,13 @@ class User {
     var country: String? = nil
     var LatestGpsCordinate: [String: Float32] = [:]
     var fitnestGroupsId: [Int : Int] = [:]
+    
+    var uid: String?
+    var email: String?
+    var name: String?
+    var profileImageUrl: String?
+    var friendship_uid: String?
+
 
     
     // User preference to store user login state

@@ -15,7 +15,7 @@ let messageBody = "Join our fast growing hiking App today"
 var MessageRecipients = [""]
 
 // This class is for composing text & email message invitations
-public class HikerInvitation: UIViewController, MFMailComposeViewControllerDelegate {
+public class JoinAppInvitation: UIViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var textRecipient: UITextField!
     @IBOutlet weak var emailRecipient: UITextField!
