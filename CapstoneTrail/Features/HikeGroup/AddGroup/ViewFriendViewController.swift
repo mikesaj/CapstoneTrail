@@ -1,19 +1,26 @@
 //
-//  SettingCellController.swift
-//  capstone
+//  viewFriendViewController.swift
+//  CapstoneTrail
 //
-//  Created by Michael Sajuyigbe on 2017-02-02.
+//  Created by Michael Sajuyigbe on 2017-02-20.
 //  Copyright © 2017 MSD. All rights reserved.
 //
 
 import UIKit
 
-class SettingCellController: UIViewController {
+class ViewFriendViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    var titleString: String!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.titleLabel.text = self.titleString
+    
+    
     }
 
     override func didReceiveMemoryWarning() {

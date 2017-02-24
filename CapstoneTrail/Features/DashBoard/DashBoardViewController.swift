@@ -15,6 +15,7 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         
         //Assign self for delegate for that ViewController can respond to UITabBarControllerDelegate methods
         self.delegate = self
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,7 +27,6 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         let SignInStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
         let profileTab : AnyObject! = SignInStoryboard.instantiateViewController(withIdentifier: "Profile")
         let tabOneBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
-        
         let uprofileTab = profileTab as! UIViewController
         uprofileTab.tabBarItem = tabOneBarItem
         
@@ -34,20 +34,45 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         // Create Tab two
         // Tab Bar Item: Groups
         let HikeGroupStoryboard = UIStoryboard(name: "HikeGroup", bundle: nil)
-        let HikeGroupTab : AnyObject! = HikeGroupStoryboard.instantiateViewController(withIdentifier: "HikeGroup")
-        let tabtwoBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+        let HikeGroupTab : AnyObject! = HikeGroupStoryboard.instantiateViewController(withIdentifier: "GroupsNavController")
+        let tabtwoBarItem = UITabBarItem(title: "Friends", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
         let GroupTab = HikeGroupTab as! UIViewController
         GroupTab.tabBarItem = tabtwoBarItem
+        
+        
+        // Create Tab two
+        // Tab Bar Item: Groups
+        let JoinAppTab : AnyObject! = HikeGroupStoryboard.instantiateViewController(withIdentifier: "HikerInvitation")
+        let invitationBarItem = UITabBarItem(title: "Invite", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
+        let invitationTab = JoinAppTab as! UIViewController
+        invitationTab.tabBarItem = invitationBarItem
+
+        
+        // Create Tab three
+        // Tab Bar Item: Schedule
+        let ScheduleStoryboard = UIStoryboard(name: "Schedule", bundle: nil)
+        let ScheduleTab : AnyObject! = ScheduleStoryboard.instantiateViewController(withIdentifier: "ScheduleNavController") // "ScheduleList"
+        let tabThreeBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
+        let SchedulTab = ScheduleTab as! UIViewController
+        SchedulTab.tabBarItem = tabThreeBarItem
+
+        
         
         
         // Create Tab three
         // Tab Bar Item: bookmarks (demo)
         let tab3 = TabTwoViewController()
-        let tabTwoBarItem2 = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 2)
+        let tabTwoBarItem2 = UITabBarItem(title: "Schedule", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
+        //UITabBarItem(tabBarSystemItem: .bookmarks, tag: 2)
+        //let tabTwoBarItem2 = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 2)
         tab3.tabBarItem = tabTwoBarItem2
         
+        
+        
+        
+        
         //Add to tabBarController bottom menu
-        self.viewControllers = [uprofileTab, GroupTab, tab3]
+        self.viewControllers = [uprofileTab, GroupTab, invitationTab, SchedulTab] // , tab3
         
     }
     
@@ -95,7 +120,7 @@ class TabTwoViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.red
-        self.title = "Tab 2"
+        self.title = "Friend"
     }
     
     override func didReceiveMemoryWarning() {

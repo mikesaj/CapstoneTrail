@@ -9,11 +9,17 @@
 import UIKit
 import CoreLocation
 
-class CreateGroupViewController: UIViewController, CLLocationManagerDelegate {
+class CreateGroupViewController: UIViewController, CLLocationManagerDelegate  {
 
     //Location label declaration
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var groupVisibility: UISegmentedControl!
+    @IBOutlet weak var groupNameTextField: UITextField!
+    
+    
     var currentLocation = "Undefined Location"
+    var lat:String = ""
+    var long:String = ""
     
     // instantiating the location manager
     let locationManager = CLLocationManager()
@@ -47,14 +53,49 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate {
             return
         }
         
-        let myVC = storyboard?.instantiateViewController(withIdentifier: "HikerInvitation") as! HikerInvitation
+        // get group name from UITextField
+        guard let groupName:String = groupNameTextField.text else {
+            self.displayMessage(ttl: "Group Error!", msg: "Group name field is empty")
+            return
+        }
+        
+        if (groupName.isEmpty) {
+            self.displayMessage(ttl: "Error", msg: "Please fill empty labels")
+            return
+        }
+        
+        // instantiating group db data model
+        let groupdDb = GroupDBController()
+        let group1 = GroupModel()
+
+        // get Group visibility from UISegmentedControl
+        var isPublic = true
+        if groupVisibility.selectedSegmentIndex == 1 {
+            isPublic = false
+        }
+        
+        group1.name = groupName
+        group1.locationName = currentLocation
+        group1.longitude = self.long
+        group1.latitude  = self.lat
+        group1.isPublic  = isPublic
+        
+        // Creates hiking group
+        let groupId = groupdDb.CreateGroup(group: group1)
+        
+        
+        
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "GroupProfile") as! GroupProfileViewController
         myVC.locationName = currentLocation
+        myVC.GroupName = group1.name!
+        myVC.memberCount = 1
+        myVC.groupid = groupId
         
         // for slide view, without navigation
-        self.present(myVC, animated: true, completion: nil)
+        //self.present(myVC, animated: true, completion: nil)
         
         //allows navigation appear
-        //navigationController?.pushViewController(myVC, animated: true)
+        navigationController?.pushViewController(myVC, animated: true)
         
         //navigationController?.present(myVC, animated: true)
     return
@@ -115,17 +156,17 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate {
                 print("Problem with the data received from geocoder")
             }
         })
-    /*
+    
         let newLocation = locations.last!
         
         let currLocation = newLocation.coordinate
         
-        let lat  = String(currLocation.latitude)
-        let long = String(currLocation.longitude)
+        self.lat  = String(currLocation.latitude)
+        self.long = String(currLocation.longitude)
         
-        locationLabel.text = "Location: " + lat + ", " + long
-        print(currLocation)
-    */
+        //locationLabel.text = "Location: " + lat + ", " + long
+        //print(currLocation)
+ 
     }
     
     // This is called if:
