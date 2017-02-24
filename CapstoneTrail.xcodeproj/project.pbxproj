@@ -8,19 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		4423ED121E50E72700344B6D /* HikeGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4423ED111E50E72700344B6D /* HikeGroup.storyboard */; };
-		443DB8D91E52356200F90C17 /* HikerInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443DB8D81E52356200F90C17 /* HikerInvitation.swift */; };
+		4434BD071E5D5B8B008692B8 /* mailFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4434BD061E5D5B8B008692B8 /* mailFriend.swift */; };
+		44385C011E5BCFE10095F2B0 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44385C001E5BCFE10095F2B0 /* CustomTableViewCell.swift */; };
+		44385C031E5BD2790095F2B0 /* inviteFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44385C021E5BD2790095F2B0 /* inviteFriendsController.swift */; };
+		44385C051E5BD50C0095F2B0 /* ViewFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44385C041E5BD50C0095F2B0 /* ViewFriendViewController.swift */; };
+		44385C081E5CE30B0095F2B0 /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44385C071E5CE30B0095F2B0 /* Schedule.storyboard */; };
+		44385C0A1E5CE3430095F2B0 /* ScheduleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44385C091E5CE3430095F2B0 /* ScheduleListController.swift */; };
+		44385C0C1E5CEFB20095F2B0 /* ScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44385C0B1E5CEFB20095F2B0 /* ScheduleViewCell.swift */; };
+		44385C0E1E5CF27E0095F2B0 /* ScheduleProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44385C0D1E5CF27E0095F2B0 /* ScheduleProfileController.swift */; };
+		443DB8D91E52356200F90C17 /* JoinAppInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443DB8D81E52356200F90C17 /* JoinAppInvitation.swift */; };
 		446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087731E4E1149007A8BE0 /* LoginViewController.swift */; };
 		446087761E4E115D007A8BE0 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087751E4E115D007A8BE0 /* UserLogin.swift */; };
 		446087781E4E116A007A8BE0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087771E4E116A007A8BE0 /* User.swift */; };
 		4460877F1E4E1456007A8BE0 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4460877E1E4E1456007A8BE0 /* CreateAccountViewController.swift */; };
 		446087811E4E1771007A8BE0 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 446087801E4E1771007A8BE0 /* SignIn.storyboard */; };
-		446087851E4E1967007A8BE0 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087831E4E1967007A8BE0 /* SettingsController.swift */; };
-		446087861E4E1967007A8BE0 /* SettingCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087841E4E1967007A8BE0 /* SettingCellController.swift */; };
-
 		4460878D1E4E2C96007A8BE0 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4460878C1E4E2C96007A8BE0 /* DashBoard.storyboard */; };
+		447F49A11E5AC4BE0028282D /* GroupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447F49A01E5AC4BE0028282D /* GroupProfileViewController.swift */; };
+		448C10FF1E5B648A00BE9123 /* GroupDBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448C10FE1E5B648A00BE9123 /* GroupDBController.swift */; };
+		448C11011E5B64B300BE9123 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448C11001E5B64B300BE9123 /* GroupModel.swift */; };
+		44967C961E5D69E700086030 /* friendIvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44967C951E5D69E700086030 /* friendIvCell.swift */; };
 		449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */; };
 		449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */; };
 		449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFD41E58758900B84118 /* DashBoardViewController.swift */; };
+		44F136721E62087600E3747C /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F136711E62087600E3747C /* UserProfileViewController.swift */; };
 		65E7EEE2D0A127F42608855C /* Pods_CapstoneTrail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FA64D3EB2D622B0A7EC696 /* Pods_CapstoneTrail.framework */; };
 		A900F3511E4A075A00556D79 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A900F3501E4A075A00556D79 /* MapKit.framework */; };
 		A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A9FB931D1E4A0BBA0053F6E3 /* README.md */; };
@@ -51,20 +61,29 @@
 		1D6EA5CAAD52FAA0D9CDCCDE /* Pods-CapstoneTrail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.release.xcconfig"; sourceTree = "<group>"; };
 		2731D46A09543C153A6C31D3 /* Pods-CapstoneTrailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.release.xcconfig"; sourceTree = "<group>"; };
 		4423ED111E50E72700344B6D /* HikeGroup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HikeGroup.storyboard; path = HikeGroup/HikeGroup.storyboard; sourceTree = "<group>"; };
-		443DB8D81E52356200F90C17 /* HikerInvitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HikerInvitation.swift; path = HikeGroup/HikerInvitation.swift; sourceTree = "<group>"; };
-
+		4434BD061E5D5B8B008692B8 /* mailFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mailFriend.swift; sourceTree = "<group>"; };
+		44385C001E5BCFE10095F2B0 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		44385C021E5BD2790095F2B0 /* inviteFriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inviteFriendsController.swift; sourceTree = "<group>"; };
+		44385C041E5BD50C0095F2B0 /* ViewFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFriendViewController.swift; sourceTree = "<group>"; };
+		44385C071E5CE30B0095F2B0 /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
+		44385C091E5CE3430095F2B0 /* ScheduleListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleListController.swift; sourceTree = "<group>"; };
+		44385C0B1E5CEFB20095F2B0 /* ScheduleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewCell.swift; sourceTree = "<group>"; };
+		44385C0D1E5CF27E0095F2B0 /* ScheduleProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleProfileController.swift; sourceTree = "<group>"; };
+		443DB8D81E52356200F90C17 /* JoinAppInvitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinAppInvitation.swift; path = HikeGroup/JoinAppInvitation.swift; sourceTree = "<group>"; };
 		446087731E4E1149007A8BE0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		446087751E4E115D007A8BE0 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		446087771E4E116A007A8BE0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4460877E1E4E1456007A8BE0 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		446087801E4E1771007A8BE0 /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
-		446087831E4E1967007A8BE0 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
-		446087841E4E1967007A8BE0 /* SettingCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCellController.swift; sourceTree = "<group>"; };
 		4460878C1E4E2C96007A8BE0 /* DashBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DashBoard.storyboard; sourceTree = "<group>"; };
+		447F49A01E5AC4BE0028282D /* GroupProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupProfileViewController.swift; path = HikeGroup/GroupProfileViewController.swift; sourceTree = "<group>"; };
+		448C10FE1E5B648A00BE9123 /* GroupDBController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDBController.swift; sourceTree = "<group>"; };
+		448C11001E5B64B300BE9123 /* GroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		44967C951E5D69E700086030 /* friendIvCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = friendIvCell.swift; sourceTree = "<group>"; };
 		449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HikeGroupViewController.swift; path = HikeGroup/HikeGroupViewController.swift; sourceTree = "<group>"; };
 		449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		449ACFD41E58758900B84118 /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
-
+		44F136711E62087600E3747C /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		85BDD1C74E4267286E511B7F /* Pods-CapstoneTrailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.debug.xcconfig"; sourceTree = "<group>"; };
 		93C0CBAFEF495B65F5778885 /* Pods-CapstoneTrail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.debug.xcconfig"; sourceTree = "<group>"; };
 		A900F3501E4A075A00556D79 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -112,22 +131,36 @@
 		4423ED101E50E6FF00344B6D /* HikeGroup */ = {
 			isa = PBXGroup;
 			children = (
+				448C10FB1E5B639200BE9123 /* DAL */,
 				449ACFCD1E565E5D00B84118 /* AddGroup */,
 				4423ED111E50E72700344B6D /* HikeGroup.storyboard */,
-				443DB8D81E52356200F90C17 /* HikerInvitation.swift */,
+				443DB8D81E52356200F90C17 /* JoinAppInvitation.swift */,
 				449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */,
+				447F49A01E5AC4BE0028282D /* GroupProfileViewController.swift */,
 			);
 			name = HikeGroup;
 			sourceTree = "<group>";
 		};
-
+		44385C061E5CE1E90095F2B0 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				44385C071E5CE30B0095F2B0 /* Schedule.storyboard */,
+				44385C091E5CE3430095F2B0 /* ScheduleListController.swift */,
+				44385C0B1E5CEFB20095F2B0 /* ScheduleViewCell.swift */,
+				44385C0D1E5CF27E0095F2B0 /* ScheduleProfileController.swift */,
+				4434BD061E5D5B8B008692B8 /* mailFriend.swift */,
+				44967C951E5D69E700086030 /* friendIvCell.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
 		446087791E4E11CD007A8BE0 /* User */ = {
 			isa = PBXGroup;
 			children = (
 				446087801E4E1771007A8BE0 /* SignIn.storyboard */,
-				446087821E4E1933007A8BE0 /* Settings */,
 				4460877B1E4E124D007A8BE0 /* SignIn */,
 				4460877A1E4E11FB007A8BE0 /* SignUp */,
+				44F136711E62087600E3747C /* UserProfileViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -150,15 +183,6 @@
 			path = SignIn;
 			sourceTree = "<group>";
 		};
-		446087821E4E1933007A8BE0 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				446087831E4E1967007A8BE0 /* SettingsController.swift */,
-				446087841E4E1967007A8BE0 /* SettingCellController.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		446087871E4E285D007A8BE0 /* DashBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,10 +192,23 @@
 			path = DashBoard;
 			sourceTree = "<group>";
 		};
+		448C10FB1E5B639200BE9123 /* DAL */ = {
+			isa = PBXGroup;
+			children = (
+				448C11001E5B64B300BE9123 /* GroupModel.swift */,
+				448C10FE1E5B648A00BE9123 /* GroupDBController.swift */,
+			);
+			name = DAL;
+			path = HikeGroup/DAL;
+			sourceTree = "<group>";
+		};
 		449ACFCD1E565E5D00B84118 /* AddGroup */ = {
 			isa = PBXGroup;
 			children = (
 				449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */,
+				44385C001E5BCFE10095F2B0 /* CustomTableViewCell.swift */,
+				44385C021E5BD2790095F2B0 /* inviteFriendsController.swift */,
+				44385C041E5BD50C0095F2B0 /* ViewFriendViewController.swift */,
 			);
 			name = AddGroup;
 			path = HikeGroup/AddGroup;
@@ -190,6 +227,7 @@
 		A900F3521E4A077400556D79 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				44385C061E5CE1E90095F2B0 /* Schedule */,
 				4423ED101E50E6FF00344B6D /* HikeGroup */,
 				446087871E4E285D007A8BE0 /* DashBoard */,
 				446087791E4E11CD007A8BE0 /* User */,
@@ -402,6 +440,7 @@
 				B66C8E8C8FFE2F1F9BB34360 /* Localizable.strings in Resources */,
 				446087811E4E1771007A8BE0 /* SignIn.storyboard in Resources */,
 				D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */,
+				44385C081E5CE30B0095F2B0 /* Schedule.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,17 +552,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				443DB8D91E52356200F90C17 /* HikerInvitation.swift in Sources */,
-				446087861E4E1967007A8BE0 /* SettingCellController.swift in Sources */,
-				446087851E4E1967007A8BE0 /* SettingsController.swift in Sources */,
+				443DB8D91E52356200F90C17 /* JoinAppInvitation.swift in Sources */,
+				44F136721E62087600E3747C /* UserProfileViewController.swift in Sources */,
 				A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */,
 				449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */,
+				44385C0C1E5CEFB20095F2B0 /* ScheduleViewCell.swift in Sources */,
 				D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */,
 				446087761E4E115D007A8BE0 /* UserLogin.swift in Sources */,
+				44385C031E5BD2790095F2B0 /* inviteFriendsController.swift in Sources */,
 				B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */,
 				4460877F1E4E1456007A8BE0 /* CreateAccountViewController.swift in Sources */,
+				448C10FF1E5B648A00BE9123 /* GroupDBController.swift in Sources */,
+				4434BD071E5D5B8B008692B8 /* mailFriend.swift in Sources */,
+				44385C051E5BD50C0095F2B0 /* ViewFriendViewController.swift in Sources */,
+				44385C011E5BCFE10095F2B0 /* CustomTableViewCell.swift in Sources */,
+				44385C0A1E5CE3430095F2B0 /* ScheduleListController.swift in Sources */,
+				44385C0E1E5CF27E0095F2B0 /* ScheduleProfileController.swift in Sources */,
 				446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */,
+				447F49A11E5AC4BE0028282D /* GroupProfileViewController.swift in Sources */,
 				449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */,
+				448C11011E5B64B300BE9123 /* GroupModel.swift in Sources */,
+				44967C961E5D69E700086030 /* friendIvCell.swift in Sources */,
 				449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */,
 				B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */,
 				446087781E4E116A007A8BE0 /* User.swift in Sources */,
