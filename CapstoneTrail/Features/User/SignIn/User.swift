@@ -10,12 +10,12 @@ import Foundation
 
 class User {
     
-    var username: String? = nil
-    var firstname: String? = nil
-    var city: String? = nil
-    var country: String? = nil
-    var LatestGpsCordinate: [String: Float32] = [:]
-    var fitnestGroupsId: [Int : Int] = [:]
+    var uid: String?
+    var name: String?
+    var email: String?
+    var profileImageUrl: String?
+    var isFriendRequested: Bool?
+    var friendship_uid: String?
 
     
     // User preference to store user login state

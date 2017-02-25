@@ -18,6 +18,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    lazy var userImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "userEmoji")
+        return imageView
+    }()
     
     // Declaring input class variables
     var username: String = ""
@@ -25,89 +30,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
 
     // Login status
     var status = false
-
-    // FaceBook Button
-    @IBOutlet weak var fbButton: UIButton!
-    
-    
-    //FaceBook
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("Logout")
-    }
-    
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        if error != nil {
-            print(error)
-            return
-        }
-        
-        FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: self) { (result, error) in
-            
-            // Get FaceBook User Information
-            self.getEmailFromFB()
-            
-            // Navigate to dashboard view, if logged-in
-            self.checkIfUserIsLoggedIn()
-            //self.switchToDashBoardView()
-        }
-    }
-    
-    
-    // Get user email from FaceBook account
-    func getEmailFromFB(){
-        
-        let accessToken = FBSDKAccessToken.current()
-        guard let accessTokenString = accessToken?.tokenString else { return }
-        
-        let credentials = FIRFacebookAuthProvider.credential(withAccessToken: accessTokenString)
-        FIRAuth.auth()?.signIn(with: credentials, completion: { (user, error) in
-            
-            if error != nil {
-                print("Erro login with Facebook :", error)
-                
-                return
-            }
-            
-            print("Successfully logged in with our user: ", user)
-            
-        })
-        
-        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "email, name, gender, id"]).start { (connection, result, err) in
-            
-            if err != nil{
-                print("Failed to start graph request:", err)
-                return
-            }
-            
-        }
-    }
-    
-    // FaceBook Button
-    @IBAction func loginFacebookAction(_ sender: UIButton) {
-        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
-        fbLoginManager.logIn(withReadPermissions: ["email"], from: self) { (result, error) -> Void in
-            
-            if error != nil {
-                NSLog("Process error")
-            }
-            else if (result?.isCancelled)! {
-                NSLog("Cancelled")
-            }
-            else {
-                NSLog("Logged in")
-                self.getEmailFromFB()
-                
-                // Navigate to dashboard view, if logged-in
-                //self.switchToDashBoardView()
-                self.checkIfUserIsLoggedIn()
-            }
-            
-        }
-    }
-
-    
-    
-    
     
     /// Native Login Button action
 
@@ -158,29 +80,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
                 
                 // Navigate to dashboard view, if logged-in
                 //self.switchToDashBoardView()
-                self.checkIfUserIsLoggedIn()
+                self.switchToDashBoardView()
 
             }
             
         })
         
     }
-
-    
-    // Google Button
-    @IBAction func loginGoogleAction(_ sender: UIButton) {
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signIn()
-        
-        // Check if user is loggedIn
-        checkIfUserIsLoggedIn()
-        
-        
-        // GIDSignIn.sharedInstance().signOut()
-        // GIDSignIn.sharedInstance().disconnect()
-        // GIDSignIn.sharedInstance().signIn()
-    }
-
     
     // Alert (Pop up) method
     func displayMessage(ttl: String, msg: String){
@@ -198,33 +104,106 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         print("Switched to DashBoard View!!")
     }
     
-    
-    // Check if user is loggedIn
-    func checkIfUserIsLoggedIn(){
-        if FIRAuth.auth()?.currentUser?.uid == nil{
-            perform(#selector(handleLogin), with: nil, afterDelay: 0)
-        }
-        else {
-            
-        // Switch to DashBoard Storyboard
-        self.switchToDashBoardView()
-        
-        }
-    }
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
+        FBSDKLoginManager().logOut()
+        
+        setupFacebookButtons()
+        setupGoogleButtons()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    fileprivate func setupGoogleButtons(){
+        let loginGoogleButton = GIDSignInButton()
+        loginGoogleButton.frame = CGRect(x: 50, y: 570, width: view.frame.width - 100, height: 40)
+        view.addSubview(loginGoogleButton)
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
-
     
+    fileprivate func setupFacebookButtons(){
+        let loginFacebookButton = FBSDKLoginButton()
+        view.addSubview(loginFacebookButton)
+        loginFacebookButton.frame = CGRect(x: 50, y: 510, width: view.frame.width - 100, height: 40)
+        loginFacebookButton.readPermissions = ["public_profile", "email", "user_friends"]
+        loginFacebookButton.delegate = self
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("Logout")
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil {
+            print(error)
+            return
+        }
+        
+        FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: self) { (result, error) in
+            self.getEmailFromFB()
+        }
+    }
+    
+    func getEmailFromFB(){
+        
+        let accessToken = FBSDKAccessToken.current()
+        guard let accessTokenString = accessToken?.tokenString else { return }
+        
+        let credentials = FIRFacebookAuthProvider.credential(withAccessToken: accessTokenString)
+        FIRAuth.auth()?.signIn(with: credentials, completion: { (user, error) in
+            
+            if error != nil {
+                print("Erro login with Facebook :", error)
+                
+                return
+            }
+            
+            print("Successfully logged in with our user: ", user)
+            
+            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "email, name, gender, id"]).start { (connection, result, err) in
+                
+                if err != nil{
+                    print("Failed to start graph request:", err)
+                    return
+                }
+                
+                let uid = user?.uid
+                
+                let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(uid).jpg")
+                
+                if let uploadData = UIImageJPEGRepresentation(self.userImageView.image!, 0.1){
+                    
+                    storageRef.put(uploadData, metadata: nil, completion: { (metada, error) in
+                        
+                        if error != nil{
+                            print(error)
+                            return
+                        }
+                        
+                        let data:[String:AnyObject] = result as! [String : AnyObject]
+                        let name = (data["name"] as! String?)
+                        let email = (data["email"] as! String?)
+                        
+                        if let profileImageUrl = metada?.downloadURL()?.absoluteString {
+                            
+                            let ref = FIRDatabase.database().reference(fromURL: "https://capstoneproject-54304.firebaseio.com/")
+                            
+                            let userReference = ref.child("users").child(uid!)
+                            
+                            userReference.child("name").setValue(name)
+                            userReference.child("email").setValue(email)
+                            userReference.child("profileImageUrl").setValue(profileImageUrl)
+                            
+                            self.switchToDashBoardView()
+                            
+                        }
+                        
+                    })
+                    
+                }
+            }
+            
+        })
+    }
     
 }
 

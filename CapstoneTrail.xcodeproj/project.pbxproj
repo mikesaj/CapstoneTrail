@@ -16,7 +16,6 @@
 		446087811E4E1771007A8BE0 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 446087801E4E1771007A8BE0 /* SignIn.storyboard */; };
 		446087851E4E1967007A8BE0 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087831E4E1967007A8BE0 /* SettingsController.swift */; };
 		446087861E4E1967007A8BE0 /* SettingCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446087841E4E1967007A8BE0 /* SettingCellController.swift */; };
-
 		4460878D1E4E2C96007A8BE0 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4460878C1E4E2C96007A8BE0 /* DashBoard.storyboard */; };
 		449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */; };
 		449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */; };
@@ -32,6 +31,16 @@
 		B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C80D3D9049E6DECDBF27F /* ViewController.swift */; };
 		B66C8E1A7401C833BE35C2A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B66C8FFA2195697D1BA6415F /* Images.xcassets */; };
 		B66C8E8C8FFE2F1F9BB34360 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B66C8C866F8BFE32C7F9EDC4 /* Localizable.strings */; };
+		D21BE5401E5FCB0C006D05C4 /* Friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21BE53B1E5FCB0C006D05C4 /* Friend.storyboard */; };
+		D21BE5411E5FCB0C006D05C4 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE53C1E5FCB0C006D05C4 /* FriendViewController.swift */; };
+		D21BE5421E5FCB0C006D05C4 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE53D1E5FCB0C006D05C4 /* Friend.swift */; };
+		D21BE5431E5FCB0C006D05C4 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE53E1E5FCB0C006D05C4 /* PeopleViewController.swift */; };
+		D21BE5441E5FCB0C006D05C4 /* People.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21BE53F1E5FCB0C006D05C4 /* People.storyboard */; };
+		D21BE5471E5FCB30006D05C4 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE5451E5FCB30006D05C4 /* UIImageExtension.swift */; };
+		D21BE5481E5FCB30006D05C4 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE5461E5FCB30006D05C4 /* StringExtension.swift */; };
+		D21BE54C1E5FCB42006D05C4 /* WalkingShedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE5491E5FCB42006D05C4 /* WalkingShedule.swift */; };
+		D21BE54D1E5FCB42006D05C4 /* WalkingSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21BE54A1E5FCB42006D05C4 /* WalkingSchedule.storyboard */; };
+		D21BE54E1E5FCB42006D05C4 /* WalkingScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE54B1E5FCB42006D05C4 /* WalkingScheduleViewController.swift */; };
 		D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D24784471E4A8C7A00A0AFCF /* GoogleService-Info.plist */; };
 		D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24784491E4A8D5E00A0AFCF /* LoginController.swift */; };
 		F3A5266CCD7930CF069AECDD /* Pods_CapstoneTrailTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84E3F6471D45FB5637C3E7E /* Pods_CapstoneTrailTests.framework */; };
@@ -52,7 +61,6 @@
 		2731D46A09543C153A6C31D3 /* Pods-CapstoneTrailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.release.xcconfig"; sourceTree = "<group>"; };
 		4423ED111E50E72700344B6D /* HikeGroup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HikeGroup.storyboard; path = HikeGroup/HikeGroup.storyboard; sourceTree = "<group>"; };
 		443DB8D81E52356200F90C17 /* HikerInvitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HikerInvitation.swift; path = HikeGroup/HikerInvitation.swift; sourceTree = "<group>"; };
-
 		446087731E4E1149007A8BE0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		446087751E4E115D007A8BE0 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		446087771E4E116A007A8BE0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -64,7 +72,6 @@
 		449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HikeGroupViewController.swift; path = HikeGroup/HikeGroupViewController.swift; sourceTree = "<group>"; };
 		449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		449ACFD41E58758900B84118 /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
-
 		85BDD1C74E4267286E511B7F /* Pods-CapstoneTrailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.debug.xcconfig"; sourceTree = "<group>"; };
 		93C0CBAFEF495B65F5778885 /* Pods-CapstoneTrail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.debug.xcconfig"; sourceTree = "<group>"; };
 		A900F3501E4A075A00556D79 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -83,6 +90,16 @@
 		B66C8FFA2195697D1BA6415F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B84E3F6471D45FB5637C3E7E /* Pods_CapstoneTrailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneTrailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1FA64D3EB2D622B0A7EC696 /* Pods_CapstoneTrail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneTrail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D21BE53B1E5FCB0C006D05C4 /* Friend.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Friend.storyboard; sourceTree = "<group>"; };
+		D21BE53C1E5FCB0C006D05C4 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		D21BE53D1E5FCB0C006D05C4 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		D21BE53E1E5FCB0C006D05C4 /* PeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		D21BE53F1E5FCB0C006D05C4 /* People.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = People.storyboard; sourceTree = "<group>"; };
+		D21BE5451E5FCB30006D05C4 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		D21BE5461E5FCB30006D05C4 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		D21BE5491E5FCB42006D05C4 /* WalkingShedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingShedule.swift; sourceTree = "<group>"; };
+		D21BE54A1E5FCB42006D05C4 /* WalkingSchedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WalkingSchedule.storyboard; sourceTree = "<group>"; };
+		D21BE54B1E5FCB42006D05C4 /* WalkingScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingScheduleViewController.swift; sourceTree = "<group>"; };
 		D24784471E4A8C7A00A0AFCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D24784491E4A8D5E00A0AFCF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		D2A6FACC1E4A863E00F7AB22 /* CapstoneTrail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CapstoneTrail.entitlements; sourceTree = "<group>"; };
@@ -120,7 +137,6 @@
 			name = HikeGroup;
 			sourceTree = "<group>";
 		};
-
 		446087791E4E11CD007A8BE0 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +206,9 @@
 		A900F3521E4A077400556D79 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D21BE53A1E5FCAC6006D05C4 /* Walking Schedule */,
+				D21BE5391E5FCABA006D05C4 /* Helper */,
+				D21BE5381E5FCAB4006D05C4 /* Friend */,
 				4423ED101E50E6FF00344B6D /* HikeGroup */,
 				446087871E4E285D007A8BE0 /* DashBoard */,
 				446087791E4E11CD007A8BE0 /* User */,
@@ -276,6 +295,37 @@
 				A900F34F1E4A075A00556D79 /* Frameworks */,
 				EBAE0BBC5398A07AF3F2ED75 /* Pods */,
 			);
+			sourceTree = "<group>";
+		};
+		D21BE5381E5FCAB4006D05C4 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				D21BE53B1E5FCB0C006D05C4 /* Friend.storyboard */,
+				D21BE53C1E5FCB0C006D05C4 /* FriendViewController.swift */,
+				D21BE53D1E5FCB0C006D05C4 /* Friend.swift */,
+				D21BE53E1E5FCB0C006D05C4 /* PeopleViewController.swift */,
+				D21BE53F1E5FCB0C006D05C4 /* People.storyboard */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
+		D21BE5391E5FCABA006D05C4 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				D21BE5451E5FCB30006D05C4 /* UIImageExtension.swift */,
+				D21BE5461E5FCB30006D05C4 /* StringExtension.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		D21BE53A1E5FCAC6006D05C4 /* Walking Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				D21BE5491E5FCB42006D05C4 /* WalkingShedule.swift */,
+				D21BE54A1E5FCB42006D05C4 /* WalkingSchedule.storyboard */,
+				D21BE54B1E5FCB42006D05C4 /* WalkingScheduleViewController.swift */,
+			);
+			path = "Walking Schedule";
 			sourceTree = "<group>";
 		};
 		D23B65791E4A7CE100957B1E /* LoginDemo */ = {
@@ -395,13 +445,16 @@
 			files = (
 				B66C8E1A7401C833BE35C2A3 /* Images.xcassets in Resources */,
 				A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */,
+				D21BE5401E5FCB0C006D05C4 /* Friend.storyboard in Resources */,
 				B66C875384EF1325BC0D7110 /* LaunchScreen.storyboard in Resources */,
+				D21BE5441E5FCB0C006D05C4 /* People.storyboard in Resources */,
 				4460878D1E4E2C96007A8BE0 /* DashBoard.storyboard in Resources */,
 				4423ED121E50E72700344B6D /* HikeGroup.storyboard in Resources */,
 				B66C8A93363E18079BF25D47 /* Main.storyboard in Resources */,
 				B66C8E8C8FFE2F1F9BB34360 /* Localizable.strings in Resources */,
 				446087811E4E1771007A8BE0 /* SignIn.storyboard in Resources */,
 				D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */,
+				D21BE54D1E5FCB42006D05C4 /* WalkingSchedule.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,17 +569,24 @@
 				443DB8D91E52356200F90C17 /* HikerInvitation.swift in Sources */,
 				446087861E4E1967007A8BE0 /* SettingCellController.swift in Sources */,
 				446087851E4E1967007A8BE0 /* SettingsController.swift in Sources */,
+				D21BE54E1E5FCB42006D05C4 /* WalkingScheduleViewController.swift in Sources */,
 				A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */,
 				449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */,
+				D21BE5471E5FCB30006D05C4 /* UIImageExtension.swift in Sources */,
 				D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */,
 				446087761E4E115D007A8BE0 /* UserLogin.swift in Sources */,
 				B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */,
 				4460877F1E4E1456007A8BE0 /* CreateAccountViewController.swift in Sources */,
+				D21BE54C1E5FCB42006D05C4 /* WalkingShedule.swift in Sources */,
+				D21BE5411E5FCB0C006D05C4 /* FriendViewController.swift in Sources */,
+				D21BE5431E5FCB0C006D05C4 /* PeopleViewController.swift in Sources */,
 				446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */,
 				449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */,
 				449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */,
 				B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */,
+				D21BE5481E5FCB30006D05C4 /* StringExtension.swift in Sources */,
 				446087781E4E116A007A8BE0 /* User.swift in Sources */,
+				D21BE5421E5FCB0C006D05C4 /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
