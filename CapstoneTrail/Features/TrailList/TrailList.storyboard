@@ -62,7 +62,7 @@
                                     <outlet property="areaLogoImage" destination="504-hM-XJ2" id="yaT-L7-JyY"/>
                                     <outlet property="streetNameLabel" destination="yvE-Do-SFZ" id="Gt5-fa-sHw"/>
                                     <outlet property="trailBriefLabel" destination="sMO-02-dPg" id="YIW-rT-RvF"/>
-                                    <segue destination="6Rr-gr-9gV" kind="show" identifier="CheckTrailDetail" id="Z2B-iH-O0O"/>
+                                    <segue destination="PuT-Fm-p66" kind="show" identifier="CheckTrailDetail" id="Z2B-iH-O0O"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -76,56 +76,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bO8-rI-Do9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1012" y="49.925037481259373"/>
-        </scene>
-        <!--Trail Detail View Controller-->
-        <scene sceneID="vpf-1j-ruN">
-            <objects>
-                <viewController id="6Rr-gr-9gV" customClass="TrailDetailViewController" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pWm-Jl-Kaz"/>
-                        <viewControllerLayoutGuide type="bottom" id="UI2-75-7Ft"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="u2d-sC-pbe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="meh-9f-1su">
-                                <rect key="frame" x="0.0" y="64" width="375" height="453"/>
-                            </mapView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bre-do-PTq" userLabel="Trail Detail">
-                                <rect key="frame" x="0.0" y="517" width="375" height="150"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPw-D6-MzS" userLabel="Test Label">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="v0n-pV-lVl"/>
-                                </constraints>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="bre-do-PTq" firstAttribute="leading" secondItem="u2d-sC-pbe" secondAttribute="leading" id="2zM-DN-6Ps"/>
-                            <constraint firstItem="meh-9f-1su" firstAttribute="leading" secondItem="u2d-sC-pbe" secondAttribute="leading" id="Srj-T7-pUZ"/>
-                            <constraint firstAttribute="trailing" secondItem="bre-do-PTq" secondAttribute="trailing" id="X29-A5-8Md"/>
-                            <constraint firstAttribute="trailing" secondItem="meh-9f-1su" secondAttribute="trailing" id="aCL-jI-R2a"/>
-                            <constraint firstItem="meh-9f-1su" firstAttribute="top" secondItem="pWm-Jl-Kaz" secondAttribute="bottom" id="jGn-w0-Ry2"/>
-                            <constraint firstItem="UI2-75-7Ft" firstAttribute="top" secondItem="bre-do-PTq" secondAttribute="bottom" id="qsy-S4-NIb"/>
-                            <constraint firstItem="bre-do-PTq" firstAttribute="top" secondItem="meh-9f-1su" secondAttribute="bottom" id="vg0-lW-13P"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="mapView" destination="meh-9f-1su" id="sMR-XB-Bjs"/>
-                        <outlet property="testLabel" destination="hPw-D6-MzS" id="P3N-Lg-ruf"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2tU-ap-Glj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1970" y="50"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rzf-2r-c9k">
@@ -144,6 +94,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgs-h4-m6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="72.799999999999997" y="49.925037481259373"/>
+        </scene>
+        <!--TrailDetail-->
+        <scene sceneID="HBH-Lf-iTE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrailDetail" id="PuT-Fm-p66" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="veP-Jx-JCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1598" y="49"/>
         </scene>
     </scenes>
     <resources>

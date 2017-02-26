@@ -22,6 +22,7 @@
 		449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFD41E58758900B84118 /* DashBoardViewController.swift */; };
 		65E7EEE2D0A127F42608855C /* Pods_CapstoneTrail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FA64D3EB2D622B0A7EC696 /* Pods_CapstoneTrail.framework */; };
 		A900F3511E4A075A00556D79 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A900F3501E4A075A00556D79 /* MapKit.framework */; };
+		A976D6F01E637B7D000CF3F5 /* TrailDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A976D6EF1E637B7D000CF3F5 /* TrailDetail.storyboard */; };
 		A97979D81E5DE1BB002DC4D2 /* Trails.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97979D61E5DE1BB002DC4D2 /* Trails.xcdatamodeld */; };
 		A97979DE1E5DE318002DC4D2 /* TrailList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */; };
 		A97979E01E5DE342002DC4D2 /* TrailListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979DF1E5DE342002DC4D2 /* TrailListTableViewController.swift */; };
@@ -31,6 +32,7 @@
 		A97979EA1E5DE9C6002DC4D2 /* TrailMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979E81E5DE9C6002DC4D2 /* TrailMO+CoreDataClass.swift */; };
 		A97979EB1E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979E91E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift */; };
 		A97EB5701E5E08E900CCCF31 /* TrailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB56F1E5E08E900CCCF31 /* TrailDetailViewController.swift */; };
+		A98B92F71E637DBC007C7AB6 /* TrailUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98B92F61E637DBC007C7AB6 /* TrailUtils.swift */; };
 		A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */; };
 		B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8A82BC1ABAFB0F9D0E10 /* AppDelegate.swift */; };
 		B66C875384EF1325BC0D7110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66C82EA8971FB9C46435BE3 /* LaunchScreen.storyboard */; };
@@ -73,6 +75,7 @@
 		85BDD1C74E4267286E511B7F /* Pods-CapstoneTrailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.debug.xcconfig"; sourceTree = "<group>"; };
 		93C0CBAFEF495B65F5778885 /* Pods-CapstoneTrail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.debug.xcconfig"; sourceTree = "<group>"; };
 		A900F3501E4A075A00556D79 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A976D6EF1E637B7D000CF3F5 /* TrailDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrailDetail.storyboard; sourceTree = "<group>"; };
 		A97979D71E5DE1BB002DC4D2 /* Trails.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Trails.xcdatamodel; sourceTree = "<group>"; };
 		A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrailList.storyboard; sourceTree = "<group>"; };
 		A97979DF1E5DE342002DC4D2 /* TrailListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailListTableViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 		A97979E81E5DE9C6002DC4D2 /* TrailMO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrailMO+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A97979E91E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrailMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A97EB56F1E5E08E900CCCF31 /* TrailDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailDetailViewController.swift; sourceTree = "<group>"; };
+		A98B92F61E637DBC007C7AB6 /* TrailUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailUtils.swift; sourceTree = "<group>"; };
 		A9FB931D1E4A0BBA0053F6E3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		B66C80D3D9049E6DECDBF27F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 		A900F3521E4A077400556D79 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				A976D6EE1E637B5C000CF3F5 /* TrailDetail */,
 				A97979D51E5DE177002DC4D2 /* TrailList */,
 				4423ED101E50E6FF00344B6D /* HikeGroup */,
 				446087871E4E285D007A8BE0 /* DashBoard */,
@@ -253,6 +258,15 @@
 			path = Credentials;
 			sourceTree = "<group>";
 		};
+		A976D6EE1E637B5C000CF3F5 /* TrailDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A976D6EF1E637B7D000CF3F5 /* TrailDetail.storyboard */,
+				A97EB56F1E5E08E900CCCF31 /* TrailDetailViewController.swift */,
+			);
+			path = TrailDetail;
+			sourceTree = "<group>";
+		};
 		A97979D51E5DE177002DC4D2 /* TrailList */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,7 +275,7 @@
 				A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */,
 				A97979DF1E5DE342002DC4D2 /* TrailListTableViewController.swift */,
 				A97979E61E5DE6D8002DC4D2 /* TrailTableViewCell.swift */,
-				A97EB56F1E5E08E900CCCF31 /* TrailDetailViewController.swift */,
+				A98B92F61E637DBC007C7AB6 /* TrailUtils.swift */,
 			);
 			path = TrailList;
 			sourceTree = "<group>";
@@ -435,6 +449,7 @@
 				A97979E41E5DE402002DC4D2 /* Kitchener.json in Resources */,
 				A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */,
 				B66C875384EF1325BC0D7110 /* LaunchScreen.storyboard in Resources */,
+				A976D6F01E637B7D000CF3F5 /* TrailDetail.storyboard in Resources */,
 				4460878D1E4E2C96007A8BE0 /* DashBoard.storyboard in Resources */,
 				4423ED121E50E72700344B6D /* HikeGroup.storyboard in Resources */,
 				A97979E51E5DE402002DC4D2 /* Waterloo.json in Resources */,
@@ -566,6 +581,7 @@
 				B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */,
 				4460877F1E4E1456007A8BE0 /* CreateAccountViewController.swift in Sources */,
 				446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */,
+				A98B92F71E637DBC007C7AB6 /* TrailUtils.swift in Sources */,
 				A97979E01E5DE342002DC4D2 /* TrailListTableViewController.swift in Sources */,
 				449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */,
 				449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */,

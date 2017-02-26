@@ -14,10 +14,12 @@ import CoreData
 class TrailDetailViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: Properties
-    @IBOutlet weak var testLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var areaLabel: UILabel!
+    @IBOutlet weak var trailIDLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
     
-    
+
     // MARK: Variables
     var trail: NSManagedObject!
     var id: Int32!
@@ -30,7 +32,8 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate {
     var length: Double!
     var coordinates: [[Double]]!
     var coordinate2DList: [CLLocationCoordinate2D]!
-    
+    var travelTime: Double!
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -47,16 +50,10 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate {
         //  Create polyline with the CLLocationCoordinate2D list
         makePolyline()
         
-        //        testLabel.text = "\(id!)"
-        //        testLabel.text = area?.capitalized
-        testLabel.text = street
-        //        testLabel.text = status?.capitalized
-        //        testLabel.text = surface?.capitalized
-        //        testLabel.text = pathType?.capitalized
-        //        testLabel.text = owner?.capitalized
-        //        testLabel.text = coordinateType?.capitalized
-        //        testLabel.text = "\(coordinates!)"
-        //        testLabel.text = "\(length!)"
+        let detailStr = NSLocalizedString("Trail detail info", comment: "Trail detail")
+        areaLabel.text = String(format: "%@ %@", area.capitalized, pathType.capitalized)
+        trailIDLabel.text = String(format: "#%d", id)
+        detailLabel.text = String(format: detailStr, street.capitalized, status.capitalized, surface.lowercased(), length, travelTime)
     }
     
     
@@ -67,15 +64,16 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate {
             fatalError("No TrailMO retrieved")
         }
         
-        id = trail.value(forKey: "id") as? Int32
-        area = trail.value(forKey: "area") as? String
-        street = trail.value(forKey: "street") as? String
-        status = trail.value(forKey: "status") as? String
-        surface = trail.value(forKey: "surface") as? String
-        pathType = trail.value(forKey: "pathType") as? String
-        owner = trail.value(forKey: "owner") as? String
-        length = trail.value(forKey: "length") as? Double
-        coordinates = trail.value(forKey: "coordinates") as? [[Double]]
+        id = trail.value(forKey: "id") as! Int32
+        area = trail.value(forKey: "area") as! String
+        street = trail.value(forKey: "street") as! String
+        status = trail.value(forKey: "status") as! String
+        surface = trail.value(forKey: "surface") as! String
+        pathType = trail.value(forKey: "pathType") as! String
+        owner = trail.value(forKey: "owner") as! String
+        length = trail.value(forKey: "length") as! Double
+        coordinates = trail.value(forKey: "coordinates") as! [[Double]]
+        travelTime = TrailUtils.metre2minute(lengthIn: length)
     }
     
     // Create CLLocationCoordinate2D list from double type coordinates
