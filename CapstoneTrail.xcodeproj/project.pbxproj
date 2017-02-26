@@ -36,7 +36,17 @@
 		44F5B7341E6318C5007C7B97 /* SettingCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5B7331E6318C5007C7B97 /* SettingCellController.swift */; };
 		65E7EEE2D0A127F42608855C /* Pods_CapstoneTrail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FA64D3EB2D622B0A7EC696 /* Pods_CapstoneTrail.framework */; };
 		A900F3511E4A075A00556D79 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A900F3501E4A075A00556D79 /* MapKit.framework */; };
-		A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A9FB931D1E4A0BBA0053F6E3 /* README.md */; };
+		A976D6F01E637B7D000CF3F5 /* TrailDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A976D6EF1E637B7D000CF3F5 /* TrailDetail.storyboard */; };
+		A97979D81E5DE1BB002DC4D2 /* Trails.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97979D61E5DE1BB002DC4D2 /* Trails.xcdatamodeld */; };
+		A97979DE1E5DE318002DC4D2 /* TrailList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */; };
+		A97979E01E5DE342002DC4D2 /* TrailListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979DF1E5DE342002DC4D2 /* TrailListTableViewController.swift */; };
+		A97979E41E5DE402002DC4D2 /* Kitchener.json in Resources */ = {isa = PBXBuildFile; fileRef = A97979E21E5DE402002DC4D2 /* Kitchener.json */; };
+		A97979E51E5DE402002DC4D2 /* Waterloo.json in Resources */ = {isa = PBXBuildFile; fileRef = A97979E31E5DE402002DC4D2 /* Waterloo.json */; };
+		A97979E71E5DE6D8002DC4D2 /* TrailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979E61E5DE6D8002DC4D2 /* TrailTableViewCell.swift */; };
+		A97979EA1E5DE9C6002DC4D2 /* TrailMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979E81E5DE9C6002DC4D2 /* TrailMO+CoreDataClass.swift */; };
+		A97979EB1E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979E91E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift */; };
+		A97EB5701E5E08E900CCCF31 /* TrailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB56F1E5E08E900CCCF31 /* TrailDetailViewController.swift */; };
+		A98B92F71E637DBC007C7AB6 /* TrailUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98B92F61E637DBC007C7AB6 /* TrailUtils.swift */; };
 		A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */; };
 		B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8A82BC1ABAFB0F9D0E10 /* AppDelegate.swift */; };
 		B66C875384EF1325BC0D7110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66C82EA8971FB9C46435BE3 /* LaunchScreen.storyboard */; };
@@ -103,7 +113,17 @@
 		85BDD1C74E4267286E511B7F /* Pods-CapstoneTrailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.debug.xcconfig"; sourceTree = "<group>"; };
 		93C0CBAFEF495B65F5778885 /* Pods-CapstoneTrail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.debug.xcconfig"; sourceTree = "<group>"; };
 		A900F3501E4A075A00556D79 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		A9FB931D1E4A0BBA0053F6E3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A976D6EF1E637B7D000CF3F5 /* TrailDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrailDetail.storyboard; sourceTree = "<group>"; };
+		A97979D71E5DE1BB002DC4D2 /* Trails.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Trails.xcdatamodel; sourceTree = "<group>"; };
+		A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrailList.storyboard; sourceTree = "<group>"; };
+		A97979DF1E5DE342002DC4D2 /* TrailListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailListTableViewController.swift; sourceTree = "<group>"; };
+		A97979E21E5DE402002DC4D2 /* Kitchener.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Kitchener.json; sourceTree = "<group>"; };
+		A97979E31E5DE402002DC4D2 /* Waterloo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Waterloo.json; sourceTree = "<group>"; };
+		A97979E61E5DE6D8002DC4D2 /* TrailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailTableViewCell.swift; sourceTree = "<group>"; };
+		A97979E81E5DE9C6002DC4D2 /* TrailMO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrailMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A97979E91E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrailMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A97EB56F1E5E08E900CCCF31 /* TrailDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailDetailViewController.swift; sourceTree = "<group>"; };
+		A98B92F61E637DBC007C7AB6 /* TrailUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailUtils.swift; sourceTree = "<group>"; };
 		A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		B66C80D3D9049E6DECDBF27F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B66C82FB63F731C6D50BC7ED /* CapstoneTrailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapstoneTrailTests.swift; sourceTree = "<group>"; };
@@ -268,6 +288,8 @@
 				D21BE53A1E5FCAC6006D05C4 /* Walking Schedule */,
 				D21BE5391E5FCABA006D05C4 /* Helper */,
 				D21BE5381E5FCAB4006D05C4 /* Friend */,
+				A976D6EE1E637B5C000CF3F5 /* TrailDetail */,
+				A97979D51E5DE177002DC4D2 /* TrailList */,
 				4423ED101E50E6FF00344B6D /* HikeGroup */,
 				446087871E4E285D007A8BE0 /* DashBoard */,
 				446087791E4E11CD007A8BE0 /* User */,
@@ -291,8 +313,10 @@
 		A900F3541E4A07A000556D79 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				A97979E11E5DE402002DC4D2 /* TrailData */,
 				B66C8FFA2195697D1BA6415F /* Images.xcassets */,
 				B66C8C866F8BFE32C7F9EDC4 /* Localizable.strings */,
+				A97979D61E5DE1BB002DC4D2 /* Trails.xcdatamodeld */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -313,6 +337,37 @@
 				A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */,
 			);
 			path = Credentials;
+			sourceTree = "<group>";
+		};
+		A976D6EE1E637B5C000CF3F5 /* TrailDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A976D6EF1E637B7D000CF3F5 /* TrailDetail.storyboard */,
+				A97EB56F1E5E08E900CCCF31 /* TrailDetailViewController.swift */,
+			);
+			path = TrailDetail;
+			sourceTree = "<group>";
+		};
+		A97979D51E5DE177002DC4D2 /* TrailList */ = {
+			isa = PBXGroup;
+			children = (
+				A97979E81E5DE9C6002DC4D2 /* TrailMO+CoreDataClass.swift */,
+				A97979E91E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift */,
+				A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */,
+				A97979DF1E5DE342002DC4D2 /* TrailListTableViewController.swift */,
+				A97979E61E5DE6D8002DC4D2 /* TrailTableViewCell.swift */,
+				A98B92F61E637DBC007C7AB6 /* TrailUtils.swift */,
+			);
+			path = TrailList;
+			sourceTree = "<group>";
+		};
+		A97979E11E5DE402002DC4D2 /* TrailData */ = {
+			isa = PBXGroup;
+			children = (
+				A97979E21E5DE402002DC4D2 /* Kitchener.json */,
+				A97979E31E5DE402002DC4D2 /* Waterloo.json */,
+			);
+			path = TrailData;
 			sourceTree = "<group>";
 		};
 		B66C811D063DF5892D42683B /* CapstoneTrail */ = {
@@ -347,7 +402,6 @@
 		B66C8BC26AE95B2C75C578E8 = {
 			isa = PBXGroup;
 			children = (
-				A9FB931D1E4A0BBA0053F6E3 /* README.md */,
 				B66C8B1E34F48D6454107314 /* Products */,
 				B66C811D063DF5892D42683B /* CapstoneTrail */,
 				B66C87F9A8B3864D04D7DCDE /* CapstoneTrailTests */,
@@ -503,14 +557,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				B66C8E1A7401C833BE35C2A3 /* Images.xcassets in Resources */,
+				A97979E41E5DE402002DC4D2 /* Kitchener.json in Resources */,
 				A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */,
 				D21BE5401E5FCB0C006D05C4 /* Friend.storyboard in Resources */,
 				B66C875384EF1325BC0D7110 /* LaunchScreen.storyboard in Resources */,
 				D21BE5441E5FCB0C006D05C4 /* People.storyboard in Resources */,
+				A976D6F01E637B7D000CF3F5 /* TrailDetail.storyboard in Resources */,
 				4460878D1E4E2C96007A8BE0 /* DashBoard.storyboard in Resources */,
 				4423ED121E50E72700344B6D /* HikeGroup.storyboard in Resources */,
+				A97979E51E5DE402002DC4D2 /* Waterloo.json in Resources */,
 				B66C8A93363E18079BF25D47 /* Main.storyboard in Resources */,
 				B66C8E8C8FFE2F1F9BB34360 /* Localizable.strings in Resources */,
+				A97979DE1E5DE318002DC4D2 /* TrailList.storyboard in Resources */,
 				446087811E4E1771007A8BE0 /* SignIn.storyboard in Resources */,
 				D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */,
 				44385C081E5CE30B0095F2B0 /* Schedule.storyboard in Resources */,
@@ -627,16 +685,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				44F136721E62087600E3747C /* UserProfileViewController.swift in Sources */,
-				A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */,
+				A97979EA1E5DE9C6002DC4D2 /* TrailMO+CoreDataClass.swift in Sources */,
+				A97979D81E5DE1BB002DC4D2 /* Trails.xcdatamodeld in Sources */,
 				449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */,
 				44385C0C1E5CEFB20095F2B0 /* ScheduleViewCell.swift in Sources */,
 				D21BE54E1E5FCB42006D05C4 /* WalkingScheduleViewController.swift in Sources */,
 				44F5B7341E6318C5007C7B97 /* SettingCellController.swift in Sources */,
-				A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */,
 				D21BE5471E5FCB30006D05C4 /* UIImageExtension.swift in Sources */,
 				D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */,
 				446087761E4E115D007A8BE0 /* UserLogin.swift in Sources */,
 				44385C031E5BD2790095F2B0 /* inviteFriendsController.swift in Sources */,
+				A97EB5701E5E08E900CCCF31 /* TrailDetailViewController.swift in Sources */,
 				B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */,
 				4460877F1E4E1456007A8BE0 /* CreateAccountViewController.swift in Sources */,
 				448C10FF1E5B648A00BE9123 /* GroupDBController.swift in Sources */,
@@ -650,6 +709,8 @@
 				D21BE5411E5FCB0C006D05C4 /* FriendViewController.swift in Sources */,
 				D21BE5431E5FCB0C006D05C4 /* PeopleViewController.swift in Sources */,
 				446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */,
+				A98B92F71E637DBC007C7AB6 /* TrailUtils.swift in Sources */,
+				A97979E01E5DE342002DC4D2 /* TrailListTableViewController.swift in Sources */,
 				447F49A11E5AC4BE0028282D /* GroupProfileViewController.swift in Sources */,
 				449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */,
 				448C11011E5B64B300BE9123 /* GroupModel.swift in Sources */,
@@ -659,6 +720,8 @@
 				B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */,
 				D21BE5481E5FCB30006D05C4 /* StringExtension.swift in Sources */,
 				446087781E4E116A007A8BE0 /* User.swift in Sources */,
+				A97979E71E5DE6D8002DC4D2 /* TrailTableViewCell.swift in Sources */,
+				A97979EB1E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift in Sources */,
 				44F5B7321E63176F007C7B97 /* JoinAppInvitation.swift in Sources */,
 				D21BE5421E5FCB0C006D05C4 /* Friend.swift in Sources */,
 			);
@@ -876,6 +939,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A97979D61E5DE1BB002DC4D2 /* Trails.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A97979D71E5DE1BB002DC4D2 /* Trails.xcdatamodel */,
+			);
+			currentVersion = A97979D71E5DE1BB002DC4D2 /* Trails.xcdatamodel */;
+			path = Trails.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B66C8B94777728DFEB7964D7 /* Project object */;
 }

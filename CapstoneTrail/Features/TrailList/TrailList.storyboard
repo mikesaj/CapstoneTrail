@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nWR-Ab-w7M">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Trail List Table View Controller-->
+        <scene sceneID="hxw-kZ-CxN">
+            <objects>
+                <tableViewController id="4VM-Sn-ESV" customClass="TrailListTableViewController" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="6XJ-FY-miP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrailTableViewCell" rowHeight="80" id="lNu-gh-cPE" customClass="TrailTableViewCell" customModule="CapstoneTrail" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lNu-gh-cPE" id="ApG-BM-5QB">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AreaDefault" translatesAutoresizingMaskIntoConstraints="NO" id="504-hM-XJ2">
+                                            <rect key="frame" x="8" y="0.0" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="JAh-j1-PEa"/>
+                                                <constraint firstAttribute="height" constant="80" id="Jkr-54-G7k"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="E27-Pz-yR9" userLabel="Trail Info">
+                                            <rect key="frame" x="96" y="12.5" width="271" height="54.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brief info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMO-02-dPg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street near the trail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvE-Do-SFZ">
+                                                    <rect key="frame" x="0.0" y="34" width="271" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="504-hM-XJ2" firstAttribute="centerY" secondItem="ApG-BM-5QB" secondAttribute="centerY" id="6Os-ss-zVh"/>
+                                        <constraint firstItem="E27-Pz-yR9" firstAttribute="centerY" secondItem="ApG-BM-5QB" secondAttribute="centerY" id="FJV-jZ-gYm"/>
+                                        <constraint firstItem="504-hM-XJ2" firstAttribute="leading" secondItem="ApG-BM-5QB" secondAttribute="leading" constant="8" id="kih-Gb-Naa"/>
+                                        <constraint firstAttribute="trailing" secondItem="E27-Pz-yR9" secondAttribute="trailing" constant="8" id="mdx-V1-JsX"/>
+                                        <constraint firstItem="E27-Pz-yR9" firstAttribute="leading" secondItem="504-hM-XJ2" secondAttribute="trailing" constant="8" id="pAg-nE-d2F"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="areaLogoImage" destination="504-hM-XJ2" id="yaT-L7-JyY"/>
+                                    <outlet property="streetNameLabel" destination="yvE-Do-SFZ" id="Gt5-fa-sHw"/>
+                                    <outlet property="trailBriefLabel" destination="sMO-02-dPg" id="YIW-rT-RvF"/>
+                                    <segue destination="PuT-Fm-p66" kind="show" identifier="CheckTrailDetail" id="Z2B-iH-O0O"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4VM-Sn-ESV" id="n0A-AD-EQ1"/>
+                            <outlet property="delegate" destination="4VM-Sn-ESV" id="uA4-Pi-bhQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="bmX-zA-gWF"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bO8-rI-Do9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1012" y="49.925037481259373"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rzf-2r-c9k">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nWR-Ab-w7M" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="75u-df-3zP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4VM-Sn-ESV" kind="relationship" relationship="rootViewController" id="90z-pm-M9I"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fgs-h4-m6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="72.799999999999997" y="49.925037481259373"/>
+        </scene>
+        <!--TrailDetail-->
+        <scene sceneID="HBH-Lf-iTE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrailDetail" id="PuT-Fm-p66" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="veP-Jx-JCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1598" y="49"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AreaDefault" width="80" height="80"/>
+    </resources>
+</document>
