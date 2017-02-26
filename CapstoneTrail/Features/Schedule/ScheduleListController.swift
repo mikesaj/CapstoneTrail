@@ -23,6 +23,9 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         
         super.viewDidLoad()
         
+        // Demo data
+        
+        //trail name
         locationName.add("Waterloo Trail")
         locationName.add("Kitchener Trail")
         locationName.add("Apple Groove Trails")
@@ -34,6 +37,7 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         locationName.add("Kids Trails")
         locationName.add("Baby Trails")
         
+        // trail id
         locationUid.add("WestMount Walks")
         locationUid.add("WestMount Walks")
         locationUid.add("WestMount Walks")
@@ -46,12 +50,8 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         locationUid.add("WestMount Walks")
 
         self.hikeScheduleListTableView.reloadData()
-
         
         //self.navigationController?.popToRootViewController(animated: true)
-        //self.populateList()
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,6 +65,7 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         return self.locationName.count
     }
     
+    // populates and sets the custom cell element
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleViewCell
@@ -75,6 +76,7 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
+    // specifies the selected row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let name = self.locationName.object(at: indexPath.row) as? String
@@ -94,8 +96,13 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         
         navigationController?.present(myVC, animated: true)*/
         performSegue(withIdentifier: "View2", sender: self)
+        
+        //Change the selected background view of the cell.
+        tableView.deselectRow(at: indexPath, animated: true)
+
     }
     
+    // invite button selected
     @IBAction func logAction(sender: UIButton){
         
         let index = locationName[sender.tag];
@@ -108,6 +115,7 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         print("indexis = \(index)")
     }
     
+    // prepare to launch segue with data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "View2"){
             
@@ -119,14 +127,6 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     
-    
-    
-    func processdata(){
-        
-        //refreshing table after populating collection
-        self.hikeScheduleListTableView.reloadData()
-    }
-    
     //Appending schedule to object collection
     func poplateSingleSchedule(key: String, value: [String: AnyObject]){
         
@@ -135,7 +135,8 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
             locationName.add(name)
             locationUid.add(key)
         
-            self.processdata()
+        //refreshing table after populating collection
+        self.hikeScheduleListTableView.reloadData()
     }
     
     //populating schedule

@@ -12,24 +12,40 @@ class GroupProfileViewController: UIViewController {
 
     public var GroupName    : String = ""
     public var locationName : String = ""
-    public var memberCount  : Int = 0
-    public var groupid = "default"
-
+    public var memberCount  : Int    = 0
+    public var groupid      : String = "random"
+    public var GroupDescrip : String = "description"
+    
+    // group member number
     @IBOutlet weak var memberNum: UILabel!
+
+    // group location
+    @IBOutlet weak var groupLocation: UILabel!
+    
+    // group description
+    @IBOutlet weak var groupDescrirption: UITextView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // populates UI elements
         populateUI()
     }
-
+    
+    // methods populates UI elements
     func populateUI(){
+        
+        self.title = self.GroupName
+
         var memberS = "Member"
         if memberCount > 1 {
             memberS += "s"
         }
         
         memberNum.text = String(memberCount) + " " +  memberS
+        groupLocation.text = locationName;
+        groupDescrirption.text = GroupDescrip
     }
     
     

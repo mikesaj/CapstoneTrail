@@ -12,6 +12,7 @@
         <!--Item-->
         <scene sceneID="FmZ-1Y-cYm">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JAU-We-GBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="DashBoardViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fdr-x1-NE3" customClass="DashBoardViewController" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kEs-ca-0sy"/>
@@ -42,13 +43,13 @@
                         <outlet property="dashBoardScrollView" destination="MQt-Eg-aNC" id="SeZ-WS-R18"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JAU-We-GBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3432.8000000000002" y="144.3778110944528"/>
         </scene>
         <!--View1-->
         <scene sceneID="eC5-t2-69J">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aY7-CX-Lwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="V1" id="Bcn-d8-bM7" customClass="View1" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rSF-3m-dsg"/>
@@ -69,13 +70,13 @@
                         <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aY7-CX-Lwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4096.8000000000002" y="271.21439280359823"/>
         </scene>
         <!--View2-->
         <scene sceneID="Jlb-6A-4bH">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GE0-hj-416" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="V2" id="bqf-cu-QK8" customClass="View2" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xmK-d5-Er3"/>
@@ -96,7 +97,6 @@
                         <color key="backgroundColor" red="0.60558894230000004" green="0.050894617420000003" blue="0.048325589299999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GE0-hj-416" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4757.6000000000004" y="271.21439280359823"/>
         </scene>
@@ -117,6 +117,7 @@
         <!--View3-->
         <scene sceneID="yVl-qy-dl0">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="io1-AU-VSd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="V3" id="nNm-ST-rK8" customClass="View3" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RTd-aZ-Dkh"/>
@@ -137,7 +138,6 @@
                         <color key="backgroundColor" red="1" green="0.40757609569999997" blue="0.34244166929999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="io1-AU-VSd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5429.6000000000004" y="271.21439280359823"/>
         </scene>

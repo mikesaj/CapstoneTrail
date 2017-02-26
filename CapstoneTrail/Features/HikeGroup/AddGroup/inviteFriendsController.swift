@@ -22,7 +22,10 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
     // Database reference
     let ref = FIRDatabase.database().reference()
     
-    //collection of logged user's friendships
+    // Get's logged user's uid
+    let userID = FIRAuth.auth()?.currentUser?.uid
+    
+    //collection of accepted user's friendships
     var friends = [Friend]()
     var friendHash = Set<String>()
     
@@ -74,7 +77,7 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
     
     @IBAction func logAction(sender: UIButton){
         
-        let index = firendName[sender.tag] as! String
+        //let index = firendName[sender.tag] as! String
         let userId = firenduid[sender.tag] as! String
         
         self.firendName.removeObject(at: sender.tag)
@@ -85,10 +88,6 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
         
         // reload tableview
         self.friendListTableView.reloadData()
-        
-        print("indexis = name: \(index)")
-        print("indexis = user: \(userId)")
-        print("indexis = group: \(self.groupid)")
     }
     
     
@@ -162,14 +161,6 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
         
     }
     
-    func processdata(){
-
-        print(friendHash)
-        
-        //refreshing table after populating collection
-        self.friendListTableView.reloadData()
-
-    }
     
     //Appending friendship to friend collection
     func poplateSingleFriend(key: String, value: [String: AnyObject]){
@@ -183,17 +174,14 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
             
             firendName.add(name)
             firenduid.add(key)
-            
         
-            self.processdata()
+            //refreshing table after populating collection
+            self.friendListTableView.reloadData()
         }
     }
     
     //populating logged is user's friendships
     func populateFriends(){
-        
-        //getting logged user's uid
-        let userID = "DPpwfIDhAGXpFjFqI3BytLMrAA73" //"FIRAuth.auth()?.currentUser?.uid
         
         //getting friendships where the logged user was the sender
         ref.child("friends").queryOrdered(byChild: "sender_uid").queryEqual(toValue: userID).observe(.childAdded, with: { (snapshot) in
@@ -235,11 +223,6 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
                 }) { (error) in
                     print(error.localizedDescription)
                 }
-                
-                
-                
-                
-                
                 
             }
             

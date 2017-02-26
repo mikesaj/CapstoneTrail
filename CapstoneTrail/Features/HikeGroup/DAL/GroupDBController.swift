@@ -32,13 +32,17 @@ class GroupDBController{
 
         let groupReference = ref.child("groups").child(groupUid)
         
-        groupReference.child("name").setValue(group.name)
         groupReference.child("owneruid").setValue(uid)
+        groupReference.child("name").setValue(group.name)
         groupReference.child("locationName").setValue(group.locationName)
+        groupReference.child("description").setValue(group.groupDescription)
         groupReference.child("longitude").setValue(group.longitude)
         groupReference.child("latitude").setValue(group.latitude)
         groupReference.child("members").setValue([uid])
         groupReference.child("isPublic").setValue(group.isPublic)
+        
+        //add group to user's groups
+        self.addGrouptoUser(userId: uid!, groupId: groupUid)
         
         return groupUid
     }
@@ -46,24 +50,26 @@ class GroupDBController{
     // method get's group information
     func getGroup(groupUid:String) -> GroupModel {
         
-        _ = ref.child("groups").child(groupUid).observe(.childAdded, with: { (snapshot) in
+        _ = ref.child("groups")
+            .queryOrderedByKey()
+            .queryEqual(toValue: groupUid)
+            .observe(.childAdded, with: { (snapshot) in
             
             let value = snapshot.value as? [String: AnyObject]
             
             if value != nil{
                 //let group = GroupModel()
                 
-                self.group.uid            = snapshot.key
-                self.group.name           = value?["name"]            as? String
-                self.group.locationName   = value?["locationName"]    as? String
-                self.group.members        = (value?["members"]        as? [String])!
-                self.group.owneruid       = value?["owneruid"]        as? String
-                self.group.isPublic       = value?["isPublic"]        as? Bool
-                self.group.latitude       = value?["latitude"]        as? String
-                self.group.longitude      = value?["longitude"]       as? String
+                self.group.uid               = snapshot.key
+                self.group.name              = value?["name"]            as? String
+                self.group.locationName      = value?["locationName"]    as? String
+                self.group.groupDescription  = value?["groupDescription"]    as? String
+                self.group.members           = (value?["members"]        as? [String])!
+                self.group.owneruid          = value?["owneruid"]        as? String
+                self.group.isPublic          = value?["isPublic"]        as? Bool
+                self.group.latitude          = value?["latitude"]        as? String
+                self.group.longitude         = value?["longitude"]       as? String
                 
-                //print(self.group.locationName)
-                //self.poplateSingleFriend(key: snapshot.key, value: value!)
             }
             
         }) { (error) in
@@ -138,5 +144,7 @@ class GroupDBController{
         }
     
     }
+    
+ 
 
 }

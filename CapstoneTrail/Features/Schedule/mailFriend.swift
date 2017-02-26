@@ -164,15 +164,6 @@ class mailFriend: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         
     }
     
-    func processdata(){
-        
-        print(friendHash)
-        
-        //refreshing table after populating collection
-        self.friendListTableView.reloadData()
-        
-    }
-    
     //Appending friendship to friend collection
     func poplateSingleFriend(key: String, value: [String: AnyObject]){
         
@@ -188,8 +179,8 @@ class mailFriend: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             firendEmail.add(email)
             firenduid.add(key)
             
-            
-            self.processdata()
+            //refreshing table after populating collection
+            self.friendListTableView.reloadData()
         }
     }
     

@@ -31,6 +31,7 @@
 		449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */; };
 		449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFD41E58758900B84118 /* DashBoardViewController.swift */; };
 		44F136721E62087600E3747C /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F136711E62087600E3747C /* UserProfileViewController.swift */; };
+		44F136741E62277500E3747C /* GroupListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F136731E62277500E3747C /* GroupListViewCell.swift */; };
 		65E7EEE2D0A127F42608855C /* Pods_CapstoneTrail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FA64D3EB2D622B0A7EC696 /* Pods_CapstoneTrail.framework */; };
 		A900F3511E4A075A00556D79 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A900F3501E4A075A00556D79 /* MapKit.framework */; };
 		A9FB931E1E4A0BBA0053F6E3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A9FB931D1E4A0BBA0053F6E3 /* README.md */; };
@@ -84,6 +85,7 @@
 		449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		449ACFD41E58758900B84118 /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		44F136711E62087600E3747C /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		44F136731E62277500E3747C /* GroupListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupListViewCell.swift; path = HikeGroup/GroupListViewCell.swift; sourceTree = "<group>"; };
 		85BDD1C74E4267286E511B7F /* Pods-CapstoneTrailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.debug.xcconfig"; sourceTree = "<group>"; };
 		93C0CBAFEF495B65F5778885 /* Pods-CapstoneTrail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.debug.xcconfig"; sourceTree = "<group>"; };
 		A900F3501E4A075A00556D79 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -137,6 +139,7 @@
 				443DB8D81E52356200F90C17 /* JoinAppInvitation.swift */,
 				449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */,
 				447F49A01E5AC4BE0028282D /* GroupProfileViewController.swift */,
+				44F136731E62277500E3747C /* GroupListViewCell.swift */,
 			);
 			name = HikeGroup;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				44385C011E5BCFE10095F2B0 /* CustomTableViewCell.swift in Sources */,
 				44385C0A1E5CE3430095F2B0 /* ScheduleListController.swift in Sources */,
 				44385C0E1E5CF27E0095F2B0 /* ScheduleProfileController.swift in Sources */,
+				44F136741E62277500E3747C /* GroupListViewCell.swift in Sources */,
 				446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */,
 				447F49A11E5AC4BE0028282D /* GroupProfileViewController.swift in Sources */,
 				449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */,

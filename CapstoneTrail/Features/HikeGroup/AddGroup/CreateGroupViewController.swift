@@ -15,10 +15,11 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate  {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var groupVisibility: UISegmentedControl!
     @IBOutlet weak var groupNameTextField: UITextField!
+    @IBOutlet weak var groupDescriptionTextView: UITextView!
     
     
     var currentLocation = "Undefined Location"
-    var lat:String = ""
+    var lat:String  = ""
     var long:String = ""
     
     // instantiating the location manager
@@ -27,6 +28,11 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate  {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        // description textView border properties
+        groupDescriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
+        groupDescriptionTextView.layer.borderWidth = 1.0;
+        groupDescriptionTextView.layer.cornerRadius = 5.0;
         
         // default location text
         locationLabel.text = currentLocation
@@ -63,7 +69,19 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate  {
             self.displayMessage(ttl: "Error", msg: "Please fill empty labels")
             return
         }
+
         
+        // get group description from UITextView
+        guard let groupDescription:String = groupDescriptionTextView.text else {
+            self.displayMessage(ttl: "Group Error!", msg: "Group description field is empty")
+            return
+        }
+        
+        if (groupDescription.isEmpty) {
+            self.displayMessage(ttl: "Error", msg: "Please fill group description label")
+            return
+        }
+
         // instantiating group db data model
         let groupdDb = GroupDBController()
         let group1 = GroupModel()
@@ -76,20 +94,23 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate  {
         
         group1.name = groupName
         group1.locationName = currentLocation
-        group1.longitude = self.long
-        group1.latitude  = self.lat
-        group1.isPublic  = isPublic
+        group1.longitude    = self.long
+        group1.latitude     = self.lat
+        group1.isPublic     = isPublic
+        group1.groupDescription = groupDescription
         
         // Creates hiking group
         let groupId = groupdDb.CreateGroup(group: group1)
         
-        
-        
+        // launch group profile controller
         let myVC = storyboard?.instantiateViewController(withIdentifier: "GroupProfile") as! GroupProfileViewController
+        myVC.GroupName    = group1.name!
+        myVC.GroupDescrip = group1.groupDescription!
         myVC.locationName = currentLocation
-        myVC.GroupName = group1.name!
-        myVC.memberCount = 1
-        myVC.groupid = groupId
+        myVC.memberCount  = 1
+        myVC.groupid      = groupId
+        
+
         
         // for slide view, without navigation
         //self.present(myVC, animated: true, completion: nil)
