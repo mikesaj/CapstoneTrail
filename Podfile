@@ -5,16 +5,17 @@ target 'CapstoneTrail' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'Firebase'
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Database'
-  pod 'FBSDKCoreKit'
-  pod 'FBSDKShareKit'
-  pod 'FBSDKLoginKit'
-  pod 'GoogleSignIn'
-
   # Pods for CapstoneTrail
+
+pod ‘Firebase/Database’
+pod ‘Firebase/Auth’
+pod ‘Firebase/Storage’
+
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
+pod 'FBSDKLoginKit'
+
+pod 'GoogleSignIn'
 
   target 'CapstoneTrailTests' do
     inherit! :search_paths

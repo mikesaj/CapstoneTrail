@@ -10,6 +10,8 @@ import UIKit
 
 class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
     
+    var friend_uid: String! = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,10 +26,20 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         // Create Tab one
         // Tab Bar Item: Profile
         
+        //var profileTab = SignInStoryboard.instantiateViewController(withIdentifier: "Profile") as! SettingsController
+        
+        
         let SignInStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
-        let profileTab : AnyObject! = SignInStoryboard.instantiateViewController(withIdentifier: "Profile")
+        
+        let profileTab = (SignInStoryboard.instantiateViewController(withIdentifier: "Profile")) as! SettingsController
+        
+        if friend_uid != nil {
+            profileTab.friend_uid = friend_uid
+        }
+        
         let tabOneBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
         let uprofileTab = profileTab as! UIViewController
+
         uprofileTab.tabBarItem = tabOneBarItem
         
         
@@ -35,12 +47,12 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         // Tab Bar Item: Groups
         let HikeGroupStoryboard = UIStoryboard(name: "HikeGroup", bundle: nil)
         let HikeGroupTab : AnyObject! = HikeGroupStoryboard.instantiateViewController(withIdentifier: "GroupsNavController")
-        let tabtwoBarItem = UITabBarItem(title: "Friends", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
+        let tabtwoBarItem = UITabBarItem(title: "Groups", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
         let GroupTab = HikeGroupTab as! UIViewController
         GroupTab.tabBarItem = tabtwoBarItem
         
         
-        // Create Tab two
+        // Create Tab one
         // Tab Bar Item: Groups
         let JoinAppTab : AnyObject! = HikeGroupStoryboard.instantiateViewController(withIdentifier: "HikerInvitation")
         let invitationBarItem = UITabBarItem(title: "Invite", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
@@ -58,7 +70,7 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
 
         
         
-        
+        /*
         // Create Tab three
         // Tab Bar Item: bookmarks (demo)
         let tab3 = TabTwoViewController()
@@ -66,65 +78,65 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         //UITabBarItem(tabBarSystemItem: .bookmarks, tag: 2)
         //let tabTwoBarItem2 = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 2)
         tab3.tabBarItem = tabTwoBarItem2
+        */
+
+        // Create Tab People
+        // Tab Bar Item: People
+        let PeopleStoryboard = UIStoryboard(name: "People", bundle: nil)
+        let peolpeTab : AnyObject! = PeopleStoryboard.instantiateViewController(withIdentifier: "People")
+        let tabThreeBarItem1 = UITabBarItem(title: "Add Friends", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
         
+        let uPeopleTab = peolpeTab as! UIViewController
+        uPeopleTab.tabBarItem = tabThreeBarItem1
         
+        //Friend Tab
+        let FriendStoryboard = UIStoryboard(name: "Friend", bundle: nil)
+        let friendTab : AnyObject! = FriendStoryboard.instantiateViewController(withIdentifier: "Friend")
+        let tabFourBarItem = UITabBarItem(title: "My Friends", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
         
+        let uFriendTab = friendTab as! UIViewController
+        uFriendTab.tabBarItem = tabFourBarItem
         
+        //WalkingSchedule Tab
+        let walkingScheduleTboard = UIStoryboard(name: "WalkingSchedule", bundle: nil)
+        let walkingScheduleTab : AnyObject! = walkingScheduleTboard.instantiateViewController(withIdentifier: "WalkingSchedule")
+        let tabFiveBarItem = UITabBarItem(title: "Walking Schedules", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
         
+        let uWalkingScheduleTab = walkingScheduleTab as! UIViewController
+        uWalkingScheduleTab.tabBarItem = tabFiveBarItem
+        
+        // Main DashBoard Tabs
         //Add to tabBarController bottom menu
-        self.viewControllers = [uprofileTab, GroupTab, invitationTab, SchedulTab] // , tab3
-        
+        self.viewControllers =
+            [uprofileTab, GroupTab, SchedulTab, uFriendTab, uPeopleTab, invitationTab, SchedulTab]// invitationTab, uWalkingScheduleTab
     }
     
     // UITabBarControllerDelegate method
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        //print("Selected \(viewController.title!)")
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-}
-
-class TabOneViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor.blue
-        self.title = "Tab 1"
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-}
-
-class TabTwoViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.red
         self.title = "Friend"
+            
+        let tabBarIndex = tabBarController.selectedIndex
+        
+        switch tabBarIndex {
+            
+            case 0:
+                if self.friend_uid != nil{
+                    //setting profile to logged user profile
+                    let profile = viewController as! SettingsController
+                    profile.friend_uid = nil
+                    profile.populateUserInfo()
+                    self.friend_uid = nil
+                }
+                break
+                
+                
+            default:
+                break
+        }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
+

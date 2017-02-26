@@ -188,7 +188,7 @@ class mailFriend: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     func populateFriends(){
         
         //getting logged user's uid
-        let userID = "DPpwfIDhAGXpFjFqI3BytLMrAA73" //"FIRAuth.auth()?.currentUser?.uid
+        let userID = FIRAuth.auth()?.currentUser?.uid
         
         //getting friendships where the logged user was the sender
         ref.child("friends").queryOrdered(byChild: "sender_uid").queryEqual(toValue: userID).observe(.childAdded, with: { (snapshot) in

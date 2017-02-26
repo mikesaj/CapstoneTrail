@@ -85,13 +85,7 @@ class HikeGroupViewController: UIViewController, UITableViewDataSource, UITableV
         }
 
     }
- 
-
-    
-    
-    
-    
-    
+     
     // Firebase reference instance
     let ref = FIRDatabase.database().reference()
     

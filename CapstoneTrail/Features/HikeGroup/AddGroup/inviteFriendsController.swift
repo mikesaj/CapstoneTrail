@@ -238,13 +238,3 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
 }
 
 
-//Represents the friends collection of the database
-class Friend: NSObject {
-    
-    var uid: String?
-    var sender_uid: String?
-    var receiver_uid: String?
-    var isAccepted: Bool?
-    var isBlocked: Bool?
-}
-

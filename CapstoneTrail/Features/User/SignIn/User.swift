@@ -22,7 +22,7 @@ class User {
     var name: String?
     var profileImageUrl: String?
     var friendship_uid: String?
-
+    var isFriendRequested: Bool?
 
     
     // User preference to store user login state
