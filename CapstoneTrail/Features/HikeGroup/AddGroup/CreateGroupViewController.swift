@@ -69,7 +69,6 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate  {
             self.displayMessage(ttl: "Error", msg: "Please fill empty labels")
             return
         }
-
         
         // get group description from UITextView
         guard let groupDescription:String = groupDescriptionTextView.text else {
@@ -109,8 +108,6 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate  {
         myVC.locationName = currentLocation
         myVC.memberCount  = 1
         myVC.groupid      = groupId
-        
-
         
         // for slide view, without navigation
         //self.present(myVC, animated: true, completion: nil)

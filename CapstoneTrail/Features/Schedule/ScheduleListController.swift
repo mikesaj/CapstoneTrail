@@ -50,7 +50,6 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         locationUid.add("WestMount Walks")
 
         self.hikeScheduleListTableView.reloadData()
-        
         //self.navigationController?.popToRootViewController(animated: true)
     }
 
@@ -125,7 +124,6 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
             coming.uid = ""
         }
     }
-    
     
     //Appending schedule to object collection
     func poplateSingleSchedule(key: String, value: [String: AnyObject]){

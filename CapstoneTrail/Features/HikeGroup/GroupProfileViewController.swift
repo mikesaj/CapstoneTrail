@@ -37,7 +37,6 @@ class GroupProfileViewController: UIViewController {
     func populateUI(){
         
         self.title = self.GroupName
-
         var memberS = "Member"
         if memberCount > 1 {
             memberS += "s"
@@ -46,6 +45,7 @@ class GroupProfileViewController: UIViewController {
         memberNum.text = String(memberCount) + " " +  memberS
         groupLocation.text = locationName;
         groupDescrirption.text = GroupDescrip
+
     }
     
     

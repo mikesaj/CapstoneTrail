@@ -223,7 +223,7 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
                 }) { (error) in
                     print(error.localizedDescription)
                 }
-                
+
             }
             
         }) { (error) in

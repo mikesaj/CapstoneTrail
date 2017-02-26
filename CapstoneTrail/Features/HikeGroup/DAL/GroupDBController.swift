@@ -61,15 +61,16 @@ class GroupDBController{
                 //let group = GroupModel()
                 
                 self.group.uid               = snapshot.key
-                self.group.name              = value?["name"]            as? String
-                self.group.locationName      = value?["locationName"]    as? String
-                self.group.groupDescription  = value?["groupDescription"]    as? String
-                self.group.members           = (value?["members"]        as? [String])!
-                self.group.owneruid          = value?["owneruid"]        as? String
-                self.group.isPublic          = value?["isPublic"]        as? Bool
-                self.group.latitude          = value?["latitude"]        as? String
-                self.group.longitude         = value?["longitude"]       as? String
+                self.group.name              = value?["name"]               as? String
+                self.group.locationName      = value?["locationName"]       as? String
+                self.group.groupDescription  = value?["groupDescription"]   as? String
+                self.group.members           = (value?["members"]           as? [String])!
+                self.group.owneruid          = value?["owneruid"]           as? String
+                self.group.isPublic          = value?["isPublic"]           as? Bool
+                self.group.latitude          = value?["latitude"]           as? String
+                self.group.longitude         = value?["longitude"]          as? String
                 
+
             }
             
         }) { (error) in
@@ -103,6 +104,7 @@ class GroupDBController{
 
                 // add group to the user's list
                 self.addGrouptoUser(userId: userId, groupId: groupId)
+
             }
             
         }) { (error) in
@@ -145,6 +147,5 @@ class GroupDBController{
     
     }
     
- 
 
 }

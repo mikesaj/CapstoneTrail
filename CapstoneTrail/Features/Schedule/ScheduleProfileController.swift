@@ -21,7 +21,10 @@ class ScheduleProfileController: UIViewController {
         super.viewDidLoad()
         
         self.routeName.text = scheduleTitle
-        print(self.uid)        
+        print(self.uid)
+        
+        
+>>>>>>> master
     }
 
 
