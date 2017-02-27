@@ -12,23 +12,26 @@ import Firebase
 import FBSDKLoginKit
 import GoogleSignIn
 
-class SettingsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingsController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
     var friend_uid: String! = nil
-
     // Declares a table view in the update profile layout-view
-    @IBOutlet weak var lblEmail: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var txtName: UITextField!
+    @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var btnUpdateProfile: UIButton!
+    @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var lblName: UILabel!
-    
-    // table elemets
-    var settingsTitle = ["Update Profile", "Change Avatar", "Delete my account"]
+    @IBOutlet weak var lblEmail: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.txtName.isHidden = true
+        self.btnSave.isHidden = true
+        self.btnCancel.isHidden = true
+        
         self.profileImageView.layer.cornerRadius = 68
         self.profileImageView.layer.masksToBounds = true
         
@@ -37,6 +40,25 @@ class SettingsController: UIViewController, UITableViewDelegate, UITableViewData
         populateUserInfo()
     }
     
+    @IBAction func btnUpdateProfile_Click(_ sender: AnyObject) {
+        self.profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        
+        self.txtName.isHidden = false
+        self.btnSave.isHidden = false
+        self.btnCancel.isHidden = false
+    }
+    
+    @IBAction func btnCancel_Click(_ sender: AnyObject) {
+        self.profileImageView.gestureRecognizers?.removeAll()
+        
+        self.txtName.isHidden = true
+        self.btnSave.isHidden = true
+        self.btnCancel.isHidden = true
+    }
+    
+    @IBAction func btnSave_Click(_ sender: AnyObject) {
+        updateAccount()
+    }
     func setupNavagationBar()
     {
         let navItem = UINavigationItem(title: "");
@@ -96,7 +118,6 @@ class SettingsController: UIViewController, UITableViewDelegate, UITableViewData
                     userReference.child("email").setValue(email)
                     userReference.child("profileImageUrl").setValue(profileImageUrl)
                     
-                    self.setupNavagationBar()
                     self.setUserInfo(userName: name, email: email)
                     
                     let url = profileImageUrl as! String?
@@ -119,9 +140,13 @@ class SettingsController: UIViewController, UITableViewDelegate, UITableViewData
         
         if friend_uid != nil {
             uid = friend_uid
+            
+            btnUpdateProfile.isHidden = true
         }
         else{
             self.checkFriendRequests(userID: uid)
+            
+            btnUpdateProfile.isHidden = false
         }
         
         if friend_uid == nil && GIDSignIn.sharedInstance().currentUser?.profile.email != nil{
@@ -149,6 +174,33 @@ class SettingsController: UIViewController, UITableViewDelegate, UITableViewData
     func setUserInfo(userName: String?, email: String?){
         self.lblName.text = userName
         self.lblEmail.text = email
+        self.txtName.text = userName
+    }
+    
+    func updateAccount(){
+        let user = FIRAuth.auth()?.currentUser
+        
+        /*user?.updateEmail(emailTextField.text!, completion: { (error) in
+         if  error != nil {
+         print("Erro to try to update account")
+         }else{
+         }
+         })*/
+        
+        guard let uid = user?.uid else{
+            return;
+        }
+        
+        let ref = FIRDatabase.database().reference()
+        let usersReference = ref.child("users").child(uid)
+        
+        usersReference.child("name").setValue(self.txtName.text)
+        self.lblName.text = self.txtName.text
+        
+        let alert = UIAlertController(title: "Update account", message: "Account was updated succefully", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     func deleteAccount(){
@@ -156,7 +208,7 @@ class SettingsController: UIViewController, UITableViewDelegate, UITableViewData
         let alert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
         
         let clearAction = UIAlertAction(title: "Yes", style: .destructive) { (alert: UIAlertAction!) -> Void in
-        
+            
             self.deleteUserReferences()
             
             let user = FIRAuth.auth()?.currentUser
@@ -244,35 +296,66 @@ class SettingsController: UIViewController, UITableViewDelegate, UITableViewData
             print(error.localizedDescription)
         }
     }
-
     
-    // The method determines the amount of rows in a table
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingsTitle.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func handleSelectProfileImageView(){
         
-        let cell = UITableViewCell()
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
         
-        // get table cell title by row id
-        cell.textLabel?.text = settingsTitle[indexPath.row]
-        
-        return cell
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
+        
+        var selectedImage: UIImage?
+        
+        if let editImgae = info["UIImagePickerControllerEditedImage"]  {
+            
+            selectedImage = editImgae as? UIImage
+        }
+        else if let originalImage = info["UIImagePickerControllerOriginalImage"]  {
+            
+            selectedImage = originalImage as? UIImage
+        }
+        
+        if let imagePicked = selectedImage{
+            profileImageView.image = imagePicked
+            
+            let user = FIRAuth.auth()?.currentUser
+            
+            guard let uid = user?.uid else{
+                return;
+            }
+            
+            let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(uid).jpg")
+            
+            if let uploadData = UIImageJPEGRepresentation(self.profileImageView.image!, 0.1){
+                
+                storageRef.put(uploadData, metadata: nil, completion: { (metada, error) in
+                    
+                    if error != nil{
+                        print(error)
+                        return
+                    }
+                    
+                    if let profileImageUrl = metada?.downloadURL()?.absoluteString {
+                        
+                        let ref = FIRDatabase.database().reference()
+                        let usersReference = ref.child("users").child(uid)
+                        
+                        usersReference.child("profileImageUrl").setValue(profileImageUrl)
+                        
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                    
+                })
+            }
+        }
+    }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "SettingCellController", sender: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
