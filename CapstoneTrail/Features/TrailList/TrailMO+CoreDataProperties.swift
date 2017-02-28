@@ -16,7 +16,7 @@ extension TrailMO {
         return NSFetchRequest<TrailMO>(entityName: "Trail");
     }
 
-    @NSManaged public var id: Int32
+    @NSManaged public var id: NSNumber
     @NSManaged public var area: String?
     @NSManaged public var coordinates: NSObject?
     @NSManaged public var length: Double

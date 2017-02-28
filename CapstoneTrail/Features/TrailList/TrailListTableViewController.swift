@@ -10,16 +10,78 @@ import UIKit
 import CoreData
 
 
-class TrailListTableViewController: UITableViewController {
+class TrailListTableViewController: UITableViewController, UISearchBarDelegate {
 
     // MARK: Variables
     var trails: [NSManagedObject] = []
+    var trailsSearched: [NSManagedObject] = []
+    
+    //search bar for being added to table view
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    func createSearchbar(){
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        searchController.dimsBackgroundDuringPresentation = false
+        tableView.tableHeaderView = searchController.searchBar
+    }
+    
+    //method responsible for handling searches
+    func searchBar(_ searchBar: UISearchBar, textDidChange textSearched: String)
+    {
+        //if there is no search, table gets the initial data
+        if textSearched == ""{
+            self.trailsSearched = self.trails
+        }
+        else {
+            
+            self.trailsSearched.removeAll()
+            
+            for t in self.trails {
+                
+                //search for street name
+                let streetName = t.value(forKey: "street") as! String
+                if streetName.lowercased().contains(textSearched.lowercased()) == true {
+                    self.trailsSearched.append(t)
+                    continue
+                }
+                
+                //search for status
+                let status = t.value(forKey: "status") as! String
+                if status.lowercased().contains(textSearched.lowercased()) == true {
+                    self.trailsSearched.append(t)
+                    continue
+                }
+                
+                //search for email
+                let surface = t.value(forKey: "surface") as! String
+                if surface.lowercased().contains(textSearched.lowercased()) == true {
+                    self.trailsSearched.append(t)
+                }
+            }
+        }
+        
+        //refresh the table
+        self.tableView.reloadData()
+    }
+    
+    
+    //method responsible for canceling searches
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        //table turns to the initial data
+        self.trailsSearched = self.trails
+        //refresh the table
+        self.tableView.reloadData()
+    }
+    
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
+        //adding searchbar to table view
+        createSearchbar()
     }
-
 
     override func viewWillAppear(_ animated: Bool) {
 
@@ -32,6 +94,7 @@ class TrailListTableViewController: UITableViewController {
 
         do {
             trails = try managedContext.fetch(fetchRequest)
+            trailsSearched = trails
         } catch let error as NSError {
             debugPrint("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -48,7 +111,7 @@ class TrailListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return trails.count
+        return trailsSearched.count
     }
 
 
@@ -58,7 +121,8 @@ class TrailListTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TrailTableViewCell", for: indexPath) as? TrailTableViewCell else {
             fatalError("The dequeued cell is not an instance of TrailTableViewCell")
         }
-        let trail = trails[indexPath.row]
+        
+        let trail = trailsSearched[indexPath.row]
 
         // Shorten strings
         let areaName = trail.value(forKey: "area") as! String
@@ -67,6 +131,7 @@ class TrailListTableViewController: UITableViewController {
         let streetName = trail.value(forKey: "street") as! String
         let length = trail.value(forKey: "length") as! Double
         let trailType = trail.value(forKey: "pathType") as! String
+        let s = trail.value(forKey: "surface") as! String
 
         // Assign values
         cell.areaLogoImage.image = UIImage(named: "Area\(areaName)")
@@ -95,7 +160,7 @@ class TrailListTableViewController: UITableViewController {
                     fatalError("The selected cell is not being displayed by the table")
                 }
 
-                let selectedTrail = trails[indexPath.row]
+                let selectedTrail = trailsSearched[indexPath.row]
                 trailDetailViewController.trail = selectedTrail
 
             default:

@@ -22,7 +22,7 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate {
 
     // MARK: Variables
     var trail: NSManagedObject!
-    var id: Int32!
+    var id: NSNumber!
     var area: String!
     var street: String!
     var status: String!
@@ -64,7 +64,7 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate {
             fatalError("No TrailMO retrieved")
         }
         
-        id = trail.value(forKey: "id") as! Int32
+        id = trail.value(forKey: "id") as! NSNumber
         area = trail.value(forKey: "area") as! String
         street = trail.value(forKey: "street") as! String
         status = trail.value(forKey: "status") as! String
