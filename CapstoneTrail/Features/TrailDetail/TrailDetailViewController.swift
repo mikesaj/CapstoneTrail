@@ -9,17 +9,19 @@
 import UIKit
 import MapKit
 import CoreData
+import Firebase
 
-
-class TrailDetailViewController: UIViewController, MKMapViewDelegate {
+class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate {
     
     // MARK: Properties
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var areaLabel: UILabel!
     @IBOutlet weak var trailIDLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var txtDateTrail: UITextField!
     
-
+    let datePicker = UIDatePicker()
+    
     // MARK: Variables
     var trail: NSManagedObject!
     var id: NSNumber!
@@ -41,6 +43,8 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate {
         mapView.mapType = .standard
         mapView.delegate = self
         
+        setupDatePicker()
+        
         // Assign TrailMO values to local variables
         assignTrailData()
         // Get CLLocationCoordinate2D list
@@ -56,6 +60,56 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate {
         detailLabel.text = String(format: detailStr, street.capitalized, status.capitalized, surface.lowercased(), length, travelTime)
     }
     
+    func setupDatePicker()
+    {
+        txtDateTrail.delegate = self
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolbar.setItems([doneButton], animated: false)
+        
+        txtDateTrail.inputAccessoryView = toolbar
+    }
+    
+    func donePressed(){
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .short
+        txtDateTrail.text = formatter.string(for: datePicker.date)
+        self.view.endEditing(true)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let currentDate: Date = Date()
+        self.datePicker.minimumDate = currentDate
+        
+        self.datePicker.datePickerMode = UIDatePickerMode.dateAndTime
+        textField.inputView = datePicker
+    }
+    
+    @IBAction func btnAdd_Click(_ sender: AnyObject) {
+        if txtDateTrail.text == ""{
+            self.displayMessage(ttl: "Error", msg: "Please, choose a date")
+            return 
+        }
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        let ref = FIRDatabase.database().reference()
+        
+        let walkingScheduleReference = ref.child("walkingSchedules").child(userID!).child(UUID().uuidString)
+        walkingScheduleReference.child("date").setValue(self.txtDateTrail.text)
+        walkingScheduleReference.child("trail").setValue(self.street)
+        
+        self.displayMessage(ttl: "Warning", msg: "Trail was saved successfully")
+    }
+    
+    func displayMessage(ttl: String, msg: String){
+        let alert = UIAlertController(title: ttl, message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     // Assign TrailMO values to variables
     func assignTrailData() {

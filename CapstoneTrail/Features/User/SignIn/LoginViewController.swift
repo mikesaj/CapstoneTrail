@@ -100,13 +100,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         let storyboard = UIStoryboard(name: "DashBoard", bundle: nil)
         let vc : AnyObject! = storyboard.instantiateViewController(withIdentifier: "DashBoardViewController")
         self.show(vc as! UIViewController, sender: vc)
-        
-        print("Switched to DashBoard View!!")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        GIDSignIn().signOut()
         FBSDKLoginManager().logOut()
         
         setupFacebookButtons()

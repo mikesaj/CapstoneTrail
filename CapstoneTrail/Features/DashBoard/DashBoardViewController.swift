@@ -45,7 +45,7 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         
         // Create Tab two
         // Tab Bar Item: Groups
-        let HikeGroupStoryboard = UIStoryboard(name: "HikeGroup", bundle: nil)
+        /*let HikeGroupStoryboard = UIStoryboard(name: "HikeGroup", bundle: nil)
         let HikeGroupTab : AnyObject! = HikeGroupStoryboard.instantiateViewController(withIdentifier: "GroupsNavController")
         let tabtwoBarItem = UITabBarItem(title: "Groups", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
         let GroupTab = HikeGroupTab as! UIViewController
@@ -79,7 +79,7 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         //let tabTwoBarItem2 = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 2)
         tab3.tabBarItem = tabTwoBarItem2
         */
-
+*/
         // Create Tab People
         // Tab Bar Item: People
         let PeopleStoryboard = UIStoryboard(name: "People", bundle: nil)
@@ -107,17 +107,16 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         
         // Main DashBoard Tabs
         //Add to tabBarController bottom menu
-        self.viewControllers =
-            [uprofileTab, GroupTab, SchedulTab, uFriendTab, uPeopleTab, invitationTab, SchedulTab]// invitationTab, uWalkingScheduleTab
+        //self.viewControllers =
+            //[uprofileTab, GroupTab, SchedulTab, uFriendTab, uPeopleTab, invitationTab, SchedulTab]// invitationTab, uWalkingScheduleTab
+        
+        self.viewControllers = [uprofileTab, uFriendTab, uPeopleTab, uWalkingScheduleTab]// invitationTab, uWalkingScheduleTab
     }
     
+    func handleLogout(){}
     // UITabBarControllerDelegate method
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         
-        // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor.red
-        self.title = "Friend"
-            
         let tabBarIndex = tabBarController.selectedIndex
         
         switch tabBarIndex {

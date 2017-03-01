@@ -131,7 +131,6 @@ class TrailListTableViewController: UITableViewController, UISearchBarDelegate {
         let streetName = trail.value(forKey: "street") as! String
         let length = trail.value(forKey: "length") as! Double
         let trailType = trail.value(forKey: "pathType") as! String
-        let s = trail.value(forKey: "surface") as! String
 
         // Assign values
         cell.areaLogoImage.image = UIImage(named: "Area\(areaName)")

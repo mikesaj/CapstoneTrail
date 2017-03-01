@@ -36,7 +36,7 @@ class SettingsController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.profileImageView.layer.masksToBounds = true
         
         setupNavagationBar()
-        
+    
         populateUserInfo()
     }
     
@@ -61,6 +61,8 @@ class SettingsController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     func setupNavagationBar()
     {
+        self.navBar.items?.removeAll()
+        
         let navItem = UINavigationItem(title: "");
         
         let logOutItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))

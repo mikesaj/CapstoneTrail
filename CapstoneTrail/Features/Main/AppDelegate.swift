@@ -32,10 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                                 .application(application, didFinishLaunchingWithOptions: launchOptions)
 
         // Customize navigation bar
-        let navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.barTintColor = UIColor.blue()
-        navigationBarAppearance.tintColor = UIColor.white
-        navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        //let navigationBarAppearance = UINavigationBar.appearance()
+        //navigationBarAppearance.barTintColor = UIColor.blue()
+        //navigationBarAppearance.tintColor = UIColor.white
+        //navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
 
         // MARK: Populate trail data on CoreData
@@ -162,12 +162,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
             print("Successfully logged into Firebase with Google", uid)
             
-
-
-             self.window = UIWindow(frame: UIScreen.main.bounds)
-             self.window?.makeKeyAndVisible()
-             self.window?.rootViewController = UINavigationController(rootViewController: DashBoardViewController()
-)
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.makeKeyAndVisible()
+            self.window?.rootViewController = UINavigationController(rootViewController: DashBoardViewController())
         })
     }
 
