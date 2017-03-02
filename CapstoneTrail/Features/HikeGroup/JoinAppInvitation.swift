@@ -90,8 +90,8 @@ public class JoinAppInvitation: UIViewController, MFMailComposeViewControllerDel
     }
     
     override public func viewDidLoad() {
-        print("Initializer works " + locationName)
         super.viewDidLoad()
+        super.title = "Invite Friends"
     }
 }
 

@@ -135,7 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         return handled;
     }
 
-
+    // Google sign-in
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
 
         if let err = error {
@@ -166,8 +166,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
              self.window = UIWindow(frame: UIScreen.main.bounds)
              self.window?.makeKeyAndVisible()
-             self.window?.rootViewController = UINavigationController(rootViewController: DashBoardViewController()
-)
+             self.window?.rootViewController = UINavigationController(rootViewController: DashBoardViewController())
         })
     }
 

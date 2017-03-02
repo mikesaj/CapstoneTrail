@@ -147,5 +147,108 @@ class GroupDBController{
     
     }
     
+    // delete user id from group's document
+    func removeMemberFromGroup(groupUid:String, userId:String) {
+        
+        _ = ref.child("groups")
+            .queryOrderedByKey()
+            .queryEqual(toValue: groupUid)
+            .observe(.childAdded, with: { (snapshot) in
+                
+                let value = snapshot.value as? [String: AnyObject]
+                
+                if value != nil{
+                    
+                    var n = 0
+                    
+                    var members = (value?["members"] as? [String])!
+                    for member in members {
+                        
+                        if member == userId {
+                            members.remove(at: n)
+                            
+                            // remove member from group list
+                            self.ref.child("groups").child(groupUid).child("members").setValue(members);
+                            
+                            // remove group from user's list
+                            self.removeGroupFromMember(groupUid: groupUid, userId: userId)
+                        }
+                        n = n+1
+                    }
+                    
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
+        }
+        
+    }
+    // delete a hike group
+    func deleteGroup(groupUid:String) {
+        
+        _ = ref.child("groups")
+            .queryOrderedByKey()
+            .queryEqual(toValue: groupUid)
+            .observe(.childAdded, with: { (snapshot) in
+                
+                let value = snapshot.value as? [String: AnyObject]
+                
+                if value != nil{
+                    
+                    let members = (value?["members"] as? [String])!
+                    for memberId in members {
+
+                        // remove group from user's list
+                        print("\(memberId) removed!!")
+                        self.removeGroupFromMember(groupUid: groupUid, userId: memberId)
+                    }
+                    
+                 // delete group structure
+                 self.ref.child("groups").child(groupUid).removeValue()
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
+        }
+        
+    }
+    
+    
+    // delete group id from user's document
+    func removeGroupFromMember(groupUid:String, userId:String) {
+        
+        _ = ref.child("users")
+            .queryOrderedByKey()
+            .queryEqual(toValue: userId)
+            .observe(.childAdded, with: { (snapshot) in
+                
+                let value = snapshot.value as? [String: AnyObject]
+                
+                if  ((value?["groups"]?.count)!) > 0 {
+                    
+                    //self.ref.child("users").child(userId).child("groups").child(groupUid).removeValue()
+                    
+                    var n = 0
+                    
+                    var groups = (value?["groups"] as? [String])!
+                    for group in groups {
+                        
+                        if group == groupUid {
+                            groups.remove(at: n)
+                            
+                            // remove member from group list
+                            self.ref.child("users").child(userId).child("groups").setValue(groups);
+                            
+                        }
+                        n = n+1
+                    }
+                    
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
+        }
+        
+    }
 
 }

@@ -12,7 +12,7 @@ class CustomTableViewCell: UITableViewCell {
     
     @IBOutlet weak var friendName: UILabel!
     //@IBOutlet weak var friendEmail: UILabel!
-    @IBOutlet weak var inviteButton: UIButton!
+    @IBOutlet weak var addToGroupButton: UIButton!
     
 
 

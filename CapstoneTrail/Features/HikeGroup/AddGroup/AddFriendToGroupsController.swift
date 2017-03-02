@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class inviteFriendsController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AddFriendToGroupsController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     @IBOutlet weak var friendListTableView: UITableView!
@@ -17,7 +17,9 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
     var firendName: NSMutableArray! = NSMutableArray()
     var firenduid:  NSMutableArray! = NSMutableArray()
     
-    var groupid = "default"
+    var groupid      = "default"
+    var groupOwnerid = ""
+    var GroupMembers : [String] = []
     
     // Database reference
     let ref = FIRDatabase.database().reference()
@@ -33,9 +35,12 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
     let groupdDb = GroupDBController()
     
     override func viewDidLoad() {
-        fetchUsers()
-        
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchUsers()
+        super.viewWillAppear(animated) // No need for semicolon
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,26 +58,47 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
-
-        cell.friendName.text = self.firendName.object(at: indexPath.row) as? String
-        cell.inviteButton.tag = indexPath.row
-        cell.inviteButton.addTarget(self, action: #selector(logAction), for: .touchUpInside)
+        let idOfFriend   = self.firenduid.object(at: indexPath.row) as? String
+        let nameOfFriend = self.firendName.object(at: indexPath.row) as? String
+        
+        cell.friendName.text = nameOfFriend
+        cell.addToGroupButton.tag = indexPath.row
+        
+        /* Generates friends list */
+        // highlights users already in group
+        if GroupMembers.contains(idOfFriend!) {
+            
+            cell.addToGroupButton.setTitle("Added", for: UIControlState.normal)
+            cell.addToGroupButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+            cell.addToGroupButton.isEnabled = false
+        }
+        else {
+            // highlights users not yet in group
+            cell.addToGroupButton.addTarget(self, action: #selector(logAction), for: .touchUpInside)
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
     
-        let titleString = self.firendName.object(at: indexPath.row) as? String
+        let titleString  = self.firendName.object(at: indexPath.row) as? String
+        let idOfFriend   = self.firenduid.object(at: indexPath.row) as? String
         
         // redirect to storyboard
         let myVC = storyboard?.instantiateViewController(withIdentifier: "showView") as! ViewFriendViewController
-        myVC.titleString = titleString
+        myVC.titleString = titleString!
+        myVC.memberId    = idOfFriend!
+        myVC.groupid     = self.groupid
+        myVC.owneruid    = self.groupOwnerid
 
-        //allows navigation appear
+        // allows navigation appear
         navigationController?.pushViewController(myVC, animated: true)
 
+        // deselect the selected cell background view.
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        //performSegue(withIdentifier: "showView", sender: self)
+        // performSegue(withIdentifier: "showView", sender: self)
     }
     
     @IBAction func logAction(sender: UIButton){
@@ -80,11 +106,11 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
         //let index = firendName[sender.tag] as! String
         let userId = firenduid[sender.tag] as! String
         
-        self.firendName.removeObject(at: sender.tag)
-        self.firenduid.removeObject (at: sender.tag)
-        
         // add user to group method
         groupdDb.addUsertoGroup(groupId: self.groupid, userId: userId)
+        
+        // new user added to group
+        GroupMembers.append(userId)
         
         // reload tableview
         self.friendListTableView.reloadData()
@@ -95,7 +121,7 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
     func fetchUsers(){
         
         //populating existing friendships
-        self.populateFriends()
+         self.populateFriends1()
         
         //getting the logged user's email
         let emailLoggedUser = FIRAuth.auth()?.currentUser?.email
@@ -145,14 +171,16 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
                         user.profileImageUrl = dictionary["profileImageUrl"] as? String
                         user.friendship_uid = friendship_uid
                         
+                        // get list of user's friends and append object's to collection
+                        if self.friendHash.contains(user.uid!) == false{
+                            self.friendHash.insert(user.uid!)
+                            
+                            self.firendName.add(user.name!)
+                            self.firenduid.add(user.uid!)
+                        
                         //refreshing table after populating collection
-                        self.firendName.add(user.name!)
-                        //self.firendemail.add(user.email!)
-                        self.firenduid.add(user.uid!)
-
-                        //Appending user object to collections
-                        self.friendListTableView.reloadData()
-                        //self.tableView.reloadData()
+                            self.friendListTableView.reloadData()
+                        }
                     }
                 }
             }
@@ -165,23 +193,24 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
     //Appending friendship to friend collection
     func poplateSingleFriend(key: String, value: [String: AnyObject]){
         
-        let name = value["name"] as? String ?? ""
+        let friend = Friend()
         
-        // if friendship is accepted
-        if !friendHash.contains(name) {
-            
-            friendHash.insert(name)
-            
-            firendName.add(name)
-            firenduid.add(key)
+        friend.uid = key
+        friend.sender_uid = value["sender_uid"] as? String
+        friend.receiver_uid = value["receiver_uid"] as? String
+        friend.isAccepted = value["isAccepted"] as? Bool
+        friend.isBlocked = value["isBlocked"] as? Bool
         
-            //refreshing table after populating collection
-            self.friendListTableView.reloadData()
-        }
+        self.friends.append(friend)
+        
     }
     
+    
     //populating logged is user's friendships
-    func populateFriends(){
+    func populateFriends1(){
+        
+        //getting logged user's uid
+        let userID = FIRAuth.auth()?.currentUser?.uid
         
         //getting friendships where the logged user was the sender
         ref.child("friends").queryOrdered(byChild: "sender_uid").queryEqual(toValue: userID).observe(.childAdded, with: { (snapshot) in
@@ -189,14 +218,13 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
             let value = snapshot.value as? [String: AnyObject]
             
             if value != nil{
-                //self.poplateSingleFriend(key: snapshot.key, value: value!)
+                
+                self.poplateSingleFriend(key: snapshot.key, value: value!)
             }
             
         }) { (error) in
             print(error.localizedDescription)
         }
-        
-        
         
         //getting friendships where the logged user was the receiver
         ref.child("friends").queryOrdered(byChild: "receiver_uid").queryEqual(toValue: userID).observe(.childAdded, with: { (snapshot) in
@@ -204,26 +232,8 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
             let value = snapshot.value as? [String: AnyObject]
             
             if value != nil{
-                
 
-                //getting friendships where the logged user was the sender
-                self.ref.child("users").queryOrderedByKey()
-                    .queryEqual(toValue: value?["sender_uid"])
-                    .observe(.childAdded, with: { (snapshot1) in
-                    
-
-                    let value1 = snapshot1.value as? [String: AnyObject]
-                    
-                    if value1 != nil{
-                        
-                        //print( value1!["name"] as? String ?? "" )
-                        self.poplateSingleFriend(key: snapshot1.key, value: value1!)
-                    }
-                    
-                }) { (error) in
-                    print(error.localizedDescription)
-                }
-
+                self.poplateSingleFriend(key: snapshot.key, value: value!)
             }
             
         }) { (error) in
@@ -231,8 +241,7 @@ class inviteFriendsController: UIViewController, UITableViewDataSource, UITableV
         }
         
     }
-    
-    
+
 
     
 }

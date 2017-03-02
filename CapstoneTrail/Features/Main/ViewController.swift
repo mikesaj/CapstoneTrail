@@ -121,7 +121,7 @@ class ViewController: UIViewController {
         
         user?.updateEmail(emailTextField.text!, completion: { (error) in
             if  error != nil {
-                print("Erro to try to update account")
+                print("Error to try to update account")
             }else{
                 let alert = UIAlertController(title: "Update account", message: "Account was updated succefully", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
