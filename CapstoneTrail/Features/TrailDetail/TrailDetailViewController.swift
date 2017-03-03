@@ -95,14 +95,68 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
             return 
         }
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
         let ref = FIRDatabase.database().reference()
         
-        let walkingScheduleReference = ref.child("walkingSchedules").child(userID!).child(UUID().uuidString)
+        //Group
+        let groupUid = UUID().uuidString
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        
+        let groupReference = ref.child("groups").child(groupUid)
+        
+        groupReference.child("owneruid").setValue(uid)
+        groupReference.child("members").child("0").setValue(uid)
+        groupReference.child("isPublic").setValue(false)        
+        groupReference.child("name").setValue("name")
+        groupReference.child("locationName").setValue("locationName")
+        groupReference.child("description").setValue("groupDescription")
+        groupReference.child("longitude").setValue("longitude")
+        groupReference.child("latitude").setValue("latitude")
+        
+        //Walking Schedule
+        let TrailId = UUID().uuidString
+        let walkingScheduleReference = ref.child("walkingSchedules").child(groupUid).child(TrailId)
         walkingScheduleReference.child("date").setValue(self.txtDateTrail.text)
         walkingScheduleReference.child("trail").setValue(self.street)
         
+        //User
+        self.addGrouptoUser(userId: uid!, groupId: groupUid)
+        
         self.displayMessage(ttl: "Warning", msg: "Trail was saved successfully")
+    }
+    
+    func addGrouptoUser(userId: String, groupId: String){
+        
+        let ref = FIRDatabase.database().reference()
+        
+        ref.child("users")
+            .queryOrderedByKey()
+            .queryEqual(toValue: userId)
+            .observe(.childAdded, with: { (snapshot) in
+                
+                let value = snapshot.value as? [String: AnyObject]
+                
+                if value != nil{
+                    
+                    var userGroups = [String]()
+                    
+                    if value?["groups"] != nil {
+                        
+                        // get user's group list
+                        userGroups = (value?["groups"] as? [String])!
+                    }
+                    
+                    // add group id to user's list
+                    userGroups.append(groupId)
+                    
+                    // add group to the user's group list
+                    ref.child("users").child(userId).child("groups").setValue(userGroups);
+                    
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
+        }
+        
     }
     
     func displayMessage(ttl: String, msg: String){
