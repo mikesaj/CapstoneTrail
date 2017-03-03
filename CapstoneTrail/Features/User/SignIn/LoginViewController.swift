@@ -18,6 +18,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    var window: UIWindow?
+    
     lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "userEmoji")
@@ -97,15 +99,21 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     
     // Switch to DashBoard Storyboard
     func switchToDashBoardView(){
-        let storyboard = UIStoryboard(name: "DashBoard", bundle: nil)
-        let vc : AnyObject! = storyboard.instantiateViewController(withIdentifier: "DashBoardViewController")
-        self.show(vc as! UIViewController, sender: vc)
+         let storyboard = UIStoryboard(name: "DashBoard", bundle: nil)
+         let vc : AnyObject! = storyboard.instantiateViewController(withIdentifier: "DashBoardViewController")
+         self.show(vc as! UIViewController, sender: vc)
+        
+        
+        //self.window = UIWindow(frame: UIScreen.main.bounds)
+        //self.window?.makeKeyAndVisible()
+        //self.window?.rootViewController = UINavigationController(rootViewController: DashBoardViewController())
+
+        print("Switched to DashBoard View!!")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        GIDSignIn().signOut()
         FBSDKLoginManager().logOut()
         
         setupFacebookButtons()

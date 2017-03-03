@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreLocation
+import Firebase
 
-class CreateGroupViewController: UIViewController, CLLocationManagerDelegate  {
+class CreateGroupViewController: UIViewController, UITextViewDelegate, CLLocationManagerDelegate  {
 
     //Location label declaration
     @IBOutlet weak var locationLabel: UILabel!
@@ -17,10 +18,15 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate  {
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var groupDescriptionTextView: UITextView!
     
+    // Get's logged user's uid
+    let currentUserID = FIRAuth.auth()?.currentUser?.uid
+
     
     var currentLocation = "Undefined Location"
     var lat:String  = ""
     var long:String = ""
+    
+    let initDescrptionText = "Group description"
     
     // instantiating the location manager
     let locationManager = CLLocationManager()
@@ -30,9 +36,11 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate  {
         super.viewDidLoad()
         
         // description textView border properties
-        groupDescriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
-        groupDescriptionTextView.layer.borderWidth = 1.0;
-        groupDescriptionTextView.layer.cornerRadius = 5.0;
+        groupDescriptionTextView.textColor = UIColor.lightGray
+        groupDescriptionTextView.text = initDescrptionText
+        groupDescriptionTextView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
+        groupDescriptionTextView.layer.borderWidth = 1.0
+        groupDescriptionTextView.layer.cornerRadius = 5
         
         // default location text
         locationLabel.text = currentLocation
@@ -45,6 +53,20 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate  {
         super.didReceiveMemoryWarning()
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if groupDescriptionTextView.textColor == UIColor.lightGray {
+            groupDescriptionTextView.text = nil
+            groupDescriptionTextView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if groupDescriptionTextView.text.isEmpty {
+            groupDescriptionTextView.text = initDescrptionText
+            groupDescriptionTextView.textColor = UIColor.lightGray
+        }
+    }
+
     // Create hike group button
     @IBAction func createGroupButton() {
         
@@ -108,6 +130,9 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate  {
         myVC.locationName = currentLocation
         myVC.memberCount  = 1
         myVC.groupid      = groupId
+        myVC.groupOwnerid = currentUserID!
+        
+
         
         // for slide view, without navigation
         //self.present(myVC, animated: true, completion: nil)
@@ -139,7 +164,7 @@ class CreateGroupViewController: UIViewController, CLLocationManagerDelegate  {
     
                 case .notDetermined:
                     locationManager.requestWhenInUseAuthorization()
-                    getLocation()
+                    //getLocation()
                 break
                 
                 default:

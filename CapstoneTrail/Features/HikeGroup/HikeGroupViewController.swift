@@ -27,9 +27,16 @@ class HikeGroupViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getUserGroups(userId: uid!)
+        //self.getUserGroups(userId: uid!)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.usergroups.removeAll()
+        self.groupsTableView.reloadData()
+
+        self.getUserGroups(userId: uid!)
+        super.viewWillAppear(animated) // No need for semicolon
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -72,16 +79,17 @@ class HikeGroupViewController: UIViewController, UITableViewDataSource, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        print("Saj's here2")
         if(segue.identifier == "groupProfile"){
             
-            let coming: GroupProfileViewController = segue.destination as! GroupProfileViewController
+            let controllerData: GroupProfileViewController = segue.destination as! GroupProfileViewController
             
-            coming.GroupName    = groupData.name!
-            coming.GroupDescrip = groupData.groupDescription!
-            coming.locationName = groupData.locationName!
-            coming.memberCount  = groupData.members.count
-            coming.groupid      = groupData.uid!
+            controllerData.GroupName    = groupData.name!
+            controllerData.GroupDescrip = groupData.groupDescription!
+            controllerData.locationName = groupData.locationName!
+            controllerData.groupid      = groupData.uid!
+            controllerData.groupOwnerid = groupData.owneruid!
+            controllerData.GroupMembers = groupData.members
+            controllerData.isPublic     = groupData.isPublic!
         }
 
     }
@@ -103,7 +111,7 @@ class HikeGroupViewController: UIViewController, UITableViewDataSource, UITableV
                 
                 if value != nil{
                     
-                    
+
                     if value?["groups"] != nil {
                         
                         // get user's group list
@@ -132,7 +140,7 @@ class HikeGroupViewController: UIViewController, UITableViewDataSource, UITableV
                                     group.latitude          = value?["latitude"]        as? String
                                     group.longitude         = value?["longitude"]       as? String
                                     
-                                    print(group.groupDescription ?? "--")
+                                    print(group.members )
                                     self.usergroups.append(group)
                                     self.groupsTableView.reloadData()
                                 }

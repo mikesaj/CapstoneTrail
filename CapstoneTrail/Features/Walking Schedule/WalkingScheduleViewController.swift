@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class WalkingScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     //declaring tableView
     var tableView: UITableView = UITableView()
     
@@ -64,27 +64,27 @@ class WalkingScheduleViewController: UIViewController, UITableViewDataSource, UI
         for t in stride(from: 0, through: self.groups_id.count - 1, by: 1) {
             
             ref.child("walkingSchedules").child(self.groups_id[i]).observe(.childAdded, with: { (snapshot) in
-            
+                
                 if let dictionary = snapshot.value as? [String: AnyObject]{
-                
+                    
                     let schedule = WalkingShedule()
-                
+                    
                     //Assigning retrieved values to the schedule object
                     //schedule.group_id = self.groups_id[i]
                     schedule.trail_id = snapshot.key
                     schedule.trail = dictionary["trail"] as? String
                     schedule.date = dictionary["date"] as? String
-                
+                    
                     //Appending shedule object to collection
                     self.schedules.append(schedule)
-                
+                    
                     //refreshing table after populating collection
                     self.tableView.reloadData()
                 }
-            
+                
                 }, withCancel: nil)
             
-             i += 1
+            i += 1
         }
         
     }
@@ -113,7 +113,7 @@ class WalkingScheduleViewController: UIViewController, UITableViewDataSource, UI
         }
         
     }
-
+    
     
     //method to close the controller
     func handleCancel()

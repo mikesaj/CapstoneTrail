@@ -10,7 +10,7 @@
 		4423ED121E50E72700344B6D /* HikeGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4423ED111E50E72700344B6D /* HikeGroup.storyboard */; };
 		4434BD071E5D5B8B008692B8 /* mailFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4434BD061E5D5B8B008692B8 /* mailFriend.swift */; };
 		44385C011E5BCFE10095F2B0 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44385C001E5BCFE10095F2B0 /* CustomTableViewCell.swift */; };
-		44385C031E5BD2790095F2B0 /* inviteFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44385C021E5BD2790095F2B0 /* inviteFriendsController.swift */; };
+		44385C031E5BD2790095F2B0 /* AddFriendToGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44385C021E5BD2790095F2B0 /* AddFriendToGroupsController.swift */; };
 		44385C051E5BD50C0095F2B0 /* ViewFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44385C041E5BD50C0095F2B0 /* ViewFriendViewController.swift */; };
 		44385C081E5CE30B0095F2B0 /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44385C071E5CE30B0095F2B0 /* Schedule.storyboard */; };
 		44385C0A1E5CE3430095F2B0 /* ScheduleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44385C091E5CE3430095F2B0 /* ScheduleListController.swift */; };
@@ -29,6 +29,8 @@
 		449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */; };
 		449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */; };
 		449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFD41E58758900B84118 /* DashBoardViewController.swift */; };
+		44DE37FD1E673809002A775A /* UpdateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */; };
+		44DE37FF1E679595002A775A /* GroupMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE37FE1E679595002A775A /* GroupMembersViewController.swift */; };
 		44F136721E62087600E3747C /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F136711E62087600E3747C /* UserProfileViewController.swift */; };
 		44F136741E62277500E3747C /* GroupListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F136731E62277500E3747C /* GroupListViewCell.swift */; };
 		44F5B7301E63166E007C7B97 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5B72F1E63166E007C7B97 /* SettingsController.swift */; };
@@ -86,7 +88,7 @@
 		4423ED111E50E72700344B6D /* HikeGroup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HikeGroup.storyboard; path = HikeGroup/HikeGroup.storyboard; sourceTree = "<group>"; };
 		4434BD061E5D5B8B008692B8 /* mailFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mailFriend.swift; sourceTree = "<group>"; };
 		44385C001E5BCFE10095F2B0 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		44385C021E5BD2790095F2B0 /* inviteFriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inviteFriendsController.swift; sourceTree = "<group>"; };
+		44385C021E5BD2790095F2B0 /* AddFriendToGroupsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendToGroupsController.swift; sourceTree = "<group>"; };
 		44385C041E5BD50C0095F2B0 /* ViewFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFriendViewController.swift; sourceTree = "<group>"; };
 		44385C071E5CE30B0095F2B0 /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
 		44385C091E5CE3430095F2B0 /* ScheduleListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleListController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,8 @@
 		449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HikeGroupViewController.swift; path = HikeGroup/HikeGroupViewController.swift; sourceTree = "<group>"; };
 		449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		449ACFD41E58758900B84118 /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
+		44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateGroupViewController.swift; path = HikeGroup/UpdateGroupViewController.swift; sourceTree = "<group>"; };
+		44DE37FE1E679595002A775A /* GroupMembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupMembersViewController.swift; path = HikeGroup/GroupMembersViewController.swift; sourceTree = "<group>"; };
 		44F136711E62087600E3747C /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		44F136731E62277500E3747C /* GroupListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupListViewCell.swift; path = HikeGroup/GroupListViewCell.swift; sourceTree = "<group>"; };
 		44F5B72F1E63166E007C7B97 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsController.swift; path = Settings/SettingsController.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */,
 				447F49A01E5AC4BE0028282D /* GroupProfileViewController.swift */,
 				44F136731E62277500E3747C /* GroupListViewCell.swift */,
+				44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */,
+				44DE37FE1E679595002A775A /* GroupMembersViewController.swift */,
 			);
 			name = HikeGroup;
 			sourceTree = "<group>";
@@ -255,7 +261,7 @@
 			children = (
 				449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */,
 				44385C001E5BCFE10095F2B0 /* CustomTableViewCell.swift */,
-				44385C021E5BD2790095F2B0 /* inviteFriendsController.swift */,
+				44385C021E5BD2790095F2B0 /* AddFriendToGroupsController.swift */,
 				44385C041E5BD50C0095F2B0 /* ViewFriendViewController.swift */,
 			);
 			name = AddGroup;
@@ -694,7 +700,7 @@
 				D21BE5471E5FCB30006D05C4 /* UIImageExtension.swift in Sources */,
 				D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */,
 				446087761E4E115D007A8BE0 /* UserLogin.swift in Sources */,
-				44385C031E5BD2790095F2B0 /* inviteFriendsController.swift in Sources */,
+				44385C031E5BD2790095F2B0 /* AddFriendToGroupsController.swift in Sources */,
 				A97EB5701E5E08E900CCCF31 /* TrailDetailViewController.swift in Sources */,
 				B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */,
 				4460877F1E4E1456007A8BE0 /* CreateAccountViewController.swift in Sources */,
@@ -706,6 +712,7 @@
 				44385C0E1E5CF27E0095F2B0 /* ScheduleProfileController.swift in Sources */,
 				44F136741E62277500E3747C /* GroupListViewCell.swift in Sources */,
 				D21BE54C1E5FCB42006D05C4 /* WalkingShedule.swift in Sources */,
+				44DE37FF1E679595002A775A /* GroupMembersViewController.swift in Sources */,
 				D21BE5411E5FCB0C006D05C4 /* FriendViewController.swift in Sources */,
 				D21BE5431E5FCB0C006D05C4 /* PeopleViewController.swift in Sources */,
 				446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */,
@@ -716,6 +723,7 @@
 				448C11011E5B64B300BE9123 /* GroupModel.swift in Sources */,
 				44967C961E5D69E700086030 /* friendIvCell.swift in Sources */,
 				44F5B7301E63166E007C7B97 /* SettingsController.swift in Sources */,
+				44DE37FD1E673809002A775A /* UpdateGroupViewController.swift in Sources */,
 				449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */,
 				B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */,
 				D21BE5481E5FCB30006D05C4 /* StringExtension.swift in Sources */,
