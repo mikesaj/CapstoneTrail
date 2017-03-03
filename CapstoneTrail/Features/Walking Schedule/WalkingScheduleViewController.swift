@@ -26,6 +26,9 @@ class WalkingScheduleViewController: UIViewController, UITableViewDataSource, UI
     //collection of walking schedule
     var schedules = [WalkingShedule]()
     
+    //collection of groupid
+    var groups_id = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +48,7 @@ class WalkingScheduleViewController: UIViewController, UITableViewDataSource, UI
         tableView.delegate = self
         
         //populating table with walking schedule data
-        fetchShecules()
+        fetchShedules()
         
         //registering table with our custom UITableViewCell
         tableView.register(WalkingSheduleCell.self, forCellReuseIdentifier: cellId)
@@ -53,31 +56,64 @@ class WalkingScheduleViewController: UIViewController, UITableViewDataSource, UI
         //Adding tableView object to the View
         self.view.addSubview(tableView)
     }
-    
-    func fetchShecules(){
+    func loadWalkingShedules(){
         
         //retreiving data from database
-        ref.child("walkingSchedules").child(userID!).observe(.childAdded, with: { (snapshot) in
+        var i = 0
+        
+        for t in stride(from: 0, through: self.groups_id.count - 1, by: 1) {
             
-            if let dictionary = snapshot.value as? [String: AnyObject]{
-                
-                let schedule = WalkingShedule()
-                
-                //Assigning retrieved values to the schedule object
-                schedule.trail_id = snapshot.key
-                schedule.trail = dictionary["trail"] as? String
-                schedule.date = dictionary["date"] as? String
-                
-                //Appending shedule object to collection
-                self.schedules.append(schedule)
-                
-                //refreshing table after populating collection
-                self.tableView.reloadData()
-            }
+            ref.child("walkingSchedules").child(self.groups_id[i]).observe(.childAdded, with: { (snapshot) in
             
-            }, withCancel: nil)
+                if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                    let schedule = WalkingShedule()
+                
+                    //Assigning retrieved values to the schedule object
+                    //schedule.group_id = self.groups_id[i]
+                    schedule.trail_id = snapshot.key
+                    schedule.trail = dictionary["trail"] as? String
+                    schedule.date = dictionary["date"] as? String
+                
+                    //Appending shedule object to collection
+                    self.schedules.append(schedule)
+                
+                    //refreshing table after populating collection
+                    self.tableView.reloadData()
+                }
+            
+                }, withCancel: nil)
+            
+             i += 1
+        }
         
     }
+    
+    func fetchShedules(){
+        
+        ref.child("users")
+            .queryOrderedByKey()
+            .queryEqual(toValue: userID)
+            .observe(.childAdded, with: { (snapshot) in
+                
+                let value = snapshot.value as? [String: AnyObject]
+                
+                if value != nil{
+                    
+                    if value?["groups"] != nil {
+                        
+                        // get user's group list
+                        self.groups_id = (value?["groups"] as? [String])!
+                        self.loadWalkingShedules()
+                    }
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
+        }
+        
+    }
+
     
     //method to close the controller
     func handleCancel()

@@ -11,7 +11,7 @@ import UIKit
 //Represents the walkingShedule collection of the database
 class WalkingShedule: NSObject {
     
-    var uid: String?
+    var group_id: String?
     var trail_id: String?
     var trail: String?
     var date: String?
