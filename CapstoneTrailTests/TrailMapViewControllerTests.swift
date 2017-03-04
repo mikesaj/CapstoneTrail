@@ -11,14 +11,14 @@ import XCTest
 
 
 class TrailMapViewControllerTests: XCTestCase {
-    
+
     // MARK: Variables
     var testBed: TrailMapViewController!
 
     override func setUp() {
 
         super.setUp()
-        
+
         let storyboard = UIStoryboard(name: "TrailMap", bundle: nil)
         testBed = storyboard.instantiateViewController(withIdentifier: "TrailMap") as! TrailMapViewController
         _ = testBed.view
@@ -29,16 +29,22 @@ class TrailMapViewControllerTests: XCTestCase {
 
         super.tearDown()
     }
-    
+
     // MARK: MapView tests
     func testMapView_IsNotNil() {
-        
-        XCTAssertNotNil(testBed.trailMapView, "trailMapView must be instantiated")
+
+        XCTAssertNotNil(testBed.trailMapView, "MKMapView must be instantiated")
     }
-    
+
     // Mark: User location
     func testLocationManager_IsNotNilAfterViewDidLoad() {
-        
-        XCTAssertNotNil(testBed.locationManager, "locationManager must be instantiated in viewDidLoad")
+
+        XCTAssertNotNil(testBed.locationManager, "CLLocationManager must be instantiated in viewDidLoad")
+    }
+
+
+    func testCLAuthorizationStatus_IsNotNil() {
+
+        XCTAssertNotNil(testBed.locationAuthStatus, "CLAuthorizationStatus must be instantiated")
     }
 }

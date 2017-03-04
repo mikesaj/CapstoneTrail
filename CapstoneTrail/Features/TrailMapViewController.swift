@@ -11,17 +11,18 @@ import MapKit
 
 
 class TrailMapViewController: UIViewController {
-    
+
     // MARK: Properties
     @IBOutlet var trailMapView: MKMapView!
 
     // MARK: Variable
     var locationManager: CLLocationManager!
+    var locationAuthStatus: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        
+
         // Initialize location manager
         locationManager = CLLocationManager()
     }
