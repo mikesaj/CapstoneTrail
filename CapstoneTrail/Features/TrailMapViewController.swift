@@ -15,8 +15,14 @@ class TrailMapViewController: UIViewController {
     // MARK: Properties
     @IBOutlet var trailMapView: MKMapView!
 
+    // MARK: Variable
+    var locationManager: CLLocationManager!
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
+        // Initialize location manager
+        locationManager = CLLocationManager()
     }
 }

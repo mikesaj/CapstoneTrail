@@ -35,4 +35,10 @@ class TrailMapViewControllerTests: XCTestCase {
         
         XCTAssertNotNil(testBed.trailMapView, "trailMapView must be instantiated")
     }
+    
+    // Mark: User location
+    func testLocationManager_IsNotNilAfterViewDidLoad() {
+        
+        XCTAssertNotNil(testBed.locationManager, "locationManager must be instantiated in viewDidLoad")
+    }
 }
