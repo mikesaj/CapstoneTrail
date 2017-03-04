@@ -47,4 +47,13 @@ class TrailMapViewControllerTests: XCTestCase {
 
         XCTAssertNotNil(testBed.locationAuthStatus, "CLAuthorizationStatus must be instantiated")
     }
+    
+    func testInfoPlist_HasLocationAuthPrivacyProperty() {
+        
+        guard let infoPlistPath = Bundle.main.path(forResource: "Info", ofType: "plist") else { return }
+        let infoPlist = NSDictionary(contentsOfFile: infoPlistPath)
+        let hasProperty = (infoPlist?["NSLocationWhenInUseUsageDescription"] != nil)
+        
+        XCTAssertTrue(hasProperty, "Must have NSLocationWhenInUse property")
+    }
 }
