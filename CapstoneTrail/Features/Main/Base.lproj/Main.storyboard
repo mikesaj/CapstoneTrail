@@ -25,7 +25,7 @@
                                 <rect key="frame" x="58.5" y="299.5" width="259" height="68"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wMO-S4-256" userLabel="Buttons #1">
-                                        <rect key="frame" x="16" y="0.0" width="243" height="30"/>
+                                        <rect key="frame" x="12" y="0.0" width="247" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6a-eA-E7F">
                                                 <rect key="frame" x="0.0" y="0.0" width="47" height="30"/>
@@ -42,11 +42,14 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QS4-OB-QHG">
-                                                <rect key="frame" x="116" y="0.0" width="59" height="30"/>
-                                                <state key="normal" title="Button 3"/>
+                                                <rect key="frame" x="116" y="0.0" width="63" height="30"/>
+                                                <state key="normal" title="Trail Map"/>
+                                                <connections>
+                                                    <segue destination="HR5-U0-MMi" kind="show" id="FTC-AW-7Wt"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qn-JL-SDA">
-                                                <rect key="frame" x="183" y="0.0" width="60" height="30"/>
+                                                <rect key="frame" x="187" y="0.0" width="60" height="30"/>
                                                 <state key="normal" title="Button 4"/>
                                             </button>
                                         </subviews>
@@ -102,6 +105,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XTE-uI-kpq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1593" y="-106"/>
+        </scene>
+        <!--TrailMap-->
+        <scene sceneID="rPB-08-Jy4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrailMap" id="HR5-U0-MMi" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xaI-bR-oFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1596" y="-58"/>
         </scene>
     </scenes>
 </document>
