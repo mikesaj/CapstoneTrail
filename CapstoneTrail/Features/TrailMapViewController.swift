@@ -19,6 +19,10 @@ class TrailMapViewController: UIViewController, MKMapViewDelegate {
     // MARK: Variable
     var locationManager: CLLocationManager!
     var locationAuthStatus: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
+    var currentCoordinate: CLLocationCoordinate2D!
+    var coordinateSpan: MKCoordinateSpan!
+    let coordinateSpanValue: Double = 0.05
+    var coordinateRegion: MKCoordinateRegion!
 
     override func viewDidLoad() {
 
@@ -32,5 +36,28 @@ class TrailMapViewController: UIViewController, MKMapViewDelegate {
 
         // Request location authorization permission
         locationManager.requestWhenInUseAuthorization()
+
+        // Show user location
+        trailMapView.showsUserLocation = true
+
+        // Get current location coordinate
+        makeLocationRegion()
+    }
+
+    // Get current location coordinate
+    func makeLocationRegion() {
+
+        guard let currentLocation = locationManager.location else {
+            debugPrint("Cannot fetch current location")
+            return
+        }
+
+        currentCoordinate = currentLocation.coordinate
+        coordinateSpan = MKCoordinateSpan(latitudeDelta: coordinateSpanValue, longitudeDelta: coordinateSpanValue)
+        coordinateRegion = MKCoordinateRegion(center: currentCoordinate, span: coordinateSpan)
+
+        trailMapView.setRegion(coordinateRegion, animated: true)
     }
 }
+
+
