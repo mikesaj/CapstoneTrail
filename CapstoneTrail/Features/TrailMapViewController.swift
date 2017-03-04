@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
 
 class TrailMapViewController: UIViewController {
+    
+    // MARK: Properties
+    @IBOutlet var trailMapView: MKMapView!
 
     override func viewDidLoad() {
 
