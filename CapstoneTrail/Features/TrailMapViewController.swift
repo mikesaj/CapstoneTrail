@@ -8,9 +8,10 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 
-class TrailMapViewController: UIViewController {
+class TrailMapViewController: UIViewController, MKMapViewDelegate {
 
     // MARK: Properties
     @IBOutlet var trailMapView: MKMapView!
@@ -25,5 +26,11 @@ class TrailMapViewController: UIViewController {
 
         // Initialize location manager
         locationManager = CLLocationManager()
+
+        // Initialize map delegate
+        trailMapView.delegate = self
+
+        // Request location authorization permission
+        locationManager.requestWhenInUseAuthorization()
     }
 }

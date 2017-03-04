@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import CapstoneTrail
-
+import CoreLocation
 
 class TrailMapViewControllerTests: XCTestCase {
 
@@ -36,7 +36,7 @@ class TrailMapViewControllerTests: XCTestCase {
         XCTAssertNotNil(testBed.trailMapView, "MKMapView must be instantiated")
     }
 
-    // Mark: User location
+    // Mark: User location tests
     func testLocationManager_IsNotNilAfterViewDidLoad() {
 
         XCTAssertNotNil(testBed.locationManager, "CLLocationManager must be instantiated in viewDidLoad")
@@ -55,5 +55,14 @@ class TrailMapViewControllerTests: XCTestCase {
         let hasProperty = (infoPlist?["NSLocationWhenInUseUsageDescription"] != nil)
         
         XCTAssertTrue(hasProperty, "Must have NSLocationWhenInUse property")
+    }
+    
+    func testMKMapViewDelegate_ShouldSetAfterViewDidLoad() {
+        XCTAssertNotNil(testBed.trailMapView.delegate, "MKMapView.delegate must be instantiated")
+    }
+    
+    func testCLAuthorizationStatus_IsAuthorized() {
+        // Need to run the app and authorized the permission
+        XCTAssertEqual(testBed.locationAuthStatus, CLAuthorizationStatus.authorizedWhenInUse)
     }
 }
