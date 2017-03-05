@@ -105,6 +105,7 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if(segue.identifier == "addFriendstoGroup"){
             
             let addFriendController: AddFriendToGroupsController = segue.destination as! AddFriendToGroupsController
@@ -125,7 +126,6 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
             updateGroup.groupName        = GroupName
             updateGroup.Groupdescription = GroupDescrip
             updateGroup.isPublic         = isPublic
-            
         }
         
         if(segue.identifier == "groupMembers") {
@@ -133,6 +133,12 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
             // instantiating a reference to the UpdateGroupViewController
             let updateGroup: GroupMembersViewController = segue.destination as! GroupMembersViewController
             updateGroup.groupUid = self.groupid
+        }
+        
+        if (segue.identifier == "ScheduleList") {
+            // instantiating a reference to the TrailDetailViewController
+            let groupHikes: ScheduleListController = segue.destination as! ScheduleListController
+            groupHikes.groupId = self.groupid
         }
     }
 
@@ -207,23 +213,18 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     // lauches the groups schedule controller
     func GroupScheduleController() {
         print("GroupScheduleController")
-    
+        performSegue(withIdentifier: "ScheduleList", sender: self)
     }
     
     // method displays group members list controller
     func GroupMemberController() {
-        
         print("GroupMemberController")
-        
         performSegue(withIdentifier: "groupMembers", sender: self)
-
-        
     }
 
     // method displays a modal to update a group's info
     func UpdateGroupInfoController() {
         print("UpdateGroupInfoController")
-        
         performSegue(withIdentifier: "updateGroup", sender: self)
     }
     

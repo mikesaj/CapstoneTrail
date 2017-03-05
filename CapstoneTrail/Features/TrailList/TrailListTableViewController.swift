@@ -15,6 +15,7 @@ class TrailListTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: Variables
     var trails: [NSManagedObject] = []
     var trailsSearched: [NSManagedObject] = []
+    var groupId:String = ""
     
     //search bar for being added to table view
     let searchController = UISearchController(searchResultsController: nil)
@@ -159,8 +160,9 @@ class TrailListTableViewController: UITableViewController, UISearchBarDelegate {
                     fatalError("The selected cell is not being displayed by the table")
                 }
 
-                let selectedTrail = trailsSearched[indexPath.row]
-                trailDetailViewController.trail = selectedTrail
+                let selectedTrail                 = trailsSearched[indexPath.row]
+                trailDetailViewController.trail   = selectedTrail
+                trailDetailViewController.groupId = groupId
 
             default:
                 fatalError("Unexpected Segue Identifier; \(segue.identifier)")

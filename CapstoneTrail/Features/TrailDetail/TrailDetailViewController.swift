@@ -12,7 +12,12 @@ import CoreData
 import Firebase
 
 class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate {
-    
+
+    // database reference
+    let ref = FIRDatabase.database().reference()
+    let uid = FIRAuth.auth()?.currentUser?.uid
+
+
     // MARK: Properties
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var areaLabel: UILabel!
@@ -35,6 +40,8 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
     var coordinates: [[Double]]!
     var coordinate2DList: [CLLocationCoordinate2D]!
     var travelTime: Double!
+    
+    var groupId: String = ""//"22ED0638-C875-4B89-8D90-DE31BB5019AC"
 
     override func viewDidLoad() {
         
@@ -95,38 +102,65 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
             return 
         }
         
-        let ref = FIRDatabase.database().reference()
         
-        //Group
-        let groupUid = UUID().uuidString
-        let uid = FIRAuth.auth()?.currentUser?.uid
+        //Create Hiking Event
+        let hikeId = UUID().uuidString
+        let hikeScheduleReference = ref.child("hikingSchedules").child(hikeId)
+        hikeScheduleReference.child("groupId").setValue(self.groupId)
+        hikeScheduleReference.child("trailId").setValue(self.id)
+        hikeScheduleReference.child("trail").setValue(self.street)
+        hikeScheduleReference.child("date").setValue(self.txtDateTrail.text)
+        hikeScheduleReference.child("attendees").setValue([self.uid])
         
-        let groupReference = ref.child("groups").child(groupUid)
+        //add event to group
+        self.addHikingScheduletoGroup(groupId: self.groupId, hikeId: hikeId)
         
-        groupReference.child("owneruid").setValue(uid)
-        groupReference.child("members").child("0").setValue(uid)
-        groupReference.child("isPublic").setValue(false)        
-        groupReference.child("name").setValue("name")
-        groupReference.child("locationName").setValue("locationName")
-        groupReference.child("description").setValue("groupDescription")
-        groupReference.child("longitude").setValue("longitude")
-        groupReference.child("latitude").setValue("latitude")
-        
-        //Walking Schedule
-        let TrailId = UUID().uuidString
-        let walkingScheduleReference = ref.child("walkingSchedules").child(groupUid).child(TrailId)
-        walkingScheduleReference.child("date").setValue(self.txtDateTrail.text)
-        walkingScheduleReference.child("trail").setValue(self.street)
-        
-        //User
-        self.addGrouptoUser(userId: uid!, groupId: groupUid)
-        
-        self.displayMessage(ttl: "Warning", msg: "Trail was saved successfully")
+        self.displayMessage(ttl: "\(self.street)", msg: "Trail was saved successfully")
     }
     
-    func addGrouptoUser(userId: String, groupId: String){
+    //add's a hiking schedule to group
+    func addHikingScheduletoGroup(groupId: String, hikeId: String) {
         
-        let ref = FIRDatabase.database().reference()
+        _ = ref.child("groups")
+            .queryOrderedByKey()
+            .queryEqual(toValue: groupId)
+            .observe(.childAdded, with: { (snapshot) in
+                
+                let value = snapshot.value as? [String: AnyObject]
+                print("\(groupId): empty nothing 1")
+                
+                if value != nil{
+                    
+                    var hikingSchedules = [String]()
+                    
+                    if value?["hikingSchedules"] != nil {
+                        
+                        // get user's group list
+                        hikingSchedules = (value?["hikingSchedules"] as? [String])!
+                    }
+
+                    // add hikingSchedule-id to group list
+                    hikingSchedules.insert(hikeId, at: 0)
+                    //hikingSchedules.append(trailId)
+                    
+                    // add schedule to the group's hiking list
+                    self.ref.child("groups")
+                        .child(groupId).child("hikingSchedules")
+                        .setValue(hikingSchedules);
+                    
+                    // add hikingSchedule to the user's list
+                    self.addHikeScheduleToUser(userId: self.uid!, hikeId: hikeId)
+                    
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
+        }
+        
+    }
+    
+    // add hiking Schedule event to user's list
+    func addHikeScheduleToUser(userId: String, hikeId: String){
         
         ref.child("users")
             .queryOrderedByKey()
@@ -137,19 +171,20 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
                 
                 if value != nil{
                     
-                    var userGroups = [String]()
+                    var hikingSchedules = [String]()
                     
-                    if value?["groups"] != nil {
+                    if value?["hikingSchedules"] != nil {
                         
                         // get user's group list
-                        userGroups = (value?["groups"] as? [String])!
+                        hikingSchedules = (value?["hikingSchedules"] as? [String])!
                     }
                     
-                    // add group id to user's list
-                    userGroups.append(groupId)
+                    // add hikingSchedule id to user's list
+                    hikingSchedules.insert(hikeId, at: 0)
+                    //hikingSchedules.append(trailId)
                     
                     // add group to the user's group list
-                    ref.child("users").child(userId).child("groups").setValue(userGroups);
+                    self.ref.child("users").child(userId).child("hikingSchedules").setValue(hikingSchedules);
                     
                 }
                 
@@ -158,6 +193,7 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
         }
         
     }
+    
     
     func displayMessage(ttl: String, msg: String){
         let alert = UIAlertController(title: ttl, message: msg, preferredStyle: UIAlertControllerStyle.alert)

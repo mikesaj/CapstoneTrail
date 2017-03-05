@@ -6,58 +6,137 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Schedule List-->
         <scene sceneID="StV-HI-1f2">
             <objects>
-                <viewController storyboardIdentifier="ScheduleList" id="Zj7-DN-sjw" customClass="ScheduleListController" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScheduleList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zj7-DN-sjw" customClass="ScheduleListController" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l3Y-yT-BHi"/>
                         <viewControllerLayoutGuide type="bottom" id="Pci-Yd-vEa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ud7-vQ-tLO">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ysk-gc-rSP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ysk-gc-rSP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="scheduleCell" id="4Df-Eg-QE6" customClass="ScheduleViewCell" customModule="CapstoneTrail" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="scheduleInviteCell" id="4Df-Eg-QE6" customClass="ScheduleInviteCell" customModule="CapstoneTrail" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Df-Eg-QE6" id="Y0h-G4-yyK">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Schedule Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN6-KA-7Mj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN6-KA-7Mj">
                                                     <rect key="frame" x="13" y="0.0" width="222" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ii4-Iq-nyN">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ii4-Iq-nyN">
+                                                    <rect key="frame" x="288" y="-1" width="54" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="54" id="5hD-z3-O06"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Reject">
+                                                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date/Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZb-2k-qka">
+                                                    <rect key="frame" x="13" y="22" width="242" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="tHT-eR-99S"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmm-Fx-Azm">
+                                                    <rect key="frame" x="228" y="-1" width="52" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="52" id="J67-T0-JSO"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Accept">
+                                                        <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xmm-Fx-Azm" firstAttribute="top" secondItem="Y0h-G4-yyK" secondAttribute="topMargin" constant="-9" id="52f-38-ccE"/>
+                                                <constraint firstItem="XN6-KA-7Mj" firstAttribute="leading" secondItem="sZb-2k-qka" secondAttribute="leading" id="FCk-do-dPq"/>
+                                                <constraint firstItem="Ii4-Iq-nyN" firstAttribute="leading" secondItem="xmm-Fx-Azm" secondAttribute="trailing" constant="8" symbolic="YES" id="JPp-ty-zhN"/>
+                                                <constraint firstItem="XN6-KA-7Mj" firstAttribute="top" secondItem="Y0h-G4-yyK" secondAttribute="top" id="KLb-ii-7er"/>
+                                                <constraint firstItem="Ii4-Iq-nyN" firstAttribute="leading" secondItem="sZb-2k-qka" secondAttribute="trailing" constant="33" id="LKe-JG-cVQ"/>
+                                                <constraint firstItem="sZb-2k-qka" firstAttribute="top" secondItem="XN6-KA-7Mj" secondAttribute="bottom" id="LSv-fu-4h7"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ii4-Iq-nyN" secondAttribute="trailing" id="Txk-Pd-R6f"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="xmm-Fx-Azm" secondAttribute="bottom" constant="-7" id="aDb-ZR-k5G"/>
+                                                <constraint firstItem="xmm-Fx-Azm" firstAttribute="baseline" secondItem="Ii4-Iq-nyN" secondAttribute="firstBaseline" id="d91-RE-NIg"/>
+                                                <constraint firstAttribute="bottom" secondItem="sZb-2k-qka" secondAttribute="bottom" id="hxg-c7-Uqv"/>
+                                                <constraint firstItem="Ii4-Iq-nyN" firstAttribute="baseline" secondItem="xmm-Fx-Azm" secondAttribute="firstBaseline" id="mWL-VC-9UF"/>
+                                                <constraint firstItem="XN6-KA-7Mj" firstAttribute="leading" secondItem="Y0h-G4-yyK" secondAttribute="leadingMargin" constant="5" id="vU7-ti-Quq"/>
+                                                <constraint firstItem="Ii4-Iq-nyN" firstAttribute="leading" secondItem="XN6-KA-7Mj" secondAttribute="trailing" constant="53" id="wCz-Zd-civ"/>
+                                                <constraint firstItem="xmm-Fx-Azm" firstAttribute="top" secondItem="Ii4-Iq-nyN" secondAttribute="top" id="whk-x6-yOJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="acceptButton" destination="xmm-Fx-Azm" id="0k3-05-WIV"/>
+                                            <outlet property="rejectButton" destination="Ii4-Iq-nyN" id="Y3I-TT-w10"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="scheduleCell" id="qIs-6A-ZGG" customClass="ScheduleViewCell" customModule="CapstoneTrail" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qIs-6A-ZGG" id="Qvl-1N-xLP">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wf3-5k-jXK">
+                                                    <rect key="frame" x="13" y="0.0" width="222" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9q-6y-aDI">
                                                     <rect key="frame" x="263" y="-1" width="79" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="79" id="tgO-gG-72M"/>
+                                                    </constraints>
                                                     <state key="normal" title="View"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date/Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZb-2k-qka">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date/Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nt-ID-gvq">
                                                     <rect key="frame" x="13" y="22" width="242" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Z1a-cb-dB3"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="3nt-ID-gvq" secondAttribute="bottom" id="13m-uf-TE9"/>
+                                                <constraint firstItem="y9q-6y-aDI" firstAttribute="top" secondItem="Qvl-1N-xLP" secondAttribute="topMargin" constant="-9" id="7Do-yU-ZLu"/>
+                                                <constraint firstItem="y9q-6y-aDI" firstAttribute="leading" secondItem="Wf3-5k-jXK" secondAttribute="trailing" constant="28" id="A6m-Ik-izS"/>
+                                                <constraint firstItem="Wf3-5k-jXK" firstAttribute="leading" secondItem="Qvl-1N-xLP" secondAttribute="leadingMargin" constant="5" id="Ctq-qk-QzO"/>
+                                                <constraint firstAttribute="trailing" secondItem="y9q-6y-aDI" secondAttribute="trailing" id="ItS-wt-xib"/>
+                                                <constraint firstItem="Wf3-5k-jXK" firstAttribute="leading" secondItem="3nt-ID-gvq" secondAttribute="leading" id="KhN-NW-XXn"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="y9q-6y-aDI" secondAttribute="bottom" constant="-7" id="L7F-b5-qgE"/>
+                                                <constraint firstItem="3nt-ID-gvq" firstAttribute="top" secondItem="Wf3-5k-jXK" secondAttribute="bottom" id="VsN-j3-AoZ"/>
+                                                <constraint firstItem="Wf3-5k-jXK" firstAttribute="top" secondItem="Qvl-1N-xLP" secondAttribute="top" id="kmg-42-Jp6"/>
+                                                <constraint firstItem="y9q-6y-aDI" firstAttribute="leading" secondItem="3nt-ID-gvq" secondAttribute="trailing" constant="8" symbolic="YES" id="ksx-Jw-qVC"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="scheduleTitle" destination="XN6-KA-7Mj" id="cwa-zo-H1v"/>
-                                            <outlet property="viewScheduleButton" destination="Ii4-Iq-nyN" id="pmQ-lX-t8p"/>
+                                            <outlet property="scheduleTitle" destination="Wf3-5k-jXK" id="hcn-Ha-qtv"/>
+                                            <outlet property="viewScheduleButton" destination="y9q-6y-aDI" id="3lh-En-cdL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -66,14 +145,31 @@
                                     <outlet property="delegate" destination="Zj7-DN-sjw" id="6gs-C4-bnZ"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mec-fj-do5">
+                                <rect key="frame" x="93" y="581" width="186" height="30"/>
+                                <state key="normal" title="New Hike Schedule"/>
+                                <connections>
+                                    <action selector="newHikeScheduleButton:" destination="Zj7-DN-sjw" eventType="touchUpInside" id="ihO-ia-Roo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mec-fj-do5" firstAttribute="top" secondItem="ysk-gc-rSP" secondAttribute="bottom" constant="8" symbolic="YES" id="5NC-ad-pmu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mec-fj-do5" secondAttribute="trailing" constant="80" id="M7r-9j-am6"/>
+                            <constraint firstItem="ysk-gc-rSP" firstAttribute="top" secondItem="Ud7-vQ-tLO" secondAttribute="top" id="QHn-oi-cCm"/>
+                            <constraint firstItem="ysk-gc-rSP" firstAttribute="leading" secondItem="Ud7-vQ-tLO" secondAttribute="leading" id="cDA-u5-4vm"/>
+                            <constraint firstAttribute="trailing" secondItem="ysk-gc-rSP" secondAttribute="trailing" id="qQ6-qg-CmU"/>
+                            <constraint firstItem="Pci-Yd-vEa" firstAttribute="top" secondItem="Mec-fj-do5" secondAttribute="bottom" constant="7" id="taO-Ui-KJm"/>
+                            <constraint firstItem="Mec-fj-do5" firstAttribute="leading" secondItem="Ud7-vQ-tLO" secondAttribute="leadingMargin" constant="77" id="x7R-gI-f2O"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Schedule List" id="qwt-ws-UmA"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="hikeScheduleListTableView" destination="ysk-gc-rSP" id="oIU-BT-I9N"/>
                         <segue destination="yRQ-qf-Gt3" kind="show" identifier="View2" id="3CJ-Ho-cos"/>
+                        <segue destination="f59-QB-X3R" kind="show" identifier="newSchedule" id="a1k-SE-dxZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAv-3f-m9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -89,7 +185,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jFf-KG-kD3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="N6b-cO-tKb">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="etT-LN-mlY">
@@ -143,6 +239,14 @@
             </objects>
             <point key="canvasLocation" x="3010.4000000000001" y="186.65667166416793"/>
         </scene>
+        <!--TrailListTableViewController-->
+        <scene sceneID="vBv-5E-vN7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrailList" referencedIdentifier="TrailListTableViewController" id="f59-QB-X3R" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ccl-9Q-wD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2778" y="603"/>
+        </scene>
         <!--Mail Friend-->
         <scene sceneID="50e-yl-eFn">
             <objects>
@@ -152,7 +256,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2se-8A-f9a"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="t5x-Da-iMN">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7MH-H3-U48">
@@ -202,8 +306,7 @@
             <objects>
                 <navigationController storyboardIdentifier="ScheduleNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sxa-Mx-tUL" sceneMemberID="viewController">
                     <toolbarItems/>
-
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kdY-Tm-Lks">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kdY-Tm-Lks">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

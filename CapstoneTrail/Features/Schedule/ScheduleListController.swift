@@ -19,6 +19,8 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
     // Database reference
     let ref = FIRDatabase.database().reference()
     
+    var groupId: String = ""
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -114,14 +116,25 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         print("indexis = \(index)")
     }
     
+    // new Hike Schedule Button
+    @IBAction func newHikeScheduleButton(_ sender: Any) {
+        performSegue(withIdentifier: "newSchedule", sender: self)
+    }
+    
+    
     // prepare to launch segue with data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if(segue.identifier == "View2"){
-            
-            var coming: ScheduleProfileController = segue.destination as! ScheduleProfileController
-            
-            coming.scheduleTitle = ""
-            coming.uid = ""
+            let scheduleProfile: ScheduleProfileController = segue.destination as! ScheduleProfileController
+            scheduleProfile.scheduleTitle = ""
+            scheduleProfile.uid = ""
+        }
+        
+        // create a hike schedule in group
+        if(segue.identifier == "newSchedule") {
+            let trailList: TrailListTableViewController = segue.destination as! TrailListTableViewController
+            trailList.groupId = groupId
         }
     }
     

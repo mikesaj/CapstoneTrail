@@ -31,6 +31,7 @@
 		449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFD41E58758900B84118 /* DashBoardViewController.swift */; };
 		44DE37FD1E673809002A775A /* UpdateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */; };
 		44DE37FF1E679595002A775A /* GroupMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE37FE1E679595002A775A /* GroupMembersViewController.swift */; };
+		44DE38041E6BFC25002A775A /* ScheduleInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE38031E6BFC25002A775A /* ScheduleInviteCell.swift */; };
 		44F136721E62087600E3747C /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F136711E62087600E3747C /* UserProfileViewController.swift */; };
 		44F136741E62277500E3747C /* GroupListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F136731E62277500E3747C /* GroupListViewCell.swift */; };
 		44F5B7301E63166E007C7B97 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5B72F1E63166E007C7B97 /* SettingsController.swift */; };
@@ -109,6 +110,7 @@
 		449ACFD41E58758900B84118 /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateGroupViewController.swift; path = HikeGroup/UpdateGroupViewController.swift; sourceTree = "<group>"; };
 		44DE37FE1E679595002A775A /* GroupMembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupMembersViewController.swift; path = HikeGroup/GroupMembersViewController.swift; sourceTree = "<group>"; };
+		44DE38031E6BFC25002A775A /* ScheduleInviteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleInviteCell.swift; sourceTree = "<group>"; };
 		44F136711E62087600E3747C /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		44F136731E62277500E3747C /* GroupListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupListViewCell.swift; path = HikeGroup/GroupListViewCell.swift; sourceTree = "<group>"; };
 		44F5B72F1E63166E007C7B97 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsController.swift; path = Settings/SettingsController.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				44385C0D1E5CF27E0095F2B0 /* ScheduleProfileController.swift */,
 				4434BD061E5D5B8B008692B8 /* mailFriend.swift */,
 				44967C951E5D69E700086030 /* friendIvCell.swift */,
+				44DE38031E6BFC25002A775A /* ScheduleInviteCell.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 				D21BE54E1E5FCB42006D05C4 /* WalkingScheduleViewController.swift in Sources */,
 				44F5B7341E6318C5007C7B97 /* SettingCellController.swift in Sources */,
 				D21BE5471E5FCB30006D05C4 /* UIImageExtension.swift in Sources */,
+				44DE38041E6BFC25002A775A /* ScheduleInviteCell.swift in Sources */,
 				D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */,
 				446087761E4E115D007A8BE0 /* UserLogin.swift in Sources */,
 				44385C031E5BD2790095F2B0 /* AddFriendToGroupsController.swift in Sources */,

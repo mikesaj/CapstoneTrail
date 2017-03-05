@@ -124,7 +124,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uvv-IU-S6t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4734" y="-1707"/>
+            <point key="canvasLocation" x="4892" y="-2024"/>
         </scene>
         <!--Group Name-->
         <scene sceneID="cah-uB-hkK">
@@ -237,6 +237,7 @@
                         <segue destination="adY-wL-Wrg" kind="show" identifier="addFriendstoGroup" id="QwC-J1-fb7"/>
                         <segue destination="WhE-XK-ux8" kind="presentation" identifier="updateGroup" id="lWT-Ka-cUU"/>
                         <segue destination="hs5-lL-Wt8" kind="show" identifier="groupMembers" id="SHj-EB-c7a"/>
+                        <segue destination="Epq-ED-CTO" kind="show" identifier="ScheduleList" id="Wmt-Ux-1tl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3aU-dQ-OcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -477,7 +478,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uuO-9I-7pu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4735" y="-976"/>
+            <point key="canvasLocation" x="4892" y="-1290"/>
         </scene>
         <!--Update Group View Controller-->
         <scene sceneID="kz5-5i-pyw">
@@ -553,7 +554,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3lV-Ux-W84" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4734" y="-315"/>
+            <point key="canvasLocation" x="4892" y="-557"/>
+        </scene>
+        <!--ScheduleList-->
+        <scene sceneID="CoS-nw-rvH">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ScheduleList" storyboardName="Schedule" referencedIdentifier="ScheduleList" id="Epq-ED-CTO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2d4-TR-Uqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4892" y="-940"/>
         </scene>
         <!--View Friend View Controller-->
         <scene sceneID="uyS-zz-cRc">
@@ -599,7 +608,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3l-Wf-AF3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5746" y="-976"/>
+            <point key="canvasLocation" x="6257" y="-1339"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AXf-wn-hfk">
@@ -625,6 +634,6 @@
         <image name="userEmoji" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GUJ-0i-WCt"/>
+        <segue reference="gGt-oS-K3G"/>
     </inferredMetricsTieBreakers>
 </document>
