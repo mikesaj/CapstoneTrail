@@ -52,9 +52,11 @@
 		A97EB5701E5E08E900CCCF31 /* TrailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB56F1E5E08E900CCCF31 /* TrailDetailViewController.swift */; };
 		A98B92F71E637DBC007C7AB6 /* TrailUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98B92F61E637DBC007C7AB6 /* TrailUtils.swift */; };
 		A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */; };
+		B66C80BC715842FD22EF75BC /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8E47DD60A7A6839B2768 /* Trail.swift */; };
 		B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8A82BC1ABAFB0F9D0E10 /* AppDelegate.swift */; };
 		B66C83238B78A69E6A3ACF49 /* TrailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C84B649E566C74B20544C /* TrailMapViewController.swift */; };
 		B66C875384EF1325BC0D7110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66C82EA8971FB9C46435BE3 /* LaunchScreen.storyboard */; };
+		B66C875F384F46488B725567 /* TrailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C86E04C2B6393FB1CC083 /* TrailTests.swift */; };
 		B66C891A616DF6929B1079A4 /* TrailMapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8C01390A23000A8D50CB /* TrailMapViewControllerTests.swift */; };
 		B66C8A93363E18079BF25D47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66C842C3146213CC47FE05D /* Main.storyboard */; };
 		B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C80D3D9049E6DECDBF27F /* ViewController.swift */; };
@@ -137,6 +139,7 @@
 		ACF2801F5E3EFD4AB34ADB8E /* Pods_CapstoneTrail_CapstoneTrailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneTrail_CapstoneTrailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66C80D3D9049E6DECDBF27F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B66C84B649E566C74B20544C /* TrailMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailMapViewController.swift; sourceTree = "<group>"; };
+		B66C86E04C2B6393FB1CC083 /* TrailTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailTests.swift; sourceTree = "<group>"; };
 		B66C871A5CCAF5C836061916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		B66C88010C9CFE43488BA299 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B66C8A40A20620D47441B827 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 		B66C8C01390A23000A8D50CB /* TrailMapViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailMapViewControllerTests.swift; sourceTree = "<group>"; };
 		B66C8C866F8BFE32C7F9EDC4 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		B66C8E354790C98D3CD7CB58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		B66C8E47DD60A7A6839B2768 /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Trail.swift; path = TrailMap/Trail.swift; sourceTree = "<group>"; };
 		B66C8ED1AC2F1ED2E055EB2F /* CapstoneTrailTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CapstoneTrailTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66C8FBBF8B0676832E26E83 /* CapstoneTrail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneTrail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66C8FFA2195697D1BA6415F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -361,6 +365,7 @@
 			children = (
 				A92CA1FC1E6B30CF003EF418 /* TrailMap.storyboard */,
 				B66C84B649E566C74B20544C /* TrailMapViewController.swift */,
+				B66C8E47DD60A7A6839B2768 /* Trail.swift */,
 			);
 			name = TrailMap;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 			children = (
 				B66C8E354790C98D3CD7CB58 /* Info.plist */,
 				B66C8C01390A23000A8D50CB /* TrailMapViewControllerTests.swift */,
+				B66C86E04C2B6393FB1CC083 /* TrailTests.swift */,
 			);
 			path = CapstoneTrailTests;
 			sourceTree = "<group>";
@@ -706,6 +712,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B66C891A616DF6929B1079A4 /* TrailMapViewControllerTests.swift in Sources */,
+				B66C875F384F46488B725567 /* TrailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,6 +763,7 @@
 				44F5B7321E63176F007C7B97 /* JoinAppInvitation.swift in Sources */,
 				D21BE5421E5FCB0C006D05C4 /* Friend.swift in Sources */,
 				B66C83238B78A69E6A3ACF49 /* TrailMapViewController.swift in Sources */,
+				B66C80BC715842FD22EF75BC /* Trail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
