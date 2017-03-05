@@ -89,6 +89,8 @@
                                         <connections>
                                             <outlet property="acceptButton" destination="xmm-Fx-Azm" id="0k3-05-WIV"/>
                                             <outlet property="rejectButton" destination="Ii4-Iq-nyN" id="Y3I-TT-w10"/>
+                                            <outlet property="scheduleTime" destination="sZb-2k-qka" id="qK0-ve-TSs"/>
+                                            <outlet property="scheduleTitle" destination="XN6-KA-7Mj" id="IYb-DN-4w7"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="scheduleCell" id="qIs-6A-ZGG" customClass="ScheduleViewCell" customModule="CapstoneTrail" customModuleProvider="target">
@@ -135,6 +137,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="scheduleTime" destination="3nt-ID-gvq" id="eya-jd-YsH"/>
                                             <outlet property="scheduleTitle" destination="Wf3-5k-jXK" id="hcn-Ha-qtv"/>
                                             <outlet property="viewScheduleButton" destination="y9q-6y-aDI" id="3lh-En-cdL"/>
                                         </connections>

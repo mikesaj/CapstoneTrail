@@ -10,7 +10,11 @@ import UIKit
 
 class ScheduleViewCell: UITableViewCell {
 
+    // labels
     @IBOutlet weak var scheduleTitle: UILabel!
+    @IBOutlet weak var scheduleTime: UILabel!
+
+    // button
     @IBOutlet weak var viewScheduleButton: UIButton!
     
     override func awakeFromNib() {

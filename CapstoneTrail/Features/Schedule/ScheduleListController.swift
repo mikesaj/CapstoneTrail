@@ -15,7 +15,8 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
     
     var locationName: NSMutableArray! = NSMutableArray()
     var locationUid:  NSMutableArray! = NSMutableArray()
-    
+    var hikeDate:     NSMutableArray! = NSMutableArray()
+
     // Database reference
     let ref = FIRDatabase.database().reference()
     
@@ -40,16 +41,30 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         locationName.add("Baby Trails")
         
         // trail id
-        locationUid.add("WestMount Walks")
-        locationUid.add("WestMount Walks")
-        locationUid.add("WestMount Walks")
-        locationUid.add("WestMount Walks")
-        locationUid.add("WestMount Walks")
-        locationUid.add("WestMount Walks")
-        locationUid.add("WestMount Walks")
-        locationUid.add("WestMount Walks")
-        locationUid.add("WestMount Walks")
-        locationUid.add("WestMount Walks")
+        locationUid.add("12345243")
+        locationUid.add("56545543")
+        locationUid.add("6576u798")
+        locationUid.add("87653434")
+        locationUid.add("57865433")
+        locationUid.add("08976545")
+        locationUid.add("87654434")
+        locationUid.add("45366573")
+        locationUid.add("74664334")
+        locationUid.add("973487t6")
+
+        // hike date
+        hikeDate.add("12/03/2016")
+        hikeDate.add("12/03/2016")
+        hikeDate.add("12/03/2016")
+        hikeDate.add("14/03/2016")
+        hikeDate.add("12/04/2016")
+        hikeDate.add("12/07/2016")
+        hikeDate.add("12/01/2016")
+        hikeDate.add("12/09/2016")
+        hikeDate.add("12/02/2016")
+        hikeDate.add("12/01/2016")
+
+        //ScheduleInviteCell
 
         self.hikeScheduleListTableView.reloadData()
         //self.navigationController?.popToRootViewController(animated: true)
@@ -71,6 +86,7 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleViewCell
         cell.scheduleTitle.text = self.locationName.object(at: indexPath.row) as? String
+        cell.scheduleTime.text = self.hikeDate.object(at: indexPath.row) as? String
         
         cell.viewScheduleButton.tag = indexPath.row
         cell.viewScheduleButton.addTarget(self, action: #selector(logAction), for: .touchUpInside)

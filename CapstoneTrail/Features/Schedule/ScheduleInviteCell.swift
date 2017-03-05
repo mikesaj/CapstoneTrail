@@ -10,6 +10,11 @@ import UIKit
 
 class ScheduleInviteCell: UITableViewCell {
 
+    // labels
+    @IBOutlet weak var scheduleTitle: UILabel!
+    @IBOutlet weak var scheduleTime: UILabel!
+    
+    // buttons
     @IBOutlet weak var rejectButton: UIButton!
     @IBOutlet weak var acceptButton: UIButton!
     
