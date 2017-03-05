@@ -9,20 +9,27 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreData
 
 
 class TrailMapViewController: UIViewController, MKMapViewDelegate {
 
-    // MARK: Properties
+    // MARK: Interface builder properties
     @IBOutlet var trailMapView: MKMapView!
 
-    // MARK: Variable
+    // MARK: CoreLocation variables
     var locationManager: CLLocationManager!
     var locationAuthStatus: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
+    // MARK: Current location variables
     var currentCoordinate: CLLocationCoordinate2D!
     var coordinateSpan: MKCoordinateSpan!
     let coordinateSpanValue: Double = 0.05
     var coordinateRegion: MKCoordinateRegion!
+    // MARK: Trail Core Data variables
+    var trailList: Array<NSManagedObject>!
+    var appDelegate: AppDelegate!
+    var managedContext: NSManagedObjectContext!
+    var fetchRequest: NSFetchRequest<NSManagedObject>!
 
     override func viewDidLoad() {
 
@@ -43,6 +50,24 @@ class TrailMapViewController: UIViewController, MKMapViewDelegate {
         // Get current location coordinate
         makeLocationRegion()
     }
+
+
+    override func viewWillAppear(_ animated: Bool) {
+
+        super.viewWillAppear(animated)
+
+        // Prepare for fetching trail data
+        appDelegate = UIApplication.shared.delegate as! AppDelegate!
+        managedContext = appDelegate.persistentContainer.viewContext
+        fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Trail")
+        do {
+            // Try to fetch
+            trailList = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            debugPrint("Could not fetch trail data. \(error), \(error.userInfo)")
+        }
+    }
+
 
     // Get current location coordinate
     func makeLocationRegion() {

@@ -23,7 +23,9 @@ class TrailMapViewControllerTests: XCTestCase {
 
         let storyboard = UIStoryboard(name: "TrailMap", bundle: nil)
         testBed = storyboard.instantiateViewController(withIdentifier: "TrailMap") as! TrailMapViewController
-        _ = testBed.view
+
+        XCTAssertNotNil(testBed.view, "Instantiated view must not be nil")
+        XCTAssertNotNil(testBed.viewWillAppear(false), "ViewWillAppear must be executable")
     }
 
 
@@ -107,6 +109,42 @@ class TrailMapViewControllerTests: XCTestCase {
     func testCoordinateRegion_IsNotNil() {
 
         XCTAssertNotNil(testBed.coordinateRegion, "MKCoordinateRegion must not be nil")
+    }
+
+    // Mark: Trail data from Core Data tests
+    func testTrailList_IsNotNilAfterViewWillAppear() {
+
+        XCTAssertNotNil(testBed.trailList, "Trail data list must not be nil")
+    }
+
+
+    func testTrailList_HasItem() {
+
+        XCTAssertTrue(testBed.trailList.count > 0)
+    }
+
+
+    func testAppDelegate_IsNotNilAfterViewWillAppear() {
+
+        XCTAssertNotNil(testBed.appDelegate, "AppDelegate objectmust not be nil")
+    }
+
+
+    func testManagedContext_IsNotNilAfterViewWillAppear() {
+
+        XCTAssertNotNil(testBed.managedContext, "NSManagedObjectContext object must not be nil")
+    }
+
+
+    func testFetchRequest_IsNotNilAfterViewWillAppear() {
+
+        XCTAssertNotNil(testBed.fetchRequest, "NSFetchRequest object must not be nil")
+    }
+
+
+    func testFetchRequest_ShouldSetEntityName() {
+
+        XCTAssertEqual(testBed.fetchRequest.entityName, "Trail", "NSFetchRequest object must set entity name as 'Trail'")
     }
 }
 
