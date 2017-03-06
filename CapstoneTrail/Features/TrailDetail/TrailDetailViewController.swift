@@ -110,7 +110,7 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
         hikeScheduleReference.child("trailId").setValue(self.id)
         hikeScheduleReference.child("trail").setValue(self.street)
         hikeScheduleReference.child("date").setValue(self.txtDateTrail.text)
-        hikeScheduleReference.child("attendees").setValue([self.uid])
+        hikeScheduleReference.child("attendees").child("0").setValue(self.uid)
         
         //add event to group
         self.addHikingScheduletoGroup(groupId: self.groupId, hikeId: hikeId)
