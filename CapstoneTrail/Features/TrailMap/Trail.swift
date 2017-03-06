@@ -10,7 +10,7 @@ import MapKit
 
 
 class Trail {
-    var id: Int
+    var id: Int32
     var area: String
     var street: String
     var status: String
@@ -19,13 +19,12 @@ class Trail {
     var owner: String
     var length: Double
     var coordinates: [[Double]]
-//    var routePolyline: MKPolyline!
 
     var travelTime: Double
     var coordinate2DList: [CLLocationCoordinate2D] = []
 
     init(trail: NSManagedObject) {
-        self.id = trail.value(forKey: "id") as! Int
+        self.id = trail.value(forKey: "id") as! Int32
         self.area = trail.value(forKey: "area") as! String
         self.street = trail.value(forKey: "street") as! String
         self.status = trail.value(forKey: "status") as! String
@@ -37,7 +36,6 @@ class Trail {
 
         self.travelTime = TrailUtils.metre2minute(lengthIn: self.length)
         self.coordinate2DList = makeCoordinate2D()
-//        self.routePolyline = MKPolyline(coordinates: coordinate2DList, count: coordinate2DList.count)
     }
 
 

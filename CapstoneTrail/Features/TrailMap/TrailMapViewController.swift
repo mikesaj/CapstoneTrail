@@ -31,6 +31,7 @@ class TrailMapViewController: UIViewController, MKMapViewDelegate {
     var managedContext: NSManagedObjectContext!
     var fetchRequest: NSFetchRequest<NSManagedObject>!
     // MARK: Trail routes variables
+    var trail: Trail!
     var trails: Array<Trail> = []
     var trailPolyline: Array<MKPolyline> = [MKPolyline()]
 

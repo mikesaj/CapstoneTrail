@@ -30,6 +30,8 @@ extension TrailMapViewController {
             }
         }
 
+        trail = nearestTrailPolylineFromTapPoint.trail
+
         if(nearestTrailDistanceFromTapPoint < minimumTrailDistance) {
             showTrailData(trailData: nearestTrailPolylineFromTapPoint)
         }
@@ -68,40 +70,53 @@ extension TrailMapViewController {
 
         return distance
     }
-    
+
     // Show trail information
     func showTrailData(trailData: TrailPolyline) {
+
         // Clear all annotations
         let allAnnotations = trailMapView.annotations
         trailMapView.removeAnnotations(allAnnotations)
-        
+
         // Get trail object
         guard let trail: Trail = trailData.trail else { return }
-        
+
         // Create annotation
-        let trailAnnotation: MKPointAnnotation = MKPointAnnotation()
+        let trailAnnotation = MKPointAnnotation()
         trailAnnotation.coordinate = trailData.coordinate
         trailAnnotation.title = trailData.trail?.pathType
-        trailAnnotation.subtitle = String(format: "%.0fm, %.0fminute by walk", trail.length, trail.travelTime)
+        trailAnnotation.subtitle = String(format: "%.0f m, %.0f minute by walk", trail.length, trail.travelTime)
         trailMapView.addAnnotation(trailAnnotation)
         let deadlineTime = DispatchTime.now() + .milliseconds(300)
         DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
             self.trailMapView.selectAnnotation(trailAnnotation, animated: true)
         }
     }
-    
+
     // Customise annotation
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+
         if annotation is MKUserLocation {
             return nil
-        }
-            
-        else {
+        } else {
             let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView") ?? MKAnnotationView()
             annotationView.image = UIImage(named: "Flag")
             annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             annotationView.canShowCallout = true
+
             return annotationView
         }
+    }
+
+    // Move to trail detail view
+    func mapView(_ mapView: MKMapView,
+                 annotationView view: MKAnnotationView,
+                 calloutAccessoryControlTapped control: UIControl) {
+
+        guard let trailDetailViewController = UIStoryboard(name: "TrailDetail", bundle: nil).instantiateViewController(withIdentifier: "TrailDetail") as? TrailDetailViewController else { return }
+
+        trailDetailViewController.trail = TrailUtils.searchTrail(id: trail.id, area: trail.area)
+
+        self.present(trailDetailViewController, animated: true, completion: nil)
     }
 }
