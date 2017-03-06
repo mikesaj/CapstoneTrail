@@ -78,7 +78,10 @@ class TrailMapViewController: UIViewController, MKMapViewDelegate {
 
         // Add polyline on the map
         for trail in trails {
-            trailMapView.add(trail.routePolyline)
+            let trailPolyline = TrailPolyline(coordinates: trail.coordinate2DList, count: trail.coordinate2DList.count)
+            trailPolyline.trail = trail
+
+            trailMapView.add(trailPolyline)
         }
     }
 
@@ -103,13 +106,40 @@ class TrailMapViewController: UIViewController, MKMapViewDelegate {
 
         // Initialize and return a new overlay view using the specified polyline overlay object
         let polylineRenderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        // Set stroke line colour
-        polylineRenderer.strokeColor = UIColor.blue()
         // Set stroke line width
-        polylineRenderer.lineWidth = 1
+        polylineRenderer.lineWidth = 1.3
+
+        // Set stroke line colour
+        if overlay is TrailPolyline {
+            var strokeColour: UIColor
+
+            let trailPolyline = overlay as! TrailPolyline
+            if let trail = trailPolyline.trail {
+                let trailType: String = trail.pathType
+                
+                switch trailType {
+                case "DOMINIC CARDILLO TRAIL":
+                    strokeColour = UIColor.red
+                case "IRON HORSE TRAIL":
+                    strokeColour = UIColor.brown
+                case "WALTER BEAN GRAND RIVER TRAIL":
+                    strokeColour = UIColor.magenta
+                case "WATERLOO SPURLINE TRAIL":
+                    strokeColour = UIColor.cyan
+                case "TRANS-CANADA TRAIL":
+                    strokeColour = UIColor.orange
+                default:
+                    strokeColour = UIColor.blue()
+                }
+            } else {
+                strokeColour = UIColor.blue()
+            }
+
+            polylineRenderer.strokeColor = strokeColour
+        } else {
+            polylineRenderer.strokeColor = UIColor.blue()
+        }
 
         return polylineRenderer
     }
 }
-
-

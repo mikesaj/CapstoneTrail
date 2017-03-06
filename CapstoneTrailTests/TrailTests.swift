@@ -99,12 +99,12 @@ class TrailTests: XCTestCase {
         }
     }
 
-    // MARK: route polyline tests
-    func testPolyline_IsNotNil() {
-
-        XCTAssertNotNil(trail.routePolyline, "Route polyline must be not nil")
-        XCTAssertNotEqual(trail.routePolyline.pointCount, 0, "A polyline must have more than 1 coordinate")
-    }
+//    // MARK: route polyline tests
+//    func testPolyline_IsNotNil() {
+//
+//        XCTAssertNotNil(trail.routePolyline, "Route polyline must be not nil")
+//        XCTAssertNotEqual(trail.routePolyline.pointCount, 0, "A polyline must have more than 1 coordinate")
+//    }
 
     // MARK: travel time tests
     func testTravelTime_IsNotNil() {

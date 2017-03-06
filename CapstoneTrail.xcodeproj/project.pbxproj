@@ -59,6 +59,7 @@
 		B66C875F384F46488B725567 /* TrailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C86E04C2B6393FB1CC083 /* TrailTests.swift */; };
 		B66C891A616DF6929B1079A4 /* TrailMapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8C01390A23000A8D50CB /* TrailMapViewControllerTests.swift */; };
 		B66C8A93363E18079BF25D47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66C842C3146213CC47FE05D /* Main.storyboard */; };
+		B66C8C8DEC5FB180F7C3C27E /* TrailPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C805281013E748CD10F6A /* TrailPolyline.swift */; };
 		B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C80D3D9049E6DECDBF27F /* ViewController.swift */; };
 		B66C8E1A7401C833BE35C2A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B66C8FFA2195697D1BA6415F /* Images.xcassets */; };
 		B66C8E8C8FFE2F1F9BB34360 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B66C8C866F8BFE32C7F9EDC4 /* Localizable.strings */; };
@@ -137,6 +138,7 @@
 		A98B92F61E637DBC007C7AB6 /* TrailUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailUtils.swift; sourceTree = "<group>"; };
 		A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		ACF2801F5E3EFD4AB34ADB8E /* Pods_CapstoneTrail_CapstoneTrailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneTrail_CapstoneTrailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B66C805281013E748CD10F6A /* TrailPolyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailPolyline.swift; sourceTree = "<group>"; };
 		B66C80D3D9049E6DECDBF27F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B66C84B649E566C74B20544C /* TrailMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailMapViewController.swift; sourceTree = "<group>"; };
 		B66C86E04C2B6393FB1CC083 /* TrailTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailTests.swift; sourceTree = "<group>"; };
@@ -147,7 +149,7 @@
 		B66C8C01390A23000A8D50CB /* TrailMapViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailMapViewControllerTests.swift; sourceTree = "<group>"; };
 		B66C8C866F8BFE32C7F9EDC4 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		B66C8E354790C98D3CD7CB58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
-		B66C8E47DD60A7A6839B2768 /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Trail.swift; path = TrailMap/Trail.swift; sourceTree = "<group>"; };
+		B66C8E47DD60A7A6839B2768 /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
 		B66C8ED1AC2F1ED2E055EB2F /* CapstoneTrailTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CapstoneTrailTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66C8FBBF8B0676832E26E83 /* CapstoneTrail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneTrail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66C8FFA2195697D1BA6415F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -366,8 +368,9 @@
 				A92CA1FC1E6B30CF003EF418 /* TrailMap.storyboard */,
 				B66C84B649E566C74B20544C /* TrailMapViewController.swift */,
 				B66C8E47DD60A7A6839B2768 /* Trail.swift */,
+				B66C805281013E748CD10F6A /* TrailPolyline.swift */,
 			);
-			name = TrailMap;
+			path = TrailMap;
 			sourceTree = "<group>";
 		};
 		A976D6EE1E637B5C000CF3F5 /* TrailDetail */ = {
@@ -548,7 +551,6 @@
 				ORGANIZATIONNAME = MSD;
 				TargetAttributes = {
 					B66C85B253DA11D131100BD0 = {
-						DevelopmentTeam = 2472MVQR2Y;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -764,6 +766,7 @@
 				D21BE5421E5FCB0C006D05C4 /* Friend.swift in Sources */,
 				B66C83238B78A69E6A3ACF49 /* TrailMapViewController.swift in Sources */,
 				B66C80BC715842FD22EF75BC /* Trail.swift in Sources */,
+				B66C8C8DEC5FB180F7C3C27E /* TrailPolyline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,7 +820,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CapstoneTrail/CapstoneTrail.entitlements;
-				DEVELOPMENT_TEAM = 2472MVQR2Y;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CapstoneTrail/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -938,7 +941,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CapstoneTrail/CapstoneTrail.entitlements;
-				DEVELOPMENT_TEAM = 2472MVQR2Y;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CapstoneTrail/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
