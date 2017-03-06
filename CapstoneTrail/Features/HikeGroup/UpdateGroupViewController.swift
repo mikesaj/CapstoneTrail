@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class UpdateGroupViewController: UIViewController, UITextViewDelegate {
+class UpdateGroupViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     // Firebase reference instance
     let ref = FIRDatabase.database().reference()
@@ -18,6 +18,7 @@ class UpdateGroupViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var groupTitleTextField: UITextField!
     @IBOutlet weak var groupDescriptionTextView: UITextView!
     @IBOutlet weak var isPublicSegment: UISegmentedControl!
+    
     
     // class variables
     var isPublic:         Bool   = true
@@ -28,6 +29,9 @@ class UpdateGroupViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.groupTitleTextField.delegate      = self
+        self.groupDescriptionTextView.delegate = self
         
         // populate UI objects
         groupTitleTextField.text      = groupName
@@ -44,6 +48,11 @@ class UpdateGroupViewController: UIViewController, UITextViewDelegate {
         groupDescriptionTextView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
         groupDescriptionTextView.layer.borderWidth = 1.0
         groupDescriptionTextView.layer.cornerRadius = 5
+    }
+    
+    //hide keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     // textview is emtptied as user begins editing

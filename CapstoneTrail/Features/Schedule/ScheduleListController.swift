@@ -31,42 +31,36 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
 
     var groupId: String = ""
     
-    override func viewDidLoad() {
-        
+    override func viewDidLoad() {        
         super.viewDidLoad()
-        
-        ///// Demo data
-        
-        //trail name
-        trail.append("Waterloo Trail")
-        
-        //hike Id
-        hikeId.append("06E442B4-A141-4F28-B237-019CBE7F0350")
-        
-        //trail id
-        trailId.append("12345243")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
 
-        //hike date
-        hikeDate.append("12/03/2016")
         
-        invites.insert("06E442B4-A141-4F28-B237-019CBE7F0350")
- 
+        hikeId.removeAll()
+        trailId.removeAll()
+        trail.removeAll()
+        hikeDate.removeAll()
+
+        
         // checks if to display group hikes or personal hikes
         if (groupId.characters.count) > 0 {
             populateHikeListCollection(collection: "groups", id: self.groupId)
         }
         else {
-
+            
             // populates hike invites
             populateHikeInviteList()
-
+            
             // populates user hikeList with DB records
             populateHikeListCollection(collection: "users", id: self.uid!)
         }
         
         self.hikeScheduleListTableView.reloadData()
-        //self.navigationController?.popToRootViewController(animated: true)
+        super.viewWillAppear(animated) // No need for semicolon
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -174,19 +168,20 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
     // accept hike invitation
     @IBAction func acceptButton(sender: UIButton){
         
-        let hikeEventid = self.trailId[sender.tag]
+        let hikeEventid = self.hikeId[sender.tag]
         
         scheduleDB.removeHikeInvite(hikeEventid:hikeEventid, userId:uid!)
         scheduleDB.addHikeEventtoUser(hikeEventid:hikeEventid, userId:uid!)
         
         let index = trail[sender.tag];
-        print("indexis = \(index)")
+        print("indexis = \(index) user = \(uid!) eventid = \(hikeEventid)")
         
         self.trail   .removeAll()
         self.trailId .removeAll()
         self.hikeId  .removeAll()
         self.hikeDate.removeAll()
-        
+
+        self.hikeScheduleListTableView.reloadData()
         
         //populating group members data
         populateHikeListCollection(collection: "users", id: self.uid!)
@@ -249,7 +244,10 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
                                     
                                     self.hikeId     .append(snapshot.key)
                                     self.trail      .append(value?["trail"]      as! String)
-                                    self.trailId    .append(((value?["trailId"])! as! NSObject) as! String)
+                                    
+                                    let vare = value?["trailId"]
+                                    self.trailId    .append( String(describing: vare) )
+
                                     self.hikeDate   .append(value?["date"]       as! String)
                                     
                                     // insert into invite id's

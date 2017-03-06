@@ -118,10 +118,50 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
         self.displayMessage(ttl: self.street, msg: "Trail was saved successfully")
     }
     
+    // invite group members
+    func inviteGroupMembers(memberIds: [String], hikeId: String){
+        
+        for memberid in memberIds {
+            if memberid != uid {
+            ref.child("users")
+                .queryOrderedByKey()
+                .queryEqual(toValue: memberid)
+                .observe(.childAdded, with: { (snapshot) in
+                    
+                    let value = snapshot.value as? [String: AnyObject]
+                    
+                    if value != nil{
+                        
+                        var hikingSchedules = [String]()
+                        
+                        if value?["hikeInvites"] != nil {
+                            
+                            // get user's group list
+                            hikingSchedules = (value?["hikeInvites"] as? [String])!
+                        }
+                        
+                        // add hikingSchedule id to user's invitation list
+                        hikingSchedules.insert(hikeId, at: 0)
+                        
+                        // add group to the user's group list
+                        self.ref.child("users").child(memberid).child("hikeInvites").setValue(hikingSchedules);
+                        
+                    }
+                    
+                }) { (error) in
+                    print(error.localizedDescription)
+            }
+          }
+        }
+        
+        
+    }
+    
+    
     //add's a hiking schedule to group
     func addHikingScheduletoGroup(groupId: String, hikeId: String) {
 
-        // add hikingSchedule to the user's list
+        // add hikingSchedule to the group onwer's list
         self.addHikeScheduleToUser(userId: self.uid!, hikeId: hikeId)
 
         _ = ref.child("groups")
@@ -135,6 +175,7 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
                 if value != nil{
                     
                     var hikingSchedules = [String]()
+                    var membersids = [String]()
                     
                     if value?["hikingSchedules"] != nil {
                         
@@ -150,6 +191,16 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
                     self.ref.child("groups")
                         .child(groupId).child("hikingSchedules")
                         .setValue(hikingSchedules);
+                    
+                    // invite group members
+                    if value?["members"] != nil {
+                        
+                        // get group members list
+                        membersids = (value?["members"] as? [String])!
+
+                        // invite group members
+                        self.inviteGroupMembers(memberIds: membersids, hikeId: hikeId)
+                    }
                     
                 }
                 

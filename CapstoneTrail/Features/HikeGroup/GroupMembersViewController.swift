@@ -26,6 +26,10 @@ class GroupMembersViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        friendName.removeAllObjects()
+        friendId  .removeAllObjects()
+        
         self.populateMembers(groupUid: groupUid)
         super.viewWillAppear(animated) // No need for semicolon
     }

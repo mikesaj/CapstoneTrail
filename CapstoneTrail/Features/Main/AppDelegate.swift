@@ -168,7 +168,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
              self.window = UIWindow(frame: UIScreen.main.bounds)
              self.window?.makeKeyAndVisible()
              self.window?.rootViewController = UINavigationController(rootViewController: DashBoardViewController())
-        })
+            
+            })
     }
 
 

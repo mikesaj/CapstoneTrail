@@ -15,7 +15,7 @@ let messageBody = "Join our fast growing hiking App today"
 var MessageRecipients = [""]
 
 // This class is for composing text & email message invitations
-public class JoinAppInvitation: UIViewController, MFMailComposeViewControllerDelegate {
+public class JoinAppInvitation: UIViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var textRecipient: UITextField!
     @IBOutlet weak var emailRecipient: UITextField!
@@ -92,6 +92,20 @@ public class JoinAppInvitation: UIViewController, MFMailComposeViewControllerDel
     override public func viewDidLoad() {
         super.viewDidLoad()
         super.title = "Invite Friends"
+        
+        textRecipient .delegate = self
+        emailRecipient.delegate = self
+    }
+    
+    //hide keyboard
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textRecipient.resignFirstResponder()
+        emailRecipient.resignFirstResponder()
+        return true
     }
 }
 

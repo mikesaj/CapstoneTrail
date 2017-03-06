@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import Firebase
 
-class CreateGroupViewController: UIViewController, UITextViewDelegate, CLLocationManagerDelegate  {
+class CreateGroupViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate  {
 
     //Location label declaration
     @IBOutlet weak var locationLabel: UILabel!
@@ -35,6 +35,9 @@ class CreateGroupViewController: UIViewController, UITextViewDelegate, CLLocatio
         
         super.viewDidLoad()
         
+        self.groupNameTextField.delegate = self
+        self.groupDescriptionTextView.delegate = self
+        
         // description textView border properties
         groupDescriptionTextView.textColor = UIColor.lightGray
         groupDescriptionTextView.text = initDescrptionText
@@ -48,6 +51,12 @@ class CreateGroupViewController: UIViewController, UITextViewDelegate, CLLocatio
         // Calls the location manager to get co-ordinate
         getLocation()
     }
+    
+    //hide keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

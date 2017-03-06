@@ -13,7 +13,7 @@ import FBSDKLoginKit
 import GoogleSignIn
 
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -32,6 +32,30 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
 
     // Login status
     var status = false
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.usernameTextField.delegate = self
+        self.passwordTextField.delegate = self
+        
+        FBSDKLoginManager().logOut()
+        
+        setupFacebookButtons()
+        setupGoogleButtons()
+    }
+    
+    //hide keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        passwordTextField.resignFirstResponder()
+        usernameTextField.resignFirstResponder()
+        return true
+    }
     
     /// Native Login Button action
 
@@ -109,15 +133,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         //self.window?.rootViewController = UINavigationController(rootViewController: DashBoardViewController())
 
         print("Switched to DashBoard View!!")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        FBSDKLoginManager().logOut()
-        
-        setupFacebookButtons()
-        setupGoogleButtons()
     }
     
     fileprivate func setupGoogleButtons(){
