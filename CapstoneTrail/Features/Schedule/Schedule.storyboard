@@ -171,6 +171,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="hikeScheduleListTableView" destination="ysk-gc-rSP" id="oIU-BT-I9N"/>
+                        <outlet property="newHikeButton" destination="Mec-fj-do5" id="wi4-mC-ZzE"/>
                         <segue destination="yRQ-qf-Gt3" kind="show" identifier="View2" id="3CJ-Ho-cos"/>
                         <segue destination="f59-QB-X3R" kind="show" identifier="newSchedule" id="a1k-SE-dxZ"/>
                     </connections>

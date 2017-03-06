@@ -7,9 +7,9 @@ target 'CapstoneTrail' do
 
   # Pods for CapstoneTrail
 
-pod ‘Firebase/Database’
-pod ‘Firebase/Auth’
-pod ‘Firebase/Storage’
+pod 'Firebase/Database'
+pod 'Firebase/Auth'
+pod 'Firebase/Storage'
 
 pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
@@ -20,7 +20,7 @@ pod 'GoogleSignIn'
 pod 'SwiftyJSON'
 
   target 'CapstoneTrailTests' do
-    inherit! :search_paths
+    inherit! :complete
     # Pods for testing
   end
 

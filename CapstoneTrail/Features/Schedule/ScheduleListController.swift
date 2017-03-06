@@ -11,6 +11,7 @@ import Firebase
 
 class ScheduleListController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var newHikeButton: UIButton!
     @IBOutlet weak var hikeScheduleListTableView: UITableView!
     
     var hikeId   =     [String]()
@@ -33,11 +34,15 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {        
         super.viewDidLoad()
+
+        // check if group owner
+        /*if groupId.characters.count < 1 {
+            newHikeButton.removeFromSuperview()
+        }*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
 
-        
         hikeId.removeAll()
         trailId.removeAll()
         trail.removeAll()
