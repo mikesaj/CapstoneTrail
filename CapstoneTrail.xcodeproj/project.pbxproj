@@ -54,6 +54,7 @@
 		A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9FB931F1E4A0C210053F6E3 /* APIKeys.plist */; };
 		B66C80BC715842FD22EF75BC /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8E47DD60A7A6839B2768 /* Trail.swift */; };
 		B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8A82BC1ABAFB0F9D0E10 /* AppDelegate.swift */; };
+		B66C82E1126A445C50143E18 /* TrailTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C87024EFD1BD0B640506C /* TrailTap.swift */; };
 		B66C83238B78A69E6A3ACF49 /* TrailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C84B649E566C74B20544C /* TrailMapViewController.swift */; };
 		B66C875384EF1325BC0D7110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66C82EA8971FB9C46435BE3 /* LaunchScreen.storyboard */; };
 		B66C875F384F46488B725567 /* TrailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C86E04C2B6393FB1CC083 /* TrailTests.swift */; };
@@ -142,6 +143,7 @@
 		B66C80D3D9049E6DECDBF27F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B66C84B649E566C74B20544C /* TrailMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailMapViewController.swift; sourceTree = "<group>"; };
 		B66C86E04C2B6393FB1CC083 /* TrailTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailTests.swift; sourceTree = "<group>"; };
+		B66C87024EFD1BD0B640506C /* TrailTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailTap.swift; sourceTree = "<group>"; };
 		B66C871A5CCAF5C836061916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		B66C88010C9CFE43488BA299 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B66C8A40A20620D47441B827 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				B66C84B649E566C74B20544C /* TrailMapViewController.swift */,
 				B66C8E47DD60A7A6839B2768 /* Trail.swift */,
 				B66C805281013E748CD10F6A /* TrailPolyline.swift */,
+				B66C87024EFD1BD0B640506C /* TrailTap.swift */,
 			);
 			path = TrailMap;
 			sourceTree = "<group>";
@@ -767,6 +770,7 @@
 				B66C83238B78A69E6A3ACF49 /* TrailMapViewController.swift in Sources */,
 				B66C80BC715842FD22EF75BC /* Trail.swift in Sources */,
 				B66C8C8DEC5FB180F7C3C27E /* TrailPolyline.swift in Sources */,
+				B66C82E1126A445C50143E18 /* TrailTap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

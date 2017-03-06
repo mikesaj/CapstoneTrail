@@ -52,6 +52,10 @@ class TrailMapViewController: UIViewController, MKMapViewDelegate {
 
         // Get current location coordinate
         makeLocationRegion()
+
+        // Add tap gesture
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tappedAction))
+        trailMapView.addGestureRecognizer(tapGesture)
     }
 
 
@@ -116,20 +120,20 @@ class TrailMapViewController: UIViewController, MKMapViewDelegate {
             let trailPolyline = overlay as! TrailPolyline
             if let trail = trailPolyline.trail {
                 let trailType: String = trail.pathType
-                
+
                 switch trailType {
-                case "DOMINIC CARDILLO TRAIL":
-                    strokeColour = UIColor.red
-                case "IRON HORSE TRAIL":
-                    strokeColour = UIColor.brown
-                case "WALTER BEAN GRAND RIVER TRAIL":
-                    strokeColour = UIColor.magenta
-                case "WATERLOO SPURLINE TRAIL":
-                    strokeColour = UIColor.cyan
-                case "TRANS-CANADA TRAIL":
-                    strokeColour = UIColor.orange
-                default:
-                    strokeColour = UIColor.blue()
+                    case "DOMINIC CARDILLO TRAIL":
+                        strokeColour = UIColor.red
+                    case "IRON HORSE TRAIL":
+                        strokeColour = UIColor.brown
+                    case "WALTER BEAN GRAND RIVER TRAIL":
+                        strokeColour = UIColor.magenta
+                    case "WATERLOO SPURLINE TRAIL":
+                        strokeColour = UIColor.cyan
+                    case "TRANS-CANADA TRAIL":
+                        strokeColour = UIColor.orange
+                    default:
+                        strokeColour = UIColor.blue()
                 }
             } else {
                 strokeColour = UIColor.blue()
