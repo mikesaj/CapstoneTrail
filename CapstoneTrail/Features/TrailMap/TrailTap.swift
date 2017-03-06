@@ -12,15 +12,10 @@ extension TrailMapViewController {
     // Find nearest trail
     func tappedAction(tapRecoginzer: UIGestureRecognizer) {
 
-        print("tapped!")
-
         // Convert tapped CGPoint to coordinates
         let tapPoint = tapRecoginzer.location(in: trailMapView)
-        print(tapPoint)
         let tapCoordinate = trailMapView.convert(tapPoint, toCoordinateFrom: trailMapView)
-        print(tapCoordinate)
         let tapMapPoint = MKMapPointForCoordinate(tapCoordinate)
-        print(tapMapPoint)
 
         // Find tapped polyline data
         var nearestTrailDistanceFromTapPoint: Double = 50
@@ -36,10 +31,7 @@ extension TrailMapViewController {
         }
 
         if(nearestTrailDistanceFromTapPoint < minimumTrailDistance) {
-            print(nearestTrailDistanceFromTapPoint)
-            print(nearestTrailPolylineFromTapPoint.trail?.pathType)
-        } else {
-            print("Nothing")
+            showTrailData(trailData: nearestTrailPolylineFromTapPoint)
         }
     }
 
@@ -75,5 +67,41 @@ extension TrailMapViewController {
         }
 
         return distance
+    }
+    
+    // Show trail information
+    func showTrailData(trailData: TrailPolyline) {
+        // Clear all annotations
+        let allAnnotations = trailMapView.annotations
+        trailMapView.removeAnnotations(allAnnotations)
+        
+        // Get trail object
+        guard let trail: Trail = trailData.trail else { return }
+        
+        // Create annotation
+        let trailAnnotation: MKPointAnnotation = MKPointAnnotation()
+        trailAnnotation.coordinate = trailData.coordinate
+        trailAnnotation.title = trailData.trail?.pathType
+        trailAnnotation.subtitle = String(format: "%.0fm, %.0fminute by walk", trail.length, trail.travelTime)
+        trailMapView.addAnnotation(trailAnnotation)
+        let deadlineTime = DispatchTime.now() + .milliseconds(300)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            self.trailMapView.selectAnnotation(trailAnnotation, animated: true)
+        }
+    }
+    
+    // Customise annotation
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+            
+        else {
+            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView") ?? MKAnnotationView()
+            annotationView.image = UIImage(named: "Flag")
+            annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            annotationView.canShowCallout = true
+            return annotationView
+        }
     }
 }
