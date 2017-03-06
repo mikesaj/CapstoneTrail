@@ -97,6 +97,7 @@ class GroupMembersViewController: UITableViewController {
                     self.owneruid = (value?["owneruid"] as? String)!
                     print("\(self.owneruid) iwnerid")
                     let members = (value?["members"] as? [String])!
+                    
                     for memberId in members {
                         
                         

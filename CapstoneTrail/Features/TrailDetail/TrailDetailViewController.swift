@@ -115,12 +115,15 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
         //add event to group
         self.addHikingScheduletoGroup(groupId: self.groupId, hikeId: hikeId)
         
-        self.displayMessage(ttl: "\(self.street)", msg: "Trail was saved successfully")
+        self.displayMessage(ttl: self.street, msg: "Trail was saved successfully")
     }
     
     //add's a hiking schedule to group
     func addHikingScheduletoGroup(groupId: String, hikeId: String) {
-        
+
+        // add hikingSchedule to the user's list
+        self.addHikeScheduleToUser(userId: self.uid!, hikeId: hikeId)
+
         _ = ref.child("groups")
             .queryOrderedByKey()
             .queryEqual(toValue: groupId)
@@ -147,9 +150,6 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
                     self.ref.child("groups")
                         .child(groupId).child("hikingSchedules")
                         .setValue(hikingSchedules);
-                    
-                    // add hikingSchedule to the user's list
-                    self.addHikeScheduleToUser(userId: self.uid!, hikeId: hikeId)
                     
                 }
                 

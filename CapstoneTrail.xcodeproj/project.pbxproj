@@ -32,6 +32,8 @@
 		44DE37FD1E673809002A775A /* UpdateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */; };
 		44DE37FF1E679595002A775A /* GroupMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE37FE1E679595002A775A /* GroupMembersViewController.swift */; };
 		44DE38041E6BFC25002A775A /* ScheduleInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE38031E6BFC25002A775A /* ScheduleInviteCell.swift */; };
+		44DE38071E6CE54B002A775A /* ScheduleDBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE38061E6CE54B002A775A /* ScheduleDBController.swift */; };
+		44DE38091E6D17F4002A775A /* HikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE38081E6D17F4002A775A /* HikeModel.swift */; };
 		44F136721E62087600E3747C /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F136711E62087600E3747C /* UserProfileViewController.swift */; };
 		44F136741E62277500E3747C /* GroupListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F136731E62277500E3747C /* GroupListViewCell.swift */; };
 		44F5B7301E63166E007C7B97 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5B72F1E63166E007C7B97 /* SettingsController.swift */; };
@@ -111,6 +113,8 @@
 		44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateGroupViewController.swift; path = HikeGroup/UpdateGroupViewController.swift; sourceTree = "<group>"; };
 		44DE37FE1E679595002A775A /* GroupMembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupMembersViewController.swift; path = HikeGroup/GroupMembersViewController.swift; sourceTree = "<group>"; };
 		44DE38031E6BFC25002A775A /* ScheduleInviteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleInviteCell.swift; sourceTree = "<group>"; };
+		44DE38061E6CE54B002A775A /* ScheduleDBController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDBController.swift; sourceTree = "<group>"; };
+		44DE38081E6D17F4002A775A /* HikeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HikeModel.swift; sourceTree = "<group>"; };
 		44F136711E62087600E3747C /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		44F136731E62277500E3747C /* GroupListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupListViewCell.swift; path = HikeGroup/GroupListViewCell.swift; sourceTree = "<group>"; };
 		44F5B72F1E63166E007C7B97 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsController.swift; path = Settings/SettingsController.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 		44385C061E5CE1E90095F2B0 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				44DE38051E6CE4F9002A775A /* DAL */,
 				44385C071E5CE30B0095F2B0 /* Schedule.storyboard */,
 				44385C091E5CE3430095F2B0 /* ScheduleListController.swift */,
 				44385C0B1E5CEFB20095F2B0 /* ScheduleViewCell.swift */,
@@ -269,6 +274,15 @@
 			);
 			name = AddGroup;
 			path = HikeGroup/AddGroup;
+			sourceTree = "<group>";
+		};
+		44DE38051E6CE4F9002A775A /* DAL */ = {
+			isa = PBXGroup;
+			children = (
+				44DE38061E6CE54B002A775A /* ScheduleDBController.swift */,
+				44DE38081E6D17F4002A775A /* HikeModel.swift */,
+			);
+			path = DAL;
 			sourceTree = "<group>";
 		};
 		44F5B72E1E631648007C7B97 /* Settings */ = {
@@ -733,6 +747,8 @@
 				D21BE5481E5FCB30006D05C4 /* StringExtension.swift in Sources */,
 				446087781E4E116A007A8BE0 /* User.swift in Sources */,
 				A97979E71E5DE6D8002DC4D2 /* TrailTableViewCell.swift in Sources */,
+				44DE38071E6CE54B002A775A /* ScheduleDBController.swift in Sources */,
+				44DE38091E6D17F4002A775A /* HikeModel.swift in Sources */,
 				A97979EB1E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift in Sources */,
 				44F5B7321E63176F007C7B97 /* JoinAppInvitation.swift in Sources */,
 				D21BE5421E5FCB0C006D05C4 /* Friend.swift in Sources */,

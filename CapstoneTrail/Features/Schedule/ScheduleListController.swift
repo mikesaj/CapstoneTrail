@@ -13,59 +13,57 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var hikeScheduleListTableView: UITableView!
     
-    var locationName: NSMutableArray! = NSMutableArray()
-    var locationUid:  NSMutableArray! = NSMutableArray()
-    var hikeDate:     NSMutableArray! = NSMutableArray()
+    var hikeId   =     [String]()
+    var trailId  =     [String]()
+    var trail    =     [String]()
+    var hikeDate =     [String]()
+    
+    var invites = Set<String>()
+    
+    let scheduleDB = ScheduleDBController()
 
+    
     // Database reference
     let ref = FIRDatabase.database().reference()
-    
+
+    // Current user id
+    let uid = FIRAuth.auth()?.currentUser?.uid
+
     var groupId: String = ""
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        // Demo data
+        ///// Demo data
         
         //trail name
-        locationName.add("Waterloo Trail")
-        locationName.add("Kitchener Trail")
-        locationName.add("Apple Groove Trails")
-        locationName.add("Uptown Trails")
-        locationName.add("Westmount Trails")
-        locationName.add("Fairway Walks")
-        locationName.add("Kings Trails")
-        locationName.add("Laurie Trails")
-        locationName.add("Kids Trails")
-        locationName.add("Baby Trails")
+        trail.append("Waterloo Trail")
         
-        // trail id
-        locationUid.add("12345243")
-        locationUid.add("56545543")
-        locationUid.add("6576u798")
-        locationUid.add("87653434")
-        locationUid.add("57865433")
-        locationUid.add("08976545")
-        locationUid.add("87654434")
-        locationUid.add("45366573")
-        locationUid.add("74664334")
-        locationUid.add("973487t6")
+        //hike Id
+        hikeId.append("06E442B4-A141-4F28-B237-019CBE7F0350")
+        
+        //trail id
+        trailId.append("12345243")
 
-        // hike date
-        hikeDate.add("12/03/2016")
-        hikeDate.add("12/03/2016")
-        hikeDate.add("12/03/2016")
-        hikeDate.add("14/03/2016")
-        hikeDate.add("12/04/2016")
-        hikeDate.add("12/07/2016")
-        hikeDate.add("12/01/2016")
-        hikeDate.add("12/09/2016")
-        hikeDate.add("12/02/2016")
-        hikeDate.add("12/01/2016")
+        //hike date
+        hikeDate.append("12/03/2016")
+        
+        invites.insert("06E442B4-A141-4F28-B237-019CBE7F0350")
+ 
+        // checks if to display group hikes or personal hikes
+        if (groupId.characters.count) > 0 {
+            populateHikeListCollection(collection: "groups", id: self.groupId)
+        }
+        else {
 
-        //ScheduleInviteCell
+            // populates hike invites
+            populateHikeInviteList()
 
+            // populates user hikeList with DB records
+            populateHikeListCollection(collection: "users", id: self.uid!)
+        }
+        
         self.hikeScheduleListTableView.reloadData()
         //self.navigationController?.popToRootViewController(animated: true)
     }
@@ -76,29 +74,55 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
 
 
     // MARK: - Controller Table View
-    // Getting the number of rows in locationName collection
+    // Getting the number of rows in trail collection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.locationName.count
+        return self.trail.count
     }
     
     // populates and sets the custom cell element
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleViewCell
-        cell.scheduleTitle.text = self.locationName.object(at: indexPath.row) as? String
-        cell.scheduleTime.text = self.hikeDate.object(at: indexPath.row) as? String
+         let inviteid = self.hikeId[indexPath.row]
         
+        if invites.contains( inviteid ) {
+            //print("I got up on the good foot.")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleInviteCell", for: indexPath) as! ScheduleInviteCell
+
+            //labels
+            cell.scheduleTitle.text = self.trail[indexPath.row]
+            cell.scheduleTime.text = self.hikeDate[indexPath.row]
+            
+            //accept button
+            cell.acceptButton.tag = indexPath.row
+            cell.acceptButton.addTarget(self, action: #selector(acceptButton), for: .touchUpInside)
+
+            //reject button
+            cell.rejectButton.tag = indexPath.row
+            cell.rejectButton.addTarget(self, action: #selector(rejectButton), for: .touchUpInside)
+            
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleViewCell
+        
+        //labels
+        cell.scheduleTitle.text = self.trail[indexPath.row]
+        cell.scheduleTime.text = self.hikeDate[indexPath.row]
+        
+        //button
         cell.viewScheduleButton.tag = indexPath.row
         cell.viewScheduleButton.addTarget(self, action: #selector(logAction), for: .touchUpInside)
+        
         return cell
     }
     
     // specifies the selected row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let name = self.locationName.object(at: indexPath.row) as? String
-        let ui = self.locationUid.object(at: indexPath.row) as? String
-
+        let trail_1    = self.trail[indexPath.row]
+        let trailid_1  = self.trailId[indexPath.row]
+        let hikeid_1   = self.hikeId[indexPath.row]
+        let HikeDate_1 = self.hikeDate[indexPath.row]
         
         // redirect to storyboard
         /*let myVC = storyboard?.instantiateViewController(withIdentifier: "ScheduleProfile") as! ScheduleProfileController
@@ -116,20 +140,57 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         
         //Change the selected background view of the cell.
         tableView.deselectRow(at: indexPath, animated: true)
-
     }
     
     // invite button selected
     @IBAction func logAction(sender: UIButton){
         
-        let index = locationName[sender.tag];
+        let index = trail[sender.tag];
         
-       // self.locationName.removeObject(at: sender.tag)
-       // self.locationUid.removeObject (at: sender.tag)
+        // self.trail.removeObject(at: sender.tag)
+        // self.trailId.removeObject (at: sender.tag)
         
         self.hikeScheduleListTableView.reloadData()
         
         print("indexis = \(index)")
+    }
+    
+    // reject hike invitation
+    @IBAction func rejectButton(sender: UIButton){
+        
+        let hikeEvent = self.trailId[sender.tag]
+        
+        self.trail   .remove(at: sender.tag)
+        self.trailId .remove(at: sender.tag)
+        self.hikeId  .remove(at: sender.tag)
+        self.hikeDate.remove(at: sender.tag)
+        
+        //remove the hike invite from user
+        scheduleDB.removeHikeInvite(hikeEventid:hikeEvent, userId:uid!)
+        
+        self.hikeScheduleListTableView.reloadData()
+    }
+    
+    // accept hike invitation
+    @IBAction func acceptButton(sender: UIButton){
+        
+        let hikeEventid = self.trailId[sender.tag]
+        
+        scheduleDB.removeHikeInvite(hikeEventid:hikeEventid, userId:uid!)
+        scheduleDB.addHikeEventtoUser(hikeEventid:hikeEventid, userId:uid!)
+        
+        let index = trail[sender.tag];
+        print("indexis = \(index)")
+        
+        self.trail   .removeAll()
+        self.trailId .removeAll()
+        self.hikeId  .removeAll()
+        self.hikeDate.removeAll()
+        
+        
+        //populating group members data
+        populateHikeListCollection(collection: "users", id: self.uid!)
+
     }
     
     // new Hike Schedule Button
@@ -154,38 +215,118 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    //Appending schedule to object collection
-    func poplateSingleSchedule(key: String, value: [String: AnyObject]){
-        
-        let name = value["name"] as? String ?? ""
-        
-            locationName.add(name)
-            locationUid.add(key)
-        
-        //refreshing table after populating collection
-        self.hikeScheduleListTableView.reloadData()
-    }
     
-    //populating schedule
-    func populateList(){
+    //populating hike inviations
+    func populateHikeInviteList(){
         
-        //getting logged schedule's uid
-        let hikeScheduleId = "DPpwfIDhAGXpFjFqI3BytLMrAA73"
-        
-        //getting schedule
-        self.ref.child("walkingSchedules")
+        _ = ref.child("users")
             .queryOrderedByKey()
-            .queryEqual(toValue: hikeScheduleId)
-            .observe(
-                .childAdded, with: { (snapshot) in
+            .queryEqual(toValue: self.uid)
+            .observe(.childAdded, with: { (snapshot) in
+                
+                let value = snapshot.value as? [String: AnyObject]
+                
+                if value != nil{
                     
-                    let value = snapshot.value as? [String: AnyObject]
-
-                    if value != nil{
+                    var hikeInvites = [String]()
+                    
+                    if value?["hikeInvites"] != nil {
                         
-                        self.poplateSingleSchedule(key: snapshot.key, value: value!)
+                        // get hike invites
+                        hikeInvites = (value?["hikeInvites"] as? [String])!
                     }
                     
+                    for hikeInviteId in hikeInvites {
+                        
+                        _ = self.ref.child("hikingSchedules")
+                            .queryOrderedByKey()
+                            .queryEqual(toValue: hikeInviteId)
+                            .observe(.childAdded, with: { (snapshot) in
+                                
+                                let value = snapshot.value as? [String: AnyObject]
+                                
+                                if value != nil{
+                                    
+                                    self.hikeId     .append(snapshot.key)
+                                    self.trail      .append(value?["trail"]      as! String)
+                                    self.trailId    .append(((value?["trailId"])! as! NSObject) as! String)
+                                    self.hikeDate   .append(value?["date"]       as! String)
+                                    
+                                    // insert into invite id's
+                                    self.invites.insert(snapshot.key)
+                                    
+                                    self.hikeScheduleListTableView.reloadData()
+                                    
+                                }
+                                
+                            }) { (error) in
+                                print(error.localizedDescription)
+                        }
+                        
+                        
+                        
+                    }
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
+        }
+    }
+
+
+    //populating group members data
+    func populateHikeListCollection(collection:String, id:String){
+        
+        _ = ref.child( collection )
+            .queryOrderedByKey()
+            .queryEqual(toValue: id )
+            .observe(.childAdded, with: { (snapshot) in
+                
+                let value = snapshot.value as? [String: AnyObject]
+                
+                if value != nil{
+                    
+                    var hikeInvites = [String]()
+                    
+                    if value?["hikingSchedules"] != nil {
+                        
+                        // get hike invites
+                        hikeInvites = (value?["hikingSchedules"] as? [AnyObject])! as! [String]
+                    }
+                    
+                    
+                    // gets user hike schedules
+                    for hikeInviteId in hikeInvites {
+                        
+                        
+                        _ = self.ref.child("hikingSchedules")
+                            .queryOrderedByKey()
+                            .queryEqual(toValue: hikeInviteId)
+                            .observe(.childAdded, with: { (snapshot) in
+                                
+                                let value = snapshot.value as? [String: AnyObject]
+                                
+                                if value != nil{
+                                    
+                                    self.hikeId     .append(snapshot.key)
+                                    self.trail      .append((value?["trail"])! as! String)
+                                    
+                                    let vare = value?["trailId"]
+                                    
+                                    self.trailId    .append( String(describing: vare) )
+                                    self.hikeDate   .append(value?["date"] as! String)
+                                    
+                                    self.hikeScheduleListTableView.reloadData()
+                                }
+                                
+                            }) { (error) in
+                                print(error.localizedDescription)
+                        }
+                        
+                        
+                    }
+                }
+                
             }) { (error) in
                 print(error.localizedDescription)
         }
