@@ -15,9 +15,6 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
 
     // database reference
     let ref = FIRDatabase.database().reference()
-    let uid = FIRAuth.auth()?.currentUser?.uid
-
-
     // MARK: Properties
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var areaLabel: UILabel!
@@ -102,6 +99,7 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
             return 
         }
         
+        let uid = FIRAuth.auth()?.currentUser?.uid
         
         //Create Hiking Event
         let hikeId = UUID().uuidString
@@ -110,7 +108,7 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
         hikeScheduleReference.child("trailId").setValue(self.id)
         hikeScheduleReference.child("trail").setValue(self.street)
         hikeScheduleReference.child("date").setValue(self.txtDateTrail.text)
-        hikeScheduleReference.child("attendees").child("0").setValue(self.uid)
+        hikeScheduleReference.child("attendees").child("0").setValue(uid)
         
         //add event to group
         self.addHikingScheduletoGroup(groupId: self.groupId, hikeId: hikeId)
@@ -120,6 +118,8 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
     
     // invite group members
     func inviteGroupMembers(memberIds: [String], hikeId: String){
+        
+        let uid = FIRAuth.auth()?.currentUser?.uid
         
         for memberid in memberIds {
             if memberid != uid {
@@ -161,8 +161,10 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
     //add's a hiking schedule to group
     func addHikingScheduletoGroup(groupId: String, hikeId: String) {
 
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        
         // add hikingSchedule to the group onwer's list
-        self.addHikeScheduleToUser(userId: self.uid!, hikeId: hikeId)
+        self.addHikeScheduleToUser(userId: uid!, hikeId: hikeId)
 
         _ = ref.child("groups")
             .queryOrderedByKey()
