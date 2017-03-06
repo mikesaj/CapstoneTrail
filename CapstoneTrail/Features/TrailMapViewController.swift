@@ -26,10 +26,13 @@ class TrailMapViewController: UIViewController, MKMapViewDelegate {
     let coordinateSpanValue: Double = 0.05
     var coordinateRegion: MKCoordinateRegion!
     // MARK: Trail Core Data variables
-    var trailList: Array<NSManagedObject>!
+    var coreDataTrailList: Array<NSManagedObject>!
     var appDelegate: AppDelegate!
     var managedContext: NSManagedObjectContext!
     var fetchRequest: NSFetchRequest<NSManagedObject>!
+    // MARK: Trail routes variables
+    var trails: Array<Trail> = []
+    var trailPolyline: Array<MKPolyline> = [MKPolyline()]
 
     override func viewDidLoad() {
 
@@ -62,12 +65,22 @@ class TrailMapViewController: UIViewController, MKMapViewDelegate {
         fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Trail")
         do {
             // Try to fetch
-            trailList = try managedContext.fetch(fetchRequest)
+            coreDataTrailList = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
             debugPrint("Could not fetch trail data. \(error), \(error.userInfo)")
         }
-    }
 
+        // Create trail objects from Core Data
+        for coreDataTrail in coreDataTrailList {
+            let trail = Trail(trail: coreDataTrail)
+            trails.append(trail)
+        }
+
+        // Add polyline on the map
+        for trail in trails {
+            trailMapView.add(trail.routePolyline)
+        }
+    }
 
     // Get current location coordinate
     func makeLocationRegion() {
@@ -82,6 +95,20 @@ class TrailMapViewController: UIViewController, MKMapViewDelegate {
         coordinateRegion = MKCoordinateRegion(center: currentCoordinate, span: coordinateSpan)
 
         trailMapView.setRegion(coordinateRegion, animated: true)
+    }
+
+    // MARK: MKMapViewDelegate
+    // Ask the delegate for a renderer object to use when drawing the specified overlay
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+
+        // Initialize and return a new overlay view using the specified polyline overlay object
+        let polylineRenderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
+        // Set stroke line colour
+        polylineRenderer.strokeColor = UIColor.blue()
+        // Set stroke line width
+        polylineRenderer.lineWidth = 1
+
+        return polylineRenderer
     }
 }
 

@@ -29,7 +29,10 @@ class TrailTests: XCTestCase {
         XCTAssertNotNil(testBed.view, "Instantiated view must not be nil")
         XCTAssertNotNil(testBed.viewWillAppear(false), "ViewWillAppear must be executable")
 
-        testObject = testBed.trailList[0]
+        let randNumber: UInt32 = arc4random_uniform(UInt32(testBed.coreDataTrailList.count))
+        let index: Int = Int(randNumber)
+
+        testObject = testBed.coreDataTrailList[index]
         trail = Trail(trail: testObject)
     }
 
@@ -95,15 +98,23 @@ class TrailTests: XCTestCase {
             XCTAssertEqual(trail.coordinate2DList[index].longitude, longitude, "Both longitude must be same")
         }
     }
-    
+
+    // MARK: route polyline tests
+    func testPolyline_IsNotNil() {
+
+        XCTAssertNotNil(trail.routePolyline, "Route polyline must be not nil")
+        XCTAssertNotEqual(trail.routePolyline.pointCount, 0, "A polyline must have more than 1 coordinate")
+    }
+
     // MARK: travel time tests
     func testTravelTime_IsNotNil() {
-        
+
         XCTAssertNotNil(trail.travelTime, "Travel time must be not nil")
     }
-    
+
+
     func testTravelTime_IsCalculatedFromLength() {
-        
+
         XCTAssertEqual(trail.travelTime, TrailUtils.metre2minute(lengthIn: trail.length), "Travel time must be same as calculated value")
     }
 }

@@ -6,6 +6,7 @@
 import Foundation
 import CoreData
 import CoreLocation
+import MapKit
 
 
 class Trail {
@@ -18,7 +19,8 @@ class Trail {
     var owner: String
     var length: Double
     var coordinates: [[Double]]
-    
+    var routePolyline: MKPolyline!
+
     var travelTime: Double
     var coordinate2DList: [CLLocationCoordinate2D] = []
 
@@ -32,21 +34,22 @@ class Trail {
         self.owner = trail.value(forKey: "owner") as! String
         self.length = trail.value(forKey: "length") as! Double
         self.coordinates = trail.value(forKey: "coordinates") as! [[Double]]
-        
+
         self.travelTime = TrailUtils.metre2minute(lengthIn: self.length)
         self.coordinate2DList = makeCoordinate2D()
-        
+        self.routePolyline = MKPolyline(coordinates: coordinate2DList, count: coordinate2DList.count)
     }
-    
+
+
     func makeCoordinate2D() -> [CLLocationCoordinate2D] {
-        
+
         var coordinate2DList: [CLLocationCoordinate2D] = []
-        
+
         for coordinate in coordinates {
             let coordinate2D = CLLocationCoordinate2D(latitude: coordinate[1], longitude: coordinate[0])
             coordinate2DList.append(coordinate2D)
         }
-        
+
         return coordinate2DList
     }
 }

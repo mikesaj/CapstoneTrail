@@ -81,7 +81,7 @@ class TrailMapViewControllerTests: XCTestCase {
         XCTAssertTrue(testBed.trailMapView.showsUserLocation, "CLLocationManager.showUserLocation must be set as true in viewDidLoad")
     }
 
-    // MARK: Zoom map test
+    // MARK: Zoom map tests
     func testCurrentLocationCoordinate_IsNotNil() {
 
         XCTAssertNotNil(testBed.currentCoordinate, "Current location coordinate must not be nil")
@@ -114,13 +114,13 @@ class TrailMapViewControllerTests: XCTestCase {
     // Mark: Trail data from Core Data tests
     func testTrailList_IsNotNilAfterViewWillAppear() {
 
-        XCTAssertNotNil(testBed.trailList, "Trail data list must not be nil")
+        XCTAssertNotNil(testBed.coreDataTrailList, "Trail data list must not be nil")
     }
 
 
     func testTrailList_HasItem() {
 
-        XCTAssertTrue(testBed.trailList.count > 0)
+        XCTAssertTrue(testBed.coreDataTrailList.count > 0)
     }
 
 
@@ -146,14 +146,48 @@ class TrailMapViewControllerTests: XCTestCase {
 
         XCTAssertEqual(testBed.fetchRequest.entityName, "Trail", "NSFetchRequest object must set entity name as 'Trail'")
     }
+
+
+    func testCoreDataTrailList_IsNotNilAfterViewWillAppear() {
+
+        XCTAssertNotNil(testBed.coreDataTrailList, "The array must not be nil")
+        XCTAssertNotEqual(testBed.coreDataTrailList.count, 0, "The array must have more than 1 data")
+    }
+
+    // MARK: Trail routes on the map tests
+    func testTrailsArray_IsNotNilAfterViewWillAppear() {
+
+        XCTAssertNotNil(testBed.trails, "Trail object list must not be nil")
+    }
+
+
+    func testTrailsArray_IsNotEmptyAfterViewWillAppear() {
+
+        XCTAssertNotEqual(testBed.trails.count, 0, "Trail object list must have more than 1 Trail object")
+    }
+
+
+    func testTrail_HasSameValuesAsCoreData() {
+
+        let randNumber: UInt32 = arc4random_uniform(UInt32(testBed.coreDataTrailList.count))
+        let index: Int = Int(randNumber)
+
+        XCTAssertEqual(testBed.trails[index].id, testBed.coreDataTrailList[index].value(forKey: "id") as! Int, "ID values must be identical")
+    }
+
+
+    func testMapViewOverlays_IsNotZero() {
+
+        XCTAssertNotEqual(testBed.trailMapView.overlays.count, 0, "The map view must have more than 1 overlays")
+    }
 }
 
 
 extension CLLocationCoordinate2D: Equatable {
-    // Need for 'testUserLocationCoordinate_IsNotZero'
+    // Need for 'testUserLocationCoordinate_IsNotZero', 'testPolyline_IsNoEmptyValues'
     public static func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
 
-        return (lhs.latitude == rhs.latitude && lhs.longitude == rhs.latitude)
+        return (lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude)
     }
 }
 
