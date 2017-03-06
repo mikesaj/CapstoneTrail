@@ -10,10 +10,10 @@ import MapKit
 extension TrailMapViewController {
 
     // Find nearest trail
-    func tappedAction(tapRecoginzer: UIGestureRecognizer) {
+    func tappedAction(tapRecognizer: UIGestureRecognizer) {
 
         // Convert tapped CGPoint to coordinates
-        let tapPoint = tapRecoginzer.location(in: trailMapView)
+        let tapPoint = tapRecognizer.location(in: trailMapView)
         let tapCoordinate = trailMapView.convert(tapPoint, toCoordinateFrom: trailMapView)
         let tapMapPoint = MKMapPointForCoordinate(tapCoordinate)
 
