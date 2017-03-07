@@ -342,60 +342,83 @@ class FriendViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     //method for handling user actions for friends
     func updateFriend(friend_uid: String, isToblock: Bool){
-                
-        var friendship_uid = ""
         
-        //getting logged user's uid
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        var t: String = "Remove"
+        var m: String = "remove"
         
-        var i = 0
+        if isToblock == true{
+            t = "Block"
+            m = "block"
+        }
         
-        //getting in the user collection the friendship_uid value
-        //removing friend from user collection
-        for t in stride(from: 0, through: self.users.count, by: 1) {
+        let alert = UIAlertController(title: t + " Friend", message: "Are you sure you want to " + m + " this friend?", preferredStyle: .alert)
+        
+        let unblockRemoveAction = UIAlertAction(title: "Yes", style: .destructive) { (alert: UIAlertAction!) -> Void in
             
-            if(self.users[i].uid == friend_uid){
-                friendship_uid = self.users[i].friendship_uid!
-                self.users.remove(at: i)
-                break
+            var friendship_uid = ""
+        
+            //getting logged user's uid
+            let userID = FIRAuth.auth()?.currentUser?.uid
+        
+            var i = 0
+        
+            //getting in the user collection the friendship_uid value
+            //removing friend from user collection
+            for t in stride(from: 0, through: self.users.count, by: 1) {
+            
+                if(self.users[i].uid == friend_uid){
+                    friendship_uid = self.users[i].friendship_uid!
+                    self.users.remove(at: i)
+                    break
+                }
+            
+                i += 1
             }
-            
-            i += 1
-        }
         
-        i = 0
+            i = 0
         
-        //removing friend from usersSearched collection
-        //refreshing table after updating collections
-        for _ in stride(from: 0, through: self.usersSearched.count, by: 1) {
+            //removing friend from usersSearched collection
+            //refreshing table after updating collections
+            for _ in stride(from: 0, through: self.usersSearched.count, by: 1) {
             
-            if(self.usersSearched[i].uid == friend_uid){
+                if(self.usersSearched[i].uid == friend_uid){
                 
-                self.usersSearched.remove(at: i)
-                self.tableView.reloadData()
-                break
-            }
+                    self.usersSearched.remove(at: i)
+                    self.tableView.reloadData()
+                    break
+                }
             
-            i += 1
-        }
+                i += 1
+            }
         
-        //getting collection reference from database
-        let friendsReference = ref.child("friends").child(friendship_uid)
+            //getting collection reference from database
+            let friendsReference = self.ref.child("friends").child(friendship_uid)
         
-        //blocking friend
-        if isToblock == true {
-            //Regardless of who send an invitation, when the user blockes a friendship, he/she becomes the receiver
-            //It means that only he/she can unblock this firendship
-            friendsReference.child("sender_uid").setValue(friend_uid)
-            friendsReference.child("receiver_uid").setValue(userID)
-            friendsReference.child("isBlocked").setValue(true)
+            //blocking friend
+            if isToblock == true {
+                //Regardless of who send an invitation, when the user blockes a friendship, he/she becomes the receiver
+                //It means that only he/she can unblock this firendship
+                friendsReference.child("sender_uid").setValue(friend_uid)
+                friendsReference.child("receiver_uid").setValue(userID)
+                friendsReference.child("isBlocked").setValue(true)
+            }
+            else{
+                //remove friendship
+                friendsReference.removeValue()
+            }
+        
         }
-        else{
-            //remove friendship
-            friendsReference.removeValue()
-        }
-    }
     
+        let cancelAction = UIAlertAction(title: "No", style: .cancel) { (alert: UIAlertAction!) -> Void in
+            print("You pressed No")
+        }
+    
+        alert.addAction(unblockRemoveAction)
+        alert.addAction(cancelAction)
+    
+        present(alert, animated: true, completion:nil)
+    }
+
 }
 
 //custom  UITableViewCell class
