@@ -97,6 +97,14 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         let uFriendTab = friendTab as! UIViewController
         uFriendTab.tabBarItem = tabFourBarItem
         
+        //Unblocking Friend Tab
+        let UnblockingFriendStoryboard = UIStoryboard(name: "UnblockFriend", bundle: nil)
+        let UnblockingfriendTab : AnyObject! = UnblockingFriendStoryboard.instantiateViewController(withIdentifier: "UnblockFriend")
+        let tabUnblockingBarItem = UITabBarItem(title: "Unblock Friends", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
+        
+        let uUnblockingFriendTab = UnblockingfriendTab as! UIViewController
+        uUnblockingFriendTab.tabBarItem = tabUnblockingBarItem
+        
         //WalkingSchedule Tab
         let walkingScheduleTboard = UIStoryboard(name: "WalkingSchedule", bundle: nil)
         let walkingScheduleTab : AnyObject! = walkingScheduleTboard.instantiateViewController(withIdentifier: "WalkingSchedule")
@@ -107,8 +115,11 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         
         // Main DashBoard Tabs
         //Add to tabBarController bottom menu
+        //self.viewControllers =
+           //[uprofileTab, GroupTab, SchedulTab, uFriendTab, uPeopleTab, uUnblockingFriendTab, invitationTab, SchedulTab, uWalkingScheduleTab]// invitationTab,
+        
         self.viewControllers =
-            [uprofileTab, GroupTab, SchedulTab, uFriendTab, uPeopleTab, invitationTab, SchedulTab, uWalkingScheduleTab]// invitationTab,
+            [uprofileTab, uFriendTab, uPeopleTab, uUnblockingFriendTab,]
     }
     
     // UITabBarControllerDelegate method

@@ -79,6 +79,8 @@
 		D21BE54E1E5FCB42006D05C4 /* WalkingScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE54B1E5FCB42006D05C4 /* WalkingScheduleViewController.swift */; };
 		D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D24784471E4A8C7A00A0AFCF /* GoogleService-Info.plist */; };
 		D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24784491E4A8D5E00A0AFCF /* LoginController.swift */; };
+		D2E9393A1E6E2CFD0026C85E /* UnblockFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2E939391E6E2CFD0026C85E /* UnblockFriend.storyboard */; };
+		D2E9393E1E6E2DA20026C85E /* UnblockFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E9393D1E6E2DA20026C85E /* UnblockFriendController.swift */; };
 		F3A5266CCD7930CF069AECDD /* Pods_CapstoneTrailTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84E3F6471D45FB5637C3E7E /* Pods_CapstoneTrailTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -177,6 +179,8 @@
 		D24784471E4A8C7A00A0AFCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D24784491E4A8D5E00A0AFCF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		D2A6FACC1E4A863E00F7AB22 /* CapstoneTrail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CapstoneTrail.entitlements; sourceTree = "<group>"; };
+		D2E939391E6E2CFD0026C85E /* UnblockFriend.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UnblockFriend.storyboard; sourceTree = "<group>"; };
+		D2E9393D1E6E2DA20026C85E /* UnblockFriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnblockFriendController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,6 +477,8 @@
 				D21BE53D1E5FCB0C006D05C4 /* Friend.swift */,
 				D21BE53E1E5FCB0C006D05C4 /* PeopleViewController.swift */,
 				D21BE53F1E5FCB0C006D05C4 /* People.storyboard */,
+				D2E939391E6E2CFD0026C85E /* UnblockFriend.storyboard */,
+				D2E9393D1E6E2DA20026C85E /* UnblockFriendController.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -625,6 +631,7 @@
 				A97979E51E5DE402002DC4D2 /* Waterloo.json in Resources */,
 				B66C8A93363E18079BF25D47 /* Main.storyboard in Resources */,
 				B66C8E8C8FFE2F1F9BB34360 /* Localizable.strings in Resources */,
+				D2E9393A1E6E2CFD0026C85E /* UnblockFriend.storyboard in Resources */,
 				A92CA1FD1E6B30CF003EF418 /* TrailMap.storyboard in Resources */,
 				A97979DE1E5DE318002DC4D2 /* TrailList.storyboard in Resources */,
 				446087811E4E1771007A8BE0 /* SignIn.storyboard in Resources */,
@@ -783,6 +790,7 @@
 				D21BE5481E5FCB30006D05C4 /* StringExtension.swift in Sources */,
 				446087781E4E116A007A8BE0 /* User.swift in Sources */,
 				A97979E71E5DE6D8002DC4D2 /* TrailTableViewCell.swift in Sources */,
+				D2E9393E1E6E2DA20026C85E /* UnblockFriendController.swift in Sources */,
 				44DE38071E6CE54B002A775A /* ScheduleDBController.swift in Sources */,
 				44DE38091E6D17F4002A775A /* HikeModel.swift in Sources */,
 				A97979EB1E5DE9C6002DC4D2 /* TrailMO+CoreDataProperties.swift in Sources */,

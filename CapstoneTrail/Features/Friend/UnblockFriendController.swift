@@ -1,16 +1,16 @@
 //
-//  FriendsViewController.swift
+//  UnblockFriendController.swift
 //  CapstoneTrail
 //
-//  Created by Alessandro Santos on 2017-02-23.
+//  Created by Alessandro Santos on 2017-03-06.
 //  Copyright © 2017 MSD. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class FriendViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
-    
+class UnblockFriendController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
+  
     //declaring tableView
     var tableView: UITableView = UITableView()
     
@@ -126,12 +126,6 @@ class FriendViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     func fetchUsers(){
         
-        //removing values 
-        self.users.removeAll()
-        self.usersSearched.removeAll()
-        self.friends.removeAll()
-        self.tableView.reloadData()
-        
         //populating existing friendships
         self.populateFriends()
         
@@ -154,8 +148,7 @@ class FriendViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                     for t in stride(from: 0, through: self.friends.count - 1, by: 1) {
                         
                         //checking if the user made any friendhip request AND it has been accepted AND it has NOT been blocked
-                        if((self.friends[i].receiver_uid == snapshot.key || self.friends[i].sender_uid == snapshot.key) &&
-                            self.friends[i].isAccepted == true && self.friends[i].isBlocked == false){
+                        if self.friends[i].sender_uid == snapshot.key {
                             
                             friendship_uid = self.friends[i].uid!
                             isFriend = true
@@ -221,25 +214,13 @@ class FriendViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         //getting logged user's uid
         let userID = FIRAuth.auth()?.currentUser?.uid
         
-        //getting friendships where the logged user was the sender
-        ref.child("friends").queryOrdered(byChild: "sender_uid").queryEqual(toValue: userID).observe(.childAdded, with: { (snapshot) in
-            
-            let value = snapshot.value as? [String: AnyObject]
-            
-            if value != nil{
-                self.poplateSingleFriend(key: snapshot.key, value: value!)
-            }
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        
         //getting friendships where the logged user was the receiver
         ref.child("friends").queryOrdered(byChild: "receiver_uid").queryEqual(toValue: userID).observe(.childAdded, with: { (snapshot) in
             
             let value = snapshot.value as? [String: AnyObject]
+            let isBlocked = value?["isBlocked"] as? Bool
             
-            if value != nil{
+            if value != nil && isBlocked == true {
                 self.poplateSingleFriend(key: snapshot.key, value: value!)
             }
             
@@ -248,7 +229,6 @@ class FriendViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         }
         
     }
-    
     //method for resizing cell height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72
@@ -277,6 +257,7 @@ class FriendViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         //setting button visibility
         cell.addFriendButton.isHidden = true
         cell.acceptButton.isHidden = true
+        cell.blockButton.isHidden = true
         
         //setting value to the cell
         cell.textLabel?.text = user.name
@@ -285,10 +266,7 @@ class FriendViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         //Adding targets(methods when the user clicks on the object) for each object in the cell
         //Passing the friend_uid through the method setTitle()
         cell.rejectButton.setTitle(user.uid!, for: .normal)
-        cell.rejectButton.addTarget(self, action: #selector(rejectFriend), for: .touchUpInside)
-        
-        cell.blockButton.setTitle(user.uid!, for: .normal)
-        cell.blockButton.addTarget(self, action: #selector(blockFriend), for: .touchUpInside)
+        cell.rejectButton.addTarget(self, action: #selector(unBlockFriend), for: .touchUpInside)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewProfileFriend(tapGestureRecognizer:)))
         tapGestureRecognizer.accessibilityHint = user.uid
@@ -330,23 +308,15 @@ class FriendViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         self.present(profileController, animated: true, completion: nil)
     }
     
-    func rejectFriend(sender:UIButton){
+    func unBlockFriend(sender:UIButton){
         
         self.updateFriend(friend_uid: (sender.titleLabel?.text!)!, isToblock: false)
     }
     
-    func blockFriend(sender:UIButton){
-        
-        self.updateFriend(friend_uid: (sender.titleLabel?.text!)!, isToblock: true)
-    }
-    
     //method for handling user actions for friends
     func updateFriend(friend_uid: String, isToblock: Bool){
-                
-        var friendship_uid = ""
         
-        //getting logged user's uid
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        var friendship_uid = ""
         
         var i = 0
         
@@ -381,139 +351,8 @@ class FriendViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         //getting collection reference from database
         let friendsReference = ref.child("friends").child(friendship_uid)
-        
-        //blocking friend
-        if isToblock == true {
-            //Regardless of who send an invitation, when the user blockes a friendship, he/she becomes the receiver
-            //It means that only he/she can unblock this firendship
-            friendsReference.child("sender_uid").setValue(friend_uid)
-            friendsReference.child("receiver_uid").setValue(userID)
-            friendsReference.child("isBlocked").setValue(true)
-        }
-        else{
-            //remove friendship
-            friendsReference.removeValue()
-        }
+        friendsReference.child("isBlocked").setValue(false)
     }
     
 }
 
-//custom  UITableViewCell class
-class UserCell: UITableViewCell{
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        //setting layout for text and detail fields
-        textLabel?.frame = CGRect(x: 64, y: textLabel!.frame.origin.y - 2, width: textLabel!.frame.width, height: textLabel!.frame.height)
-        detailTextLabel?.frame = CGRect(x: 64, y: detailTextLabel!.frame.origin.y + 2, width: detailTextLabel!.frame.width, height: detailTextLabel!.frame.height)
-    }
-    
-    //Objects creationg for adding to the cell
-    
-    let profileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 24
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.masksToBounds = true
-        return imageView
-    }()
-    
-    let addFriendImage = UIImage(named: "addFriend")! as UIImage
-    
-    let addFriendButton: UIButton = {
-        let button = UIButton(type: UIButtonType.system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        
-        return button
-    }()
-    
-    let rejectImage = UIImage(named: "reject")! as UIImage
-    
-    let rejectButton: UIButton = {
-        let button = UIButton(type: UIButtonType.system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        
-        return button
-    }()
-    
-    let blockImage = UIImage(named: "block")! as UIImage
-    
-    let blockButton: UIButton = {
-        let button = UIButton(type: UIButtonType.system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        
-        return button
-    }()
-    
-    let acceptImage = UIImage(named: "accept")! as UIImage
-    
-    let acceptButton: UIButton = {
-        let button = UIButton(type: UIButtonType.system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        
-        return button
-    }()
-    
-    // END --> Objects creationg for adding to the cell
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-        
-        //assigning images for each button
-        addFriendButton.setImage(addFriendImage, for: .normal)
-        acceptButton.setImage(acceptImage, for: .normal)
-        rejectButton.setImage(rejectImage, for: .normal)
-        blockButton.setImage(blockImage, for: .normal)
-        
-        //adding the objects to the cell view
-        addSubview(profileImageView)
-        addSubview(addFriendButton)
-        addSubview(acceptButton)
-        addSubview(rejectButton)
-        addSubview(blockButton)
-        
-        //setting position for each object in the cell view
-        
-        profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
-        profileImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: 48).isActive = true
-        profileImageView.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        
-        addFriendButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        addFriendButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        addFriendButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        addFriendButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        acceptButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -90).isActive = true
-        acceptButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        acceptButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        acceptButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        rejectButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -50).isActive = true
-        rejectButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        rejectButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        rejectButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        blockButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -15).isActive = true
-        blockButton.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -4).isActive = true
-        blockButton.widthAnchor.constraint(equalToConstant: 33).isActive = true
-        blockButton.heightAnchor.constraint(equalToConstant: 33).isActive = true
-        
-        // END --> setting position for each object in the cell view
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
