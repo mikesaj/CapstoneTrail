@@ -35,11 +35,14 @@ class AddFriendToGroupsController: UIViewController, UITableViewDataSource, UITa
     let groupdDb = GroupDBController()
     
     override func viewDidLoad() {
+        //fetchUsers()
+        //getUserGroups(groupId: self.groupid) //get group users
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         fetchUsers()
+        getUserGroups(groupId: self.groupid) //get group users
         super.viewWillAppear(animated) // No need for semicolon
     }
 
@@ -241,7 +244,42 @@ class AddFriendToGroupsController: UIViewController, UITableViewDataSource, UITa
         }
         
     }
-
+    
+    // get user's group list
+    func getUserGroups(groupId: String){ //groupid
+        
+        
+        
+        _ = self.ref.child("groups")
+            .queryOrderedByKey()
+            .queryEqual(toValue: groupId)
+            .observe(.childAdded, with: { (snapshot) in
+                
+                let value = snapshot.value as? [String: AnyObject]
+                
+                if value != nil{
+                    //let group = GroupModel()
+                  /*
+                    group.uid               = snapshot.key
+                    group.name              = value?["name"]            as? String
+                    group.locationName      = value?["locationName"]    as? String
+                    group.groupDescription  = value?["description"]as? String
+                    group.members           = (value?["members"]        as? [String])!
+                    group.owneruid          = value?["owneruid"]        as? String
+                    group.isPublic          = value?["isPublic"]        as? Bool
+                    group.latitude          = value?["latitude"]        as? String
+                    group.longitude         = value?["longitude"]       as? String
+                    */
+                    //print(group.members )
+                    self.GroupMembers = (value?["members"]        as? [String])!
+                    self.friendListTableView.reloadData()
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
+        }
+        
+    }
 
     
 }

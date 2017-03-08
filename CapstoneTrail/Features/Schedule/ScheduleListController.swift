@@ -21,7 +21,9 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
     
     var invites = Set<String>()
     
-    let scheduleDB = ScheduleDBController()
+    let scheduleDB =  ScheduleDBController()
+    var groupId:      String = ""
+    var groupOwnerId: String = ""
 
     
     // Database reference
@@ -29,14 +31,12 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
 
     // Current user id
     let uid = FIRAuth.auth()?.currentUser?.uid
-
-    var groupId: String = ""
     
     override func viewDidLoad() {        
         super.viewDidLoad()
 
         // check if group owner
-        /*if groupId.characters.count < 1 {
+        /*if ( (groupId.characters.count < 1) || (groupOwnerId != uid) ) {
             newHikeButton.removeFromSuperview()
         }*/
     }

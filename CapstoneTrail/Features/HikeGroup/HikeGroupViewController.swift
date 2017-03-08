@@ -21,7 +21,7 @@ class HikeGroupViewController: UIViewController, UITableViewDataSource, UITableV
     // demo data
     var GroupName    = "Pinky Baby's Team"
     var locationName = "Waterloo Ontario"
-    var memberCount  = 3
+    var memberCount  = 0
     var groupid      = "235467890-98765434-3234u73434-2432342"
 
     

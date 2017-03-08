@@ -139,6 +139,7 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
             // instantiating a reference to the TrailDetailViewController
             let groupHikes: ScheduleListController = segue.destination as! ScheduleListController
             groupHikes.groupId = self.groupid
+            groupHikes.groupOwnerId = self.groupOwnerid
         }
     }
 
