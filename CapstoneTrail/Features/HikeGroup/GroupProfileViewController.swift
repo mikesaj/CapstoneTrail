@@ -241,6 +241,9 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
             
             // Delete group
             self.groupDAL.deleteGroup(groupUid: self.groupid)
+            
+            // go back to previous navigation controller stack
+            _ = self.navigationController?.popViewController(animated: true)
         }
         
         let cancelAction = UIAlertAction(title: "No", style: .cancel) { (alert: UIAlertAction!) -> Void in
