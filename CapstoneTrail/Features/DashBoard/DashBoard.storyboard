@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Dash Board View Controller-->
         <scene sceneID="FmZ-1Y-cYm">
             <objects>
                 <viewController storyboardIdentifier="DashBoardViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fdr-x1-NE3" customClass="DashBoardViewController" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,14 +37,14 @@
                             <constraint firstAttribute="trailing" secondItem="MQt-Eg-aNC" secondAttribute="trailing" id="tWZ-tF-Nxy"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="yg9-i4-qhC"/>
+                    <navigationItem key="navigationItem" id="RHX-jt-Lxd"/>
                     <connections>
                         <outlet property="dashBoardScrollView" destination="MQt-Eg-aNC" id="SeZ-WS-R18"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAU-We-GBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3432.8000000000002" y="144.3778110944528"/>
+            <point key="canvasLocation" x="4372" y="144.3778110944528"/>
         </scene>
         <!--View1-->
         <scene sceneID="eC5-t2-69J">
@@ -71,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY7-CX-Lwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4096.8000000000002" y="271.21439280359823"/>
+            <point key="canvasLocation" x="5036" y="271.21439280359823"/>
         </scene>
         <!--View2-->
         <scene sceneID="Jlb-6A-4bH">
@@ -98,12 +98,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GE0-hj-416" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4757.6000000000004" y="271.21439280359823"/>
+            <point key="canvasLocation" x="5696.8000000000002" y="271.21439280359823"/>
         </scene>
         <!--Tabbed Dash Board View Controller-->
         <scene sceneID="x3J-Ma-2kb">
             <objects>
-                <tabBarController id="MSf-nD-U8h" customClass="TabbedDashBoardViewController" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="MSf-nD-U8h" customClass="TabbedDashBoardViewController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="YNf-HJ-O4O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -139,7 +139,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="io1-AU-VSd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5429.6000000000004" y="271.21439280359823"/>
+            <point key="canvasLocation" x="6368.8000000000002" y="271.21439280359823"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="kz4-fd-olQ">
+            <objects>
+                <navigationController storyboardIdentifier="babyy" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yu6-Yb-MBZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="yg9-i4-qhC"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sME-oC-K8z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Fdr-x1-NE3" kind="relationship" relationship="rootViewController" id="i5f-ld-Dzf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uZW-ys-FwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3432.8000000000002" y="144.3778110944528"/>
         </scene>
     </scenes>
 </document>

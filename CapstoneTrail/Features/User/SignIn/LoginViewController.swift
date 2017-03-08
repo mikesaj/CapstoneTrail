@@ -123,15 +123,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     // Switch to DashBoard Storyboard
     func switchToDashBoardView(){
-         let storyboard = UIStoryboard(name: "DashBoard", bundle: nil)
-         let vc : AnyObject! = storyboard.instantiateViewController(withIdentifier: "DashBoardViewController")
-         self.show(vc as! UIViewController, sender: vc)
+         //let storyboard = UIStoryboard(name: "DashBoard", bundle: nil)
+         //let vc : AnyObject! = storyboard.instantiateViewController(withIdentifier: "DashBoardViewController")
+         //self.show(vc as! UIViewController, sender: vc)
         
+        /*
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.makeKeyAndVisible()
+        self.window?.rootViewController = UINavigationController(rootViewController: DashBoardViewController())
+         */
         
-        //self.window = UIWindow(frame: UIScreen.main.bounds)
-        //self.window?.makeKeyAndVisible()
-        //self.window?.rootViewController = UINavigationController(rootViewController: DashBoardViewController())
+        var dashhh = DashBoardViewController()
 
+        // for slide view, without navigation
+        self.present(dashhh, animated: true, completion: nil)
+        
+        //allows navigation appear
+        //navigationController?.pushViewController(dashhh, animated: true)
+        
+        //navigationController?.present(dashhh, animated: true)
+        
         print("Switched to DashBoard View!!")
     }
     
