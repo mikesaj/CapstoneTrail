@@ -256,7 +256,7 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
         present(alert, animated: true, completion:nil)
     }
     
-    // Hiker exits a group
+    // Hiker exit's a group
     func ExitGroupController() {
         
         print("ExitGroupController")
@@ -269,7 +269,9 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
             // Remove group member
             print(self.uid!)
             self.groupDAL.removeMemberFromGroup(groupUid: self.groupid, userId: self.uid!)
-            
+
+            // go back to previous navigation controller stack
+            _ = self.navigationController?.popViewController(animated: true)
         }
         
         let cancelAction = UIAlertAction(title: "No", style: .cancel) { (alert: UIAlertAction!) -> Void in
