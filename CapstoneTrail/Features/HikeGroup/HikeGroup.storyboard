@@ -615,7 +615,7 @@
             <objects>
                 <navigationController storyboardIdentifier="GroupsNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PHt-lb-IXH" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cuo-ih-uCf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cuo-ih-uCf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

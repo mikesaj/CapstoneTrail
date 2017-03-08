@@ -34,11 +34,6 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {        
         super.viewDidLoad()
-
-        // check if group owner
-        /*if ( (groupId.characters.count < 1) || (groupOwnerId != uid) ) {
-            newHikeButton.removeFromSuperview()
-        }*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +57,11 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
             populateHikeListCollection(collection: "users", id: self.uid!)
         }
         
+        // check if group owner
+        if ( (groupId.characters.count > 1) && (groupOwnerId != uid) ) {
+            newHikeButton.isHidden = true//.removeFromSuperview()
+        }
+
         self.hikeScheduleListTableView.reloadData()
         super.viewWillAppear(animated) // No need for semicolon
     }
