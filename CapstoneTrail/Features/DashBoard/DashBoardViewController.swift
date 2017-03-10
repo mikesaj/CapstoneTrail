@@ -105,10 +105,25 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         let uWalkingScheduleTab = walkingScheduleTab as! UIViewController
         uWalkingScheduleTab.tabBarItem = tabFiveBarItem
         
+
+        //ActivityViewController Tab
+        let ActivityStoryboard = UIStoryboard(name: "Activity", bundle: nil)
+        
+        let activityTab = (ActivityStoryboard.instantiateViewController(withIdentifier: "activityView")) as! ActivityViewController
+        
+        
+        let activitytabBarItem = UITabBarItem(title: "Activity", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
+        //let actvityTab1 = activityTab as UIViewController
+        
+        activityTab.tabBarItem = activitytabBarItem
+        
+        
+ 
+        
         // Main DashBoard Tabs
         //Add to tabBarController bottom menu
         self.viewControllers =
-            [uprofileTab, GroupTab, SchedulTab, uFriendTab, uPeopleTab, invitationTab, SchedulTab, uWalkingScheduleTab]// invitationTab,
+            [uprofileTab, GroupTab, SchedulTab, activityTab, uFriendTab, uPeopleTab, invitationTab, SchedulTab, uWalkingScheduleTab]// invitationTab,
     }
     
     // UITabBarControllerDelegate method
