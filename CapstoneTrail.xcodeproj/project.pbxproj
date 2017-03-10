@@ -24,6 +24,7 @@
 		4460878D1E4E2C96007A8BE0 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4460878C1E4E2C96007A8BE0 /* DashBoard.storyboard */; };
 		4462019C1E728D2C00A4DF42 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4462019B1E728D2C00A4DF42 /* HealthKit.framework */; };
 		4462019F1E7296F300A4DF42 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4462019E1E7296F300A4DF42 /* ActivityViewController.swift */; };
+		446201A31E72AACA00A4DF42 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 446201A21E72AACA00A4DF42 /* Activity.storyboard */; };
 		447F49A11E5AC4BE0028282D /* GroupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447F49A01E5AC4BE0028282D /* GroupProfileViewController.swift */; };
 		448C10FF1E5B648A00BE9123 /* GroupDBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448C10FE1E5B648A00BE9123 /* GroupDBController.swift */; };
 		448C11011E5B64B300BE9123 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448C11001E5B64B300BE9123 /* GroupModel.swift */; };
@@ -115,6 +116,7 @@
 		4460878C1E4E2C96007A8BE0 /* DashBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DashBoard.storyboard; sourceTree = "<group>"; };
 		4462019B1E728D2C00A4DF42 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		4462019E1E7296F300A4DF42 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = Activity/ActivityViewController.swift; sourceTree = "<group>"; };
+		446201A21E72AACA00A4DF42 /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Activity.storyboard; path = Activity/Activity.storyboard; sourceTree = "<group>"; };
 		447F49A01E5AC4BE0028282D /* GroupProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupProfileViewController.swift; path = HikeGroup/GroupProfileViewController.swift; sourceTree = "<group>"; };
 		448C10FE1E5B648A00BE9123 /* GroupDBController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDBController.swift; sourceTree = "<group>"; };
 		448C11001E5B64B300BE9123 /* GroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				4462019E1E7296F300A4DF42 /* ActivityViewController.swift */,
+				446201A21E72AACA00A4DF42 /* Activity.storyboard */,
 			);
 			name = Activity;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B66C8E1A7401C833BE35C2A3 /* Images.xcassets in Resources */,
+				446201A31E72AACA00A4DF42 /* Activity.storyboard in Resources */,
 				A97979E41E5DE402002DC4D2 /* Kitchener.json in Resources */,
 				A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */,
 				D21BE5401E5FCB0C006D05C4 /* Friend.storyboard in Resources */,
