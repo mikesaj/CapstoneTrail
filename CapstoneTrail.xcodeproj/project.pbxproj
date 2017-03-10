@@ -22,6 +22,8 @@
 		4460877F1E4E1456007A8BE0 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4460877E1E4E1456007A8BE0 /* CreateAccountViewController.swift */; };
 		446087811E4E1771007A8BE0 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 446087801E4E1771007A8BE0 /* SignIn.storyboard */; };
 		4460878D1E4E2C96007A8BE0 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4460878C1E4E2C96007A8BE0 /* DashBoard.storyboard */; };
+		4462019C1E728D2C00A4DF42 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4462019B1E728D2C00A4DF42 /* HealthKit.framework */; };
+		4462019F1E7296F300A4DF42 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4462019E1E7296F300A4DF42 /* ActivityViewController.swift */; };
 		447F49A11E5AC4BE0028282D /* GroupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447F49A01E5AC4BE0028282D /* GroupProfileViewController.swift */; };
 		448C10FF1E5B648A00BE9123 /* GroupDBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448C10FE1E5B648A00BE9123 /* GroupDBController.swift */; };
 		448C11011E5B64B300BE9123 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448C11001E5B64B300BE9123 /* GroupModel.swift */; };
@@ -111,6 +113,8 @@
 		4460877E1E4E1456007A8BE0 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		446087801E4E1771007A8BE0 /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		4460878C1E4E2C96007A8BE0 /* DashBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DashBoard.storyboard; sourceTree = "<group>"; };
+		4462019B1E728D2C00A4DF42 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		4462019E1E7296F300A4DF42 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = Activity/ActivityViewController.swift; sourceTree = "<group>"; };
 		447F49A01E5AC4BE0028282D /* GroupProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupProfileViewController.swift; path = HikeGroup/GroupProfileViewController.swift; sourceTree = "<group>"; };
 		448C10FE1E5B648A00BE9123 /* GroupDBController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDBController.swift; sourceTree = "<group>"; };
 		448C11001E5B64B300BE9123 /* GroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4462019C1E728D2C00A4DF42 /* HealthKit.framework in Frameworks */,
 				A900F3511E4A075A00556D79 /* MapKit.framework in Frameworks */,
 				65E7EEE2D0A127F42608855C /* Pods_CapstoneTrail.framework in Frameworks */,
 			);
@@ -271,6 +276,14 @@
 			path = DashBoard;
 			sourceTree = "<group>";
 		};
+		4462019D1E7296A900A4DF42 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				4462019E1E7296F300A4DF42 /* ActivityViewController.swift */,
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
 		448C10FB1E5B639200BE9123 /* DAL */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +327,7 @@
 		A900F34F1E4A075A00556D79 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4462019B1E728D2C00A4DF42 /* HealthKit.framework */,
 				A900F3501E4A075A00556D79 /* MapKit.framework */,
 				C1FA64D3EB2D622B0A7EC696 /* Pods_CapstoneTrail.framework */,
 				B84E3F6471D45FB5637C3E7E /* Pods_CapstoneTrailTests.framework */,
@@ -325,6 +339,7 @@
 		A900F3521E4A077400556D79 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				4462019D1E7296A900A4DF42 /* Activity */,
 				A92CA1FB1E6B30AD003EF418 /* TrailMap */,
 				44385C061E5CE1E90095F2B0 /* Schedule */,
 				D21BE53A1E5FCAC6006D05C4 /* Walking Schedule */,
@@ -571,8 +586,11 @@
 				ORGANIZATIONNAME = MSD;
 				TargetAttributes = {
 					B66C85B253DA11D131100BD0 = {
-						DevelopmentTeam = 2472MVQR2Y;
+						DevelopmentTeam = 9Y6FHV2RR7;
 						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -776,6 +794,7 @@
 				449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */,
 				448C11011E5B64B300BE9123 /* GroupModel.swift in Sources */,
 				44967C961E5D69E700086030 /* friendIvCell.swift in Sources */,
+				4462019F1E7296F300A4DF42 /* ActivityViewController.swift in Sources */,
 				44F5B7301E63166E007C7B97 /* SettingsController.swift in Sources */,
 				44DE37FD1E673809002A775A /* UpdateGroupViewController.swift in Sources */,
 				449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */,
@@ -845,7 +864,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CapstoneTrail/CapstoneTrail.entitlements;
-				DEVELOPMENT_TEAM = 2472MVQR2Y;
+				DEVELOPMENT_TEAM = 9Y6FHV2RR7;
 				INFOPLIST_FILE = CapstoneTrail/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -966,7 +985,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CapstoneTrail/CapstoneTrail.entitlements;
-				DEVELOPMENT_TEAM = 2472MVQR2Y;
+				DEVELOPMENT_TEAM = 9Y6FHV2RR7;
 				INFOPLIST_FILE = CapstoneTrail/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
