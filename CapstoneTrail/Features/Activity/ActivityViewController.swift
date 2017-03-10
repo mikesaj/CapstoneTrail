@@ -29,23 +29,73 @@ class ActivityViewController: UIViewController {
     func startHealthShit() {
         
         let stepCountQuantityType = HKCharacteristicType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
-        //let dataTypesToWrite = NSSet(object: stepCountQuantityType)
+        let dataTypesToWrite = NSSet(object: stepCountQuantityType)
         let dataTypesToRead  = NSSet(object: stepCountQuantityType)
 
-        healthStore?.requestAuthorization(toShare: nil, read: dataTypesToRead as? Set<HKObjectType>,completion: { (success, error) -> Void in
+        healthStore?.requestAuthorization(toShare: dataTypesToWrite as? Set<HKObjectType> as! Set<HKSampleType>?, read: dataTypesToRead as? Set<HKObjectType>,completion: { (success, error) -> Void in
             if success {
                 print("success")
+                //self.writeToHealthStrore()
+                // Get permission from the user to read HealthStore
+                self.readFromHealthStore()
             } else {
                 print(error.debugDescription)
             }
         })
     }
     
+    func writeToHealthStrore() {
+        // change date to yesterday
+        yesterday = self.today.addingTimeInterval(-24 * 60 * 60)
+        
+        let stepsQuantityType = HKQuantityType.quantityType(
+            forIdentifier: HKQuantityTypeIdentifier.stepCount)
+        
+        let stepsUnit = HKUnit.count()
+        let stepsQuantity = HKQuantity(unit: stepsUnit,
+                                       doubleValue: 3000)
+        
+        let stepsQuantitySample = HKQuantitySample(
+            type: stepsQuantityType!,
+            quantity: stepsQuantity,
+            start: yesterday as Date,
+            end: today as Date)
+        
+        
+        
+        if let authorizationStatus = healthStore?.authorizationStatus(for: stepsQuantityType!) {
+            
+            switch authorizationStatus {
+                
+            case .notDetermined:
+                //requestHealthKitAuthorization()
+                print("notDetermined")
+                break
+            case .sharingDenied:
+                //showSharingDeniedAlert()
+                print("sharingDenied")
+                break
+            case .sharingAuthorized:
+                print("sharingAuthorized")
+                healthStore?.save(stepsQuantitySample, withCompletion: { (success, error) -> Void in
+                    if success {
+                        // handle success
+                        print("Saved steps")
+                    } else {
+                        // handle error
+                    }
+                })
+
+            }
+        }
+        
+        
+        
+        
+
+    }
     
     func readFromHealthStore() {
-        
-        // Get permission from the user to read HealthStore
-        self.startHealthShit()
         
         // change date to yesterday
         yesterday = self.today.addingTimeInterval(-24 * 60 * 60)
@@ -64,11 +114,13 @@ class ActivityViewController: UIViewController {
         
         //  Perform the Query
         let query = HKStatisticsCollectionQuery(quantityType: stepCountQuantityType!, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: newDate as Date, intervalComponents:interval as DateComponents)
-        
+        print("Result")
         query.initialResultsHandler = { query, results, error in
             
             if error != nil {
-                
+                print("Result is\n")
+                print(results)
+                print(error)
                 //  Something went Wrong
                 return
             }
@@ -98,7 +150,7 @@ class ActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.readFromHealthStore()
+        self.startHealthShit()
         // Do any additional setup after loading the view.
     }
 

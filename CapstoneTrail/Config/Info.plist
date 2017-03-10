@@ -69,5 +69,7 @@
 	</array>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Enabling this will allow app to read from your device&apos;s health store</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Enabling this will allow app to write to your device&apos;s health store</string>
 </dict>
 </plist>
