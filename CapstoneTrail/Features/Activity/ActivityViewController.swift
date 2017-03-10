@@ -12,6 +12,8 @@ import HealthKit
 class ActivityViewController: UIViewController {
 
     @IBOutlet weak var stepsLabel: UILabel!
+    @IBOutlet weak var dateFrom: UILabel!
+    @IBOutlet weak var dateTo: UILabel!
 
     let today = NSDate()
     var yesterday = NSDate()
@@ -34,9 +36,10 @@ class ActivityViewController: UIViewController {
 
         healthStore?.requestAuthorization(toShare: dataTypesToWrite as? Set<HKObjectType> as! Set<HKSampleType>?, read: dataTypesToRead as? Set<HKObjectType>,completion: { (success, error) -> Void in
             if success {
-                print("success")
-                //self.writeToHealthStrore()
-                // Get permission from the user to read HealthStore
+                // Method Writes to HealthStore
+                self.writeToHealthStrore()
+                
+                // Method Reads from HealthStore
                 self.readFromHealthStore()
             } else {
                 print(error.debugDescription)
@@ -44,16 +47,15 @@ class ActivityViewController: UIViewController {
         })
     }
     
+    // Method Writes to HealthStore
     func writeToHealthStrore() {
         // change date to yesterday
         yesterday = self.today.addingTimeInterval(-24 * 60 * 60)
         
-        let stepsQuantityType = HKQuantityType.quantityType(
-            forIdentifier: HKQuantityTypeIdentifier.stepCount)
+        let stepsQuantityType = HKQuantityType.quantityType( forIdentifier: HKQuantityTypeIdentifier.stepCount )
         
         let stepsUnit = HKUnit.count()
-        let stepsQuantity = HKQuantity(unit: stepsUnit,
-                                       doubleValue: 3000)
+        let stepsQuantity = HKQuantity(unit: stepsUnit, doubleValue: 31200)
         
         let stepsQuantitySample = HKQuantitySample(
             type: stepsQuantityType!,
@@ -62,7 +64,7 @@ class ActivityViewController: UIViewController {
             end: today as Date)
         
         
-        
+        // Check authorization before read operation is performed
         if let authorizationStatus = healthStore?.authorizationStatus(for: stepsQuantityType!) {
             
             switch authorizationStatus {
@@ -88,13 +90,9 @@ class ActivityViewController: UIViewController {
 
             }
         }
-        
-        
-        
-        
-
     }
     
+    // Method Reads from HealthStore
     func readFromHealthStore() {
         
         // change date to yesterday
@@ -102,6 +100,7 @@ class ActivityViewController: UIViewController {
     
         let stepCountQuantityType = HKCharacteristicType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
         
+        /*
         //   Get the start of the day
         let date = NSDate()
         let cal = Calendar(identifier: Calendar.Identifier.gregorian)
@@ -142,9 +141,27 @@ class ActivityViewController: UIViewController {
             }
             
             
+        }*/
+        
+        let stepsSampleQuery = HKSampleQuery(sampleType: stepCountQuantityType!,
+                                             predicate: nil,
+                                             limit: 100,
+                                             sortDescriptors: nil)
+        { [unowned self] (query, results, error) in
+            print(results)
+            
+            if let results = results as? [HKQuantitySample] {
+                //print("Steps = \(results[0].quantity)")
+                //set viewCintroller label to step counts
+                self.stepsLabel.text = "Steps: \(results[0].quantity)"
+                self.dateFrom.text = "\(results[0].startDate)"
+                self.dateTo.text = "\(results[0].endDate)"
+            }
+
         }
         
-        healthStore?.execute(query)
+        // execute the healthstore query
+        healthStore?.execute(stepsSampleQuery)
     }
     
     override func viewDidLoad() {
