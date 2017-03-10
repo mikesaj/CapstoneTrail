@@ -11,9 +11,11 @@ import HealthKit
 
 class ActivityViewController: UIViewController {
 
+    @IBOutlet weak var stepsLabel: UILabel!
+
     let today = NSDate()
     var yesterday = NSDate()
-
+    
     // HeathStore instantiation with a Singleton Design Pattern
     let healthStore: HKHealthStore? = {
         if HKHealthStore.isHealthDataAvailable() {
@@ -80,6 +82,7 @@ class ActivityViewController: UIViewController {
                         let steps = quantity.doubleValue(for: HKUnit.count())
                         
                         print("Steps = \(steps)")
+                        self.stepsLabel.text = "Steps: \(steps)"
                         //completion(stepRetrieved: steps)
                         
                     }
