@@ -30,14 +30,6 @@
                                     <navigationItem title="New Group" id="Goa-fN-3Rm"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ly-gs-ZR6">
-                                <rect key="frame" x="157" y="477" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Create"/>
-                                <connections>
-                                    <action selector="createGroupButton" destination="8Pj-41-ien" eventType="touchUpInside" id="eGK-h9-bVZ"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8l4-EW-Rej">
                                 <rect key="frame" x="5" y="424" width="364" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -76,6 +68,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ly-gs-ZR6">
+                                <rect key="frame" x="144" y="482" width="86" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                        <color key="value" red="0.84515244099935893" green="1" blue="0.26750581663801354" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="createGroupButton" destination="8Pj-41-ien" eventType="touchUpInside" id="eGK-h9-bVZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -85,6 +97,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="createButton" destination="2ly-gs-ZR6" id="1Dl-kE-75a"/>
                         <outlet property="groupDescriptionTextView" destination="nou-fd-d4c" id="QsM-xr-dlg"/>
                         <outlet property="groupNameTextField" destination="dfM-ty-oHA" id="3dn-IJ-nZP"/>
                         <outlet property="groupVisibility" destination="ezy-cL-CJI" id="x0q-Qm-tPV"/>
@@ -93,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4P-fS-RZi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2575" y="-1621"/>
+            <point key="canvasLocation" x="2573.5999999999999" y="-1621.4392803598203"/>
         </scene>
         <!--Group Members View Controller-->
         <scene sceneID="B2e-Oz-BdK">
@@ -195,6 +208,18 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgk-OW-lDr">
                                 <rect key="frame" x="235" y="324" width="114" height="26"/>
                                 <state key="normal" title="Add Friends"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                        <color key="value" red="0.84515244099935893" green="1" blue="0.26750581663801354" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="inviteUsertoGroup:" destination="trC-Ym-g3P" eventType="touchUpInside" id="Qkn-VO-ZCI"/>
                                 </connections>
@@ -229,6 +254,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addFriendsBtn" destination="lgk-OW-lDr" id="qhO-S5-PBI"/>
                         <outlet property="groupDescrirption" destination="327-bZ-ja4" id="a9H-wG-9Mn"/>
                         <outlet property="groupLocation" destination="YSD-Bq-8Ax" id="0w4-Di-2gT"/>
                         <outlet property="groupOptionsTableView" destination="Sp3-ID-sTK" id="yTt-UA-t7V"/>
@@ -378,11 +404,35 @@
                                 <rect key="frame" x="0.0" y="579" width="138" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Search Groups"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                        <color key="value" red="0.84515244099935893" green="1" blue="0.26750581663801354" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWt-6F-j0h">
                                 <rect key="frame" x="268" y="579" width="107" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="New Group"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                        <color key="value" red="0.84515244099935893" green="1" blue="0.26750581663801354" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="8Pj-41-ien" kind="show" id="Kz1-h8-dgr"/>
                                 </connections>
@@ -394,6 +444,8 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="groupsTableView" destination="zJF-cC-uHl" id="L2l-no-0Eg"/>
+                        <outlet property="newGroupBtn" destination="KWt-6F-j0h" id="Icd-3v-ZnH"/>
+                        <outlet property="seachGroupsBtn" destination="obS-ul-0QX" id="fMV-ym-tfF"/>
                         <segue destination="trC-Ym-g3P" kind="show" identifier="groupProfile" id="hUL-Lv-5iZ"/>
                     </connections>
                 </viewController>
@@ -634,6 +686,6 @@
         <image name="userEmoji" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GUJ-0i-WCt"/>
+        <segue reference="gGt-oS-K3G"/>
     </inferredMetricsTieBreakers>
 </document>

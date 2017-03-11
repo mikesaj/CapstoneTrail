@@ -17,6 +17,8 @@ class HikeGroupViewController: UIViewController, UITableViewDataSource, UITableV
     var groupData = GroupModel()
 
     @IBOutlet weak var groupsTableView: UITableView!
+    @IBOutlet weak var seachGroupsBtn: UIButton!
+    @IBOutlet weak var newGroupBtn: UIButton!
     
     // demo data
     var GroupName    = "Pinky Baby's Team"
@@ -31,6 +33,12 @@ class HikeGroupViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // button bordercolour
+        seachGroupsBtn.layer.borderColor = UIColor(red: 0.08, green: 0.36, blue: 1.0, alpha: 1.0).cgColor
+        
+        newGroupBtn.layer.borderColor = UIColor(red: 0.08, green: 0.36, blue: 1.0, alpha: 1.0).cgColor
+        
+        
         self.usergroups.removeAll()
         self.groupsTableView.reloadData()
 

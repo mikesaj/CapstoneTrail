@@ -18,6 +18,8 @@ class CreateGroupViewController: UIViewController, UITextFieldDelegate, UITextVi
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var groupDescriptionTextView: UITextView!
     
+    @IBOutlet weak var createButton: UIButton!
+    
     // Get's logged user's uid
     let currentUserID = FIRAuth.auth()?.currentUser?.uid
 
@@ -38,10 +40,13 @@ class CreateGroupViewController: UIViewController, UITextFieldDelegate, UITextVi
         self.groupNameTextField.delegate = self
         self.groupDescriptionTextView.delegate = self
         
+        createButton.layer.borderColor = UIColor(red: 0.08, green: 0.36, blue: 1.0, alpha: 1.0).cgColor
+
+        
         // description textView border properties
         groupDescriptionTextView.textColor = UIColor.lightGray
         groupDescriptionTextView.text = initDescrptionText
-        groupDescriptionTextView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
+        groupDescriptionTextView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 1, alpha: 0.0).cgColor
         groupDescriptionTextView.layer.borderWidth = 1.0
         groupDescriptionTextView.layer.cornerRadius = 5
         

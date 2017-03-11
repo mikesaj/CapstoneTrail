@@ -38,6 +38,10 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     
     // label for group visibility
     @IBOutlet weak var isPulicLabel: UILabel!
+    @IBOutlet weak var addFriendsBtn: UIButton!
+    
+    
+    
     
     // group options list
     var groupOptions: NSMutableArray! = NSMutableArray()
@@ -61,6 +65,9 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     
     // populates group options list
     func populateGroupOptions(){
+        // border-button border 
+        addFriendsBtn.layer.borderColor = UIColor(red: 0.08, green: 0.36, blue: 1.0, alpha: 1.0).cgColor
+
         
         // sets the text on the isPublic label
         if isPublic == true {
