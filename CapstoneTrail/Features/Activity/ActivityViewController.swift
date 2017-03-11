@@ -9,14 +9,13 @@
 import UIKit
 import HealthKit
 
-class ActivityViewController: UIViewController {
+class ActivityViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var stepsLabel: UILabel!
-    @IBOutlet weak var dateFrom: UILabel!
-    @IBOutlet weak var dateTo: UILabel!
 
-    let today = NSDate()
+    let today     = NSDate()
     var yesterday = NSDate()
+    var data = NSMutableArray()
+    @IBOutlet weak var activityDetailTable: UITableView!
     
     // HeathStore instantiation with a Singleton Design Pattern
     let healthStore: HKHealthStore? = {
@@ -151,17 +150,52 @@ class ActivityViewController: UIViewController {
             print(results)
             
             if let results = results as? [HKQuantitySample] {
-                //print("Steps = \(results[0].quantity)")
-                //set viewCintroller label to step counts
-                self.stepsLabel.text = "Steps: \(results[0].quantity)"
-                self.dateFrom.text = "\(results[0].startDate)"
-                self.dateTo.text = "\(results[0].endDate)"
+
+                //set viewController label to step counts
+                
+                let stepsCount = String(describing: results[0].quantity)
+                var parts      = stepsCount.components(separatedBy: " ")// ... Split on comma chars.
+
+                // dateFrom
+                let dateFrom = String(describing: results[0].startDate)
+                var parts2   = dateFrom.components(separatedBy: " ") // ... Split on comma chars.
+                
+                // dateTo
+                let dateTo   = String(describing: results[0].endDate)
+                var parts3   = dateTo.components(separatedBy: " ")   // ... Split on comma chars.
+
+                // Result has 3 strings.
+                self.data.add("\(parts[0]) Walking Steps")
+                self.data.add("Date From: \(parts2[0])")
+                self.data.add("Date To: \(parts3[0])")
+                
+                self.activityDetailTable.reloadData()
             }
 
         }
         
         // execute the healthstore query
         healthStore?.execute(stepsSampleQuery)
+    }
+    
+    // MARK: - Controller Table View
+    // Getting the number of rows in firendName collection
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = UITableViewCell()
+        cell.textLabel?.text = self.data[indexPath.row] as? String
+        cell.textLabel?.textColor = UIColor.darkGray
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
+        // deselect the selected cell background view.
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func viewDidLoad() {
@@ -188,9 +222,5 @@ class ActivityViewController: UIViewController {
     */
 
 }
-
-
-
-
 
 

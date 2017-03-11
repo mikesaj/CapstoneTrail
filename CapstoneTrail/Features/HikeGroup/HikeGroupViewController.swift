@@ -34,9 +34,9 @@ class HikeGroupViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         // button bordercolour
-        seachGroupsBtn.layer.borderColor = UIColor(red: 0.08, green: 0.36, blue: 1.0, alpha: 1.0).cgColor
+        //seachGroupsBtn.layer.borderColor = UIColor(red: 0.08, green: 0.36, blue: 1.0, alpha: 1.0).cgColor
         
-        newGroupBtn.layer.borderColor = UIColor(red: 0.08, green: 0.36, blue: 1.0, alpha: 1.0).cgColor
+        //newGroupBtn.layer.borderColor = UIColor(red: 0.08, green: 0.36, blue: 1.0, alpha: 1.0).cgColor
         
         
         self.usergroups.removeAll()
