@@ -70,6 +70,8 @@
 		B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C80D3D9049E6DECDBF27F /* ViewController.swift */; };
 		B66C8E1A7401C833BE35C2A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B66C8FFA2195697D1BA6415F /* Images.xcassets */; };
 		B66C8E8C8FFE2F1F9BB34360 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B66C8C866F8BFE32C7F9EDC4 /* Localizable.strings */; };
+		D20ADD551E7496230015F080 /* UnblockFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D20ADD531E7496230015F080 /* UnblockFriend.storyboard */; };
+		D20ADD561E7496230015F080 /* UnblockFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20ADD541E7496230015F080 /* UnblockFriendController.swift */; };
 		D21BE5401E5FCB0C006D05C4 /* Friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21BE53B1E5FCB0C006D05C4 /* Friend.storyboard */; };
 		D21BE5411E5FCB0C006D05C4 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE53C1E5FCB0C006D05C4 /* FriendViewController.swift */; };
 		D21BE5421E5FCB0C006D05C4 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE53D1E5FCB0C006D05C4 /* Friend.swift */; };
@@ -170,6 +172,8 @@
 		B84E3F6471D45FB5637C3E7E /* Pods_CapstoneTrailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneTrailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8723D0477B49A44409DAE8 /* Pods-CapstoneTrail-CapstoneTrailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail-CapstoneTrailTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail-CapstoneTrailTests/Pods-CapstoneTrail-CapstoneTrailTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C1FA64D3EB2D622B0A7EC696 /* Pods_CapstoneTrail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneTrail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D20ADD531E7496230015F080 /* UnblockFriend.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UnblockFriend.storyboard; sourceTree = "<group>"; };
+		D20ADD541E7496230015F080 /* UnblockFriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnblockFriendController.swift; sourceTree = "<group>"; };
 		D21BE53B1E5FCB0C006D05C4 /* Friend.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Friend.storyboard; sourceTree = "<group>"; };
 		D21BE53C1E5FCB0C006D05C4 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		D21BE53D1E5FCB0C006D05C4 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
@@ -486,6 +490,8 @@
 		D21BE5381E5FCAB4006D05C4 /* Friend */ = {
 			isa = PBXGroup;
 			children = (
+				D20ADD531E7496230015F080 /* UnblockFriend.storyboard */,
+				D20ADD541E7496230015F080 /* UnblockFriendController.swift */,
 				D21BE53B1E5FCB0C006D05C4 /* Friend.storyboard */,
 				D21BE53C1E5FCB0C006D05C4 /* FriendViewController.swift */,
 				D21BE53D1E5FCB0C006D05C4 /* Friend.swift */,
@@ -651,6 +657,7 @@
 				A97979DE1E5DE318002DC4D2 /* TrailList.storyboard in Resources */,
 				446087811E4E1771007A8BE0 /* SignIn.storyboard in Resources */,
 				D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */,
+				D20ADD551E7496230015F080 /* UnblockFriend.storyboard in Resources */,
 				44385C081E5CE30B0095F2B0 /* Schedule.storyboard in Resources */,
 				D21BE54D1E5FCB42006D05C4 /* WalkingSchedule.storyboard in Resources */,
 			);
@@ -789,6 +796,7 @@
 				44F136741E62277500E3747C /* GroupListViewCell.swift in Sources */,
 				D21BE54C1E5FCB42006D05C4 /* WalkingShedule.swift in Sources */,
 				44DE37FF1E679595002A775A /* GroupMembersViewController.swift in Sources */,
+				D20ADD561E7496230015F080 /* UnblockFriendController.swift in Sources */,
 				D21BE5411E5FCB0C006D05C4 /* FriendViewController.swift in Sources */,
 				D21BE5431E5FCB0C006D05C4 /* PeopleViewController.swift in Sources */,
 				446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */,

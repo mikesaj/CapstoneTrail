@@ -1,16 +1,16 @@
 //
-//  PeopleViewController.swift
+//  UnblockFriendController.swift
 //  CapstoneTrail
 //
-//  Created by Alessandro Santos on 2017-02-23.
+//  Created by Alessandro Santos on 2017-03-06.
 //  Copyright © 2017 MSD. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
-    
+class UnblockFriendController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
+  
     //declaring tableView
     var tableView: UITableView = UITableView()
     
@@ -32,16 +32,10 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     // Database reference
     let ref = FIRDatabase.database().reference()
     
-    //id of the user logged in
-    let userID = FIRAuth.auth()?.currentUser?.uid
-    
     func createSearchbar(){
-        
         searchController.searchBar.delegate = self
         definesPresentationContext = true
         searchController.dimsBackgroundDuringPresentation = false
-        
-        //searchController.searchBar.scopeButtonTitles = ["All", "Chocolate", "Hard", "Other"]
         tableView.tableHeaderView = searchController.searchBar
     }
     
@@ -88,6 +82,7 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         self.tableView.reloadData()
     }
     
+    
     //method responsible for canceling searches
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         //table turns to the initial data
@@ -131,11 +126,6 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     func fetchUsers(){
         
-        //removing values
-        self.users.removeAll()
-        self.usersSearched.removeAll()
-        self.friends.removeAll()
-        
         //populating existing friendships
         self.populateFriends()
         
@@ -149,7 +139,6 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 
                 var isFriend: Bool = false
-                var isFriendRequested: Bool = false
                 var friendship_uid: String = ""
                 
                 if self.friends.count > 0 {
@@ -158,30 +147,11 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                     
                     for t in stride(from: 0, through: self.friends.count - 1, by: 1) {
                         
-                        //checking if the FRIEND in the loop is the receiver
-                        if(self.friends[i].receiver_uid == snapshot.key){
+                        //checking if the user made any friendhip request AND it has been accepted AND it has NOT been blocked
+                        if self.friends[i].sender_uid == snapshot.key {
+                            
+                            friendship_uid = self.friends[i].uid!
                             isFriend = true
-                            break
-                        }
-                        
-                        //checking if the FRIEND in the loop is the sender
-                        if(self.friends[i].sender_uid == snapshot.key){
-                            
-                            //checking if the FRIEND is blocked
-                            if(self.friends[i].isBlocked == true){
-                                isFriend = true
-                                break
-                            }
-                            
-                            //checking if the friendship has already been accepted
-                            if self.friends[i].isAccepted == false {
-                                friendship_uid = self.friends[i].uid!
-                                isFriendRequested = true
-                            }
-                            else{
-                                isFriend = true
-                            }
-                            
                             break
                         }
                         
@@ -190,7 +160,7 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                     
                 }
                 
-                if isFriend == false{
+                if isFriend == true{
                     
                     let email = dictionary["email"] as? String
                     
@@ -201,10 +171,9 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                         
                         //Assigning retrieved values to the user object
                         user.uid = snapshot.key
-                        user.email = email
+                        user.email = dictionary["email"] as? String
                         user.name = dictionary["name"] as? String
                         user.profileImageUrl = dictionary["profileImageUrl"] as? String
-                        user.isFriendRequested = isFriendRequested
                         user.friendship_uid = friendship_uid
                         
                         //Appending user object to collections
@@ -242,25 +211,16 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     //populating logged is user's friendships
     func populateFriends(){
         
-        //getting friendships where the logged user was the sender
-        ref.child("friends").queryOrdered(byChild: "sender_uid").queryEqual(toValue: self.userID).observe(.childAdded, with: { (snapshot) in
-            
-            let value = snapshot.value as? [String: AnyObject]
-            
-            if value != nil{
-                self.poplateSingleFriend(key: snapshot.key, value: value!)
-            }
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+        //getting logged user's uid
+        let userID = FIRAuth.auth()?.currentUser?.uid
         
         //getting friendships where the logged user was the receiver
         ref.child("friends").queryOrdered(byChild: "receiver_uid").queryEqual(toValue: userID).observe(.childAdded, with: { (snapshot) in
             
             let value = snapshot.value as? [String: AnyObject]
+            let isBlocked = value?["isBlocked"] as? Bool
             
-            if value != nil{
+            if value != nil && isBlocked == true {
                 self.poplateSingleFriend(key: snapshot.key, value: value!)
             }
             
@@ -268,6 +228,10 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             print(error.localizedDescription)
         }
         
+    }
+    //method for resizing cell height
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 72
     }
     
     //method to close the controller
@@ -290,19 +254,10 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         //getting collection item from current row index
         let user = usersSearched[indexPath.row]
         
-        //setting button visibility based on friend situation --->  isFriendRequested or not
-        cell.addFriendButton.isHidden = false
+        //setting button visibility
+        cell.addFriendButton.isHidden = true
         cell.acceptButton.isHidden = true
-        cell.rejectButton.isHidden = true
         cell.blockButton.isHidden = true
-        
-        if user.isFriendRequested == true{
-            cell.acceptButton.isHidden = false
-            cell.rejectButton.isHidden = false
-            cell.blockButton.isHidden = false
-            cell.addFriendButton.isHidden = true
-        }
-        //END --> setting button visibility based on friend situation --->  isFriendRequested or not
         
         //setting value to the cell
         cell.textLabel?.text = user.name
@@ -310,24 +265,13 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         //Adding targets(methods when the user clicks on the object) for each object in the cell
         //Passing the friend_uid through the method setTitle()
-        
-        cell.addFriendButton.setTitle(user.uid!, for: .normal)
-        cell.addFriendButton.addTarget(self, action: #selector(addFriend), for: .touchUpInside)
-        
-        cell.acceptButton.setTitle(user.uid!, for: .normal)
-        cell.acceptButton.addTarget(self, action: #selector(acceptFriend), for: .touchUpInside)
-        
         cell.rejectButton.setTitle(user.uid!, for: .normal)
-        cell.rejectButton.addTarget(self, action: #selector(rejectFriend), for: .touchUpInside)
-        
-        cell.blockButton.setTitle(user.uid!, for: .normal)
-        cell.blockButton.addTarget(self, action: #selector(blockFriend), for: .touchUpInside)
+        cell.rejectButton.addTarget(self, action: #selector(unBlockFriend), for: .touchUpInside)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewProfileFriend(tapGestureRecognizer:)))
         tapGestureRecognizer.accessibilityHint = user.uid
         cell.profileImageView.isUserInteractionEnabled = true
         cell.profileImageView.addGestureRecognizer(tapGestureRecognizer)
-        
         //END --> Adding targets(methods when the user clicks on the object) for each object in the cell
         
         //Displaying user profile image
@@ -343,11 +287,6 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         //END --> Displaying user profile image
         
         return cell
-    }
-    
-    //method for resizing cell height
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 72
     }
     
     //calling profile controller to view the friend profile page
@@ -369,87 +308,65 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         self.present(profileController, animated: true, completion: nil)
     }
     
-    func addFriend(sender:UIButton){
+    func unBlockFriend(sender:UIButton){
         
-        self.updateFriend(friend_uid: (sender.titleLabel?.text!)!, action: "add")
-    }
-    
-    func acceptFriend(sender:UIButton){
-        
-        self.updateFriend(friend_uid: (sender.titleLabel?.text!)!, action: "accept")
-    }
-    
-    func rejectFriend(sender:UIButton){
-        
-        self.updateFriend(friend_uid: (sender.titleLabel?.text!)!, action: "reject")
-    }
-    
-    func blockFriend(sender:UIButton){
-        
-        self.updateFriend(friend_uid: (sender.titleLabel?.text!)!, action: "block")
+        self.updateFriend(friend_uid: (sender.titleLabel?.text!)!, isToblock: false)
     }
     
     //method for handling user actions for friends
-    func updateFriend(friend_uid: String, action: String){
+    func updateFriend(friend_uid: String, isToblock: Bool){
         
-        var friendship_uid: String = ""
+        let alert = UIAlertController(title: "Unblock Friend", message: "Are you sure you want to unblock this friend?", preferredStyle: .alert)
         
-        var i = 0
-        
-        //getting in the user collection the friendship_uid value
-        //removing friend from user collection
-        for t in stride(from: 0, through: self.users.count, by: 1) {
+        let unblockAction = UIAlertAction(title: "Yes", style: .destructive) { (alert: UIAlertAction!) -> Void in
             
-            if(self.users[i].uid == friend_uid){
-                friendship_uid = self.users[i].friendship_uid!
-                self.users.remove(at: i)
-                break
+            var friendship_uid = ""
+        
+            var i = 0
+        
+            //getting in the user collection the friendship_uid value
+            //removing friend from user collection
+            for t in stride(from: 0, through: self.users.count, by: 1) {
+            
+                if(self.users[i].uid == friend_uid){
+                    friendship_uid = self.users[i].friendship_uid!
+                    self.users.remove(at: i)
+                    break
+                }
+            
+                i += 1
             }
-            
-            i += 1
-        }
         
-        i = 0
+            i = 0
         
-        //removing friend from usersSearched collection
-        //refreshing table after updating collections
-        for _ in stride(from: 0, through: self.usersSearched.count, by: 1) {
+            //removing friend from usersSearched collection
+            //refreshing table after updating collections
+            for _ in stride(from: 0, through: self.usersSearched.count, by: 1) {
             
-            if(self.usersSearched[i].uid == friend_uid){
+                if(self.usersSearched[i].uid == friend_uid){
                 
-                self.usersSearched.remove(at: i)
-                self.tableView.reloadData()
-                break
+                    self.usersSearched.remove(at: i)
+                    self.tableView.reloadData()
+                    break
+                }
+            
+                i += 1
             }
-            
-            i += 1
-        }
         
-        //checking if the friendship exist, otherwuise creating a new friendship id ramdomly
-        if friendship_uid == "" {
-            friendship_uid = UUID().uuidString
-        }
-        
-        //getting collection reference from database
-        let friendsReference = ref.child("friends").child(friendship_uid)
-        
-        //checking which action the system should take for performing the request
-        switch action {
-        case "accept":
-            friendsReference.child("isAccepted").setValue(true)
-            
-        case "reject":
-            friendsReference.removeValue()
-            
-        case "block":
-            friendsReference.child("isBlocked").setValue(true)
-            
-        default: //adding new friend request
-            friendsReference.child("sender_uid").setValue(self.userID) // user logged uid
-            friendsReference.child("receiver_uid").setValue(friend_uid) //friend uid
-            friendsReference.child("isAccepted").setValue(false)
+            //getting collection reference from database
+            let friendsReference = self.ref.child("friends").child(friendship_uid)
             friendsReference.child("isBlocked").setValue(false)
         }
+        
+        let cancelAction = UIAlertAction(title: "No", style: .cancel) { (alert: UIAlertAction!) -> Void in
+            print("You pressed No")
+        }
+        
+        alert.addAction(unblockAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion:nil)
     }
     
 }
+
