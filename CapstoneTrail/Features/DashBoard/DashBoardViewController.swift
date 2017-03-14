@@ -109,7 +109,7 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         //ActivityViewController Tab
         let ActivityStoryboard = UIStoryboard(name: "Activity", bundle: nil)
         
-        let activityTab = (ActivityStoryboard.instantiateViewController(withIdentifier: "activityView")) as! ActivityViewController
+        let activityTab = (ActivityStoryboard.instantiateViewController(withIdentifier: "activityView")) as! PedometerActivityViewController
         
         
         let activitytabBarItem = UITabBarItem(title: "Activity", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))

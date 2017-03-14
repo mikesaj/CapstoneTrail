@@ -12,9 +12,9 @@ import HealthKit
 class ActivityViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 
-    let today     = NSDate()
-    var yesterday = NSDate()
-    var data = NSMutableArray()
+    var startdate  = Date()
+    var enddate    = Date()
+    var data       = NSMutableArray()
     @IBOutlet weak var activityDetailTable: UITableView!
     
     // HeathStore instantiation with a Singleton Design Pattern
@@ -27,7 +27,7 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
     }()
 
     // Get permission from the user to read HealthStore
-    func startHealthShit() {
+    func startHealthShit(steps: Int) {
         
         let stepCountQuantityType = HKCharacteristicType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
         let dataTypesToWrite = NSSet(object: stepCountQuantityType)
@@ -36,10 +36,10 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
         healthStore?.requestAuthorization(toShare: dataTypesToWrite as? Set<HKObjectType> as! Set<HKSampleType>?, read: dataTypesToRead as? Set<HKObjectType>,completion: { (success, error) -> Void in
             if success {
                 // Method Writes to HealthStore
-                self.writeToHealthStrore()
+                self.writeToHealthStore(steps: steps)
                 
                 // Method Reads from HealthStore
-                self.readFromHealthStore()
+                //self.readFromHealthStore()
             } else {
                 print(error.debugDescription)
             }
@@ -47,9 +47,17 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     // Method Writes to HealthStore
-    func writeToHealthStrore() {
+    func writeToHealthStore(steps: Int) {
         // change date to yesterday
-        yesterday = self.today.addingTimeInterval(-24 * 60 * 60)
+        
+        //yesterday = self.today.addingTimeInterval(-24 * 60 * 60)
+        //var start = Date().addingTimeInterval(-2 * 60 * 60)
+        //var end   = Date().addingTimeInterval(2 * 60 * 60)
+        
+        
+        //yesterday = dateToLocalDate(date: start)
+        //today = dateToLocalDate(date: end)
+
         
         let stepsQuantityType = HKQuantityType.quantityType( forIdentifier: HKQuantityTypeIdentifier.stepCount )
         
@@ -59,8 +67,8 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
         let stepsQuantitySample = HKQuantitySample(
             type: stepsQuantityType!,
             quantity: stepsQuantity,
-            start: yesterday as Date,
-            end: today as Date)
+            start: startdate as Date,
+            end: enddate as Date)
         
         
         // Check authorization before read operation is performed
@@ -91,29 +99,54 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    
+    func dateToLocalDate(date: Date) -> Date{
+        
+        //let date = NSDate();
+        // "Apr 1, 2015, 8:53 AM" <-- local without seconds
+        
+        var formatter = DateFormatter();
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ";
+        let defaultTimeZoneStr = formatter.string(from: date as Date);
+        // "2015-04-01 08:52:00 -0400" <-- same date, local, but with seconds
+        formatter.timeZone = NSTimeZone(abbreviation: "EST") as TimeZone!;
+        let utcTimeZoneStr = formatter.string(from: date as Date);
+        // "2015-04-01 12:52:00 +0000" <-- same date, now in UTC
+        
+        
+        // convert string into date
+        let dateValue = formatter.date(from: utcTimeZoneStr) as NSDate!
+
+        print(utcTimeZoneStr)
+        
+        return dateValue as! Date
+    }
+    
     // Method Reads from HealthStore
     func readFromHealthStore() {
         
-        // change date to yesterday
-        yesterday = self.today.addingTimeInterval(-24 * 60 * 60)
+        // change date
+        //var startdate = Date().addingTimeInterval(-2 * 60 * 60)
+        //var enddate   = Date().addingTimeInterval(2 * 60 * 60)
+        
+        
+        //startdate = dateToLocalDate(date: startdate)
+        //enddate   = dateToLocalDate(date: enddate)
+        
     
         let stepCountQuantityType = HKCharacteristicType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
         
-        /*
-        //   Get the start of the day
-        let date = NSDate()
-        let cal = Calendar(identifier: Calendar.Identifier.gregorian)
-        let newDate = cal.startOfDay(for: date as Date)
+        
         
         //  Set the Predicates & Interval
-        let predicate = HKQuery.predicateForSamples(withStart: newDate as Date, end: NSDate() as Date, options: .strictStartDate)
+        let predicate = HKQuery.predicateForSamples(withStart: startdate as Date, end: enddate as Date, options: .strictStartDate)
         let interval: NSDateComponents = NSDateComponents()
         interval.day = 1
         
         //  Perform the Query
-        let query = HKStatisticsCollectionQuery(quantityType: stepCountQuantityType!, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: newDate as Date, intervalComponents:interval as DateComponents)
+        let stepsSampleQuery = HKStatisticsCollectionQuery(quantityType: stepCountQuantityType!, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: startdate as Date, intervalComponents:interval as DateComponents)
         print("Result")
-        query.initialResultsHandler = { query, results, error in
+        stepsSampleQuery.initialResultsHandler = { query, results, error in
             
             if error != nil {
                 print("Result is\n")
@@ -124,24 +157,36 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
             }
             
             if let myResults = results{
-                myResults.enumerateStatistics(from: self.yesterday as Date, to: self.today as Date) {
+                myResults.enumerateStatistics(from: self.startdate as Date, to: self.enddate as Date) {
                     statistics, stop in
                     
                     if let quantity = statistics.sumQuantity() {
                         
                         let steps = quantity.doubleValue(for: HKUnit.count())
+                        var steps1 = Int(steps)
                         
-                        print("Steps = \(steps)")
-                        self.stepsLabel.text = "Steps: \(steps)"
-                        //completion(stepRetrieved: steps)
+                        print("Steps = \(steps1)")
+                        //self.stepsLabel.text = "Steps: \(steps)"
+                        
+                        self.data.add("\(steps1) Walking Steps")
+                        
+                        var dating = " \(String(describing: self.startdate)) to \(String(describing: self.enddate)) "
+
+                        self.data.add("\(dating)")
+                        print(dating)
+
+                        //self.activityDetailTable.reloadData()
+                        
+                        //completion(stepRetrieved: stepsSampleQuery)
                         
                     }
                 }
             }
             
             
-        }*/
+        }
         
+        /*
         let stepsSampleQuery = HKSampleQuery(sampleType: stepCountQuantityType!,
                                              predicate: nil,
                                              limit: 100,
@@ -172,11 +217,60 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.activityDetailTable.reloadData()
             }
 
-        }
-        
+        }*/
+
         // execute the healthstore query
         healthStore?.execute(stepsSampleQuery)
     }
+
+    
+    
+    /*
+     
+     FUNCTION TO BE TESTED ON A REAL iPHONE DEVICE
+     
+     */
+    func testhealthCode() {
+        // Do any additional setup after loading the view, typically from a nib.
+//        var endDate   = Date()//.addingTimeInterval(2 * 60 * 60)
+//        var startDate = Date().addingTimeInterval(-24 * 60 * 60)
+        
+        
+        let weightSampleType = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
+        let predicate = HKQuery.predicateForSamples(withStart: startdate as Date, end: enddate as Date, options: .strictStartDate)
+        
+        let query = HKSampleQuery(sampleType: weightSampleType!, predicate: predicate, limit: 0, sortDescriptors: nil, resultsHandler: {
+            (query, results, error) in
+            if results == nil {
+                print("There was an error running the query: \(error)")
+            }
+            
+            DispatchQueue.main.async {
+                
+                var dailyAVG:Double = 0
+                for steps in results as! [HKQuantitySample]
+                {
+                    // add values to dailyAVG
+                    dailyAVG += steps.quantity.doubleValue(for: HKUnit.count())
+                    print(dailyAVG)
+                    print(steps)
+                    
+                    self.data.add("Daily Average: \(dailyAVG)")
+                    //self.activityDetailTable.reloadData()
+                }
+            }
+        })
+        
+        // execute the healthstore query
+        healthStore?.execute(query)
+    }
+
+    
+    
+    
+    
+    
+    
     
     // MARK: - Controller Table View
     // Getting the number of rows in firendName collection
@@ -201,7 +295,20 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.startHealthShit()
+        
+        
+        startdate = Date()-(24*60*60)//.addingTimeInterval(-24 * 60 * 60)
+        enddate   = Date()//.addingTimeInterval(-3 * 60 * 60)
+        
+        
+        //startdate = dateToLocalDate(date: start)
+        //enddate   = dateToLocalDate(date: end)
+
+        
+        //self.startHealthShit()
+        
+        //test
+        //self.testhealthCode()
         // Do any additional setup after loading the view.
     }
 
