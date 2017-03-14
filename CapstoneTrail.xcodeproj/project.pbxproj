@@ -32,6 +32,7 @@
 		449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */; };
 		449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */; };
 		449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFD41E58758900B84118 /* DashBoardViewController.swift */; };
+		449C850A1E77B20800A19597 /* PedometerActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449C85091E77B20800A19597 /* PedometerActivityViewController.swift */; };
 		44DE37FD1E673809002A775A /* UpdateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */; };
 		44DE37FF1E679595002A775A /* GroupMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE37FE1E679595002A775A /* GroupMembersViewController.swift */; };
 		44DE38041E6BFC25002A775A /* ScheduleInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE38031E6BFC25002A775A /* ScheduleInviteCell.swift */; };
@@ -126,6 +127,7 @@
 		449ACFCB1E56216600B84118 /* HikeGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HikeGroupViewController.swift; path = HikeGroup/HikeGroupViewController.swift; sourceTree = "<group>"; };
 		449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		449ACFD41E58758900B84118 /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
+		449C85091E77B20800A19597 /* PedometerActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PedometerActivityViewController.swift; path = Activity/PedometerActivityViewController.swift; sourceTree = "<group>"; };
 		44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateGroupViewController.swift; path = HikeGroup/UpdateGroupViewController.swift; sourceTree = "<group>"; };
 		44DE37FE1E679595002A775A /* GroupMembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupMembersViewController.swift; path = HikeGroup/GroupMembersViewController.swift; sourceTree = "<group>"; };
 		44DE38031E6BFC25002A775A /* ScheduleInviteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleInviteCell.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			children = (
 				4462019E1E7296F300A4DF42 /* ActivityViewController.swift */,
 				446201A21E72AACA00A4DF42 /* Activity.storyboard */,
+				449C85091E77B20800A19597 /* PedometerActivityViewController.swift */,
 			);
 			name = Activity;
 			sourceTree = "<group>";
@@ -775,6 +778,7 @@
 				44F136721E62087600E3747C /* UserProfileViewController.swift in Sources */,
 				A97979EA1E5DE9C6002DC4D2 /* TrailMO+CoreDataClass.swift in Sources */,
 				A97979D81E5DE1BB002DC4D2 /* Trails.xcdatamodeld in Sources */,
+				449C850A1E77B20800A19597 /* PedometerActivityViewController.swift in Sources */,
 				449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */,
 				44385C0C1E5CEFB20095F2B0 /* ScheduleViewCell.swift in Sources */,
 				D21BE54E1E5FCB42006D05C4 /* WalkingScheduleViewController.swift in Sources */,
