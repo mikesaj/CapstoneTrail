@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import CoreData
 
 class ScheduleListController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -18,6 +19,10 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
     var trailId  =     [String]()
     var trail    =     [String]()
     var hikeDate =     [String]()
+    
+    var area = [String]()
+    var epochDate = [Double]()
+    var trailData = [Trail]()
     
     var invites = Set<String>()
     
@@ -42,7 +47,10 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         trailId.removeAll()
         trail.removeAll()
         hikeDate.removeAll()
-
+        area.removeAll()
+        epochDate.removeAll()
+        trailData.removeAll()
+        
         
         // checks if to display group hikes or personal hikes
         if (groupId.characters.count) > 0 {
@@ -111,7 +119,7 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         //button
         cell.viewScheduleButton.tag = indexPath.row
         cell.viewScheduleButton.addTarget(self, action: #selector(logAction), for: .touchUpInside)
-        
+
         return cell
     }
     
@@ -151,7 +159,7 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         
         self.hikeScheduleListTableView.reloadData()
         
-        print("indexis = \(index)")
+        print("indices = \(index)")
     }
     
     // reject hike invitation
@@ -163,6 +171,9 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         self.trailId .remove(at: sender.tag)
         self.hikeId  .remove(at: sender.tag)
         self.hikeDate.remove(at: sender.tag)
+        self.area.remove(at: sender.tag)
+        self.epochDate.remove(at: sender.tag)
+        self.trailData.remove(at: sender.tag)
         
         //remove the hike invite from user
         scheduleDB.removeHikeInvite(hikeEventid:hikeEvent, userId:uid!)
@@ -179,12 +190,15 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
         scheduleDB.addHikeEventtoUser(hikeEventid:hikeEventid, userId:uid!)
         
         let index = trail[sender.tag];
-        print("indexis = \(index) user = \(uid!) eventid = \(hikeEventid)")
+        print("indices = \(index) user = \(uid!) eventid = \(hikeEventid)")
         
         self.trail   .removeAll()
         self.trailId .removeAll()
         self.hikeId  .removeAll()
         self.hikeDate.removeAll()
+        self.area.removeAll()
+        self.epochDate.removeAll()
+        self.trailData.removeAll()
 
         self.hikeScheduleListTableView.reloadData()
         
@@ -203,9 +217,17 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if(segue.identifier == "View2"){
-            let scheduleProfile: ScheduleProfileController = segue.destination as! ScheduleProfileController
+            guard let scheduleProfile: ScheduleProfileController = segue.destination as? ScheduleProfileController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            guard let indexPath = hikeScheduleListTableView.indexPathForSelectedRow else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+
             scheduleProfile.scheduleTitle = ""
             scheduleProfile.uid = ""
+            scheduleProfile.trailData.append(trailData[indexPath.row])
+            scheduleProfile.epochDate = epochDate[indexPath.row]
         }
         
         // create a hike schedule in group
@@ -254,7 +276,16 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
                                     self.trailId    .append( String(describing: vare) )
 
                                     self.hikeDate   .append(value?["date"]       as! String)
-                                    
+
+                                    // Add area and epoch time
+                                    let _id = value?["trailId"] as! Int32
+                                    let _area = value?["area"] as! String
+                                    let _trailCD = TrailUtils.searchTrail(id: _id, area: _area)
+
+                                    self.area.append(_area)
+                                    self.epochDate.append(value?["epochDate"] as! Double)
+                                    self.trailData.append(Trail(trail: _trailCD))
+
                                     // insert into invite id's
                                     self.invites.insert(snapshot.key)
                                     
@@ -315,10 +346,19 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
                                     self.trail      .append((value?["trail"])! as! String)
                                     
                                     let vare = value?["trailId"]
-                                    
+
                                     self.trailId    .append( String(describing: vare) )
                                     self.hikeDate   .append(value?["date"] as! String)
-                                    
+
+                                    // Add area and epoch time
+                                    let _id = value?["trailId"] as! Int32
+                                    let _area = value?["area"] as! String
+                                    let _trailCD = TrailUtils.searchTrail(id: _id, area: _area)
+
+                                    self.area.append(_area)
+                                    self.epochDate.append(value?["epochDate"] as! Double)
+                                    self.trailData.append(Trail(trail: _trailCD))
+
                                     self.hikeScheduleListTableView.reloadData()
                                 }
                                 
