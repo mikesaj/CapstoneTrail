@@ -37,6 +37,7 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
     var coordinates: [[Double]]!
     var coordinate2DList: [CLLocationCoordinate2D]!
     var travelTime: Double!
+    var epochDate: Double?
     
     var groupId: String = ""//"22ED0638-C875-4B89-8D90-DE31BB5019AC"
 
@@ -82,6 +83,9 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
         formatter.dateStyle = .long
         formatter.timeStyle = .short
         txtDateTrail.text = formatter.string(for: datePicker.date)
+        
+        // Transform to epoch date
+        epochDate = formatter.date(from: txtDateTrail.text!)?.timeIntervalSince1970
         self.view.endEditing(true)
     }
     
@@ -109,6 +113,11 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
         hikeScheduleReference.child("trail").setValue(self.street)
         hikeScheduleReference.child("date").setValue(self.txtDateTrail.text)
         hikeScheduleReference.child("attendees").child("0").setValue(uid)
+        // Add additional data for weather features
+        hikeScheduleReference.child("area").setValue(self.area)
+        if epochDate != nil {
+            hikeScheduleReference.child("epochDate").setValue(self.epochDate)
+        }
         
         //add event to group
         self.addHikingScheduletoGroup(groupId: self.groupId, hikeId: hikeId)
