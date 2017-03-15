@@ -15,27 +15,35 @@ class PedometerActivityViewController: UIViewController {
     @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var statusTitle: UILabel!
 
+    //MARK: - HealthKit class to save data
+    var userHealthData = ActivityViewController()
+    
     // Start/Stop Button
-    let stopColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+    let stopColor  = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
     let startColor = UIColor(red: 0.0, green: 0.75, blue: 0.0, alpha: 1.0)
     
     // values for the pedometer data
     var numberOfSteps:Int! = 0//nil;
-    var Steps: Int = 0
-    var distance:Double! = nil
+    var Steps:      Int = 0
+    var distance:   Double! = nil
     var averagePace:Double! = nil
-    var pace:Double! = nil
+    var pace:       Double! = nil
+    var startDate = Date()
+    var prevSteps:Int = 0
     
     // Pedometer instance
     var pedometer = CMPedometer()
     
     // timers
-    var timer = Timer()
+    var timer         = Timer()
     let timerInterval = 1.0
     var timeElapsed:TimeInterval = 0.0
     
     //MARK: - timer functions
     func startTimer(){
+        //start date/time
+        self.startDate = Date() //timer start date
+        
         if timer.isValid { timer.invalidate() }
         timer = Timer.scheduledTimer(timeInterval: timerInterval,target: self,selector: #selector(timerAction(timer:)) ,userInfo: nil,repeats: true)
     }
@@ -143,8 +151,17 @@ class PedometerActivityViewController: UIViewController {
             startTimer() //start the timer
             pedometer.startUpdates(from: Date(), withHandler: { (pedometerData, error) in
                 if let pedData = pedometerData{
-                    self.numberOfSteps = Int(pedData.numberOfSteps) + self.Steps
-                    //self.stepsLabel.text = "Steps:\(pedData.numberOfSteps)"
+                    
+                    //Getting data from the pedometer sensor
+                    let StepsData      = Int(pedData.numberOfSteps)
+                    self.numberOfSteps = StepsData + self.Steps
+                    
+                    
+                    //save steps in healthkit
+                    self.userHealthData.startHealthShit(startDate: self.startDate, endDate: Date(),
+                                                        steps: StepsData - self.numberOfSteps)
+                    
+                    self.startDate = Date()
                 } else {
                     self.stepsLabel.text = "Steps: Not Available"
                 }

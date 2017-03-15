@@ -12,8 +12,8 @@ import HealthKit
 class ActivityViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 
-    var startdate  = Date()
-    var enddate    = Date()
+    //var startdate  = Date()
+    //var enddate    = Date()
     var data       = NSMutableArray()
     @IBOutlet weak var activityDetailTable: UITableView!
     
@@ -27,7 +27,8 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
     }()
 
     // Get permission from the user to read HealthStore
-    func startHealthShit(steps: Int) {
+    func startHealthShit(startDate: Date, endDate: Date, steps: Int) {
+        //startHealthShit(startDate: self.startDate, endtDate: Date(), steps: StepsData)
         
         let stepCountQuantityType = HKCharacteristicType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
         let dataTypesToWrite = NSSet(object: stepCountQuantityType)
@@ -36,7 +37,7 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
         healthStore?.requestAuthorization(toShare: dataTypesToWrite as? Set<HKObjectType> as! Set<HKSampleType>?, read: dataTypesToRead as? Set<HKObjectType>,completion: { (success, error) -> Void in
             if success {
                 // Method Writes to HealthStore
-                self.writeToHealthStore(steps: steps)
+                self.writeToHealthStore(startDate: startDate, endDate: endDate, steps: steps)
                 
                 // Method Reads from HealthStore
                 //self.readFromHealthStore()
@@ -47,7 +48,7 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     // Method Writes to HealthStore
-    func writeToHealthStore(steps: Int) {
+    func writeToHealthStore(startDate: Date, endDate: Date, steps: Int) {
         // change date to yesterday
         
         //yesterday = self.today.addingTimeInterval(-24 * 60 * 60)
@@ -62,13 +63,13 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
         let stepsQuantityType = HKQuantityType.quantityType( forIdentifier: HKQuantityTypeIdentifier.stepCount )
         
         let stepsUnit = HKUnit.count()
-        let stepsQuantity = HKQuantity(unit: stepsUnit, doubleValue: 31200)
+        let stepsQuantity = HKQuantity(unit: stepsUnit, doubleValue: Double(steps))
         
         let stepsQuantitySample = HKQuantitySample(
             type: stepsQuantityType!,
             quantity: stepsQuantity,
-            start: startdate as Date,
-            end: enddate as Date)
+            start: startDate as Date,
+            end: endDate as Date)
         
         
         // Check authorization before read operation is performed
@@ -89,7 +90,9 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
                 healthStore?.save(stepsQuantitySample, withCompletion: { (success, error) -> Void in
                     if success {
                         // handle success
-                        print("Saved steps")
+                        print("\(steps) Saved steps!!")
+                        print("Start Date: \(startDate)")
+                        print("End Date:   \(endDate)")
                     } else {
                         // handle error
                     }
@@ -122,6 +125,7 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
         return dateValue as! Date
     }
     
+    /*
     // Method Reads from HealthStore
     func readFromHealthStore() {
         
@@ -222,7 +226,7 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
         // execute the healthstore query
         healthStore?.execute(stepsSampleQuery)
     }
-
+    */
     
     
     /*
@@ -230,6 +234,7 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
      FUNCTION TO BE TESTED ON A REAL iPHONE DEVICE
      
      */
+    /*
     func testhealthCode() {
         // Do any additional setup after loading the view, typically from a nib.
 //        var endDate   = Date()//.addingTimeInterval(2 * 60 * 60)
@@ -264,7 +269,7 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
         // execute the healthstore query
         healthStore?.execute(query)
     }
-
+    */
     
     
     
@@ -297,8 +302,8 @@ class ActivityViewController: UIViewController, UITableViewDataSource, UITableVi
 
         
         
-        startdate = Date()-(24*60*60)//.addingTimeInterval(-24 * 60 * 60)
-        enddate   = Date()//.addingTimeInterval(-3 * 60 * 60)
+        //startdate = Date()-(24*60*60)//.addingTimeInterval(-24 * 60 * 60)
+        //enddate   = Date()//.addingTimeInterval(-3 * 60 * 60)
         
         
         //startdate = dateToLocalDate(date: start)
