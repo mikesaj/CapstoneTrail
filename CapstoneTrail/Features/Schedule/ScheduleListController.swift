@@ -278,6 +278,7 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
                     scheduleProfile.indexMessage.text = String(format: indexMessageString, indexTextString)
                     scheduleProfile.indexPoint.text = String(format: indexPointString, weatherIndex)
 
+                    scheduleProfile.conditionText.text = hourForecast["condition"]["text"].stringValue
                     scheduleProfile.temperatureText.text = NSLocalizedString("Temp_Text", comment: "")
                     scheduleProfile.temperatureValue.text = String(format: tempValueString, hourForecast["temp_c"].doubleValue)
                     scheduleProfile.feelsLikeText.text = NSLocalizedString("FeelsLike_Text", comment: "")

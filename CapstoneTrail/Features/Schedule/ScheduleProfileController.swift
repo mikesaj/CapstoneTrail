@@ -21,6 +21,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var indexMessage: UILabel!
     @IBOutlet weak var indexPoint: UILabel!
 
+    @IBOutlet weak var conditionText: UILabel!
     @IBOutlet weak var temperatureText: UILabel!
     @IBOutlet weak var temperatureValue: UILabel!
     @IBOutlet weak var feelsLikeText: UILabel!

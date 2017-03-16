@@ -36,8 +36,8 @@
 "Wind_Text" = "Wind:";
 "Wind_Value" = "%.1f km/h";
 "Cloud_Text" = "Cloud:";
-"Cloud_Value" = "%d %";
+"Cloud_Value" = "%d %%";
 "Precip_Text" = "Precipitation:";
 "Precip_Value" = "%.1f mm";
 "Humidity_Text" = "Humidity:";
-"Humidity_Value" = "%d %";
+"Humidity_Value" = "%d %%";
