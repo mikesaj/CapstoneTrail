@@ -8,16 +8,21 @@
 
 import UIKit
 import CoreData
-
+import CoreLocation
+import MapKit
+import Alamofire
+import SwiftyJSON
 
 class TrailUtils {
 
+    // Calculate metre to minute by average human walking speed
     class func metre2minute(lengthIn metre: Double) -> Double {
 
         return metre * 0.012
     }
 
 
+    // Search trail from Core Data
     class func searchTrail(id: Int32, area: String) -> NSManagedObject {
 
         var trails: [NSManagedObject] = []
@@ -41,5 +46,18 @@ class TrailUtils {
         } else {
             fatalError("Trail identities are conflicted")
         }
+    }
+
+    // Create CLLocationCoordinate2D list from double type coordinates
+    class func makeCoordinate2D(coordinates: [[Double]]) -> [CLLocationCoordinate2D] {
+
+        // CLLocationCoordinate2D container
+        var coordinates2DList: [CLLocationCoordinate2D] = []
+        for coordinate in coordinates {
+            let point: CLLocationCoordinate2D = CLLocationCoordinate2DMake(coordinate[1], coordinate[0])
+            coordinates2DList.append(point)
+        }
+
+        return coordinates2DList
     }
 }

@@ -46,7 +46,7 @@ class TrailTests: XCTestCase {
     // Mark: initialize tests
     func testInit_ShouldSetPropertiesFromTrailMO() {
 
-        XCTAssertEqual(trail.id, testObject.value(forKey: "id") as! Int, "Initializer should set id")
+        XCTAssertEqual(trail.id, testObject.value(forKey: "id") as! Int32, "Initializer should set id")
         XCTAssertEqual(trail.area, testObject.value(forKey: "area") as! String, "Initializer should set area")
         XCTAssertEqual(trail.street, testObject.value(forKey: "street") as! String, "Initializer should set Street")
         XCTAssertEqual(trail.status, testObject.value(forKey: "status") as! String, "Initializer should set status")

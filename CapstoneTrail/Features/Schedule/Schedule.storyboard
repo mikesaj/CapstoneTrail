@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -172,76 +172,13 @@
                     <connections>
                         <outlet property="hikeScheduleListTableView" destination="ysk-gc-rSP" id="oIU-BT-I9N"/>
                         <outlet property="newHikeButton" destination="Mec-fj-do5" id="wi4-mC-ZzE"/>
-                        <segue destination="yRQ-qf-Gt3" kind="show" identifier="View2" id="3CJ-Ho-cos"/>
+                        <segue destination="0Ps-3E-HTR" kind="show" identifier="View2" id="3CJ-Ho-cos"/>
                         <segue destination="f59-QB-X3R" kind="show" identifier="newSchedule" id="a1k-SE-dxZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAv-3f-m9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2199.1999999999998" y="186.65667166416793"/>
-        </scene>
-        <!--Schedule Profile Controller-->
-        <scene sceneID="rtB-C1-qA9">
-            <objects>
-                <viewController storyboardIdentifier="ScheduleProfile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yRQ-qf-Gt3" customClass="ScheduleProfileController" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lr5-D4-ii2"/>
-                        <viewControllerLayoutGuide type="bottom" id="jFf-KG-kD3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="N6b-cO-tKb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="etT-LN-mlY">
-                                <rect key="frame" x="67" y="94" width="240" height="147"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YbE-4P-mLt">
-                                <rect key="frame" x="0.0" y="322" width="375" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#Trail ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sK-Xx-E7i">
-                                <rect key="frame" x="0.0" y="379" width="375" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trail Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcI-xv-Imi">
-                                <rect key="frame" x="0.0" y="277" width="375" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSC-ll-CHV">
-                                <rect key="frame" x="141" y="508" width="93" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Invite"/>
-                                <connections>
-                                    <segue destination="T4s-AD-AvA" kind="show" identifier="" id="JLW-SL-8SX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGS-mN-NXy">
-                                <rect key="frame" x="164" y="470" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Join"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="location" destination="YbE-4P-mLt" id="nok-Mc-eGt"/>
-                        <outlet property="members" destination="1sK-Xx-E7i" id="Vpa-Bj-rSI"/>
-                        <outlet property="routeName" destination="RcI-xv-Imi" id="wTc-a6-HdW"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="huH-5c-e6p" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3010.4000000000001" y="186.65667166416793"/>
         </scene>
         <!--TrailListTableViewController-->
         <scene sceneID="vBv-5E-vN7">
@@ -254,7 +191,7 @@
         <!--Mail Friend-->
         <scene sceneID="50e-yl-eFn">
             <objects>
-                <viewController id="T4s-AD-AvA" customClass="mailFriend" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MailFriend" id="T4s-AD-AvA" customClass="mailFriend" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rzG-hi-bVg"/>
                         <viewControllerLayoutGuide type="bottom" id="2se-8A-f9a"/>
@@ -326,6 +263,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94V-nR-eWm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1260" y="186.65667166416793"/>
+        </scene>
+        <!--ScheduleProfile-->
+        <scene sceneID="dDE-XC-rno">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ScheduleProfile" storyboardName="ScheduleProfile" referencedIdentifier="ScheduleProfile" id="0Ps-3E-HTR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yPE-oU-mza" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3010.4000000000001" y="186.65667166416793"/>
         </scene>
     </scenes>
 </document>

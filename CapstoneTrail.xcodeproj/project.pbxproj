@@ -47,6 +47,8 @@
 		65E7EEE2D0A127F42608855C /* Pods_CapstoneTrail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FA64D3EB2D622B0A7EC696 /* Pods_CapstoneTrail.framework */; };
 		A900F3511E4A075A00556D79 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A900F3501E4A075A00556D79 /* MapKit.framework */; };
 		A92CA1FD1E6B30CF003EF418 /* TrailMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92CA1FC1E6B30CF003EF418 /* TrailMap.storyboard */; };
+		A95CD4581E78E506002655D3 /* ScheduleProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A95CD4571E78E506002655D3 /* ScheduleProfile.storyboard */; };
+		A96247E31E79E3AB00B15E55 /* WeatherIndex.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A96247E21E79E3AB00B15E55 /* WeatherIndex.xcassets */; };
 		A976D6F01E637B7D000CF3F5 /* TrailDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A976D6EF1E637B7D000CF3F5 /* TrailDetail.storyboard */; };
 		A97979D81E5DE1BB002DC4D2 /* Trails.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97979D61E5DE1BB002DC4D2 /* Trails.xcdatamodeld */; };
 		A97979DE1E5DE318002DC4D2 /* TrailList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */; };
@@ -63,6 +65,9 @@
 		B66C828D90807E4B30E4188C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8A82BC1ABAFB0F9D0E10 /* AppDelegate.swift */; };
 		B66C82E1126A445C50143E18 /* TrailTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C87024EFD1BD0B640506C /* TrailTap.swift */; };
 		B66C83238B78A69E6A3ACF49 /* TrailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C84B649E566C74B20544C /* TrailMapViewController.swift */; };
+		B66C84386F59F38871BEE0CF /* APIKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8597C1385016DB957A28 /* APIKeyTests.swift */; };
+		B66C849A35C01E8274ADCC1E /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C863AA1CEAC19C7D1C850 /* APIKeys.swift */; };
+		B66C85F04463BF555892D8BA /* WeatherUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C85A629729496E9A439AE /* WeatherUtils.swift */; };
 		B66C875384EF1325BC0D7110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66C82EA8971FB9C46435BE3 /* LaunchScreen.storyboard */; };
 		B66C875F384F46488B725567 /* TrailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C86E04C2B6393FB1CC083 /* TrailTests.swift */; };
 		B66C891A616DF6929B1079A4 /* TrailMapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C8C01390A23000A8D50CB /* TrailMapViewControllerTests.swift */; };
@@ -142,6 +147,8 @@
 		93C0CBAFEF495B65F5778885 /* Pods-CapstoneTrail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.debug.xcconfig"; sourceTree = "<group>"; };
 		A900F3501E4A075A00556D79 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A92CA1FC1E6B30CF003EF418 /* TrailMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrailMap.storyboard; sourceTree = "<group>"; };
+		A95CD4571E78E506002655D3 /* ScheduleProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScheduleProfile.storyboard; sourceTree = "<group>"; };
+		A96247E21E79E3AB00B15E55 /* WeatherIndex.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WeatherIndex.xcassets; sourceTree = "<group>"; };
 		A976D6EF1E637B7D000CF3F5 /* TrailDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrailDetail.storyboard; sourceTree = "<group>"; };
 		A97979D71E5DE1BB002DC4D2 /* Trails.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Trails.xcdatamodel; sourceTree = "<group>"; };
 		A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrailList.storyboard; sourceTree = "<group>"; };
@@ -158,6 +165,9 @@
 		B66C805281013E748CD10F6A /* TrailPolyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailPolyline.swift; sourceTree = "<group>"; };
 		B66C80D3D9049E6DECDBF27F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B66C84B649E566C74B20544C /* TrailMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailMapViewController.swift; sourceTree = "<group>"; };
+		B66C8597C1385016DB957A28 /* APIKeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeyTests.swift; sourceTree = "<group>"; };
+		B66C85A629729496E9A439AE /* WeatherUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherUtils.swift; sourceTree = "<group>"; };
+		B66C863AA1CEAC19C7D1C850 /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		B66C86E04C2B6393FB1CC083 /* TrailTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailTests.swift; sourceTree = "<group>"; };
 		B66C87024EFD1BD0B640506C /* TrailTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailTap.swift; sourceTree = "<group>"; };
 		B66C871A5CCAF5C836061916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
@@ -235,6 +245,7 @@
 			children = (
 				44DE38051E6CE4F9002A775A /* DAL */,
 				44385C071E5CE30B0095F2B0 /* Schedule.storyboard */,
+				A95CD4571E78E506002655D3 /* ScheduleProfile.storyboard */,
 				44385C091E5CE3430095F2B0 /* ScheduleListController.swift */,
 				44385C0B1E5CEFB20095F2B0 /* ScheduleViewCell.swift */,
 				44385C0D1E5CF27E0095F2B0 /* ScheduleProfileController.swift */,
@@ -384,6 +395,7 @@
 				B66C8FFA2195697D1BA6415F /* Images.xcassets */,
 				B66C8C866F8BFE32C7F9EDC4 /* Localizable.strings */,
 				A97979D61E5DE1BB002DC4D2 /* Trails.xcdatamodeld */,
+				A96247E21E79E3AB00B15E55 /* WeatherIndex.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -435,7 +447,6 @@
 				A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */,
 				A97979DF1E5DE342002DC4D2 /* TrailListTableViewController.swift */,
 				A97979E61E5DE6D8002DC4D2 /* TrailTableViewCell.swift */,
-				A98B92F61E637DBC007C7AB6 /* TrailUtils.swift */,
 			);
 			path = TrailList;
 			sourceTree = "<group>";
@@ -466,6 +477,7 @@
 				B66C8E354790C98D3CD7CB58 /* Info.plist */,
 				B66C8C01390A23000A8D50CB /* TrailMapViewControllerTests.swift */,
 				B66C86E04C2B6393FB1CC083 /* TrailTests.swift */,
+				B66C8597C1385016DB957A28 /* APIKeyTests.swift */,
 			);
 			path = CapstoneTrailTests;
 			sourceTree = "<group>";
@@ -507,8 +519,11 @@
 		D21BE5391E5FCABA006D05C4 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				B66C85A629729496E9A439AE /* WeatherUtils.swift */,
+				A98B92F61E637DBC007C7AB6 /* TrailUtils.swift */,
 				D21BE5451E5FCB30006D05C4 /* UIImageExtension.swift */,
 				D21BE5461E5FCB30006D05C4 /* StringExtension.swift */,
+				B66C863AA1CEAC19C7D1C850 /* APIKeys.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -643,6 +658,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A96247E31E79E3AB00B15E55 /* WeatherIndex.xcassets in Resources */,
 				B66C8E1A7401C833BE35C2A3 /* Images.xcassets in Resources */,
 				446201A31E72AACA00A4DF42 /* Activity.storyboard in Resources */,
 				A97979E41E5DE402002DC4D2 /* Kitchener.json in Resources */,
@@ -663,6 +679,7 @@
 				D20ADD551E7496230015F080 /* UnblockFriend.storyboard in Resources */,
 				44385C081E5CE30B0095F2B0 /* Schedule.storyboard in Resources */,
 				D21BE54D1E5FCB42006D05C4 /* WalkingSchedule.storyboard in Resources */,
+				A95CD4581E78E506002655D3 /* ScheduleProfile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -768,6 +785,7 @@
 			files = (
 				B66C891A616DF6929B1079A4 /* TrailMapViewControllerTests.swift in Sources */,
 				B66C875F384F46488B725567 /* TrailTests.swift in Sources */,
+				B66C84386F59F38871BEE0CF /* APIKeyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,6 +845,8 @@
 				B66C80BC715842FD22EF75BC /* Trail.swift in Sources */,
 				B66C8C8DEC5FB180F7C3C27E /* TrailPolyline.swift in Sources */,
 				B66C82E1126A445C50143E18 /* TrailTap.swift in Sources */,
+				B66C849A35C01E8274ADCC1E /* APIKeys.swift in Sources */,
+				B66C85F04463BF555892D8BA /* WeatherUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
