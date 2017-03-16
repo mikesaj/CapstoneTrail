@@ -25,6 +25,7 @@ class PedometerActivityViewController: UIViewController {
     // values for the pedometer data
     var numberOfSteps:Int! = 0//nil;
     var Steps:      Int = 0
+    var TempSteps:  Int = 0
     var distance:   Double! = nil
     var averagePace:Double! = nil
     var pace:       Double! = nil
@@ -172,7 +173,8 @@ class PedometerActivityViewController: UIViewController {
             stopTimer() // stop the timer
             
             //save steps in healthkit
-            self.userHealthData.startHealthShit(startDate: self.startDate, endDate: Date(), steps: self.numberOfSteps)
+            self.userHealthData.startHealthShit(startDate: self.startDate, endDate: Date(), steps: self.numberOfSteps - TempSteps)
+            TempSteps = self.numberOfSteps
 
             //Toggle the UI to off state
             //statusTitle.text = "Pedometer Off: "
