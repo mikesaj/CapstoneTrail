@@ -102,15 +102,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let trailMO = NSManagedObject(entity: trailEntity!, insertInto: managedContext) as! TrailMO
 
         // Assign data
-        trailMO.id = trail["ID"].number!
+        trailMO.id = trail["ID"].int32Value
         trailMO.area = area
         trailMO.street = trail["STREET"].stringValue
+        trailMO.houseNumber = String(trail["HOUSE_NUMBER"].intValue)
         trailMO.status = trail["STATUS"].stringValue
         trailMO.surface = trail["SURFACE"].stringValue
         trailMO.owner = trail["OWNER"].stringValue
         trailMO.pathType = trail["PATH_TYPE"].stringValue
         trailMO.length = trail["LENGTH"].doubleValue
         trailMO.coordinates = trail["COORDINATES"].arrayObject as NSObject?
+        trailMO.neighbours = trail["NEIGHBOURS"].arrayObject as NSObject?
 
         do {
             // Saving data
