@@ -130,7 +130,7 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         // Main DashBoard Tabs
         //Add to tabBarController bottom menu
         self.viewControllers =
-            [uprofileTab, GroupTab, SchedulTab, activityTab, uFriendTab, uPeopleTab, uUnblockingFriendTab, invitationTab, SchedulTab, uWalkingScheduleTab]
+            [uprofileTab, GroupTab, SchedulTab, activityTab, uFriendTab, uPeopleTab, uUnblockingFriendTab, invitationTab, SchedulTab] //uWalkingScheduleTab
     }
     
     // UITabBarControllerDelegate method
