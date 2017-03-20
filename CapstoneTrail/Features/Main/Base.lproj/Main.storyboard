@@ -45,7 +45,7 @@
                                                 <rect key="frame" x="116" y="0.0" width="63" height="30"/>
                                                 <state key="normal" title="Trail Map"/>
                                                 <connections>
-                                                    <segue destination="HR5-U0-MMi" kind="show" id="FTC-AW-7Wt"/>
+                                                    <segue destination="HR5-U0-MMi" kind="showDetail" action="showViewController:sender:" id="FTC-AW-7Wt"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qn-JL-SDA">

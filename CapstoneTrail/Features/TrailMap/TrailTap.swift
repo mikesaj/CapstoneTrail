@@ -84,9 +84,10 @@ extension TrailMapViewController {
         // Create annotation
         let trailAnnotation = MKPointAnnotation()
         trailAnnotation.coordinate = trailData.coordinate
-        trailAnnotation.title = trailData.trail?.pathType
-        trailAnnotation.subtitle = String(format: "%.0f m, %.0f minute by walk", trail.length, trail.travelTime)
+        trailAnnotation.title = "Tap ⓘ to Make a Schedule"
+        trailAnnotation.subtitle = "Starts @ \(trail.street)"
         trailMapView.addAnnotation(trailAnnotation)
+
         let deadlineTime = DispatchTime.now() + .milliseconds(300)
         DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
             self.trailMapView.selectAnnotation(trailAnnotation, animated: true)
@@ -94,7 +95,7 @@ extension TrailMapViewController {
     }
 
     // Customise annotation
-    @objc(mapView:viewForAnnotation:) func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 
         if annotation is MKUserLocation {
             return nil
@@ -113,10 +114,9 @@ extension TrailMapViewController {
                  annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
 
-        guard let trailDetailViewController = UIStoryboard(name: "TrailDetail", bundle: nil).instantiateViewController(withIdentifier: "TrailDetail") as? TrailDetailViewController else { return }
+        guard let makeScheduleViewController = UIStoryboard(name: "MakeSchedule", bundle: nil).instantiateViewController(withIdentifier: "MakeSchedule") as? MakeScheduleViewController else { return }
+        makeScheduleViewController.currentTrail = trail
 
-        trailDetailViewController.trail = TrailUtils.searchTrail(id: trail.id, area: trail.area)
-
-        self.present(trailDetailViewController, animated: true, completion: nil)
+        self.present(makeScheduleViewController, animated: true)
     }
 }

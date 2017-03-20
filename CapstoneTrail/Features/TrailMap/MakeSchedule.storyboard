@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Y39-7T-Naz">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Make Schedule View Controller-->
+        <scene sceneID="qZB-pk-ER7">
+            <objects>
+                <viewController storyboardIdentifier="MakeSchedule" id="Y39-7T-Naz" customClass="MakeScheduleViewController" customModule="CapstoneTrail" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Udx-9W-AGK"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fs6-cG-yi1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GAW-E8-lho">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select walking date first" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jjr-OY-Rbf">
+                                <rect key="frame" x="16" y="36" width="343" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose walking date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mmG-Yq-G9I">
+                                <rect key="frame" x="16" y="78" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lfa-Xl-6RL">
+                                <rect key="frame" x="16" y="123.5" width="343" height="387.5"/>
+                            </mapView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iqH-1K-bMS" userLabel="Information">
+                                <rect key="frame" x="16" y="527" width="343" height="77.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start/End" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ki4-Fw-321">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Length/Estimate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6YN-R4-mLD">
+                                        <rect key="frame" x="0.0" y="28.5" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alt-Vh-9e7">
+                                        <rect key="frame" x="0.0" y="57" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5L-19-tQf" userLabel="Buttons">
+                                <rect key="frame" x="16" y="621" width="343" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ed8-Ko-j1w">
+                                        <rect key="frame" x="0.0" y="0.0" width="171.5" height="30"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButton:" destination="Y39-7T-Naz" eventType="touchUpInside" id="B1A-v9-JWd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6K7-jU-6Sm">
+                                        <rect key="frame" x="171.5" y="0.0" width="171.5" height="30"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="doneButton:" destination="Y39-7T-Naz" eventType="touchUpInside" id="zLe-Rv-yqr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="6K7-jU-6Sm" firstAttribute="width" secondItem="ed8-Ko-j1w" secondAttribute="width" id="PrX-5l-wXM"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iqH-1K-bMS" firstAttribute="top" secondItem="Lfa-Xl-6RL" secondAttribute="bottom" constant="16" id="2oF-Yr-3dA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jjr-OY-Rbf" secondAttribute="trailing" id="6u1-Cx-zYw"/>
+                            <constraint firstItem="Jjr-OY-Rbf" firstAttribute="leading" secondItem="GAW-E8-lho" secondAttribute="leadingMargin" id="7ns-FO-OFp"/>
+                            <constraint firstItem="Lfa-Xl-6RL" firstAttribute="trailing" secondItem="GAW-E8-lho" secondAttribute="trailingMargin" id="8pd-M1-BT0"/>
+                            <constraint firstItem="Lfa-Xl-6RL" firstAttribute="top" secondItem="mmG-Yq-G9I" secondAttribute="bottom" constant="16" id="DkO-a6-OuH"/>
+                            <constraint firstItem="e5L-19-tQf" firstAttribute="top" secondItem="iqH-1K-bMS" secondAttribute="bottom" constant="16" id="ESQ-Rt-s91"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iqH-1K-bMS" secondAttribute="trailing" id="Mcg-sI-RF4"/>
+                            <constraint firstItem="mmG-Yq-G9I" firstAttribute="leading" secondItem="GAW-E8-lho" secondAttribute="leadingMargin" id="bPr-Qp-njS"/>
+                            <constraint firstItem="Jjr-OY-Rbf" firstAttribute="top" secondItem="Udx-9W-AGK" secondAttribute="bottom" constant="16" id="bsn-Rk-5J1"/>
+                            <constraint firstItem="e5L-19-tQf" firstAttribute="leading" secondItem="GAW-E8-lho" secondAttribute="leadingMargin" id="dmT-s0-Aw8"/>
+                            <constraint firstItem="Fs6-cG-yi1" firstAttribute="top" secondItem="e5L-19-tQf" secondAttribute="bottom" constant="16" id="fax-3y-vlQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mmG-Yq-G9I" secondAttribute="trailing" id="kkM-zd-6ST"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="e5L-19-tQf" secondAttribute="trailing" id="myc-iE-GsC"/>
+                            <constraint firstItem="mmG-Yq-G9I" firstAttribute="top" secondItem="Jjr-OY-Rbf" secondAttribute="bottom" constant="16" id="tIC-hq-DDj"/>
+                            <constraint firstItem="Lfa-Xl-6RL" firstAttribute="leading" secondItem="GAW-E8-lho" secondAttribute="leadingMargin" id="vr7-cq-6N8"/>
+                            <constraint firstItem="iqH-1K-bMS" firstAttribute="leading" secondItem="GAW-E8-lho" secondAttribute="leadingMargin" id="zd6-eT-cqR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scheduleDate" destination="mmG-Yq-G9I" id="1jo-3C-cCi"/>
+                        <outlet property="scheduleMap" destination="Lfa-Xl-6RL" id="6gi-1D-OYj"/>
+                        <outlet property="scheduleWeather" destination="Alt-Vh-9e7" id="XXQ-ut-tG3"/>
+                        <outlet property="titleLabel" destination="Jjr-OY-Rbf" id="O2x-FF-vaZ"/>
+                        <outlet property="totalDuration" destination="6YN-R4-mLD" id="Ond-Wm-mC0"/>
+                        <outlet property="trailStreets" destination="ki4-Fw-321" id="Ic7-Sc-nbm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vax-yh-BaQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8.8000000000000007" y="-24.7376311844078"/>
+        </scene>
+    </scenes>
+</document>

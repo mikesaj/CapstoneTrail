@@ -9,4 +9,6 @@ import MapKit
 class TrailPolyline: MKPolyline {
     
     var trail: Trail?
+    var id: String?
+    var area: String?
 }

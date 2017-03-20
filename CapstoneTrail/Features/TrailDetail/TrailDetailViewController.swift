@@ -28,7 +28,7 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
 
     // MARK: Variables
     var trail: NSManagedObject!
-    var id: NSNumber!
+    var id: String!
     var area: String!
     var street: String!
     var status: String!
@@ -64,7 +64,7 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
 
         let detailStr = NSLocalizedString("Trail detail info", comment: "Trail detail")
         areaLabel.text = String(format: "%@ %@", area.capitalized, pathType.capitalized)
-        trailIDLabel.text = String(format: "#%d", id)
+        trailIDLabel.text = String(format: "#%@", id)
         detailLabel.text = String(format: detailStr, street.capitalized, status.capitalized, surface.lowercased(), length, travelTime)
     }
 
@@ -293,7 +293,7 @@ class TrailDetailViewController: UIViewController, MKMapViewDelegate, UITextFiel
             fatalError("No TrailMO retrieved")
         }
 
-        id = trail.value(forKey: "id") as! NSNumber
+        id = trail.value(forKey: "id") as! String
         area = trail.value(forKey: "area") as! String
         street = trail.value(forKey: "street") as! String
         status = trail.value(forKey: "status") as! String

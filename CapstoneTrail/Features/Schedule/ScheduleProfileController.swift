@@ -40,9 +40,12 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate {
     var uid: String = ""
     var scheduleTitle: String = ""
 
-    var trailData = [Trail]()
+    var trailData: [Trail] = []
     var epochDate: UInt32?
-    var coordinate2DList: [CLLocationCoordinate2D]!
+    var coordinate2DList: [[CLLocationCoordinate2D]] = []
+
+    var totalLength: Double = 0
+    var totalTime: Double = 0
 
     override func viewDidLoad() {
 
@@ -57,11 +60,18 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate {
         scheduleMap.mapType = .standard
         scheduleMap.delegate = self
 
+        for trail in trailData {
+            totalLength += trail.length
+            totalTime += trail.travelTime
+            coordinate2DList.append(trail.coordinate2DList)
+        }
+
+        print("totalLength", totalLength)
+        print("totalTime", totalTime)
+
         // Set schedule date/time
         scheduleDate.text = epochToDateString(epochDate)
 
-        // Get CLLocationCoordinate2D list
-        coordinate2DList = TrailUtils.makeCoordinate2D(coordinates: trailData[0].coordinates)
         // Center map to the trail
         centreToTrail()
         //  Create polyline with the CLLocationCoordinate2D list
@@ -105,21 +115,30 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate {
     func centreToTrail() {
 
         // Get middle position of the coordinate list
-        let middlePosition = Int(roundf(Float(coordinate2DList.count) / Float(2)))
-        let middleTrailCoordinate = coordinate2DList[middlePosition]
-        let mapSpan: MKCoordinateSpan = MKCoordinateSpanMake(0.05, 0.05)
+        let middlePosition = Int(roundf(Float(coordinate2DList[0].count) / Float(2)))
+        let middleTrailCoordinate = coordinate2DList[0][middlePosition]
+        let mapSpan: MKCoordinateSpan = MKCoordinateSpanMake(0.005, 0.005)
         let mapRegion: MKCoordinateRegion = MKCoordinateRegionMake(middleTrailCoordinate, mapSpan)
 
         scheduleMap.setRegion(mapRegion, animated: true)
 
-        let pinTitle = NSLocalizedString("Schedule_pin", comment: "Metre and minutes")
-        let trailLength = trailData[0].length
+        var pinLength: String = "%.0f m"
+        if totalLength > 1000 {
+            totalLength /= 1000
+            pinLength = "%.1f km, "
+        }
+        var pinTime: String = "%.0f minutes"
+        if totalTime > 60 {
+            totalTime /= 60
+            pinTime = "%.1f hours"
+        }
+        let pinTitle: String = pinLength + ", " + pinTime
 
         // Make pin
         let trailPin: MKPointAnnotation = MKPointAnnotation()
         trailPin.coordinate = middleTrailCoordinate
-        trailPin.title = String(format: pinTitle, trailLength, TrailUtils.metre2minute(lengthIn: trailLength))
-        trailPin.subtitle = trailData[0].street
+        trailPin.title = String(format: pinTitle, totalLength, totalTime)
+        trailPin.subtitle = String(format: "Start @ %@", trailData[0].street)
 
         scheduleMap.addAnnotation(trailPin)
     }
@@ -127,10 +146,12 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate {
     // Create polyline with the CLLocationCoordinate2D list
     func makePolyline() {
 
-        // Create MKPolyline object from the specified set of coordinates
-        let polyline: MKPolyline = MKPolyline(coordinates: coordinate2DList, count: coordinate2DList.count)
-        // Add the polyline as single overlay object to the map
-        scheduleMap.add(polyline)
+        for coordinate2Ds in coordinate2DList {
+            // Create MKPolyline object from the specified set of coordinates
+            let polyline: MKPolyline = MKPolyline(coordinates: coordinate2Ds, count: coordinate2Ds.count)
+            // Add the polyline as single overlay object to the map
+            scheduleMap.add(polyline)
+        }
     }
 
     // Customise annotation

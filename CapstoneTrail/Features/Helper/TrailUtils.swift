@@ -13,6 +13,7 @@ import MapKit
 import Alamofire
 import SwiftyJSON
 
+
 class TrailUtils {
 
     // Calculate metre to minute by average human walking speed
@@ -23,16 +24,14 @@ class TrailUtils {
 
 
     // Search trail from Core Data
-    class func searchTrail(id: Int32, area: String) -> NSManagedObject {
+    class func searchTrail(id: String) -> NSManagedObject {
 
         var trails: [NSManagedObject] = []
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Trail")
-        let predicateId = NSPredicate(format: "id == %d", id)
-        let predicateArea = NSPredicate(format: "area == %@", area)
-        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateId, predicateArea])
+        let predicate = NSPredicate(format: "id == %@", id)
         fetchRequest.predicate = predicate
 
         do {
@@ -59,5 +58,28 @@ class TrailUtils {
         }
 
         return coordinates2DList
+    }
+
+
+    class func getBearing(p1: CLLocationCoordinate2D, p2: CLLocationCoordinate2D) -> Double {
+
+        func degToRad(degrees: Double) -> Double {
+
+            return degrees * M_PI / 180.0 }
+
+
+        let p1Lat = degToRad(degrees: p1.latitude)
+        let p1Lon = degToRad(degrees: p1.longitude)
+        let p2Lat = degToRad(degrees: p2.latitude)
+        let p2Lon = degToRad(degrees: p2.longitude)
+
+        let radDistance = acos(sin(p1Lat) * sin(p2Lat) + cos(p1Lat) * cos(p2Lat) * cos(p1Lon - p2Lon))
+        let radBearing = 2 * M_PI - acos((sin(p2Lat) - sin(p1Lat) * cos(radDistance)) / (cos(p1Lat) * sin(radDistance)))
+
+        if sin(p2Lon - p1Lon) < 0 {
+            return 2 * M_PI - radBearing
+        }
+
+        return radBearing
     }
 }

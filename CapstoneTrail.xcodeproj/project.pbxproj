@@ -47,11 +47,13 @@
 		65E7EEE2D0A127F42608855C /* Pods_CapstoneTrail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FA64D3EB2D622B0A7EC696 /* Pods_CapstoneTrail.framework */; };
 		A900F3511E4A075A00556D79 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A900F3501E4A075A00556D79 /* MapKit.framework */; };
 		A92CA1FD1E6B30CF003EF418 /* TrailMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92CA1FC1E6B30CF003EF418 /* TrailMap.storyboard */; };
-		A958431C1E7C491A00EBBEFC /* TrailMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958431A1E7C491A00EBBEFC /* TrailMO+CoreDataClass.swift */; };
-		A958431D1E7C491A00EBBEFC /* TrailMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958431B1E7C491A00EBBEFC /* TrailMO+CoreDataProperties.swift */; };
+		A95843211E7C5C6300EBBEFC /* MakeSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A95843201E7C5C6300EBBEFC /* MakeSchedule.storyboard */; };
+		A95843231E7C5C8100EBBEFC /* MakeScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95843221E7C5C8100EBBEFC /* MakeScheduleViewController.swift */; };
 		A95CD4581E78E506002655D3 /* ScheduleProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A95CD4571E78E506002655D3 /* ScheduleProfile.storyboard */; };
 		A96247E31E79E3AB00B15E55 /* WeatherIndex.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A96247E21E79E3AB00B15E55 /* WeatherIndex.xcassets */; };
 		A976D6F01E637B7D000CF3F5 /* TrailDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A976D6EF1E637B7D000CF3F5 /* TrailDetail.storyboard */; };
+		A978A1461E7DD72C00B43946 /* TrailMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978A1441E7DD72B00B43946 /* TrailMO+CoreDataClass.swift */; };
+		A978A1471E7DD72C00B43946 /* TrailMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978A1451E7DD72C00B43946 /* TrailMO+CoreDataProperties.swift */; };
 		A97979D81E5DE1BB002DC4D2 /* Trails.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97979D61E5DE1BB002DC4D2 /* Trails.xcdatamodeld */; };
 		A97979DE1E5DE318002DC4D2 /* TrailList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */; };
 		A97979E01E5DE342002DC4D2 /* TrailListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97979DF1E5DE342002DC4D2 /* TrailListTableViewController.swift */; };
@@ -147,11 +149,13 @@
 		93C0CBAFEF495B65F5778885 /* Pods-CapstoneTrail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.debug.xcconfig"; sourceTree = "<group>"; };
 		A900F3501E4A075A00556D79 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A92CA1FC1E6B30CF003EF418 /* TrailMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrailMap.storyboard; sourceTree = "<group>"; };
-		A958431A1E7C491A00EBBEFC /* TrailMO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrailMO+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A958431B1E7C491A00EBBEFC /* TrailMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrailMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A95843201E7C5C6300EBBEFC /* MakeSchedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MakeSchedule.storyboard; sourceTree = "<group>"; };
+		A95843221E7C5C8100EBBEFC /* MakeScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeScheduleViewController.swift; sourceTree = "<group>"; };
 		A95CD4571E78E506002655D3 /* ScheduleProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScheduleProfile.storyboard; sourceTree = "<group>"; };
 		A96247E21E79E3AB00B15E55 /* WeatherIndex.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WeatherIndex.xcassets; sourceTree = "<group>"; };
 		A976D6EF1E637B7D000CF3F5 /* TrailDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrailDetail.storyboard; sourceTree = "<group>"; };
+		A978A1441E7DD72B00B43946 /* TrailMO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrailMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A978A1451E7DD72C00B43946 /* TrailMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrailMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A97979D71E5DE1BB002DC4D2 /* Trails.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Trails.xcdatamodel; sourceTree = "<group>"; };
 		A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrailList.storyboard; sourceTree = "<group>"; };
 		A97979DF1E5DE342002DC4D2 /* TrailListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailListTableViewController.swift; sourceTree = "<group>"; };
@@ -426,6 +430,8 @@
 				B66C8E47DD60A7A6839B2768 /* Trail.swift */,
 				B66C805281013E748CD10F6A /* TrailPolyline.swift */,
 				B66C87024EFD1BD0B640506C /* TrailTap.swift */,
+				A95843201E7C5C6300EBBEFC /* MakeSchedule.storyboard */,
+				A95843221E7C5C8100EBBEFC /* MakeScheduleViewController.swift */,
 			);
 			path = TrailMap;
 			sourceTree = "<group>";
@@ -442,8 +448,8 @@
 		A97979D51E5DE177002DC4D2 /* TrailList */ = {
 			isa = PBXGroup;
 			children = (
-				A958431A1E7C491A00EBBEFC /* TrailMO+CoreDataClass.swift */,
-				A958431B1E7C491A00EBBEFC /* TrailMO+CoreDataProperties.swift */,
+				A978A1441E7DD72B00B43946 /* TrailMO+CoreDataClass.swift */,
+				A978A1451E7DD72C00B43946 /* TrailMO+CoreDataProperties.swift */,
 				A97979DD1E5DE318002DC4D2 /* TrailList.storyboard */,
 				A97979DF1E5DE342002DC4D2 /* TrailListTableViewController.swift */,
 				A97979E61E5DE6D8002DC4D2 /* TrailTableViewCell.swift */,
@@ -613,7 +619,8 @@
 				ORGANIZATIONNAME = MSD;
 				TargetAttributes = {
 					B66C85B253DA11D131100BD0 = {
-						DevelopmentTeam = 9Y6FHV2RR7;
+						DevelopmentTeam = 8JWW42NY8U;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -675,6 +682,7 @@
 				A92CA1FD1E6B30CF003EF418 /* TrailMap.storyboard in Resources */,
 				A97979DE1E5DE318002DC4D2 /* TrailList.storyboard in Resources */,
 				446087811E4E1771007A8BE0 /* SignIn.storyboard in Resources */,
+				A95843211E7C5C6300EBBEFC /* MakeSchedule.storyboard in Resources */,
 				D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */,
 				D20ADD551E7496230015F080 /* UnblockFriend.storyboard in Resources */,
 				44385C081E5CE30B0095F2B0 /* Schedule.storyboard in Resources */,
@@ -793,7 +801,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A958431C1E7C491A00EBBEFC /* TrailMO+CoreDataClass.swift in Sources */,
 				44F136721E62087600E3747C /* UserProfileViewController.swift in Sources */,
 				A97979D81E5DE1BB002DC4D2 /* Trails.xcdatamodeld in Sources */,
 				449C850A1E77B20800A19597 /* PedometerActivityViewController.swift in Sources */,
@@ -814,6 +821,7 @@
 				44385C051E5BD50C0095F2B0 /* ViewFriendViewController.swift in Sources */,
 				44385C011E5BCFE10095F2B0 /* CustomTableViewCell.swift in Sources */,
 				44385C0A1E5CE3430095F2B0 /* ScheduleListController.swift in Sources */,
+				A978A1471E7DD72C00B43946 /* TrailMO+CoreDataProperties.swift in Sources */,
 				44385C0E1E5CF27E0095F2B0 /* ScheduleProfileController.swift in Sources */,
 				44F136741E62277500E3747C /* GroupListViewCell.swift in Sources */,
 				D21BE54C1E5FCB42006D05C4 /* WalkingShedule.swift in Sources */,
@@ -821,7 +829,6 @@
 				D20ADD561E7496230015F080 /* UnblockFriendController.swift in Sources */,
 				D21BE5411E5FCB0C006D05C4 /* FriendViewController.swift in Sources */,
 				D21BE5431E5FCB0C006D05C4 /* PeopleViewController.swift in Sources */,
-				A958431D1E7C491A00EBBEFC /* TrailMO+CoreDataProperties.swift in Sources */,
 				446087741E4E1149007A8BE0 /* LoginViewController.swift in Sources */,
 				A98B92F71E637DBC007C7AB6 /* TrailUtils.swift in Sources */,
 				A97979E01E5DE342002DC4D2 /* TrailListTableViewController.swift in Sources */,
@@ -831,6 +838,7 @@
 				44967C961E5D69E700086030 /* friendIvCell.swift in Sources */,
 				4462019F1E7296F300A4DF42 /* ActivityViewController.swift in Sources */,
 				44F5B7301E63166E007C7B97 /* SettingsController.swift in Sources */,
+				A978A1461E7DD72C00B43946 /* TrailMO+CoreDataClass.swift in Sources */,
 				44DE37FD1E673809002A775A /* UpdateGroupViewController.swift in Sources */,
 				449ACFCC1E56216600B84118 /* HikeGroupViewController.swift in Sources */,
 				B66C8CB60CD0DB584DAD522E /* ViewController.swift in Sources */,
@@ -838,6 +846,7 @@
 				446087781E4E116A007A8BE0 /* User.swift in Sources */,
 				A97979E71E5DE6D8002DC4D2 /* TrailTableViewCell.swift in Sources */,
 				44DE38071E6CE54B002A775A /* ScheduleDBController.swift in Sources */,
+				A95843231E7C5C8100EBBEFC /* MakeScheduleViewController.swift in Sources */,
 				44DE38091E6D17F4002A775A /* HikeModel.swift in Sources */,
 				44F5B7321E63176F007C7B97 /* JoinAppInvitation.swift in Sources */,
 				D21BE5421E5FCB0C006D05C4 /* Friend.swift in Sources */,

@@ -32,7 +32,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Df-Eg-QE6" id="Y0h-G4-yyK">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN6-KA-7Mj">
@@ -97,7 +97,7 @@
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qIs-6A-ZGG" id="Qvl-1N-xLP">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wf3-5k-jXK">
@@ -152,7 +152,7 @@
                                 <rect key="frame" x="93" y="581" width="186" height="30"/>
                                 <state key="normal" title="New Hike Schedule"/>
                                 <connections>
-                                    <action selector="newHikeScheduleButton:" destination="Zj7-DN-sjw" eventType="touchUpInside" id="ihO-ia-Roo"/>
+                                    <segue destination="Vuo-ER-gjt" kind="show" identifier="newSchedule" id="Eek-9e-lSb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -171,22 +171,20 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="hikeScheduleListTableView" destination="ysk-gc-rSP" id="oIU-BT-I9N"/>
-                        <outlet property="newHikeButton" destination="Mec-fj-do5" id="wi4-mC-ZzE"/>
                         <segue destination="0Ps-3E-HTR" kind="show" identifier="View2" id="3CJ-Ho-cos"/>
-                        <segue destination="f59-QB-X3R" kind="show" identifier="newSchedule" id="a1k-SE-dxZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAv-3f-m9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2199.1999999999998" y="186.65667166416793"/>
         </scene>
-        <!--TrailListTableViewController-->
-        <scene sceneID="vBv-5E-vN7">
+        <!--TrailMap-->
+        <scene sceneID="C3H-UK-xcP">
             <objects>
-                <viewControllerPlaceholder storyboardName="TrailList" referencedIdentifier="TrailListTableViewController" id="f59-QB-X3R" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ccl-9Q-wD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="TrailMap" storyboardName="TrailMap" id="Vuo-ER-gjt" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fXH-vd-ywl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2778" y="603"/>
+            <point key="canvasLocation" x="2199" y="722"/>
         </scene>
         <!--Mail Friend-->
         <scene sceneID="50e-yl-eFn">
@@ -209,7 +207,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YLa-QL-8cl" id="JOL-81-MGd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNA-fH-5KM">

@@ -14,26 +14,30 @@ import CoreData
 
 class TrailMapViewController: UIViewController, MKMapViewDelegate {
 
-    // MARK: Interface builder properties
+    // MARK: Properties
+    // Interface builder properties
     @IBOutlet var trailMapView: MKMapView!
 
-    // MARK: CoreLocation variables
+    // MARK: Variables
+    // CoreLocation variables
     var locationManager: CLLocationManager!
     var locationAuthStatus: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
-    // MARK: Current location variables
+    // Current location variables
     var currentCoordinate: CLLocationCoordinate2D!
     var coordinateSpan: MKCoordinateSpan!
-    let coordinateSpanValue: Double = 0.05
+    let coordinateSpanValue: Double = 0.01
     var coordinateRegion: MKCoordinateRegion!
-    // MARK: Trail Core Data variables
+    // Trail Core Data variables
     var coreDataTrailList: Array<NSManagedObject>!
     var appDelegate: AppDelegate!
     var managedContext: NSManagedObjectContext!
     var fetchRequest: NSFetchRequest<NSManagedObject>!
-    // MARK: Trail routes variables
+    // Trail routes variables
     var trail: Trail!
     var trails: Array<Trail> = []
     var trailPolyline: Array<MKPolyline> = [MKPolyline()]
+    // Database variables
+    var groupID: String = ""
 
     override func viewDidLoad() {
 
@@ -44,6 +48,9 @@ class TrailMapViewController: UIViewController, MKMapViewDelegate {
 
         // Initialize map delegate
         trailMapView.delegate = self
+
+        // Fetch trail data
+        fetchTrail()
 
         // Request location authorization permission
         locationManager.requestWhenInUseAuthorization()
@@ -60,9 +67,8 @@ class TrailMapViewController: UIViewController, MKMapViewDelegate {
     }
 
 
-    override func viewWillAppear(_ animated: Bool) {
-
-        super.viewWillAppear(animated)
+    // Fetch trail data from core data
+    func fetchTrail() {
 
         // Prepare for fetching trail data
         appDelegate = UIApplication.shared.delegate as! AppDelegate!

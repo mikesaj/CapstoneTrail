@@ -10,7 +10,7 @@ import MapKit
 
 
 class Trail {
-    var id: Int32
+    var id: String
     var area: String
     var street: String
     var houseNumber: String?
@@ -20,13 +20,13 @@ class Trail {
     var owner: String
     var length: Double
     var coordinates: [[Double]]
-    var neighbours: [Int]?
+    var neighbours: [String]?
 
     var travelTime: Double
     var coordinate2DList: [CLLocationCoordinate2D] = []
 
     init(trail: NSManagedObject) {
-        self.id = trail.value(forKey: "id") as! Int32
+        self.id = trail.value(forKey: "id") as! String
         self.area = trail.value(forKey: "area") as! String
         self.street = trail.value(forKey: "street") as! String
         if let houseNumber: String = trail.value(forKey: "houseNumber") as? String {
@@ -38,7 +38,7 @@ class Trail {
         self.owner = trail.value(forKey: "owner") as! String
         self.length = trail.value(forKey: "length") as! Double
         self.coordinates = trail.value(forKey: "coordinates") as! [[Double]]
-        if let neighbours: [Int] = trail.value(forKey: "neighbours") as? [Int] {
+        if let neighbours: [String] = trail.value(forKey: "neighbours") as? [String] {
             self.neighbours = neighbours
         }
 
@@ -61,19 +61,9 @@ class Trail {
 }
 
 
-extension CLLocationCoordinate2D: Equatable {
+extension Trail: Equatable {
+    public static func ==(lhs: Trail, rhs: Trail) -> Bool {
 
-    public static func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
-
-        return (lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude)
-    }
-}
-
-
-extension MKCoordinateSpan: Equatable {
-
-    public static func ==(lhs: MKCoordinateSpan, rhs: MKCoordinateSpan) -> Bool {
-
-        return (lhs.latitudeDelta == rhs.latitudeDelta && lhs.longitudeDelta == rhs.longitudeDelta)
+        return (lhs.id == rhs.id)
     }
 }

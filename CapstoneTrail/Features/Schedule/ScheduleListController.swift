@@ -24,7 +24,7 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
 
     var area = [String]()
     var epochDate = [UInt32]()
-    var trailData = [Trail]()
+    var trailData = [[Trail]]()
 
     var invites = Set<String>()
 
@@ -230,18 +230,18 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
                 fatalError("The selected cell is not being displayed by the table")
             }
 
-            let _trail: Trail = trailData[indexPath.row]
+            let _trail: [Trail] = trailData[indexPath.row]
             let _date: UInt32 = epochDate[indexPath.row]
 
             scheduleProfile.scheduleTitle = ""
             scheduleProfile.uid = ""
-            scheduleProfile.trailData.append(_trail)
+            scheduleProfile.trailData = _trail
             scheduleProfile.epochDate = _date
 
             // Fetch weather only within 10 days
             if WeatherUtils.isWithin10Days(scheduleEpoch: _date) {
                 // Fetch weather data
-                WeatherUtils.getWeather(coordinate: _trail.coordinates[0], success: {
+                WeatherUtils.getWeather(coordinate: _trail[0].coordinates[0], success: {
                     data in
 
                     let hourForecast: JSON = WeatherUtils.findForecast(scheduleEpoch: _date, weatherData: data)
@@ -300,8 +300,13 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
 
         // create a hike schedule in group
         if(segue.identifier == "newSchedule") {
-            let trailList: TrailListTableViewController = segue.destination as! TrailListTableViewController
-            trailList.groupId = groupId
+            //            let trailList: TrailListTableViewController = segue.destination as! TrailListTableViewController
+            //            trailList.groupId = groupId
+
+            guard let trailMap: TrailMapViewController = segue.destination as? TrailMapViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            trailMap.groupID = groupId
         }
     }
 
@@ -319,19 +324,19 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
 
                    if value != nil {
 
-                       var hikeInvites = [String]()
+                       var walkingInvitations = [String]()
 
-                       if value?["hikeInvites"] != nil {
+                       if value?["walkingInvitation"] != nil {
 
                            // get hike invites
-                           hikeInvites = (value?["hikeInvites"] as? [String])!
+                           walkingInvitations = (value?["walkingInvitation"] as? [String])!
                        }
 
-                       for hikeInviteId in hikeInvites {
+                       for walkingInvitation in walkingInvitations {
 
-                           _ = self.ref.child("hikingSchedules")
+                           _ = self.ref.child("walkingSchedules")
                                        .queryOrderedByKey()
-                                       .queryEqual(toValue: hikeInviteId)
+                                       .queryEqual(toValue: walkingInvitation)
                                        .observe(.childAdded, with: {
                                            (snapshot) in
 
@@ -343,18 +348,21 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
                                                self.trail.append(value?["trail"] as! String)
 
                                                let vare = value?["trailId"]
+                                               // FIXME: "trailId" is an array of string
                                                self.trailId.append(String(describing: vare))
 
                                                self.hikeDate.append(value?["date"] as! String)
 
                                                // Add area and epoch time
-                                               let _id = value?["trailId"] as! Int32
-                                               let _area = value?["area"] as! String
-                                               let _trailCD = TrailUtils.searchTrail(id: _id, area: _area)
+                                               let _IDs = value?["trailId"] as! [String]
+                                               var _trails: [Trail] = []
+                                               for _ID in _IDs {
+                                                   let _trailMO = TrailUtils.searchTrail(id: _ID)
+                                                   _trails.append(Trail(trail: _trailMO))
+                                               }
 
-                                               self.area.append(_area)
                                                self.epochDate.append(value?["epochDate"] as! UInt32)
-                                               self.trailData.append(Trail(trail: _trailCD))
+                                               self.trailData.append(_trails)
 
                                                // insert into invite id's
                                                self.invites.insert(snapshot.key)
@@ -389,10 +397,10 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
 
                        var hikeInvites = [String]()
 
-                       if value?["hikingSchedules"] != nil {
+                       if value?["walkingSchedules"] != nil {
 
                            // get hike invites
-                           hikeInvites = (value?["hikingSchedules"] as? [AnyObject])! as! [String]
+                           hikeInvites = (value?["walkingSchedules"] as? [AnyObject])! as! [String]
                        }
 
 
@@ -400,7 +408,7 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
                        for hikeInviteId in hikeInvites {
 
 
-                           _ = self.ref.child("hikingSchedules")
+                           _ = self.ref.child("walkingSchedules")
                                        .queryOrderedByKey()
                                        .queryEqual(toValue: hikeInviteId)
                                        .observe(.childAdded, with: {
@@ -414,18 +422,20 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
                                                self.trail.append((value?["trail"])! as! String)
 
                                                let vare = value?["trailId"]
-
+                                               // FIXME: "trailId" is an array of string
                                                self.trailId.append(String(describing: vare))
                                                self.hikeDate.append(value?["date"] as! String)
 
                                                // Add area and epoch time
-                                               let _id = value?["trailId"] as! Int32
-                                               let _area = value?["area"] as! String
-                                               let _trailCD = TrailUtils.searchTrail(id: _id, area: _area)
+                                               let _IDs = value?["trailId"] as! [String]
+                                               var _trails: [Trail] = []
+                                               for _ID in _IDs {
+                                                   let _trailMO = TrailUtils.searchTrail(id: _ID)
+                                                   _trails.append(Trail(trail: _trailMO))
+                                               }
 
-                                               self.area.append(_area)
                                                self.epochDate.append(value?["epochDate"] as! UInt32)
-                                               self.trailData.append(Trail(trail: _trailCD))
+                                               self.trailData.append(_trails)
 
                                                self.hikeScheduleListTableView.reloadData()
                                            }
