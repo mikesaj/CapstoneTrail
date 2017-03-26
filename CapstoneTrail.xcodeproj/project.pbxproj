@@ -619,7 +619,7 @@
 				ORGANIZATIONNAME = MSD;
 				TargetAttributes = {
 					B66C85B253DA11D131100BD0 = {
-						DevelopmentTeam = 8JWW42NY8U;
+						DevelopmentTeam = 2472MVQR2Y;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
@@ -909,11 +909,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CapstoneTrail/CapstoneTrail.entitlements;
-				DEVELOPMENT_TEAM = 9Y6FHV2RR7;
+				DEVELOPMENT_TEAM = 2472MVQR2Y;
 				INFOPLIST_FILE = CapstoneTrail/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTraily;
+				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailAle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1030,11 +1030,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CapstoneTrail/CapstoneTrail.entitlements;
-				DEVELOPMENT_TEAM = 9Y6FHV2RR7;
+				DEVELOPMENT_TEAM = 2472MVQR2Y;
 				INFOPLIST_FILE = CapstoneTrail/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTraily;
+				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailAle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

@@ -119,9 +119,6 @@ class FriendViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         //Adding tableView object to the View
         self.view.addSubview(tableView)
-        
-        //creating a cancel button on the navigation bar
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
     }
     
     func fetchUsers(){
@@ -252,12 +249,6 @@ class FriendViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     //method for resizing cell height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72
-    }
-    
-    //method to close the controller
-    func handleCancel()
-    {
-        dismiss(animated: true, completion: nil)
     }
     
     //setting table size

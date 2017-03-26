@@ -124,9 +124,6 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         //Adding tableView object to the View
         self.view.addSubview(tableView)
-        
-        //creating a cancel button on the navigation bar
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
     }
     
     func fetchUsers(){
@@ -268,12 +265,6 @@ class PeopleViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             print(error.localizedDescription)
         }
         
-    }
-    
-    //method to close the controller
-    func handleCancel()
-    {
-        dismiss(animated: true, completion: nil)
     }
     
     //setting table size
