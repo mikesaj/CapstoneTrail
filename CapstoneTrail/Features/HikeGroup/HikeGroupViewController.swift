@@ -119,8 +119,9 @@ class HikeGroupViewController: UIViewController, UITableViewDataSource, UITableV
                 
                 if value != nil{
                     
+                    let groupsArray = value?["groups"]
 
-                    if value?["groups"] != nil {
+                    if((groupsArray != nil) && ((groupsArray?.count)! > 0 )) {
                         
                         // get user's group list
                         userGroupIds = (value?["groups"]        as? [String])!
