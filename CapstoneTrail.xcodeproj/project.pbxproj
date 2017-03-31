@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440369C21E8E1E81000E6552 /* GroupMembersViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440369C11E8E1E81000E6552 /* GroupMembersViewCell.swift */; };
 		4423ED121E50E72700344B6D /* HikeGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4423ED111E50E72700344B6D /* HikeGroup.storyboard */; };
 		4434BD071E5D5B8B008692B8 /* mailFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4434BD061E5D5B8B008692B8 /* mailFriend.swift */; };
 		44385C011E5BCFE10095F2B0 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44385C001E5BCFE10095F2B0 /* CustomTableViewCell.swift */; };
@@ -109,6 +110,7 @@
 		1D6EA5CAAD52FAA0D9CDCCDE /* Pods-CapstoneTrail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.release.xcconfig"; sourceTree = "<group>"; };
 		2731D46A09543C153A6C31D3 /* Pods-CapstoneTrailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.release.xcconfig"; sourceTree = "<group>"; };
 		3BFF0EC91E9D1FE9FF82FCEB /* Pods-CapstoneTrail-CapstoneTrailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail-CapstoneTrailTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail-CapstoneTrailTests/Pods-CapstoneTrail-CapstoneTrailTests.release.xcconfig"; sourceTree = "<group>"; };
+		440369C11E8E1E81000E6552 /* GroupMembersViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupMembersViewCell.swift; path = HikeGroup/GroupMembersViewCell.swift; sourceTree = "<group>"; };
 		4423ED111E50E72700344B6D /* HikeGroup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HikeGroup.storyboard; path = HikeGroup/HikeGroup.storyboard; sourceTree = "<group>"; };
 		4434BD061E5D5B8B008692B8 /* mailFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mailFriend.swift; sourceTree = "<group>"; };
 		44385C001E5BCFE10095F2B0 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				44F136731E62277500E3747C /* GroupListViewCell.swift */,
 				44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */,
 				44DE37FE1E679595002A775A /* GroupMembersViewController.swift */,
+				440369C11E8E1E81000E6552 /* GroupMembersViewCell.swift */,
 			);
 			name = HikeGroup;
 			sourceTree = "<group>";
@@ -619,7 +622,7 @@
 				ORGANIZATIONNAME = MSD;
 				TargetAttributes = {
 					B66C85B253DA11D131100BD0 = {
-						DevelopmentTeam = 8JWW42NY8U;
+						DevelopmentTeam = 9Y6FHV2RR7;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
@@ -801,6 +804,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				440369C21E8E1E81000E6552 /* GroupMembersViewCell.swift in Sources */,
 				44F136721E62087600E3747C /* UserProfileViewController.swift in Sources */,
 				A97979D81E5DE1BB002DC4D2 /* Trails.xcdatamodeld in Sources */,
 				449C850A1E77B20800A19597 /* PedometerActivityViewController.swift in Sources */,
