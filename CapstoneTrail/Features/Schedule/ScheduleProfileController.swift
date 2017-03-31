@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import CoreLocation
 import SwiftyJSON
 import MapKit
 
 
-class ScheduleProfileController: UIViewController, MKMapViewDelegate {
+class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     // MARK: Properties
     @IBOutlet weak var scheduleDate: UILabel!
@@ -40,6 +41,10 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate {
     var uid: String = ""
     var scheduleTitle: String = ""
 
+    var currLat  = 0.0
+    var currLong = 0.0
+
+    
     var trailData: [Trail] = []
     var epochDate: UInt32?
     var coordinate2DList: [[CLLocationCoordinate2D]] = []
@@ -50,7 +55,10 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
+        
+        // get current location
+        self.getLocation()
+        
         guard let epochDate = epochDate else {
             debugPrint("Schedule has no epoch date")
             scheduleDate.text = ""
@@ -86,6 +94,35 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate {
         super.didReceiveMemoryWarning()
     }
 
+    @IBAction func startWalking(_ sender: UIButton) {
+        
+        // DEMO GPS DATA AT THE MOMENT
+        //let distanceDiff = self.getDistanceDiff(lat1: 50.0, lon1: 5.0, lat2: 5.0, lon2: 3.0)
+        //43.397361, -80.408792 // pioneer park area
+        
+        
+        print(" trail data \(trailData)")
+
+        
+        
+        let distanceDiff = self.getDistanceDiff(lat1: 43.394750, lon1: -80.418158, lat2: 43.397361, lon2: -80.408792)
+        
+        if(distanceDiff <= 30)// 30 meter difference
+        {
+            // under 1 mile
+            print(distanceDiff)
+        }
+        else
+        {
+            // out of 1 mile
+            print("You are \(distanceDiff)m away from trail's starting point")
+            
+            displayMessage(ttl: "Notice", msg: "You are \(distanceDiff)m away from trail's starting point \n Please walk to the starting point of the Trail")
+            return
+        }
+        
+        
+    }
 
     // Make human readable date string from epoch time
     func epochToDateString(_ epochDate: UInt32) -> String {
@@ -169,6 +206,23 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate {
             return annotationView
         }
     }
+    
+    // Distance between geo-locations and return result in meters
+    func getDistanceDiff(lat1: Double, lon1: Double, lat2: Double, lon2: Double) -> Int {
+        
+        // get current location
+        getLocation()
+        
+        let coordinate₀ = CLLocation(latitude: lat1, longitude: lon1)
+        let coordinate₁ = CLLocation(latitude: lat2, longitude: lon2)
+        
+        let distanceInMeters = coordinate₀.distance(from: coordinate₁) // result is in meters
+        
+        print(distanceInMeters)
+        
+        return Int(distanceInMeters)
+    }
+
 
     // MARK: MKMapViewDelegate
     // Ask the delegate for a renderer object to use when drawing the specified overlay
@@ -183,4 +237,114 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate {
 
         return polylineRenderer
     }
+    
+    
+    // Compute current location and get the difference
+    
+    // instantiating the location manager
+    let locationManager = CLLocationManager()
+    
+    
+    // get co-ordinates and location from location manager
+    // Also checks for user's location permissions
+    func getLocation() {
+        guard CLLocationManager.locationServicesEnabled() else {
+            displayMessage(ttl: "Location Error", msg: "Location services are disabled on your device. In order to use this app, go to " +
+                "Settings → Privacy → Location Services and turn location services on.")
+            return
+        }
+        
+        let authStatus = CLLocationManager.authorizationStatus()
+        
+        guard authStatus == .authorizedWhenInUse else {
+            switch authStatus {
+            case .denied, .restricted:
+                displayMessage(ttl: "Location Error", msg: "This app is not authorized to access your location. \nIn order to use this app, " +
+                    "go to Settings → HikeTrails → Location and select the \"While Using " +
+                    "the App\" setting.")
+                
+            case .notDetermined:
+                locationManager.requestWhenInUseAuthorization()
+                //getLocation()
+                break
+                
+            default:
+                print("Oops! Shouldn't have come this far.")
+            }
+            return
+        }
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+    }
+    
+    // Alert (Pop up) method
+    func displayMessage(ttl: String, msg: String){
+        let alert = UIAlertController(title: ttl, message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - CLLocationManagerDelegate methods
+    
+    // This is called if:
+    // - the location manager is updating, and
+    // - it was able to get the user's location.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error) -> Void in
+            if (error != nil) {
+                print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
+                return
+            }
+            
+            if (placemarks?.count)! > 0 {
+                let pm = (placemarks?[0])! as CLPlacemark
+                self.displayLocationInfo(placemark: pm)
+            } else {
+                print("Problem with the data received from geocoder")
+            }
+        })
+        
+        let newLocation = locations.last!
+        
+        let currLocation = newLocation.coordinate
+        
+        self.currLat  = Double(currLocation.latitude)
+        self.currLong = Double(currLocation.longitude)
+        
+        print( "Location: Lat\(currLat) lon\(currLong)")
+        //print(currLocation)
+        
+    }
+    
+    // This is called if:
+    // - the location manager is updating, and
+    // - it WASN'T able to get the user's location.
+    private func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Error: \(error)")
+    }
+    
+    func displayLocationInfo(placemark: CLPlacemark) {
+        if placemark != nil {
+            //stop updating location to save battery life
+            locationManager.stopUpdatingLocation()
+            
+            //let city   = placemark.locality ?? ""
+            //let region = placemark.administrativeArea ?? ""
+            
+            //locationLabel.text = city + ", " + region
+            
+            print(placemark.locality ?? "")
+            print(placemark.administrativeArea ?? "")
+            print(placemark.country ?? "")
+        }
+    }
+    
+    
+    
+    
+    
+
 }
