@@ -48,8 +48,10 @@ public class JoinAppInvitation: UIViewController, UITextFieldDelegate, MFMailCom
             present(messageComposeVC, animated: true, completion: nil)
         } else {
             // Let the user know if his/her device isn't able to send text messages
-            let errorAlert = UIAlertView(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", delegate: self, cancelButtonTitle: "OK")
-            errorAlert.show()
+            /*let errorAlert = UIAlertView(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", delegate: self, cancelButtonTitle: "OK")
+            errorAlert.show()*/
+            
+            displayMessage(ttl: "Cannot Send Text Message", msg: "Your device is not able to send text messages.")
         }
     }
     
@@ -66,7 +68,13 @@ public class JoinAppInvitation: UIViewController, UITextFieldDelegate, MFMailCom
    
     }
     
- 
+    // Alert (Pop up) method
+    func displayMessage(ttl: String, msg: String){
+        let alert = UIAlertController(title: ttl, message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+
     
     
     // Email message invite action
@@ -101,8 +109,7 @@ public class JoinAppInvitation: UIViewController, UITextFieldDelegate, MFMailCom
         }
         else {
             print("Invalid entry")
-            
-            
+            displayMessage(ttl: "Cannot Invite Friend", msg: "Your input is invalid.")
         }
     }
     
