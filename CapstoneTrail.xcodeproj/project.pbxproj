@@ -80,6 +80,13 @@
 		B66C8E8C8FFE2F1F9BB34360 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B66C8C866F8BFE32C7F9EDC4 /* Localizable.strings */; };
 		D20ADD551E7496230015F080 /* UnblockFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D20ADD531E7496230015F080 /* UnblockFriend.storyboard */; };
 		D20ADD561E7496230015F080 /* UnblockFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20ADD541E7496230015F080 /* UnblockFriendController.swift */; };
+		D20E889D1E88316000256D4B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D20E889B1E88316000256D4B /* Interface.storyboard */; };
+		D20E889F1E88316000256D4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20E889E1E88316000256D4B /* Assets.xcassets */; };
+		D20E88A61E88316000256D4B /* CapstoneTrail_AppleWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D20E88A51E88316000256D4B /* CapstoneTrail_AppleWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D20E88AB1E88316000256D4B /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E88AA1E88316000256D4B /* InterfaceController.swift */; };
+		D20E88AD1E88316000256D4B /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E88AC1E88316000256D4B /* ExtensionDelegate.swift */; };
+		D20E88AF1E88316000256D4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20E88AE1E88316000256D4B /* Assets.xcassets */; };
+		D20E88B31E88316000256D4B /* CapstoneTrail_AppleWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D20E88991E88316000256D4B /* CapstoneTrail_AppleWatch.app */; };
 		D21BE5401E5FCB0C006D05C4 /* Friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21BE53B1E5FCB0C006D05C4 /* Friend.storyboard */; };
 		D21BE5411E5FCB0C006D05C4 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE53C1E5FCB0C006D05C4 /* FriendViewController.swift */; };
 		D21BE5421E5FCB0C006D05C4 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE53D1E5FCB0C006D05C4 /* Friend.swift */; };
@@ -103,7 +110,46 @@
 			remoteGlobalIDString = B66C85B253DA11D131100BD0;
 			remoteInfo = CapstoneTrail;
 		};
+		D20E88A71E88316000256D4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B66C8B94777728DFEB7964D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D20E88A41E88316000256D4B;
+			remoteInfo = "CapstoneTrail_AppleWatch Extension";
+		};
+		D20E88B11E88316000256D4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B66C8B94777728DFEB7964D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D20E88981E88316000256D4B;
+			remoteInfo = CapstoneTrail_AppleWatch;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D20E88B71E88316000256D4B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D20E88A61E88316000256D4B /* CapstoneTrail_AppleWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D20E88BB1E88316000256D4B /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				D20E88B31E88316000256D4B /* CapstoneTrail_AppleWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1D6EA5CAAD52FAA0D9CDCCDE /* Pods-CapstoneTrail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.release.xcconfig"; sourceTree = "<group>"; };
@@ -190,6 +236,15 @@
 		C1FA64D3EB2D622B0A7EC696 /* Pods_CapstoneTrail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneTrail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20ADD531E7496230015F080 /* UnblockFriend.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UnblockFriend.storyboard; sourceTree = "<group>"; };
 		D20ADD541E7496230015F080 /* UnblockFriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnblockFriendController.swift; sourceTree = "<group>"; };
+		D20E88991E88316000256D4B /* CapstoneTrail_AppleWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneTrail_AppleWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D20E889C1E88316000256D4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		D20E889E1E88316000256D4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D20E88A01E88316000256D4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D20E88A51E88316000256D4B /* CapstoneTrail_AppleWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CapstoneTrail_AppleWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D20E88AA1E88316000256D4B /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		D20E88AC1E88316000256D4B /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		D20E88AE1E88316000256D4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D20E88B01E88316000256D4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D21BE53B1E5FCB0C006D05C4 /* Friend.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Friend.storyboard; sourceTree = "<group>"; };
 		D21BE53C1E5FCB0C006D05C4 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		D21BE53D1E5FCB0C006D05C4 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
@@ -222,6 +277,13 @@
 			files = (
 				F3A5266CCD7930CF069AECDD /* Pods_CapstoneTrailTests.framework in Frameworks */,
 				5DE95240A2012A3CA01D5171 /* Pods_CapstoneTrail_CapstoneTrailTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D20E88A21E88316000256D4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +555,8 @@
 			children = (
 				B66C8FBBF8B0676832E26E83 /* CapstoneTrail.app */,
 				B66C8ED1AC2F1ED2E055EB2F /* CapstoneTrailTests.xctest */,
+				D20E88991E88316000256D4B /* CapstoneTrail_AppleWatch.app */,
+				D20E88A51E88316000256D4B /* CapstoneTrail_AppleWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -500,12 +564,35 @@
 		B66C8BC26AE95B2C75C578E8 = {
 			isa = PBXGroup;
 			children = (
+				D20E889A1E88316000256D4B /* CapstoneTrail_AppleWatch */,
+				D20E88A91E88316000256D4B /* CapstoneTrail_AppleWatch Extension */,
 				B66C8B1E34F48D6454107314 /* Products */,
 				B66C811D063DF5892D42683B /* CapstoneTrail */,
 				B66C87F9A8B3864D04D7DCDE /* CapstoneTrailTests */,
 				A900F34F1E4A075A00556D79 /* Frameworks */,
 				EBAE0BBC5398A07AF3F2ED75 /* Pods */,
 			);
+			sourceTree = "<group>";
+		};
+		D20E889A1E88316000256D4B /* CapstoneTrail_AppleWatch */ = {
+			isa = PBXGroup;
+			children = (
+				D20E889B1E88316000256D4B /* Interface.storyboard */,
+				D20E889E1E88316000256D4B /* Assets.xcassets */,
+				D20E88A01E88316000256D4B /* Info.plist */,
+			);
+			path = CapstoneTrail_AppleWatch;
+			sourceTree = "<group>";
+		};
+		D20E88A91E88316000256D4B /* CapstoneTrail_AppleWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D20E88AA1E88316000256D4B /* InterfaceController.swift */,
+				D20E88AC1E88316000256D4B /* ExtensionDelegate.swift */,
+				D20E88AE1E88316000256D4B /* Assets.xcassets */,
+				D20E88B01E88316000256D4B /* Info.plist */,
+			);
+			path = "CapstoneTrail_AppleWatch Extension";
 			sourceTree = "<group>";
 		};
 		D21BE5381E5FCAB4006D05C4 /* Friend */ = {
@@ -599,15 +686,51 @@
 				B66C8AE536CD8997B98C4BEF /* Resources */,
 				5AFE9F6D3C4CB4834E92E40A /* [CP] Embed Pods Frameworks */,
 				902574AD668CAC4193A6D7A0 /* [CP] Copy Pods Resources */,
+				D20E88BB1E88316000256D4B /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D20E88B21E88316000256D4B /* PBXTargetDependency */,
 			);
 			name = CapstoneTrail;
 			productName = CapstoneTrail;
 			productReference = B66C8FBBF8B0676832E26E83 /* CapstoneTrail.app */;
 			productType = "com.apple.product-type.application";
+		};
+		D20E88981E88316000256D4B /* CapstoneTrail_AppleWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D20E88B81E88316000256D4B /* Build configuration list for PBXNativeTarget "CapstoneTrail_AppleWatch" */;
+			buildPhases = (
+				D20E88971E88316000256D4B /* Resources */,
+				D20E88B71E88316000256D4B /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D20E88A81E88316000256D4B /* PBXTargetDependency */,
+			);
+			name = CapstoneTrail_AppleWatch;
+			productName = CapstoneTrail_AppleWatch;
+			productReference = D20E88991E88316000256D4B /* CapstoneTrail_AppleWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		D20E88A41E88316000256D4B /* CapstoneTrail_AppleWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D20E88B41E88316000256D4B /* Build configuration list for PBXNativeTarget "CapstoneTrail_AppleWatch Extension" */;
+			buildPhases = (
+				D20E88A11E88316000256D4B /* Sources */,
+				D20E88A21E88316000256D4B /* Frameworks */,
+				D20E88A31E88316000256D4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CapstoneTrail_AppleWatch Extension";
+			productName = "CapstoneTrail_AppleWatch Extension";
+			productReference = D20E88A51E88316000256D4B /* CapstoneTrail_AppleWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -615,6 +738,7 @@
 		B66C8B94777728DFEB7964D7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = MSD;
 				TargetAttributes = {
@@ -622,6 +746,9 @@
 						DevelopmentTeam = 2472MVQR2Y;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
 								enabled = 1;
 							};
@@ -633,6 +760,21 @@
 							};
 						};
 					};
+					D20E88981E88316000256D4B = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 2472MVQR2Y;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes.watchos.app = {
+								enabled = 1;
+							};
+						};
+					};
+					D20E88A41E88316000256D4B = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 2472MVQR2Y;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = B66C8ABAA81C27D30BB52528 /* Build configuration list for PBXProject "CapstoneTrail" */;
@@ -641,6 +783,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = B66C8BC26AE95B2C75C578E8;
 			productRefGroup = B66C8B1E34F48D6454107314 /* Products */;
@@ -649,6 +792,8 @@
 			targets = (
 				B66C85B253DA11D131100BD0 /* CapstoneTrail */,
 				B66C851B8F4D4BFBD3E468CA /* CapstoneTrailTests */,
+				D20E88981E88316000256D4B /* CapstoneTrail_AppleWatch */,
+				D20E88A41E88316000256D4B /* CapstoneTrail_AppleWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -688,6 +833,23 @@
 				44385C081E5CE30B0095F2B0 /* Schedule.storyboard in Resources */,
 				D21BE54D1E5FCB42006D05C4 /* WalkingSchedule.storyboard in Resources */,
 				A95CD4581E78E506002655D3 /* ScheduleProfile.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D20E88971E88316000256D4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D20E889F1E88316000256D4B /* Assets.xcassets in Resources */,
+				D20E889D1E88316000256D4B /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D20E88A31E88316000256D4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D20E88AF1E88316000256D4B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,6 +1021,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D20E88A11E88316000256D4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D20E88AD1E88316000256D4B /* ExtensionDelegate.swift in Sources */,
+				D20E88AB1E88316000256D4B /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -866,6 +1037,16 @@
 			isa = PBXTargetDependency;
 			target = B66C85B253DA11D131100BD0 /* CapstoneTrail */;
 			targetProxy = B66C8442E5EE6A3F79FDCC78 /* PBXContainerItemProxy */;
+		};
+		D20E88A81E88316000256D4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D20E88A41E88316000256D4B /* CapstoneTrail_AppleWatch Extension */;
+			targetProxy = D20E88A71E88316000256D4B /* PBXContainerItemProxy */;
+		};
+		D20E88B21E88316000256D4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D20E88981E88316000256D4B /* CapstoneTrail_AppleWatch */;
+			targetProxy = D20E88B11E88316000256D4B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -884,6 +1065,14 @@
 				B66C8A40A20620D47441B827 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D20E889B1E88316000256D4B /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D20E889C1E88316000256D4B /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1040,6 +1229,80 @@
 			};
 			name = Release;
 		};
+		D20E88B51E88316000256D4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = 2472MVQR2Y;
+				INFOPLIST_FILE = "CapstoneTrail_AppleWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailAle.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		D20E88B61E88316000256D4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = 2472MVQR2Y;
+				INFOPLIST_FILE = "CapstoneTrail_AppleWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailAle.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
+		D20E88B91E88316000256D4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = 2472MVQR2Y;
+				IBSC_MODULE = CapstoneTrail_AppleWatch_Extension;
+				INFOPLIST_FILE = CapstoneTrail_AppleWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailAle.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		D20E88BA1E88316000256D4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = 2472MVQR2Y;
+				IBSC_MODULE = CapstoneTrail_AppleWatch_Extension;
+				INFOPLIST_FILE = CapstoneTrail_AppleWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailAle.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1069,6 +1332,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D20E88B41E88316000256D4B /* Build configuration list for PBXNativeTarget "CapstoneTrail_AppleWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D20E88B51E88316000256D4B /* Debug */,
+				D20E88B61E88316000256D4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D20E88B81E88316000256D4B /* Build configuration list for PBXNativeTarget "CapstoneTrail_AppleWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D20E88B91E88316000256D4B /* Debug */,
+				D20E88BA1E88316000256D4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 

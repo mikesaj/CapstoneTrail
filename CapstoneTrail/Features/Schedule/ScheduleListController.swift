@@ -132,10 +132,10 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
     // specifies the selected row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        let trail_1 = self.trail[indexPath.row]
-        let trailid_1 = self.trailId[indexPath.row]
-        let hikeid_1 = self.hikeId[indexPath.row]
-        let HikeDate_1 = self.hikeDate[indexPath.row]
+        //let trail_1 = self.trail[indexPath.row]
+        //let trailid_1 = self.trailId[indexPath.row]
+        //let hikeid_1 = self.hikeId[indexPath.row]
+        //let HikeDate_1 = self.hikeDate[indexPath.row]
 
         // redirect to storyboard
         /*let myVC = storyboard?.instantiateViewController(withIdentifier: "ScheduleProfile") as! ScheduleProfileController
@@ -278,20 +278,20 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
                     scheduleProfile.indexMessage.text = String(format: indexMessageString, indexTextString)
                     scheduleProfile.indexPoint.text = String(format: indexPointString, weatherIndex)
 
-                    scheduleProfile.conditionText.text = hourForecast["condition"]["text"].stringValue
-                    scheduleProfile.temperatureText.text = NSLocalizedString("Temp_Text", comment: "")
-                    scheduleProfile.temperatureValue.text = String(format: tempValueString, hourForecast["temp_c"].doubleValue)
-                    scheduleProfile.feelsLikeText.text = NSLocalizedString("FeelsLike_Text", comment: "")
-                    scheduleProfile.feelsLikeValue.text = String(format: feelsLikeValueString, hourForecast["feelslike_c"].doubleValue)
-                    scheduleProfile.windText.text = NSLocalizedString("Wind_Text", comment: "")
-                    scheduleProfile.windValue.text = String(format: windValueString, hourForecast["wind_kph"].doubleValue)
-                    scheduleProfile.cloudText.text = NSLocalizedString("Cloud_Text", comment: "")
-                    scheduleProfile.cloudValue.text = String(format: cloudValueString, hourForecast["cloud"].intValue)
-                    scheduleProfile.precipitationText.text = NSLocalizedString("Precip_Text", comment: "")
-                    scheduleProfile.precipitationValue.text = String(format: precipValueString, hourForecast["precip_mm"].doubleValue)
-                    scheduleProfile.humidityText.text = NSLocalizedString("Humidity_Text", comment: "")
-                    scheduleProfile.humidityValue.text = String(format: humidityValueString, hourForecast["humidity"].intValue)
-                    scheduleProfile.scheduleTime.text = String(format: scheduleTimeString, scheduleProfile.epochToTimeString(hourForecast["time_epoch"].uInt32Value))
+                    //scheduleProfile.conditionText.text = hourForecast["condition"]["text"].stringValue
+                    //scheduleProfile.temperatureText.text = NSLocalizedString("Temp_Text", comment: "")
+                    //scheduleProfile.temperatureValue.text = String(format: tempValueString, hourForecast["temp_c"].doubleValue)
+                    //scheduleProfile.feelsLikeText.text = NSLocalizedString("FeelsLike_Text", comment: "")
+                    //scheduleProfile.feelsLikeValue.text = String(format: feelsLikeValueString, hourForecast["feelslike_c"].doubleValue)
+                    //scheduleProfile.windText.text = NSLocalizedString("Wind_Text", comment: "")
+                    //scheduleProfile.windValue.text = String(format: windValueString, hourForecast["wind_kph"].doubleValue)
+                    //scheduleProfile.cloudText.text = NSLocalizedString("Cloud_Text", comment: "")
+                    //scheduleProfile.cloudValue.text = String(format: cloudValueString, hourForecast["cloud"].intValue)
+                    //scheduleProfile.precipitationText.text = NSLocalizedString("Precip_Text", comment: "")
+                    //scheduleProfile.precipitationValue.text = String(format: precipValueString, hourForecast["precip_mm"].doubleValue)
+                    //scheduleProfile.humidityText.text = NSLocalizedString("Humidity_Text", comment: "")
+                    //scheduleProfile.humidityValue.text = String(format: humidityValueString, hourForecast["humidity"].intValue)
+                    //scheduleProfile.scheduleTime.text = String(format: scheduleTimeString, scheduleProfile.epochToTimeString(hourForecast["time_epoch"].uInt32Value))
                 })
             } else {
                 print("Not fetch weather")
@@ -434,7 +434,8 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
                                                    _trails.append(Trail(trail: _trailMO))
                                                }
 
-                                               self.epochDate.append(value?["epochDate"] as! UInt32)
+                                               let eDate = value?["epochDate"] as! NSNumber
+                                               self.epochDate.append(eDate.uint32Value)
                                                self.trailData.append(_trails)
 
                                                self.hikeScheduleListTableView.reloadData()
