@@ -88,9 +88,6 @@
 		D21BE5441E5FCB0C006D05C4 /* People.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21BE53F1E5FCB0C006D05C4 /* People.storyboard */; };
 		D21BE5471E5FCB30006D05C4 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE5451E5FCB30006D05C4 /* UIImageExtension.swift */; };
 		D21BE5481E5FCB30006D05C4 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE5461E5FCB30006D05C4 /* StringExtension.swift */; };
-		D21BE54C1E5FCB42006D05C4 /* WalkingShedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE5491E5FCB42006D05C4 /* WalkingShedule.swift */; };
-		D21BE54D1E5FCB42006D05C4 /* WalkingSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21BE54A1E5FCB42006D05C4 /* WalkingSchedule.storyboard */; };
-		D21BE54E1E5FCB42006D05C4 /* WalkingScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE54B1E5FCB42006D05C4 /* WalkingScheduleViewController.swift */; };
 		D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D24784471E4A8C7A00A0AFCF /* GoogleService-Info.plist */; };
 		D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24784491E4A8D5E00A0AFCF /* LoginController.swift */; };
 		F3A5266CCD7930CF069AECDD /* Pods_CapstoneTrailTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84E3F6471D45FB5637C3E7E /* Pods_CapstoneTrailTests.framework */; };
@@ -199,9 +196,6 @@
 		D21BE53F1E5FCB0C006D05C4 /* People.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = People.storyboard; sourceTree = "<group>"; };
 		D21BE5451E5FCB30006D05C4 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		D21BE5461E5FCB30006D05C4 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		D21BE5491E5FCB42006D05C4 /* WalkingShedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingShedule.swift; sourceTree = "<group>"; };
-		D21BE54A1E5FCB42006D05C4 /* WalkingSchedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WalkingSchedule.storyboard; sourceTree = "<group>"; };
-		D21BE54B1E5FCB42006D05C4 /* WalkingScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingScheduleViewController.swift; sourceTree = "<group>"; };
 		D24784471E4A8C7A00A0AFCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D24784491E4A8D5E00A0AFCF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		D2A6FACC1E4A863E00F7AB22 /* CapstoneTrail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CapstoneTrail.entitlements; sourceTree = "<group>"; };
@@ -370,7 +364,6 @@
 				4462019D1E7296A900A4DF42 /* Activity */,
 				A92CA1FB1E6B30AD003EF418 /* TrailMap */,
 				44385C061E5CE1E90095F2B0 /* Schedule */,
-				D21BE53A1E5FCAC6006D05C4 /* Walking Schedule */,
 				D21BE5391E5FCABA006D05C4 /* Helper */,
 				D21BE5381E5FCAB4006D05C4 /* Friend */,
 				A976D6EE1E637B5C000CF3F5 /* TrailDetail */,
@@ -537,16 +530,6 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		D21BE53A1E5FCAC6006D05C4 /* Walking Schedule */ = {
-			isa = PBXGroup;
-			children = (
-				D21BE5491E5FCB42006D05C4 /* WalkingShedule.swift */,
-				D21BE54A1E5FCB42006D05C4 /* WalkingSchedule.storyboard */,
-				D21BE54B1E5FCB42006D05C4 /* WalkingScheduleViewController.swift */,
-			);
-			path = "Walking Schedule";
-			sourceTree = "<group>";
-		};
 		D23B65791E4A7CE100957B1E /* LoginDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -689,7 +672,6 @@
 				D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */,
 				D20ADD551E7496230015F080 /* UnblockFriend.storyboard in Resources */,
 				44385C081E5CE30B0095F2B0 /* Schedule.storyboard in Resources */,
-				D21BE54D1E5FCB42006D05C4 /* WalkingSchedule.storyboard in Resources */,
 				A95CD4581E78E506002655D3 /* ScheduleProfile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -810,7 +792,6 @@
 				449C850A1E77B20800A19597 /* PedometerActivityViewController.swift in Sources */,
 				449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */,
 				44385C0C1E5CEFB20095F2B0 /* ScheduleViewCell.swift in Sources */,
-				D21BE54E1E5FCB42006D05C4 /* WalkingScheduleViewController.swift in Sources */,
 				44F5B7341E6318C5007C7B97 /* SettingCellController.swift in Sources */,
 				D21BE5471E5FCB30006D05C4 /* UIImageExtension.swift in Sources */,
 				44DE38041E6BFC25002A775A /* ScheduleInviteCell.swift in Sources */,
@@ -828,7 +809,6 @@
 				A978A1471E7DD72C00B43946 /* TrailMO+CoreDataProperties.swift in Sources */,
 				44385C0E1E5CF27E0095F2B0 /* ScheduleProfileController.swift in Sources */,
 				44F136741E62277500E3747C /* GroupListViewCell.swift in Sources */,
-				D21BE54C1E5FCB42006D05C4 /* WalkingShedule.swift in Sources */,
 				44DE37FF1E679595002A775A /* GroupMembersViewController.swift in Sources */,
 				D20ADD561E7496230015F080 /* UnblockFriendController.swift in Sources */,
 				D21BE5411E5FCB0C006D05C4 /* FriendViewController.swift in Sources */,
