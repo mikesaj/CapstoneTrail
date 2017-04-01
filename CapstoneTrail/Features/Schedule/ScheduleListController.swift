@@ -274,7 +274,7 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
                     let indexImageName = String(format: "WI_%d", weatherIndex)
 
                     // Send data to profile page
-                    scheduleProfile.indexIcon.image = UIImage(named: indexImageName)
+                    //scheduleProfile.indexIcon.image = UIImage(named: indexImageName)
                     scheduleProfile.indexMessage.text = String(format: indexMessageString, indexTextString)
                     scheduleProfile.indexPoint.text = String(format: indexPointString, weatherIndex)
 

@@ -17,7 +17,7 @@ var MessageRecipients = [""]
 // This class is for composing text & email message invitations
 public class JoinAppInvitation: UIViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
     
-    @IBOutlet weak var textRecipient: UITextField!
+    //@IBOutlet weak var textRecipient: UITextField!
     @IBOutlet weak var emailRecipient: UITextField!
     
     public var locationName : String = ""
@@ -30,10 +30,11 @@ public class JoinAppInvitation: UIViewController, UITextFieldDelegate, MFMailCom
     let messageComposer = MessageComposer()
     
     // Text message invite action
-    @IBAction func sendTextMessageButtonTapped(_ sender: UIButton) {
+    //@IBAction func sendTextMessageButtonTapped(_ sender: UIButton) {
+    func sendTextMessage() {
         
         // Initializing text message body
-        guard let Recipients = textRecipient.text else { return }
+        guard let Recipients = emailRecipient.text else { return }
         
         // get recipient from textfield
         MessageRecipients = [Recipients]
@@ -47,14 +48,16 @@ public class JoinAppInvitation: UIViewController, UITextFieldDelegate, MFMailCom
             present(messageComposeVC, animated: true, completion: nil)
         } else {
             // Let the user know if his/her device isn't able to send text messages
-            let errorAlert = UIAlertView(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", delegate: self, cancelButtonTitle: "OK")
-            errorAlert.show()
+            /*let errorAlert = UIAlertView(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", delegate: self, cancelButtonTitle: "OK")
+            errorAlert.show()*/
+            
+            displayMessage(ttl: "Cannot Send Text Message", msg: "Your device is not able to send text messages.")
         }
     }
     
-    // Email message invite action
-    @IBAction func sendEmailButtonTapped(_ sender: UIButton) {
-        
+    // Send E-mail
+    func sendMail(){
+
         // Instantiate compose view controller
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
@@ -62,7 +65,54 @@ public class JoinAppInvitation: UIViewController, UITextFieldDelegate, MFMailCom
         } else {
             self.showSendMailErrorAlert()
         }
+   
     }
+    
+    // Alert (Pop up) method
+    func displayMessage(ttl: String, msg: String){
+        let alert = UIAlertController(title: ttl, message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    
+    
+    // Email message invite action
+    @IBAction func sendEmailButtonTapped(_ sender: UIButton) {
+        
+        // Validate E-mail
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        guard let mailtelNumber = emailRecipient.text else { return }
+
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        if (emailTest.evaluate(with: mailtelNumber) == true){
+
+            print("Send mail")
+            self.sendMail()
+        }
+        else{
+            print("invalid email")
+
+            self.validate(phoneNumber: mailtelNumber)
+        }
+    }
+    
+    private func validate(phoneNumber: String) {
+        
+        let PHONE_REGEX = "^\\d{10}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result =  phoneTest.evaluate(with: phoneNumber)
+        if (result == true){
+            print("valid Phone number")
+            self.sendTextMessage()
+        }
+        else {
+            print("Invalid entry")
+            displayMessage(ttl: "Cannot Invite Friend", msg: "Your input is invalid.")
+        }
+    }
+    
     
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
@@ -93,7 +143,7 @@ public class JoinAppInvitation: UIViewController, UITextFieldDelegate, MFMailCom
         super.viewDidLoad()
         super.title = "Invite Friends"
         
-        textRecipient .delegate = self
+        //textRecipient .delegate = self
         emailRecipient.delegate = self
     }
     
@@ -103,7 +153,7 @@ public class JoinAppInvitation: UIViewController, UITextFieldDelegate, MFMailCom
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textRecipient.resignFirstResponder()
+        //textRecipient.resignFirstResponder()
         emailRecipient.resignFirstResponder()
         return true
     }

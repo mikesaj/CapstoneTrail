@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreLocation
+import CoreMotion
 import SwiftyJSON
 import MapKit
 import CoreLocation
@@ -19,15 +21,97 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     @IBOutlet weak var scheduleDate: UILabel!
     //@IBOutlet weak var scheduleTime: UILabel!
     @IBOutlet weak var scheduleMap: MKMapView!
-    @IBOutlet weak var indexIcon: UIImageView!
+    //@IBOutlet weak var indexIcon: UIImageView!
+    @IBOutlet weak var trailStreetName: UILabel!
     @IBOutlet weak var indexMessage: UILabel!
     @IBOutlet weak var indexPoint: UILabel!
     @IBOutlet weak var imgDirection: UIImageView!
     @IBOutlet weak var lblInstructions: UILabel!
     @IBOutlet weak var lblDistance: UILabel!
+    @IBOutlet weak var distanceCoveredLabel: UILabel!
     @IBOutlet weak var btnStartWalking: UIButton!
-
+    @IBOutlet weak var stepsLabel: UILabel!
+    @IBOutlet weak var statusTitle: UILabel!
     @IBOutlet weak var conditionText: UILabel!
+    
+    // Start/Stop Button
+    let stopColor  = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+    let startColor = UIColor(red: 0.0, green: 0.75, blue: 0.0, alpha: 1.0)
+
+    //MARK: - HealthKit class to save data
+    var userHealthData = ActivityViewController()
+    
+    // Pedometer instance
+    var pedometer = CMPedometer()
+    
+    // timers
+    var timer         = Timer()
+    var timerSimulateWalking = Timer()
+    let timerInterval = 1.0
+    var timeElapsed:TimeInterval = 0.0
+    var TempSteps:  Int = 0
+
+    var Steps1:      Int = 0
+    var numberOfSteps:Int! = 0//nil;
+    var DistanceData:Double = 0.0
+    var startDate = Date()
+    let trailStreet = NSMutableArray()
+
+
+    
+    //MARK: - timer functions
+    func startTimer(){
+        //start date/time
+        self.startDate = Date() //timer start date
+        
+        if timer.isValid { timer.invalidate() }
+        timer = Timer.scheduledTimer(timeInterval: timerInterval,target: self,selector: #selector(timerAction(timer:)) ,userInfo: nil,repeats: true)
+    }
+    
+    func stopTimer(){
+        pedometer.stopUpdates()
+        
+        self.timerSimulateWalking.invalidate()
+        self.timer.invalidate()
+        
+        displayPedometerData()
+        
+        self.Steps1 = numberOfSteps
+    }
+    
+    func timerAction(timer:Timer){
+        displayPedometerData()
+    }
+    
+    //MARK: - Display and time format functions
+    
+    // convert seconds to hh:mm:ss as a string
+    func timeIntervalFormat(interval:TimeInterval)-> String{
+        var seconds = Int(interval + 0.5) //round up seconds
+        let hours = seconds / 3600
+        let minutes = (seconds / 60) % 60
+        seconds = seconds % 60
+        return String(format:"%02i:%02i:%02i",hours,minutes,seconds)
+    }
+    
+    // display the updated data
+    func displayPedometerData(){
+        timeElapsed += 1.0
+        statusTitle.text = timeIntervalFormat(interval: timeElapsed)
+        //Number of steps
+        if let numberOfSteps = self.numberOfSteps{
+            stepsLabel.text = String(format:"%i",numberOfSteps)
+        }
+
+        //Distance Covered
+        if self.DistanceData != 0.0 {
+            
+            distanceCoveredLabel.text = String(format:"%i m", DistanceData)
+        }
+        
+        
+    }
+
     /*@IBOutlet weak var temperatureText: UILabel!
     @IBOutlet weak var temperatureValue: UILabel!
     @IBOutlet weak var feelsLikeText: UILabel!
@@ -48,6 +132,10 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     var uid: String = ""
     var scheduleTitle: String = ""
 
+    var currLat  = 0.0
+    var currLong = 0.0
+
+    
     var trailData: [Trail] = []
     var epochDate: UInt32?
     var coordinate2DList: [[CLLocationCoordinate2D]] = []
@@ -56,19 +144,20 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     var totalTime: Double = 0
 
     //set current location
-    var locationManager: CLLocationManager!
+    var locationManager: CLLocationManager = CLLocationManager()
     var currentLocation: CLLocation!
     var steps: [MKRouteStep]!
     var currentStep: Int! = 0
     var isInitialTrial: Bool! = true
     var trailPin: MKPointAnnotation!
     
-    //to simulate that the user is walking
-    var timer = Timer()
-    
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
+        // get current location
+        self.getLocation()
 
         if(WCSession.isSupported()){
             watchSession = WCSession.default()
@@ -101,27 +190,38 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             self.locationManager.startUpdatingLocation()
         }*/
         
+        print("Trail Data: \(trailData)")
+        
         for trail in trailData {
-            print(trail.id)
+            print("Trail id: \(trail.id)")
+            print("Trail area: \(trail.area)")
+            print("Trail street: \(trail.street)")
+            trailStreet.add(trail.street)
+            
             totalLength += trail.length
             totalTime += trail.travelTime
             coordinate2DList.append(trail.coordinate2DList)
         }
         
+        trailStreetName.text = String(describing: trailStreet[0])
+        lblInstructions.text = String(describing: trailStreet[0])
+        imgDirection.image = UIImage(named: "crossroads")
+        
         // Set schedule date/time
         scheduleDate.text = epochToDateString(epochDate)
-
+        
         // Center map to the trail
         centreToTrail()
         
         //  Create polyline with the CLLocationCoordinate2D list
         makePolyline()
-
+        
         scheduleMap.selectAnnotation(scheduleMap.annotations[0], animated: true)
         
         lblDistance.isHidden = true
-        lblInstructions.isHidden = true
-        imgDirection.isHidden = true
+        //lblInstructions.isHidden = true
+        //imgDirection.isHidden = true
+    
     }
 
     func sessionDidDeactivate(_ session: WCSession) {
@@ -151,6 +251,35 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         super.didReceiveMemoryWarning()
     }
 
+    @IBAction func startWalking(_ sender: UIButton) {
+        
+        // DEMO GPS DATA AT THE MOMENT
+        //let distanceDiff = self.getDistanceDiff(lat1: 50.0, lon1: 5.0, lat2: 5.0, lon2: 3.0)
+        //43.397361, -80.408792 // pioneer park area
+        
+        
+        print(" trail data \(trailData)")
+
+        
+        
+        let distanceDiff = self.getDistanceDiff(lat1: 43.394750, lon1: -80.418158, lat2: 43.397361, lon2: -80.408792)
+        
+        if(distanceDiff <= 30)// 30 meter difference
+        {
+            // under 1 mile
+            print(distanceDiff)
+        }
+        else
+        {
+            // out of 1 mile
+            print("You are \(distanceDiff)m away from trail's starting point")
+            
+            displayMessage(ttl: "Notice", msg: "You are \(distanceDiff)m away from trail's starting point \n Please walk to the starting point of the Trail")
+            return
+        }
+        
+        
+    }
 
     // Make human readable date string from epoch time
     func epochToDateString(_ epochDate: UInt32) -> String {
@@ -238,6 +367,23 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             return annotationView
         }
     }
+    
+    // Distance between geo-locations and return result in meters
+    func getDistanceDiff(lat1: Double, lon1: Double, lat2: Double, lon2: Double) -> Int {
+        
+        // get current location
+        getLocation()
+        
+        let coordinate₀ = CLLocation(latitude: lat1, longitude: lon1)
+        let coordinate₁ = CLLocation(latitude: lat2, longitude: lon2)
+        
+        let distanceInMeters = coordinate₀.distance(from: coordinate₁) // result is in meters
+        
+        print(distanceInMeters)
+        
+        return Int(distanceInMeters)
+    }
+
 
     // MARK: MKMapViewDelegate
     // Ask the delegate for a renderer object to use when drawing the specified overlay
@@ -252,6 +398,116 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
 
         return polylineRenderer
     }
+    
+    
+    /* MikeSaj Geo Implmentation: END */    
+
+    // Compute current location and get the difference
+    
+    // instantiating the location manager
+    //let locationManager = CLLocationManager()
+    
+    
+    // get co-ordinates and location from location manager
+    // Also checks for user's location permissions
+    func getLocation() {
+        guard CLLocationManager.locationServicesEnabled() else {
+            displayMessage(ttl: "Location Error", msg: "Location services are disabled on your device. In order to use this app, go to " +
+                "Settings → Privacy → Location Services and turn location services on.")
+            return
+        }
+        
+        let authStatus = CLLocationManager.authorizationStatus()
+        
+        guard authStatus == .authorizedWhenInUse else {
+            switch authStatus {
+            case .denied, .restricted:
+                displayMessage(ttl: "Location Error", msg: "This app is not authorized to access your location. \nIn order to use this app, " +
+                    "go to Settings → HikeTrails → Location and select the \"While Using " +
+                    "the App\" setting.")
+                
+            case .notDetermined:
+                locationManager.requestWhenInUseAuthorization()
+                //getLocation()
+                break
+                
+            default:
+                print("Oops! Shouldn't have come this far.")
+            }
+            return
+        }
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+    }
+    
+    // Alert (Pop up) method
+    func displayMessage(ttl: String, msg: String){
+        let alert = UIAlertController(title: ttl, message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - CLLocationManagerDelegate methods
+    
+    // This is called if:
+    // - the location manager is updating, and
+    // - it was able to get the user's location.
+    /*func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error) -> Void in
+            if (error != nil) {
+                print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
+                return
+            }
+            
+            if (placemarks?.count)! > 0 {
+                let pm = (placemarks?[0])! as CLPlacemark
+                self.displayLocationInfo(placemark: pm)
+            } else {
+                print("Problem with the data received from geocoder")
+            }
+        })
+     
+        
+        let newLocation = locations.last!
+        
+        let currLocation = newLocation.coordinate
+        
+        self.currLat  = Double(currLocation.latitude)
+        self.currLong = Double(currLocation.longitude)
+        
+        print( "Location: Lat\(currLat) lon\(currLong)")
+        //print(currLocation)
+        
+    }
+    */
+    
+    // This is called if:
+    // - the location manager is updating, and
+    // - it WASN'T able to get the user's location.
+    private func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Error: \(error)")
+    }
+    
+    func displayLocationInfo(placemark: CLPlacemark) {
+        if placemark != nil {
+            //stop updating location to save battery life
+            locationManager.stopUpdatingLocation()
+            
+            //let city   = placemark.locality ?? ""
+            //let region = placemark.administrativeArea ?? ""
+            
+            //locationLabel.text = city + ", " + region
+            
+            print(placemark.locality ?? "")
+            print(placemark.administrativeArea ?? "")
+            print(placemark.country ?? "")
+        }
+    }
+    
+/* MikeSaj Geo Implmentation: END */    
     
     func calculateDirections(nextIndex: Int){
         
@@ -316,7 +572,9 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             }
         }
         
-        self.sendInfoToWatch(distance: dist, instructions: instructions, imageName: imageName, isDone: false, isStopped: false)
+        if timerSimulateWalking.isValid == true{
+            self.sendInfoToWatch(distance: dist, instructions: instructions, imageName: imageName, isDone: false, isStopped: false)
+        }
     }
     
     func sendInfoToWatch(distance: String, instructions: String, imageName: String, isDone: Bool, isStopped: Bool){
@@ -344,18 +602,20 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         
         if self.currentStep == self.coordinate2DList.count{
             self.lblDistance.text = ""
-            self.lblInstructions.text =  "You arrived at your destination"
-            self.btnStartWalking.setTitle("Start Walking", for: .normal)
-            
+            self.lblInstructions.text =  "You have arrived at your destination"
+
+            btnStartWalking.setTitle("Start Walking", for: .normal)
             self.sendInfoToWatch(distance: "", instructions: self.lblInstructions.text!, imageName: "straight", isDone: true, isStopped: false)
-            
-            self.timer.invalidate()
-            self.displayMessage(ttl: "Congratulations!", msg: "You have completed the trail. ")
+            btnStartWalking.backgroundColor = startColor
+
+            self.timerSimulateWalking.invalidate()
+            self.stopTimer()
+            self.displayMessage(ttl: "Congratulations!", msg: "You have completed this trail. ")
         }
         
     }
     
-    @IBAction func btnStartWalking_Click(_ sender: AnyObject) {
+    @IBAction func btnStartWalking_Click(_ sender: UIButton) {
         self.manageWalkingTrail()
     }
     
@@ -372,15 +632,42 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     
     func manageWalkingTrail(){
         self.currentStep = 0
-        self.isInitialTrial = true
         self.centreToTrail()
         
-        if self.btnStartWalking.currentTitle == "Start Walking" {
-            lblDistance.isHidden = false
-            lblInstructions.isHidden = false
-            imgDirection.isHidden = false
+        if btnStartWalking.currentTitle == "Start Walking" {
             
-            self.timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) {
+            self.isInitialTrial = true
+            
+            btnStartWalking.setTitle("Stop Walking", for: .normal)
+            btnStartWalking.backgroundColor = stopColor
+            
+             //Start the pedometer
+             pedometer = CMPedometer()
+             startTimer() //start the timer
+             pedometer.startUpdates(from: Date(), withHandler: { (pedometerData, error) in
+                if let pedData = pedometerData{
+             
+             //Getting data from the pedometer sensor
+                let StepsData      = Int(pedData.numberOfSteps)
+                self.numberOfSteps = StepsData + self.Steps1
+
+             // Distance Travelled
+                let distance  = Double(pedData.distance!)
+                self.DistanceData  = distance + self.DistanceData
+
+                self.startDate = Date()
+             } else {
+                self.stepsLabel.text = "Steps: Not Available"
+             }
+             })
+             //Toggle the UI to on state
+             //statusTitle.text = "Pedometer On"
+ 
+            
+            lblDistance.isHidden = false
+        
+            //Directions Connected with Timer
+            self.timerSimulateWalking = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) {
                 _ in self.onTick()
             }
             
@@ -394,24 +681,29 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             
             self.currentStep = 1
             
-            btnStartWalking.setTitle("Stop Walking", for: .normal)
         }
         else{
-            lblDistance.isHidden = true
-            lblInstructions.isHidden = true
-            imgDirection.isHidden = true
             
+            trailStreetName.text = String(describing: trailStreet[0])
+            lblInstructions.text = String(describing: trailStreet[0])
+            imgDirection.image = UIImage(named: "crossroads")
+            
+            //Toggle the UI to off state
+            //statusTitle.text = "Pedometer Off: "
             btnStartWalking.setTitle("Start Walking", for: .normal)
-            self.timer.invalidate()
+            btnStartWalking.backgroundColor = startColor
+            
+            //save steps in healthkit
+            self.userHealthData.startHealthShit(startDate: self.startDate, endDate: Date(), steps: self.numberOfSteps - TempSteps)
+            TempSteps = self.numberOfSteps
+            
+            //Stop the pedometer
+            stopTimer() // stop the timer
+            
+            self.isInitialTrial = false
             
             self.sendInfoToWatch(distance: "", instructions: "", imageName: "", isDone: true, isStopped: true)
         }
-    }
-    
-    func displayMessage(ttl: String, msg: String){
-        let alert = UIAlertController(title: ttl, message: msg, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
     
 }

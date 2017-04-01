@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440369C21E8E1E81000E6552 /* GroupMembersViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440369C11E8E1E81000E6552 /* GroupMembersViewCell.swift */; };
 		4423ED121E50E72700344B6D /* HikeGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4423ED111E50E72700344B6D /* HikeGroup.storyboard */; };
 		4434BD071E5D5B8B008692B8 /* mailFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4434BD061E5D5B8B008692B8 /* mailFriend.swift */; };
 		44385C011E5BCFE10095F2B0 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44385C001E5BCFE10095F2B0 /* CustomTableViewCell.swift */; };
@@ -33,6 +34,8 @@
 		449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */; };
 		449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFD41E58758900B84118 /* DashBoardViewController.swift */; };
 		449C850A1E77B20800A19597 /* PedometerActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449C85091E77B20800A19597 /* PedometerActivityViewController.swift */; };
+		44C7278A1E8FE8E00006AF60 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44C727891E8FE8E00006AF60 /* History.storyboard */; };
+		44C7278C1E8FEE6A0006AF60 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C7278B1E8FEE6A0006AF60 /* HistoryTableViewCell.swift */; };
 		44DE37FD1E673809002A775A /* UpdateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */; };
 		44DE37FF1E679595002A775A /* GroupMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE37FE1E679595002A775A /* GroupMembersViewController.swift */; };
 		44DE38041E6BFC25002A775A /* ScheduleInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE38031E6BFC25002A775A /* ScheduleInviteCell.swift */; };
@@ -94,9 +97,6 @@
 		D21BE5441E5FCB0C006D05C4 /* People.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21BE53F1E5FCB0C006D05C4 /* People.storyboard */; };
 		D21BE5471E5FCB30006D05C4 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE5451E5FCB30006D05C4 /* UIImageExtension.swift */; };
 		D21BE5481E5FCB30006D05C4 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE5461E5FCB30006D05C4 /* StringExtension.swift */; };
-		D21BE54C1E5FCB42006D05C4 /* WalkingShedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE5491E5FCB42006D05C4 /* WalkingShedule.swift */; };
-		D21BE54D1E5FCB42006D05C4 /* WalkingSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21BE54A1E5FCB42006D05C4 /* WalkingSchedule.storyboard */; };
-		D21BE54E1E5FCB42006D05C4 /* WalkingScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE54B1E5FCB42006D05C4 /* WalkingScheduleViewController.swift */; };
 		D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D24784471E4A8C7A00A0AFCF /* GoogleService-Info.plist */; };
 		D247844A1E4A8D5E00A0AFCF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24784491E4A8D5E00A0AFCF /* LoginController.swift */; };
 		F3A5266CCD7930CF069AECDD /* Pods_CapstoneTrailTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84E3F6471D45FB5637C3E7E /* Pods_CapstoneTrailTests.framework */; };
@@ -155,6 +155,7 @@
 		1D6EA5CAAD52FAA0D9CDCCDE /* Pods-CapstoneTrail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail/Pods-CapstoneTrail.release.xcconfig"; sourceTree = "<group>"; };
 		2731D46A09543C153A6C31D3 /* Pods-CapstoneTrailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrailTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrailTests/Pods-CapstoneTrailTests.release.xcconfig"; sourceTree = "<group>"; };
 		3BFF0EC91E9D1FE9FF82FCEB /* Pods-CapstoneTrail-CapstoneTrailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneTrail-CapstoneTrailTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneTrail-CapstoneTrailTests/Pods-CapstoneTrail-CapstoneTrailTests.release.xcconfig"; sourceTree = "<group>"; };
+		440369C11E8E1E81000E6552 /* GroupMembersViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupMembersViewCell.swift; path = HikeGroup/GroupMembersViewCell.swift; sourceTree = "<group>"; };
 		4423ED111E50E72700344B6D /* HikeGroup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HikeGroup.storyboard; path = HikeGroup/HikeGroup.storyboard; sourceTree = "<group>"; };
 		4434BD061E5D5B8B008692B8 /* mailFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mailFriend.swift; sourceTree = "<group>"; };
 		44385C001E5BCFE10095F2B0 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -181,6 +182,8 @@
 		449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		449ACFD41E58758900B84118 /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		449C85091E77B20800A19597 /* PedometerActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PedometerActivityViewController.swift; path = Activity/PedometerActivityViewController.swift; sourceTree = "<group>"; };
+		44C727891E8FE8E00006AF60 /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
+		44C7278B1E8FEE6A0006AF60 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateGroupViewController.swift; path = HikeGroup/UpdateGroupViewController.swift; sourceTree = "<group>"; };
 		44DE37FE1E679595002A775A /* GroupMembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupMembersViewController.swift; path = HikeGroup/GroupMembersViewController.swift; sourceTree = "<group>"; };
 		44DE38031E6BFC25002A775A /* ScheduleInviteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleInviteCell.swift; sourceTree = "<group>"; };
@@ -252,9 +255,6 @@
 		D21BE53F1E5FCB0C006D05C4 /* People.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = People.storyboard; sourceTree = "<group>"; };
 		D21BE5451E5FCB30006D05C4 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		D21BE5461E5FCB30006D05C4 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		D21BE5491E5FCB42006D05C4 /* WalkingShedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingShedule.swift; sourceTree = "<group>"; };
-		D21BE54A1E5FCB42006D05C4 /* WalkingSchedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WalkingSchedule.storyboard; sourceTree = "<group>"; };
-		D21BE54B1E5FCB42006D05C4 /* WalkingScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingScheduleViewController.swift; sourceTree = "<group>"; };
 		D24784471E4A8C7A00A0AFCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D24784491E4A8D5E00A0AFCF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		D2A6FACC1E4A863E00F7AB22 /* CapstoneTrail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CapstoneTrail.entitlements; sourceTree = "<group>"; };
@@ -302,6 +302,7 @@
 				44F136731E62277500E3747C /* GroupListViewCell.swift */,
 				44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */,
 				44DE37FE1E679595002A775A /* GroupMembersViewController.swift */,
+				440369C11E8E1E81000E6552 /* GroupMembersViewCell.swift */,
 			);
 			name = HikeGroup;
 			sourceTree = "<group>";
@@ -393,6 +394,15 @@
 			path = HikeGroup/AddGroup;
 			sourceTree = "<group>";
 		};
+		44C727881E8FE8640006AF60 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				44C727891E8FE8E00006AF60 /* History.storyboard */,
+				44C7278B1E8FEE6A0006AF60 /* HistoryTableViewCell.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		44DE38051E6CE4F9002A775A /* DAL */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,10 +436,10 @@
 		A900F3521E4A077400556D79 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				44C727881E8FE8640006AF60 /* History */,
 				4462019D1E7296A900A4DF42 /* Activity */,
 				A92CA1FB1E6B30AD003EF418 /* TrailMap */,
 				44385C061E5CE1E90095F2B0 /* Schedule */,
-				D21BE53A1E5FCAC6006D05C4 /* Walking Schedule */,
 				D21BE5391E5FCABA006D05C4 /* Helper */,
 				D21BE5381E5FCAB4006D05C4 /* Friend */,
 				A976D6EE1E637B5C000CF3F5 /* TrailDetail */,
@@ -621,16 +631,6 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		D21BE53A1E5FCAC6006D05C4 /* Walking Schedule */ = {
-			isa = PBXGroup;
-			children = (
-				D21BE5491E5FCB42006D05C4 /* WalkingShedule.swift */,
-				D21BE54A1E5FCB42006D05C4 /* WalkingSchedule.storyboard */,
-				D21BE54B1E5FCB42006D05C4 /* WalkingScheduleViewController.swift */,
-			);
-			path = "Walking Schedule";
-			sourceTree = "<group>";
-		};
 		D23B65791E4A7CE100957B1E /* LoginDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -812,6 +812,7 @@
 			files = (
 				A96247E31E79E3AB00B15E55 /* WeatherIndex.xcassets in Resources */,
 				B66C8E1A7401C833BE35C2A3 /* Images.xcassets in Resources */,
+				44C7278A1E8FE8E00006AF60 /* History.storyboard in Resources */,
 				446201A31E72AACA00A4DF42 /* Activity.storyboard in Resources */,
 				A97979E41E5DE402002DC4D2 /* Kitchener.json in Resources */,
 				A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */,
@@ -831,7 +832,6 @@
 				D24784481E4A8C7A00A0AFCF /* GoogleService-Info.plist in Resources */,
 				D20ADD551E7496230015F080 /* UnblockFriend.storyboard in Resources */,
 				44385C081E5CE30B0095F2B0 /* Schedule.storyboard in Resources */,
-				D21BE54D1E5FCB42006D05C4 /* WalkingSchedule.storyboard in Resources */,
 				A95CD4581E78E506002655D3 /* ScheduleProfile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -963,12 +963,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				440369C21E8E1E81000E6552 /* GroupMembersViewCell.swift in Sources */,
 				44F136721E62087600E3747C /* UserProfileViewController.swift in Sources */,
 				A97979D81E5DE1BB002DC4D2 /* Trails.xcdatamodeld in Sources */,
 				449C850A1E77B20800A19597 /* PedometerActivityViewController.swift in Sources */,
 				449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */,
 				44385C0C1E5CEFB20095F2B0 /* ScheduleViewCell.swift in Sources */,
-				D21BE54E1E5FCB42006D05C4 /* WalkingScheduleViewController.swift in Sources */,
 				44F5B7341E6318C5007C7B97 /* SettingCellController.swift in Sources */,
 				D21BE5471E5FCB30006D05C4 /* UIImageExtension.swift in Sources */,
 				44DE38041E6BFC25002A775A /* ScheduleInviteCell.swift in Sources */,
@@ -982,11 +982,11 @@
 				4434BD071E5D5B8B008692B8 /* mailFriend.swift in Sources */,
 				44385C051E5BD50C0095F2B0 /* ViewFriendViewController.swift in Sources */,
 				44385C011E5BCFE10095F2B0 /* CustomTableViewCell.swift in Sources */,
+				44C7278C1E8FEE6A0006AF60 /* HistoryTableViewCell.swift in Sources */,
 				44385C0A1E5CE3430095F2B0 /* ScheduleListController.swift in Sources */,
 				A978A1471E7DD72C00B43946 /* TrailMO+CoreDataProperties.swift in Sources */,
 				44385C0E1E5CF27E0095F2B0 /* ScheduleProfileController.swift in Sources */,
 				44F136741E62277500E3747C /* GroupListViewCell.swift in Sources */,
-				D21BE54C1E5FCB42006D05C4 /* WalkingShedule.swift in Sources */,
 				44DE37FF1E679595002A775A /* GroupMembersViewController.swift in Sources */,
 				D20ADD561E7496230015F080 /* UnblockFriendController.swift in Sources */,
 				D21BE5411E5FCB0C006D05C4 /* FriendViewController.swift in Sources */,
@@ -1102,7 +1102,7 @@
 				INFOPLIST_FILE = CapstoneTrail/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailAle;
+				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1223,7 +1223,7 @@
 				INFOPLIST_FILE = CapstoneTrail/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailAle;
+				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1237,7 +1237,7 @@
 				DEVELOPMENT_TEAM = 2472MVQR2Y;
 				INFOPLIST_FILE = "CapstoneTrail_AppleWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailAle.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailx.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1255,7 +1255,7 @@
 				DEVELOPMENT_TEAM = 2472MVQR2Y;
 				INFOPLIST_FILE = "CapstoneTrail_AppleWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailAle.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailx.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1274,7 +1274,7 @@
 				DEVELOPMENT_TEAM = 2472MVQR2Y;
 				IBSC_MODULE = CapstoneTrail_AppleWatch_Extension;
 				INFOPLIST_FILE = CapstoneTrail_AppleWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailAle.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailx.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1293,7 +1293,7 @@
 				DEVELOPMENT_TEAM = 2472MVQR2Y;
 				IBSC_MODULE = CapstoneTrail_AppleWatch_Extension;
 				INFOPLIST_FILE = CapstoneTrail_AppleWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailAle.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = conestogac.msd.CapstoneTrailx.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1340,6 +1340,7 @@
 				D20E88B61E88316000256D4B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D20E88B81E88316000256D4B /* Build configuration list for PBXNativeTarget "CapstoneTrail_AppleWatch" */ = {
 			isa = XCConfigurationList;
@@ -1348,6 +1349,7 @@
 				D20E88BA1E88316000256D4B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

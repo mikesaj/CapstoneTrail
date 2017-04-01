@@ -48,6 +48,18 @@ class GroupMembersViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        let id = friendId.object(at: indexPath.row) as? String
+        
+        if(id == owneruid){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GroupMembersViewCell", for: indexPath) as! GroupMembersViewCell
+            
+            cell.memberName.text = friendName.object(at: indexPath.row) as? String
+
+            return cell
+        }
+        
+        
         let cell = UITableViewCell()
         cell.textLabel?.text = friendName.object(at: indexPath.row) as? String
         // Configure the cell...

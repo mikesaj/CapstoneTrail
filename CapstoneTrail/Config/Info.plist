@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>CapstoneTrail</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -70,15 +72,15 @@
 		<string>MKDirectionsModePlane</string>
 	</array>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Enabling this will allow app to read from your device&apos;s health store</string>
+	<string>Enabling this will allow app to read from your device's health store</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Enabling this will allow app to write to your device&apos;s health store</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>In order to show you your coordinates, this app needs access to this device’s location abilities. This information won’t be shared with anyone.</string>
+	<string>Enabling this will allow app to write to your device's health store</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>In order to show your your coordinates</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>In order to show you your coordinates, this app needs access to this device’s location abilities. This information won’t be shared with anyone.</string>
 	<key>NSMotionUsageDescription</key>
-	<string>This is a step counter, and we&apos;d like to track motion. </string>
+	<string>This is a step counter, and we'd like to track motion. </string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need acces to your photos to provide an amazing app experience.</string>
 	<key>UIBackgroundModes</key>
