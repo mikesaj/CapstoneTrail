@@ -213,7 +213,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
 
         scheduleMap.selectAnnotation(scheduleMap.annotations[0], animated: true)
         
-        lblDistance.isHidden = true
+        //lblDistance.isHidden = true
         //lblInstructions.isHidden = true
         //imgDirection.isHidden = true
     }
@@ -394,7 +394,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     }
     
     
-    /* MikeSaj Geo Implmentation: END */    
+    /* MikeSaj Geo Implmentation: START */
 
     // Compute current location and get the difference
     
@@ -444,61 +444,11 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     }
     
     // MARK: - CLLocationManagerDelegate methods
-    
-    // This is called if:
-    // - the location manager is updating, and
-    // - it was able to get the user's location.
-    /*func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error) -> Void in
-            if (error != nil) {
-                print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
-                return
-            }
-            
-            if (placemarks?.count)! > 0 {
-                let pm = (placemarks?[0])! as CLPlacemark
-                self.displayLocationInfo(placemark: pm)
-            } else {
-                print("Problem with the data received from geocoder")
-            }
-        })
-     
-        
-        let newLocation = locations.last!
-        
-        let currLocation = newLocation.coordinate
-        
-        self.currLat  = Double(currLocation.latitude)
-        self.currLong = Double(currLocation.longitude)
-        
-        print( "Location: Lat\(currLat) lon\(currLong)")
-        //print(currLocation)
-        
-    }
-    */
-    
     // This is called if:
     // - the location manager is updating, and
     // - it WASN'T able to get the user's location.
     private func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Error: \(error)")
-    }
-    
-    func displayLocationInfo(placemark: CLPlacemark) {
-        if placemark != nil {
-            //stop updating location to save battery life
-            locationManager.stopUpdatingLocation()
-            
-            //let city   = placemark.locality ?? ""
-            //let region = placemark.administrativeArea ?? ""
-            
-            //locationLabel.text = city + ", " + region
-            
-            print(placemark.locality ?? "")
-            print(placemark.administrativeArea ?? "")
-            print(placemark.country ?? "")
-        }
     }
     
 /* MikeSaj Geo Implmentation: END */    
@@ -556,7 +506,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             imageName = "straight"
             
             if self.isInitialTrial == false {
-                self.lblDistance.text =  ""
+                self.lblDistance.text =  "---"
                 dist = ""
             }
             else
@@ -593,7 +543,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         self.currentStep = self.currentStep + 1
         
         if self.currentStep == self.coordinate2DList.count{
-            self.lblDistance.text = ""
+            self.lblDistance.text = "0m"
             self.lblInstructions.text =  "You have arrived at your destination"
 
             btnStartWalking.setTitle("Start Walking", for: .normal)
@@ -653,7 +603,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
              //statusTitle.text = "Pedometer On"
  
             
-            lblDistance.isHidden = false
+            //lblDistance.isHidden = false
             //lblInstructions.isHidden = false
             //imgDirection.isHidden = false
         
@@ -691,7 +641,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             btnStartWalking.backgroundColor = startColor
             
             
-            lblDistance.isHidden = true
+            //lblDistance.isHidden = true
             //lblInstructions.isHidden = true
             //imgDirection.isHidden = true
             
