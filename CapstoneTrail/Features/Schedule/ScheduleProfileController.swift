@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import CoreLocation
 import CoreMotion
 import SwiftyJSON
@@ -17,6 +18,13 @@ import WatchConnectivity
 
 class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, WCSessionDelegate {
 
+    // Database reference
+    let ref = FIRDatabase.database().reference()
+    
+    // Current user id
+    let userid = FIRAuth.auth()?.currentUser?.uid
+    var uid = ""
+    
     // MARK: Properties
     @IBOutlet weak var scheduleDate: UILabel!
     //@IBOutlet weak var scheduleTime: UILabel!
@@ -57,6 +65,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     var startDate = Date()
     let trailStreet = NSMutableArray()
 
+    let scheduleDB = ScheduleDBController()
 
     
     //MARK: - timer functions
@@ -129,7 +138,6 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     // MARK: Variables
     var watchSession : WCSession?
     
-    var uid: String = ""
     var scheduleTitle: String = ""
 
     var currLat  = 0.0
@@ -139,7 +147,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     var trailData: [Trail] = []
     var epochDate: UInt32?
     var coordinate2DList: [[CLLocationCoordinate2D]] = []
-
+    var hikeid = ""
     var totalLength: Double = 0
     var totalTime: Double = 0
 
@@ -153,6 +161,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     
 
     override func viewDidLoad() {
+        uid = userid!
 
         super.viewDidLoad()
         
@@ -560,6 +569,9 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             self.timerSimulateWalking.invalidate()
             self.stopTimer()
             self.displayMessage(ttl: "Congratulations!", msg: "You have completed this trail. ")
+            
+            // add hile event to user's history
+            scheduleDB.addHikeHistoryEventtoUser(hikeEventid:hikeid, userId:uid)
         }
         
     }

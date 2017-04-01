@@ -235,6 +235,7 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
 
             scheduleProfile.scheduleTitle = ""
             scheduleProfile.uid = ""
+            scheduleProfile.hikeid = self.hikeId[indexPath.row]
             scheduleProfile.trailData = _trail
             scheduleProfile.epochDate = _date
 
