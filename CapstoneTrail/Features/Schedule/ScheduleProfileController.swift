@@ -46,7 +46,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     
     // timers
     var timer         = Timer()
-    var timer1        = Timer()
+    var timerSimulateWalking = Timer()
     let timerInterval = 1.0
     var timeElapsed:TimeInterval = 0.0
     var TempSteps:  Int = 0
@@ -69,7 +69,11 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     }
     
     func stopTimer(){
+        pedometer.stopUpdates()
+        
+        self.timerSimulateWalking.invalidate()
         self.timer.invalidate()
+        
         displayPedometerData()
         
         self.Steps1 = numberOfSteps
@@ -185,7 +189,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             self.locationManager.requestAlwaysAuthorization()
             self.locationManager.startUpdatingLocation()
         }*/
-
+        
         print("Trail Data: \(trailData)")
 
         for trail in trailData {
@@ -201,16 +205,17 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         
         trailStreetName.text = String(describing: trailStreet[0])
         lblInstructions.text = String(describing: trailStreet[0])
+        imgDirection.image = UIImage(named: "crossroads")
         
         // Set schedule date/time
         scheduleDate.text = epochToDateString(epochDate)
-
+        
         // Center map to the trail
         centreToTrail()
         
         //  Create polyline with the CLLocationCoordinate2D list
         makePolyline()
-
+        
         scheduleMap.selectAnnotation(scheduleMap.annotations[0], animated: true)
         
         //lblDistance.isHidden = true
@@ -451,7 +456,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         print("Error: \(error)")
     }
     
-/* MikeSaj Geo Implmentation: END */    
+/* MikeSaj Geo Implmentation: END */
     
     func calculateDirections(nextIndex: Int){
         
@@ -516,7 +521,9 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             }
         }
         
-        self.sendInfoToWatch(distance: dist, instructions: instructions, imageName: imageName, isDone: false, isStopped: false)
+        if timerSimulateWalking.isValid == true{
+            self.sendInfoToWatch(distance: dist, instructions: instructions, imageName: imageName, isDone: false, isStopped: false)
+        }
     }
     
     func sendInfoToWatch(distance: String, instructions: String, imageName: String, isDone: Bool, isStopped: Bool){
@@ -550,7 +557,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             self.sendInfoToWatch(distance: "", instructions: self.lblInstructions.text!, imageName: "straight", isDone: true, isStopped: false)
             btnStartWalking.backgroundColor = startColor
 
-            self.timer1.invalidate()
+            self.timerSimulateWalking.invalidate()
             self.stopTimer()
             self.displayMessage(ttl: "Congratulations!", msg: "You have completed this trail. ")
         }
@@ -574,11 +581,14 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     
     func manageWalkingTrail(){
         self.currentStep = 0
-        self.isInitialTrial = true
         self.centreToTrail()
         
         if btnStartWalking.currentTitle == "Start Walking" {
             
+            self.isInitialTrial = true
+            
+            btnStartWalking.setTitle("Stop Walking", for: .normal)
+            btnStartWalking.backgroundColor = stopColor
             
              //Start the pedometer
              pedometer = CMPedometer()
@@ -603,12 +613,9 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
              //statusTitle.text = "Pedometer On"
  
             
-            //lblDistance.isHidden = false
-            //lblInstructions.isHidden = false
-            //imgDirection.isHidden = false
         
             //Directions Connected with Timer
-            self.timer1 = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) {
+            self.timerSimulateWalking = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) {
                 _ in self.onTick()
             }
             
@@ -621,31 +628,27 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             }
             
             self.currentStep = 1
-        
-            btnStartWalking.setTitle("Stop Walking", for: .normal)
-            btnStartWalking.backgroundColor = stopColor
+            
         }
         else{
             
-            //Stop the pedometer
-            pedometer.stopUpdates()
-            stopTimer() // stop the timer
-            
-            //save steps in healthkit
-            self.userHealthData.startHealthShit(startDate: self.startDate, endDate: Date(), steps: self.numberOfSteps - TempSteps)
-            TempSteps = self.numberOfSteps
+            trailStreetName.text = String(describing: trailStreet[0])
+            lblInstructions.text = String(describing: trailStreet[0])
+            imgDirection.image = UIImage(named: "crossroads")
             
             //Toggle the UI to off state
             //statusTitle.text = "Pedometer Off: "
             btnStartWalking.setTitle("Start Walking", for: .normal)
             btnStartWalking.backgroundColor = startColor
             
+            //save steps in healthkit
+            self.userHealthData.startHealthShit(startDate: self.startDate, endDate: Date(), steps: self.numberOfSteps - TempSteps)
+            TempSteps = self.numberOfSteps
             
-            //lblDistance.isHidden = true
-            //lblInstructions.isHidden = true
-            //imgDirection.isHidden = true
+            //Stop the pedometer
+            stopTimer() // stop the timer
             
-            //self.timer.invalidate()
+            self.isInitialTrial = false
             
             self.sendInfoToWatch(distance: "", instructions: "", imageName: "", isDone: true, isStopped: true)
         }

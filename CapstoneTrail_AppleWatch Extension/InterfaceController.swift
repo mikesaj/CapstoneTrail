@@ -68,7 +68,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate{
         
         self.lblInstruction.setText("Let's Walk")
         
-        let theImage = UIImage(named: "walking")
+        let theImage = UIImage(named: "crossroads")
         self.imgDirection.setImage(theImage)
     }
     
@@ -89,11 +89,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate{
         self.imgDirection.setImage(theImage)
         
         if isDone == false{
-            self.btnStart.setTitle("Stop Walking")
+            self.btnStart.setTitle("Stop")
             self.isRunning = true
         }
         else{
-            self.btnStart.setTitle("Start Walking")
+            self.btnStart.setTitle("Start")
             self.isRunning = false
             self.timer.invalidate()
             
@@ -101,7 +101,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate{
             
             if isStopped == true{
                 self.lblInstruction.setText("Let's Walk")
-                theImage = UIImage(named: "walking")
+                theImage = UIImage(named: "crossroads")
                 self.imgDirection.setImage(theImage)
             }
             else{
