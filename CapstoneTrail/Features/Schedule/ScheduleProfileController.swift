@@ -22,6 +22,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     //@IBOutlet weak var scheduleTime: UILabel!
     @IBOutlet weak var scheduleMap: MKMapView!
     //@IBOutlet weak var indexIcon: UIImageView!
+    @IBOutlet weak var trailStreetName: UILabel!
     @IBOutlet weak var indexMessage: UILabel!
     @IBOutlet weak var indexPoint: UILabel!
     @IBOutlet weak var imgDirection: UIImageView!
@@ -54,6 +55,8 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     var numberOfSteps:Int! = 0//nil;
     var DistanceData:Double = 0.0
     var startDate = Date()
+    let trailStreet = NSMutableArray()
+
 
     
     //MARK: - timer functions
@@ -93,13 +96,13 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         statusTitle.text = timeIntervalFormat(interval: timeElapsed)
         //Number of steps
         if let numberOfSteps = self.numberOfSteps{
-            stepsLabel.text = String(format:"Steps: %i",numberOfSteps)
+            stepsLabel.text = String(format:"%i",numberOfSteps)
         }
 
         //Distance Covered
         if self.DistanceData != 0.0 {
             
-            distanceCoveredLabel.text = String(format:"Distance: %i m", DistanceData)
+            distanceCoveredLabel.text = String(format:"%i m", DistanceData)
         }
         
         
@@ -182,13 +185,22 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             self.locationManager.requestAlwaysAuthorization()
             self.locationManager.startUpdatingLocation()
         }*/
-        
+
+        print("Trail Data: \(trailData)")
+
         for trail in trailData {
-            print(trail.id)
+            print("Trail id: \(trail.id)")
+            print("Trail area: \(trail.area)")
+            print("Trail street: \(trail.street)")
+            trailStreet.add(trail.street)
+            
             totalLength += trail.length
             totalTime += trail.travelTime
             coordinate2DList.append(trail.coordinate2DList)
         }
+        
+        trailStreetName.text = String(describing: trailStreet[0])
+        lblInstructions.text = String(describing: trailStreet[0])
         
         // Set schedule date/time
         scheduleDate.text = epochToDateString(epochDate)
@@ -202,8 +214,8 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         scheduleMap.selectAnnotation(scheduleMap.annotations[0], animated: true)
         
         lblDistance.isHidden = true
-        lblInstructions.isHidden = true
-        imgDirection.isHidden = true
+        //lblInstructions.isHidden = true
+        //imgDirection.isHidden = true
     }
 
     func sessionDidDeactivate(_ session: WCSession) {
@@ -582,7 +594,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         
         if self.currentStep == self.coordinate2DList.count{
             self.lblDistance.text = ""
-            self.lblInstructions.text =  "You arrived at your destination"
+            self.lblInstructions.text =  "You have arrived at your destination"
 
             btnStartWalking.setTitle("Start Walking", for: .normal)
             self.sendInfoToWatch(distance: "", instructions: self.lblInstructions.text!, imageName: "straight", isDone: true, isStopped: false)
@@ -590,7 +602,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
 
             self.timer1.invalidate()
             self.stopTimer()
-            self.displayMessage(ttl: "Congratulations!", msg: "You have completed the trail. ")
+            self.displayMessage(ttl: "Congratulations!", msg: "You have completed this trail. ")
         }
         
     }
@@ -642,8 +654,8 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
  
             
             lblDistance.isHidden = false
-            lblInstructions.isHidden = false
-            imgDirection.isHidden = false
+            //lblInstructions.isHidden = false
+            //imgDirection.isHidden = false
         
             //Directions Connected with Timer
             self.timer1 = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) {
@@ -680,8 +692,8 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             
             
             lblDistance.isHidden = true
-            lblInstructions.isHidden = true
-            imgDirection.isHidden = true
+            //lblInstructions.isHidden = true
+            //imgDirection.isHidden = true
             
             //self.timer.invalidate()
             
