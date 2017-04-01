@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11201" systemVersion="16D32" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11077"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="CapstoneTrail_AppleWatch" customModuleProvider="target">
+                    <items>
+                        <imageView width="101" height="84" alignment="center" id="Aoi-1b-ygO"/>
+                        <group width="1" alignment="left" id="x9P-8e-N4f">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="Label" id="l4v-S4-CK7"/>
+                            </items>
+                        </group>
+                        <button width="1" alignment="left" title="Start" id="8Od-E0-N6R">
+                            <connections>
+                                <action selector="btnStart_Click" destination="AgC-eL-Hgc" id="7gk-vh-MRD"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="imgDirection" destination="Aoi-1b-ygO" id="k4V-QV-7vd"/>
+                        <outlet property="lblDistance" destination="l4v-S4-CK7" id="374-O1-pef"/>
+                    </connections>
+                </controller>
+            </objects>
+        </scene>
+    </scenes>
+</document>
