@@ -140,10 +140,6 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         print("completed")
     }
     
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        
-    }
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //var userLocation:CLLocation = locations[0] as! CLLocation
         //let long = userLocation.coordinate.longitude;
@@ -278,10 +274,10 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
                 self.steps = route.steps
                 
                 if self.steps.count == 2{
-                    self.displaySteps(distance: String(format: " Distance : %.2f m",self.steps[0].distance), instructions: self.steps[0].instructions)
+                    self.displaySteps(distance: self.steps[0].distance, instructions: self.steps[0].instructions)
                 }
                 else{
-                    self.displaySteps(distance: String(format: " Distance : %.2f m", self.steps[1].distance), instructions: self.steps[1].instructions)
+                    self.displaySteps(distance: self.steps[1].distance, instructions: self.steps[1].instructions)
                 }
             
                 //}
@@ -290,21 +286,28 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         }
     }
     
-    func displaySteps(distance: String, instructions: String){
+    func displaySteps(distance: Double, instructions: String){
         self.lblInstructions.text = instructions
-        self.lblDistance.text =  distance
+        self.lblDistance.text =  String(format: " Distance : %.2f m", distance)
+        
+        var dist = "\(distance) m"
+        var imageName: String = ""
         
         if instructions.contains("left") == true{
+            imageName = "left"
             self.imgDirection.image = UIImage(named: "left")
         }
         else if instructions.contains("right") == true {
+            imageName = "right"
             self.imgDirection.image = UIImage(named: "right")
         }
         else{
             self.imgDirection.image = UIImage(named: "straight")
+            imageName = "straight"
             
             if self.isInitialTrial == false {
                 self.lblDistance.text =  ""
+                dist = ""
             }
             else
             {
@@ -312,6 +315,21 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
                 self.displayMessage(ttl: "Warning", msg: String(format: " you are at %.2f m away from your trail", distance))
             }
         }
+        
+        self.sendInfoToWatch(distance: dist, instructions: instructions, imageName: imageName, isDone: false, isStopped: false)
+    }
+    
+    func sendInfoToWatch(distance: String, instructions: String, imageName: String, isDone: Bool, isStopped: Bool){
+        let messageToSend = ["instructions":instructions, "distance": distance, "imageName": imageName, "isDone": isDone, "isStopped": isStopped] as [String : Any]
+        
+        watchSession?.sendMessage(messageToSend, replyHandler: { replyMessage in
+            //handle and present the message on screen
+            let value = replyMessage["directions"] as? String
+            print(value)
+            
+            }, errorHandler: {error in
+                print(error)
+        })
     }
     
     func onTick(){
@@ -327,37 +345,55 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         if self.currentStep == self.coordinate2DList.count{
             self.lblDistance.text = ""
             self.lblInstructions.text =  "You arrived at your destination"
-            btnStartWalking.setTitle("Start Walking", for: .normal)
+            self.btnStartWalking.setTitle("Start Walking", for: .normal)
+            
+            self.sendInfoToWatch(distance: "", instructions: self.lblInstructions.text!, imageName: "straight", isDone: true, isStopped: false)
+            
             self.timer.invalidate()
+            self.displayMessage(ttl: "Congratulations!", msg: "You have completed the trail. ")
         }
         
     }
     
     @IBAction func btnStartWalking_Click(_ sender: AnyObject) {
+        self.manageWalkingTrail()
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        let index = message["index"] as! Int
         
+        if index == 0 {
+            self.manageWalkingTrail()
+        }
+        else{
+            onTick()
+        }
+    }
+    
+    func manageWalkingTrail(){
         self.currentStep = 0
         self.isInitialTrial = true
         self.centreToTrail()
         
-        if btnStartWalking.currentTitle == "Start Walking" {
+        if self.btnStartWalking.currentTitle == "Start Walking" {
             lblDistance.isHidden = false
             lblInstructions.isHidden = false
             imgDirection.isHidden = false
-        
+            
             self.timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) {
                 _ in self.onTick()
             }
-        
+            
             if self.currentStep < self.coordinate2DList.count - 2{
                 self.calculateDirections(nextIndex: self.currentStep + 2)
             }
             else{
                 self.calculateDirections(nextIndex: self.currentStep + 1)
-
+                
             }
             
             self.currentStep = 1
-        
+            
             btnStartWalking.setTitle("Stop Walking", for: .normal)
         }
         else{
@@ -367,6 +403,8 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             
             btnStartWalking.setTitle("Start Walking", for: .normal)
             self.timer.invalidate()
+            
+            self.sendInfoToWatch(distance: "", instructions: "", imageName: "", isDone: true, isStopped: true)
         }
     }
     
