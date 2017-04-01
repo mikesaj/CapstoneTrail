@@ -27,6 +27,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     @IBOutlet weak var imgDirection: UIImageView!
     @IBOutlet weak var lblInstructions: UILabel!
     @IBOutlet weak var lblDistance: UILabel!
+    @IBOutlet weak var distanceCoveredLabel: UILabel!
     @IBOutlet weak var btnStartWalking: UIButton!
     @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var statusTitle: UILabel!
@@ -51,6 +52,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
 
     var Steps1:      Int = 0
     var numberOfSteps:Int! = 0//nil;
+    var DistanceData:Double = 0.0
     var startDate = Date()
 
     
@@ -93,6 +95,14 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         if let numberOfSteps = self.numberOfSteps{
             stepsLabel.text = String(format:"Steps: %i",numberOfSteps)
         }
+
+        //Distance Covered
+        if self.DistanceData != 0.0 {
+            
+            distanceCoveredLabel.text = String(format:"Distance: %i m", DistanceData)
+        }
+        
+        
     }
 
     /*@IBOutlet weak var temperatureText: UILabel!
@@ -617,7 +627,11 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
              //Getting data from the pedometer sensor
                 let StepsData      = Int(pedData.numberOfSteps)
                 self.numberOfSteps = StepsData + self.Steps1
-             
+
+             // Distance Travelled
+                let distance  = Double(pedData.distance!)
+                self.DistanceData  = distance + self.DistanceData
+
                 self.startDate = Date()
              } else {
                 self.stepsLabel.text = "Steps: Not Available"

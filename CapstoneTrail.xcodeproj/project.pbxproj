@@ -34,6 +34,8 @@
 		449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */; };
 		449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACFD41E58758900B84118 /* DashBoardViewController.swift */; };
 		449C850A1E77B20800A19597 /* PedometerActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449C85091E77B20800A19597 /* PedometerActivityViewController.swift */; };
+		44C7278A1E8FE8E00006AF60 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44C727891E8FE8E00006AF60 /* History.storyboard */; };
+		44C7278C1E8FEE6A0006AF60 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C7278B1E8FEE6A0006AF60 /* HistoryTableViewCell.swift */; };
 		44DE37FD1E673809002A775A /* UpdateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */; };
 		44DE37FF1E679595002A775A /* GroupMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE37FE1E679595002A775A /* GroupMembersViewController.swift */; };
 		44DE38041E6BFC25002A775A /* ScheduleInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE38031E6BFC25002A775A /* ScheduleInviteCell.swift */; };
@@ -180,6 +182,8 @@
 		449ACFCE1E565ED300B84118 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		449ACFD41E58758900B84118 /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		449C85091E77B20800A19597 /* PedometerActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PedometerActivityViewController.swift; path = Activity/PedometerActivityViewController.swift; sourceTree = "<group>"; };
+		44C727891E8FE8E00006AF60 /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
+		44C7278B1E8FEE6A0006AF60 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		44DE37FC1E673809002A775A /* UpdateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateGroupViewController.swift; path = HikeGroup/UpdateGroupViewController.swift; sourceTree = "<group>"; };
 		44DE37FE1E679595002A775A /* GroupMembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupMembersViewController.swift; path = HikeGroup/GroupMembersViewController.swift; sourceTree = "<group>"; };
 		44DE38031E6BFC25002A775A /* ScheduleInviteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleInviteCell.swift; sourceTree = "<group>"; };
@@ -390,6 +394,15 @@
 			path = HikeGroup/AddGroup;
 			sourceTree = "<group>";
 		};
+		44C727881E8FE8640006AF60 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				44C727891E8FE8E00006AF60 /* History.storyboard */,
+				44C7278B1E8FEE6A0006AF60 /* HistoryTableViewCell.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		44DE38051E6CE4F9002A775A /* DAL */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,6 +436,7 @@
 		A900F3521E4A077400556D79 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				44C727881E8FE8640006AF60 /* History */,
 				4462019D1E7296A900A4DF42 /* Activity */,
 				A92CA1FB1E6B30AD003EF418 /* TrailMap */,
 				44385C061E5CE1E90095F2B0 /* Schedule */,
@@ -798,6 +812,7 @@
 			files = (
 				A96247E31E79E3AB00B15E55 /* WeatherIndex.xcassets in Resources */,
 				B66C8E1A7401C833BE35C2A3 /* Images.xcassets in Resources */,
+				44C7278A1E8FE8E00006AF60 /* History.storyboard in Resources */,
 				446201A31E72AACA00A4DF42 /* Activity.storyboard in Resources */,
 				A97979E41E5DE402002DC4D2 /* Kitchener.json in Resources */,
 				A9FB93201E4A0C210053F6E3 /* APIKeys.plist in Resources */,
@@ -967,6 +982,7 @@
 				4434BD071E5D5B8B008692B8 /* mailFriend.swift in Sources */,
 				44385C051E5BD50C0095F2B0 /* ViewFriendViewController.swift in Sources */,
 				44385C011E5BCFE10095F2B0 /* CustomTableViewCell.swift in Sources */,
+				44C7278C1E8FEE6A0006AF60 /* HistoryTableViewCell.swift in Sources */,
 				44385C0A1E5CE3430095F2B0 /* ScheduleListController.swift in Sources */,
 				A978A1471E7DD72C00B43946 /* TrailMO+CoreDataProperties.swift in Sources */,
 				44385C0E1E5CF27E0095F2B0 /* ScheduleProfileController.swift in Sources */,
