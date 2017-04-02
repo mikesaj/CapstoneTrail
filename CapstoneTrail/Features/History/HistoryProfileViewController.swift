@@ -19,6 +19,25 @@ class HistoryProfileViewController: UIViewController, MKMapViewDelegate {
     var trailData: [Trail] = []
     var currdate = ""
     
+    
+    
+    
+    
+    var totalLength: Double = 0
+    var totalTime: Double = 0
+    
+    //set current location
+    var locationManager: CLLocationManager = CLLocationManager()
+    var currentLocation: CLLocation!
+    var steps: [MKRouteStep]!
+    var currentStep: Int! = 0
+    var isInitialTrial: Bool! = true
+    var trailPin: MKPointAnnotation!
+
+    
+    
+    
+    
 
     var coordinate2DList: [[CLLocationCoordinate2D]] = []
 
@@ -37,9 +56,18 @@ class HistoryProfileViewController: UIViewController, MKMapViewDelegate {
             //totalTime += trail.travelTime
             coordinate2DList.append(trail.coordinate2DList)
         }
-        
+
         trailName.text = String(describing: trailStreet[0])
         hikeDate.text = currdate
+        
+        // Center map to the trail
+        centreToTrail()
+        
+        //  Create polyline with the CLLocationCoordinate2D list
+        makePolyline()
+
+
+        mapObj.selectAnnotation(mapObj.annotations[0], animated: true)
 
     }
 
@@ -88,15 +116,44 @@ class HistoryProfileViewController: UIViewController, MKMapViewDelegate {
         
         return polylineRenderer
     }
+
     
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Centre map to the trail
+    func centreToTrail() {
+        
+        if self.trailPin != nil{
+            mapObj.removeAnnotation(self.trailPin)
+        }
+        
+        self.currentLocation = CLLocation(latitude: trailData[currentStep].coordinates[0][1], longitude: trailData[currentStep].coordinates[0][0])
+        
+        let regionRadius: CLLocationDistance = 800
+        
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+        
+        mapObj.setRegion(coordinateRegion, animated: true)
+        
+        var pinLength: String = "%.0f m"
+        if totalLength > 1000 {
+            totalLength /= 1000
+            pinLength = "%.1f km, "
+        }
+        var pinTime: String = "%.0f minutes"
+        if totalTime > 60 {
+            totalTime /= 60
+            pinTime = "%.1f hours"
+        }
+        //let pinTitle: String = pinLength + ", " + pinTime
+        
+        // Make pin
+        trailPin = MKPointAnnotation()
+        trailPin.coordinate = trailData[currentStep].coordinate2DList[0]
+        //trailPin.title = String(format: pinTitle, totalLength, totalTime)
+        trailPin.subtitle = String(format: "Start @ %@", trailData[0].street)
+        
+        mapObj.addAnnotation(trailPin)
     }
-    */
-
+        
+    
 }

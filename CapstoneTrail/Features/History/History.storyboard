@@ -88,7 +88,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="historyTableView" destination="VM9-5q-NEx" id="cbe-eg-1aF"/>
-                        <segue destination="WeG-ub-pq9" kind="show" identifier="hikeProfile" id="tCo-cR-5WY"/>
+                        <segue destination="WeG-ub-pq9" kind="showDetail" identifier="hikeProfile" action="showViewController:sender:" id="tCo-cR-5WY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BcP-6z-bFw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -128,6 +128,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="hikeDate" destination="uOG-nF-en8" id="ZU0-jT-xho"/>
                         <outlet property="mapObj" destination="mMH-lW-fsC" id="R6H-XO-L2n"/>
@@ -143,7 +144,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tR9-Fc-aaI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="akp-gv-eKe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="akp-gv-eKe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
