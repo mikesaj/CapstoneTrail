@@ -120,20 +120,18 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         //HistoryTableViewController
         let HistoryStoryboard = UIStoryboard(name: "History", bundle: nil)
         
-        let historyTab = (HistoryStoryboard.instantiateViewController(withIdentifier: "history")) as! HistoryTableViewController
-        
-        
+        let historyTab : AnyObject! = (HistoryStoryboard.instantiateViewController(withIdentifier: "HistoryNavController"))
         let historytabBarItem = UITabBarItem(title: "History", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
-        //let actvityTab1 = activityTab as UIViewController
+        let historysTab = historyTab as! UIViewController
         
-        historyTab.tabBarItem = historytabBarItem
+        historysTab.tabBarItem = historytabBarItem
 
         
         
         // Main DashBoard Tabs
         //Add to tabBarController bottom menu
         self.viewControllers =
-            [uprofileTab, GroupTab, SchedulTab, historyTab, uFriendTab, uPeopleTab, uUnblockingFriendTab, invitationTab]
+            [uprofileTab, GroupTab, SchedulTab, historysTab, uFriendTab, uPeopleTab, uUnblockingFriendTab, invitationTab]
     }
     
     // UITabBarControllerDelegate method

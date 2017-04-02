@@ -18,12 +18,12 @@ class HistoryTableViewController: UIViewController, UITableViewDelegate, UITable
     // Current user id
     let uid = FIRAuth.auth()?.currentUser?.uid
     
-    var hikeIds = [String]()
-    var trailIds = [String]()
+    var hikeIds    = [String]()
+    //var trailIds   = [String]()
     var trailNames = [String]()
-    var hikeDate = [String]()
-    var trailData = [[Trail]]()
-    var tid: Int = 0
+    var hikeDate   = [String]()
+    var trailData  = [[Trail]]()
+    var tid: Int   = 0
     
     @IBOutlet weak var historyTableView: UITableView!
 
@@ -32,14 +32,26 @@ class HistoryTableViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         
         self.populateHikeInviteList()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        self.populateHikeInviteList()
+    }
+    
+    func resetValues(){
 
+        // reset the array
+        hikeIds.removeAll()
+        //trailIds.removeAll()
+        trailNames.removeAll()
+        hikeDate.removeAll()
+        trailData.removeAll()
+
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,15 +59,15 @@ class HistoryTableViewController: UIViewController, UITableViewDelegate, UITable
 
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return hikeIds.count
+        
+        print("Record count: \(hikeDate.count)")
+        return hikeDate.count
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "hikeCell", for: indexPath) as! HistoryTableViewCell
-        
-        //print(" name:\(self.trailNames[indexPath.row])  Date:\(self.hikeDate  [indexPath.row])")
         
         //labels
         cell.trailName.text     = self.trailNames[indexPath.row]
@@ -79,9 +91,6 @@ class HistoryTableViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-
         // ViewFriendViewController
 
         if(segue.identifier == "hikeProfile"){
@@ -89,11 +98,8 @@ class HistoryTableViewController: UIViewController, UITableViewDelegate, UITable
             let HistoryProfile: HistoryProfileViewController = segue.destination as! HistoryProfileViewController
             
             // Passing parameters to the inviteFriendsController class
-            //print("Hikesx:  \(self.trailIds[tid] )  \( tid)")
             HistoryProfile.trailData    = self.trailData[tid]           // id of the group
             HistoryProfile.currdate     = self.hikeDate[tid]
-            //let _trail: [Trail] = trailData[indexPath.row]
-
         }
     }    
 
@@ -101,6 +107,9 @@ class HistoryTableViewController: UIViewController, UITableViewDelegate, UITable
     //populating hike inviations
     func populateHikeInviteList() {
         
+        // reset the array
+        self.resetValues()
+
         _ = ref.child("users")
             .queryOrderedByKey()
             .queryEqual(toValue: self.uid)
@@ -140,13 +149,9 @@ class HistoryTableViewController: UIViewController, UITableViewDelegate, UITable
                                     
                                     self.hikeDate.append( _dateStr )
                                     
-                                    print("Hikes:  \(value?["trail"] )  \(_date )")
                                     
-                                    
-                                    let vare = value?["trailId"]
-                                    // FIXME: "trailId" is an array of string
-                                    self.trailIds.append(String(describing: vare))
-                                    
+                                    //let vare = value?["trailId"]
+                                    //self.trailIds.append(String(describing: vare))
                                     
                                     // Add area and epoch time
                                     let _IDs = value?["trailId"] as! [String]
@@ -155,20 +160,20 @@ class HistoryTableViewController: UIViewController, UITableViewDelegate, UITable
                                         let _trailMO = TrailUtils.searchTrail(id: _ID)
                                         _trails.append(Trail(trail: _trailMO))
                                     }
-
-                                    
                                     
                                     self.trailData.append(_trails)
 
                                     //refresh the table
                                     self.historyTableView.reloadData()
-
                                 }
+
                             }) {
                                 (error) in
                                 print(error.localizedDescription)
                         }
+                        
                     }
+                    
                 }
             }) {
                 (error) in

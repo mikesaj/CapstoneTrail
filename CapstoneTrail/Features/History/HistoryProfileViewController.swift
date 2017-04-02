@@ -58,6 +58,7 @@ class HistoryProfileViewController: UIViewController, MKMapViewDelegate {
         }
 
         trailName.text = String(describing: trailStreet[0])
+        self.title = trailName.text
         hikeDate.text = currdate
         
         // Center map to the trail
