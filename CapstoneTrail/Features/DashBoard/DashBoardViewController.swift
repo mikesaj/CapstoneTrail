@@ -105,7 +105,7 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         let uUnblockingFriendTab = UnblockingfriendTab as! UIViewController
         uUnblockingFriendTab.tabBarItem = tabUnblockingBarItem
         
-
+/*
         //ActivityViewController Tab
         let ActivityStoryboard = UIStoryboard(name: "Activity", bundle: nil)
         
@@ -116,13 +116,24 @@ class DashBoardViewController: UITabBarController, UITabBarControllerDelegate {
         //let actvityTab1 = activityTab as UIViewController
         
         activityTab.tabBarItem = activitytabBarItem
+*/
+        //HistoryTableViewController
+        let HistoryStoryboard = UIStoryboard(name: "History", bundle: nil)
         
- 
+        let historyTab = (HistoryStoryboard.instantiateViewController(withIdentifier: "history")) as! HistoryTableViewController
+        
+        
+        let historytabBarItem = UITabBarItem(title: "History", image: UIImage(named: "profileIcon"), selectedImage: UIImage(named: "profileIcon"))
+        //let actvityTab1 = activityTab as UIViewController
+        
+        historyTab.tabBarItem = historytabBarItem
+
+        
         
         // Main DashBoard Tabs
         //Add to tabBarController bottom menu
         self.viewControllers =
-            [uprofileTab, GroupTab, SchedulTab, activityTab, uFriendTab, uPeopleTab, uUnblockingFriendTab, invitationTab, SchedulTab]
+            [uprofileTab, GroupTab, SchedulTab, historyTab, uFriendTab, uPeopleTab, uUnblockingFriendTab, invitationTab]
     }
     
     // UITabBarControllerDelegate method
