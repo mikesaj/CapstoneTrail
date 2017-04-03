@@ -27,12 +27,14 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     
     // MARK: Properties
     @IBOutlet weak var scheduleDate: UILabel!
-    //@IBOutlet weak var scheduleTime: UILabel!
+    @IBOutlet weak var scheduleTime: UILabel!
     @IBOutlet weak var scheduleMap: MKMapView!
     //@IBOutlet weak var indexIcon: UIImageView!
+    //@IBOutlet weak var temperatureText: UILabel!
+    @IBOutlet weak var temperatureValue: UILabel!
     @IBOutlet weak var trailStreetName: UILabel!
-    @IBOutlet weak var indexMessage: UILabel!
-    @IBOutlet weak var indexPoint: UILabel!
+    //@IBOutlet weak var indexMessage: UILabel!
+    //@IBOutlet weak var indexPoint: UILabel!
     @IBOutlet weak var imgDirection: UIImageView!
     @IBOutlet weak var lblInstructions: UILabel!
     @IBOutlet weak var lblDistance: UILabel!
@@ -145,7 +147,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
 
     
     var trailData: [Trail] = []
-    var epochDate: UInt32?
+    var epochDate: UInt32 = 0
     var coordinate2DList: [[CLLocationCoordinate2D]] = []
     var hikeid = ""
     var totalLength: Double = 0
@@ -174,11 +176,14 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             watchSession!.activate()
         }
         
-        guard let epochDate = epochDate else {
+        //print("Dating: \(epochDate)")
+        
+        /*guard let epochDate = epochDate else {
             debugPrint("Schedule has no epoch date")
-            scheduleDate.text = ""
+            //scheduleDate.text = ""
             return
         }
+        */
         
         scheduleMap.mapType = .standard
         scheduleMap.delegate = self
@@ -218,6 +223,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         
         // Set schedule date/time
         scheduleDate.text = epochToDateString(epochDate)
+        scheduleTime.text = epochToTimeString(epochTime: epochDate)
         
         // Center map to the trail
         centreToTrail()
@@ -302,7 +308,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     }
 
 
-    func epochToTimeString(_ epochDate: UInt32) -> String {
+/*    func epochToTimeString(_ epochDate: UInt32) -> String {
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
@@ -312,6 +318,20 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
 
         return dateFormatter.string(from: dateTime)
     }
+*/
+    func epochToTimeString(epochTime:UInt32) -> String{
+        print(epochTime)
+        let unixTimestamp = Double(epochTime)//1480134638.0
+        //let date = Date(timeIntervalSince1970: unixTimestamp)
+        
+        let date = Date(timeIntervalSince1970: unixTimestamp)
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "HH:mm:a" //Specify your format that you want
+        return dateFormatter.string(from: date)
+        
+    }
+
 
     // Centre map to the trail
     func centreToTrail() {

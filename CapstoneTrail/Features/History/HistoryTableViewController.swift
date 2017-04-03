@@ -31,7 +31,7 @@ class HistoryTableViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.populateHikeInviteList()
+        //self.populateHikeInviteList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -190,10 +190,11 @@ class HistoryTableViewController: UIViewController, UITableViewDelegate, UITable
         
         let date = Date(timeIntervalSince1970: unixTimestamp)
         let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+        //dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "MM/dd/yyyy" //Specify your format that you want
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:a" //Specify your format that you want
         return dateFormatter.string(from: date)
     
     }
+    
 }

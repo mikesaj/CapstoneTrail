@@ -38,29 +38,29 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pioneer Pack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzG-0j-MAd">
-                                                    <rect key="frame" x="16" y="6" width="200" height="31"/>
+                                                    <rect key="frame" x="15" y="0.0" width="293" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/12/12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUO-Jw-Loc">
-                                                    <rect key="frame" x="219" y="6" width="89" height="31"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/12/2012 10:87.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUO-Jw-Loc">
+                                                    <rect key="frame" x="15" y="23" width="293" height="16"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="89" id="TeS-ad-1YY"/>
+                                                        <constraint firstAttribute="width" constant="293" id="TeS-ad-1YY"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                     <color key="textColor" red="0.21584535256410253" green="0.0966078698947299" blue="0.082885813206970249" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="jUO-Jw-Loc" secondAttribute="trailing" id="3Hb-Qf-NO9"/>
-                                                <constraint firstItem="tzG-0j-MAd" firstAttribute="bottom" secondItem="jUO-Jw-Loc" secondAttribute="bottom" id="DqO-mO-Zzp"/>
-                                                <constraint firstItem="tzG-0j-MAd" firstAttribute="leading" secondItem="XOd-gA-BYw" secondAttribute="leadingMargin" constant="8" id="GdI-Sr-N7a"/>
-                                                <constraint firstItem="tzG-0j-MAd" firstAttribute="centerY" secondItem="XOd-gA-BYw" secondAttribute="centerY" id="V8i-3C-lDW"/>
-                                                <constraint firstItem="tzG-0j-MAd" firstAttribute="top" secondItem="jUO-Jw-Loc" secondAttribute="top" id="cFh-BL-aH3"/>
-                                                <constraint firstItem="jUO-Jw-Loc" firstAttribute="leading" secondItem="tzG-0j-MAd" secondAttribute="trailing" constant="3" id="hW6-UE-NSa"/>
-                                                <constraint firstItem="tzG-0j-MAd" firstAttribute="top" secondItem="XOd-gA-BYw" secondAttribute="topMargin" constant="-2" id="lgv-ay-Mi1"/>
+                                                <constraint firstItem="tzG-0j-MAd" firstAttribute="bottom" secondItem="jUO-Jw-Loc" secondAttribute="bottom" constant="-17" id="DqO-mO-Zzp"/>
+                                                <constraint firstItem="tzG-0j-MAd" firstAttribute="leading" secondItem="XOd-gA-BYw" secondAttribute="leadingMargin" constant="7" id="GdI-Sr-N7a"/>
+                                                <constraint firstItem="tzG-0j-MAd" firstAttribute="centerY" secondItem="XOd-gA-BYw" secondAttribute="centerY" constant="-10.5" id="V8i-3C-lDW"/>
+                                                <constraint firstItem="tzG-0j-MAd" firstAttribute="top" secondItem="jUO-Jw-Loc" secondAttribute="top" constant="-23" id="cFh-BL-aH3"/>
+                                                <constraint firstItem="jUO-Jw-Loc" firstAttribute="leading" secondItem="tzG-0j-MAd" secondAttribute="trailing" constant="-293" id="hW6-UE-NSa"/>
+                                                <constraint firstItem="tzG-0j-MAd" firstAttribute="top" secondItem="XOd-gA-BYw" secondAttribute="topMargin" constant="-8" id="lgv-ay-Mi1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

@@ -29,6 +29,8 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
     var invites = Set<String>()
 
     let scheduleDB = ScheduleDBController()
+    let grpdbController = GroupDBController()
+
     var groupId: String = ""
     var groupOwnerId: String = ""
 
@@ -276,12 +278,12 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
 
                     // Send data to profile page
                     //scheduleProfile.indexIcon.image = UIImage(named: indexImageName)
-                    scheduleProfile.indexMessage.text = String(format: indexMessageString, indexTextString)
-                    scheduleProfile.indexPoint.text = String(format: indexPointString, weatherIndex)
+                    //scheduleProfile.indexMessage.text = String(format: indexMessageString, indexTextString)
+                    //scheduleProfile.indexPoint.text = String(format: indexPointString, weatherIndex)
 
                     //scheduleProfile.conditionText.text = hourForecast["condition"]["text"].stringValue
                     //scheduleProfile.temperatureText.text = NSLocalizedString("Temp_Text", comment: "")
-                    //scheduleProfile.temperatureValue.text = String(format: tempValueString, hourForecast["temp_c"].doubleValue)
+                    scheduleProfile.temperatureValue.text = String(format: tempValueString, hourForecast["temp_c"].doubleValue)
                     //scheduleProfile.feelsLikeText.text = NSLocalizedString("FeelsLike_Text", comment: "")
                     //scheduleProfile.feelsLikeValue.text = String(format: feelsLikeValueString, hourForecast["feelslike_c"].doubleValue)
                     //scheduleProfile.windText.text = NSLocalizedString("Wind_Text", comment: "")
@@ -330,7 +332,9 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
                        if value?["walkingInvitation"] != nil {
 
                            // get hike invites
-                           walkingInvitations = (value?["walkingInvitation"] as? [String])!
+                           //walkingInvitations = (value?["walkingInvitation"] as? [String])!
+                            walkingInvitations = self.grpdbController.convertoStrArray(obj: (value?["walkingInvitation"])!)
+
                        }
 
                        for walkingInvitation in walkingInvitations {
@@ -401,7 +405,8 @@ class ScheduleListController: UIViewController, UITableViewDataSource, UITableVi
                        if value?["walkingSchedules"] != nil {
 
                            // get hike invites
-                           hikeInvites = (value?["walkingSchedules"] as? [AnyObject])! as! [String]
+                           //hikeInvites = (value?["walkingSchedules"] as? [AnyObject])! as! [String]
+                        hikeInvites = self.grpdbController.convertoStrArray(obj: (value?["walkingSchedules"])!)
                        }
 
 

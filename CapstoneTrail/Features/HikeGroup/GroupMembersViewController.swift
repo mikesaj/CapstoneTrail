@@ -18,7 +18,8 @@ class GroupMembersViewController: UITableViewController {
     var friendId:   NSMutableArray! = NSMutableArray()
     var owneruid: String = ""
     var groupUid: String = ""
-    
+    let grpdbController = GroupDBController()
+
     var index = 0
     
     override func viewDidLoad() {
@@ -111,8 +112,12 @@ class GroupMembersViewController: UITableViewController {
                     
                     // gets group owner id
                     self.owneruid = (value?["owneruid"] as? String)!
-                    print("\(self.owneruid) iwnerid")
-                    let members = (value?["members"] as? [String])!
+                    
+                    var members = [String]()
+                    
+                   // let members = value?["members"] as! NSArray//NSDictionary
+                    members =  self.grpdbController.convertoStrArray(obj: (value?["members"])!)
+                    
                     
                     for memberId in members {
                         
@@ -146,6 +151,5 @@ class GroupMembersViewController: UITableViewController {
                 print(error.localizedDescription)
         }
     }
-
 
 }
