@@ -41,6 +41,8 @@
 		44DE38041E6BFC25002A775A /* ScheduleInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE38031E6BFC25002A775A /* ScheduleInviteCell.swift */; };
 		44DE38071E6CE54B002A775A /* ScheduleDBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE38061E6CE54B002A775A /* ScheduleDBController.swift */; };
 		44DE38091E6D17F4002A775A /* HikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE38081E6D17F4002A775A /* HikeModel.swift */; };
+		44DF148D1E9060A500886A75 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF148C1E9060A400886A75 /* HistoryTableViewController.swift */; };
+		44DF148F1E9079C900886A75 /* HistoryProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF148E1E9079C900886A75 /* HistoryProfileViewController.swift */; };
 		44F136721E62087600E3747C /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F136711E62087600E3747C /* UserProfileViewController.swift */; };
 		44F136741E62277500E3747C /* GroupListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F136731E62277500E3747C /* GroupListViewCell.swift */; };
 		44F5B7301E63166E007C7B97 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5B72F1E63166E007C7B97 /* SettingsController.swift */; };
@@ -189,6 +191,8 @@
 		44DE38031E6BFC25002A775A /* ScheduleInviteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleInviteCell.swift; sourceTree = "<group>"; };
 		44DE38061E6CE54B002A775A /* ScheduleDBController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDBController.swift; sourceTree = "<group>"; };
 		44DE38081E6D17F4002A775A /* HikeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HikeModel.swift; sourceTree = "<group>"; };
+		44DF148C1E9060A400886A75 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		44DF148E1E9079C900886A75 /* HistoryProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryProfileViewController.swift; sourceTree = "<group>"; };
 		44F136711E62087600E3747C /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		44F136731E62277500E3747C /* GroupListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupListViewCell.swift; path = HikeGroup/GroupListViewCell.swift; sourceTree = "<group>"; };
 		44F5B72F1E63166E007C7B97 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsController.swift; path = Settings/SettingsController.swift; sourceTree = "<group>"; };
@@ -399,6 +403,8 @@
 			children = (
 				44C727891E8FE8E00006AF60 /* History.storyboard */,
 				44C7278B1E8FEE6A0006AF60 /* HistoryTableViewCell.swift */,
+				44DF148C1E9060A400886A75 /* HistoryTableViewController.swift */,
+				44DF148E1E9079C900886A75 /* HistoryProfileViewController.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -967,6 +973,7 @@
 				44F136721E62087600E3747C /* UserProfileViewController.swift in Sources */,
 				A97979D81E5DE1BB002DC4D2 /* Trails.xcdatamodeld in Sources */,
 				449C850A1E77B20800A19597 /* PedometerActivityViewController.swift in Sources */,
+				44DF148F1E9079C900886A75 /* HistoryProfileViewController.swift in Sources */,
 				449ACFD51E58758900B84118 /* DashBoardViewController.swift in Sources */,
 				44385C0C1E5CEFB20095F2B0 /* ScheduleViewCell.swift in Sources */,
 				44F5B7341E6318C5007C7B97 /* SettingCellController.swift in Sources */,
@@ -995,6 +1002,7 @@
 				A98B92F71E637DBC007C7AB6 /* TrailUtils.swift in Sources */,
 				A97979E01E5DE342002DC4D2 /* TrailListTableViewController.swift in Sources */,
 				447F49A11E5AC4BE0028282D /* GroupProfileViewController.swift in Sources */,
+				44DF148D1E9060A500886A75 /* HistoryTableViewController.swift in Sources */,
 				449ACFCF1E565ED300B84118 /* CreateGroupViewController.swift in Sources */,
 				448C11011E5B64B300BE9123 /* GroupModel.swift in Sources */,
 				44967C961E5D69E700086030 /* friendIvCell.swift in Sources */,

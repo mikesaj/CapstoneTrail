@@ -251,4 +251,49 @@ class GroupDBController{
         
     }
 
+    
+    
+    // gets object's type
+    func getClassName(obj : AnyObject) -> String
+    {
+        let objectClass : AnyClass! = object_getClass(obj)
+        let className = objectClass.description()
+        
+        return className
+    }
+    
+    func convertoStrArray(obj : AnyObject) -> [String] {
+        
+        var strObj = [String]()
+        let resultType = self.getClassName(obj: obj)
+        print("Type: \(resultType)")
+        
+        if resultType == "__NSDictionaryM" {
+            let grpids = obj as! NSDictionary
+            for (key, value) in grpids {
+                print("Value: \(value) for key: \(key)")
+                strObj.append(value as! String)
+            }
+        }else{
+            
+            print("sdfg: \(obj)")
+            let arr = obj as! NSArray
+            
+            for i in arr {
+                
+                if !(i is NSNull) {
+                    
+                    print("values: \(i)")
+                    strObj.append(i as! String)
+                }
+                
+            }
+            
+            
+            //strObj = (obj as! NSArray) as! [String]
+        }
+        
+        return strObj
+    }
+
 }

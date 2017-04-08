@@ -35,13 +35,45 @@ class ScheduleDBController{
                     // get hike invites
                     hikeEventinvites = (value?["hikingSchedules"] as? [String])!
                 }
-                    
-                    hikeEventinvites.append(hikeEventid)
-                    
-                    // update user's hike event's list
-                    self.ref.child("users").child(userId).child("hikingSchedules").setValue(hikeEventinvites);
-                    // add hikeid to user's list
-                    self.addUserToHikingGroupList(hikeEventid:hikeEventid, userId:userId)
+                
+                hikeEventinvites.append(hikeEventid)
+                
+                // update user's hike event's list
+                self.ref.child("users").child(userId).child("hikingSchedules").setValue(hikeEventinvites);
+                // add hikeid to user's list
+                self.addUserToHikingGroupList(hikeEventid:hikeEventid, userId:userId)
+                //}
+                
+            }) { (error) in
+                print(error.localizedDescription)
+        }
+        
+    }
+
+    // add hike event to user's hikeHistory list
+    func addHikeHistoryEventtoUser(hikeEventid:String, userId:String) {
+        //print("Baby!!")
+        
+        _ = ref.child("users")
+            .queryOrderedByKey()
+            .queryEqual(toValue: userId)
+            .observe(.childAdded, with: { (snapshot) in
+                
+                let value = snapshot.value as? [String: AnyObject]
+                
+                var hikeEventinvites = [String]()
+                
+                if value?["hikingHistory"] != nil {
+                    // get hike invites
+                    hikeEventinvites = (value?["hikingHistory"] as? [String])!
+                }
+                
+                hikeEventinvites.append(hikeEventid)
+                
+                // update user's hike event's list
+                self.ref.child("users").child(userId).child("hikingHistory").setValue(hikeEventinvites);
+                // remove hike event from user's list
+                self.removeUserHikeEvent(hikeEventid:hikeEventid, userId:userId)
                 //}
                 
             }) { (error) in
@@ -82,6 +114,43 @@ class ScheduleDBController{
         
     }
     
+    // delete hikeid from user's hike list
+    func removeUserHikeEvent(hikeEventid:String, userId:String) {
+        
+        _ = ref.child("users")
+            .queryOrderedByKey()
+            .queryEqual(toValue: userId)
+            .observe(.childAdded, with: { (snapshot) in
+                
+                let value = snapshot.value as? [String: AnyObject]
+                var hikeEventinvites = [String]()
+                
+                if value?["walkingSchedules"] != nil {
+                    
+                    // get hike invites
+                    hikeEventinvites = (value?["walkingSchedules"] as? [String])!
+                    
+                    var n = 0
+                    
+                    var hikeEventinvites = (value?["walkingSchedules"] as? [String])!
+                    for inviteId in hikeEventinvites {
+                        
+                        if inviteId == hikeEventid {
+                            hikeEventinvites.remove(at: n)
+                            
+                            // remove hikeid from user's list
+                            self.ref.child("users").child(userId).child("walkingSchedules").setValue(hikeEventinvites);
+                        }
+                        n = n+1
+                    }
+                    
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
+        }
+        
+    }
     
     
     // delete hikeid from user's list

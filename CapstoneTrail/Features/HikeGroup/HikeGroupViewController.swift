@@ -15,6 +15,7 @@ class HikeGroupViewController: UIViewController, UITableViewDataSource, UITableV
     let uid = FIRAuth.auth()?.currentUser?.uid
     var usergroups = [GroupModel]()
     var groupData = GroupModel()
+    let grpdbController = GroupDBController()
 
     @IBOutlet weak var groupsTableView: UITableView!
     @IBOutlet weak var seachGroupsBtn: UIButton!
@@ -124,11 +125,18 @@ class HikeGroupViewController: UIViewController, UITableViewDataSource, UITableV
                     if((groupsArray != nil) && ((groupsArray?.count)! > 0 )) {
                         
                         // get user's group list
-                        userGroupIds = (value?["groups"]        as? [String])!
+                        userGroupIds = self.grpdbController.convertoStrArray( obj: (value?["groups"])! )
+                        
+                        
+                        
+                        //print("NSARRAY: \(self.getClassName(obj: (value?["groups"])!))")
+                        //print("NSARRAY1: \(userGroupIds)")
+                        //NSArray
                         
                         
                         for gid in userGroupIds {
-
+                            
+                            
                             _ = self.ref.child("groups")
                                 .queryOrderedByKey()
                                 .queryEqual(toValue: gid)
@@ -142,8 +150,11 @@ class HikeGroupViewController: UIViewController, UITableViewDataSource, UITableV
                                     group.uid               = snapshot.key
                                     group.name              = value?["name"]            as? String
                                     group.locationName      = value?["locationName"]    as? String
-                                    group.groupDescription  = value?["description"]as? String
-                                    group.members           = (value?["members"]        as? [String])!
+                                    group.groupDescription  = value?["description"]     as? String
+                                    group.members           = self.grpdbController.convertoStrArray( obj: (value?["members"])! )
+
+                                    //(value?["members"]        as? [String])!
+                                    
                                     group.owneruid          = value?["owneruid"]        as? String
                                     group.isPublic          = value?["isPublic"]        as? Bool
                                     group.latitude          = value?["latitude"]        as? String
@@ -171,8 +182,5 @@ class HikeGroupViewController: UIViewController, UITableViewDataSource, UITableV
                 print(error.localizedDescription)
         }
     }
-    
-    
-
     
 }

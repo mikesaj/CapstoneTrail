@@ -116,6 +116,7 @@ extension TrailMapViewController {
 
         guard let makeScheduleViewController = UIStoryboard(name: "MakeSchedule", bundle: nil).instantiateViewController(withIdentifier: "MakeSchedule") as? MakeScheduleViewController else { return }
         makeScheduleViewController.currentTrail = trail
+        makeScheduleViewController.groupID = self.groupID
 
         self.present(makeScheduleViewController, animated: true)
     }

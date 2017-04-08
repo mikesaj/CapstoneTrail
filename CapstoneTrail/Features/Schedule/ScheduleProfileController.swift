@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import CoreLocation
 import CoreMotion
 import SwiftyJSON
@@ -17,14 +18,23 @@ import WatchConnectivity
 
 class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, WCSessionDelegate {
 
+    // Database reference
+    let ref = FIRDatabase.database().reference()
+    
+    // Current user id
+    let userid = FIRAuth.auth()?.currentUser?.uid
+    var uid = ""
+    
     // MARK: Properties
     @IBOutlet weak var scheduleDate: UILabel!
-    //@IBOutlet weak var scheduleTime: UILabel!
+    @IBOutlet weak var scheduleTime: UILabel!
     @IBOutlet weak var scheduleMap: MKMapView!
     //@IBOutlet weak var indexIcon: UIImageView!
+    //@IBOutlet weak var temperatureText: UILabel!
+    @IBOutlet weak var temperatureValue: UILabel!
     @IBOutlet weak var trailStreetName: UILabel!
-    @IBOutlet weak var indexMessage: UILabel!
-    @IBOutlet weak var indexPoint: UILabel!
+    //@IBOutlet weak var indexMessage: UILabel!
+    //@IBOutlet weak var indexPoint: UILabel!
     @IBOutlet weak var imgDirection: UIImageView!
     @IBOutlet weak var lblInstructions: UILabel!
     @IBOutlet weak var lblDistance: UILabel!
@@ -57,6 +67,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     var startDate = Date()
     let trailStreet = NSMutableArray()
 
+    let scheduleDB = ScheduleDBController()
 
     
     //MARK: - timer functions
@@ -129,7 +140,6 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     // MARK: Variables
     var watchSession : WCSession?
     
-    var uid: String = ""
     var scheduleTitle: String = ""
 
     var currLat  = 0.0
@@ -137,9 +147,9 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
 
     
     var trailData: [Trail] = []
-    var epochDate: UInt32?
+    var epochDate: UInt32 = 0
     var coordinate2DList: [[CLLocationCoordinate2D]] = []
-
+    var hikeid = ""
     var totalLength: Double = 0
     var totalTime: Double = 0
 
@@ -153,6 +163,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     
 
     override func viewDidLoad() {
+        uid = userid!
 
         super.viewDidLoad()
         
@@ -165,11 +176,14 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             watchSession!.activate()
         }
         
-        guard let epochDate = epochDate else {
+        //print("Dating: \(epochDate)")
+        
+        /*guard let epochDate = epochDate else {
             debugPrint("Schedule has no epoch date")
-            scheduleDate.text = ""
+            //scheduleDate.text = ""
             return
         }
+        */
         
         scheduleMap.mapType = .standard
         scheduleMap.delegate = self
@@ -191,7 +205,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         }*/
         
         print("Trail Data: \(trailData)")
-        
+
         for trail in trailData {
             print("Trail id: \(trail.id)")
             print("Trail area: \(trail.area)")
@@ -209,6 +223,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         
         // Set schedule date/time
         scheduleDate.text = epochToDateString(epochDate)
+        scheduleTime.text = epochToTimeString(epochTime: epochDate)
         
         // Center map to the trail
         centreToTrail()
@@ -218,10 +233,9 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         
         scheduleMap.selectAnnotation(scheduleMap.annotations[0], animated: true)
         
-        lblDistance.isHidden = true
+        //lblDistance.isHidden = true
         //lblInstructions.isHidden = true
         //imgDirection.isHidden = true
-    
     }
 
     func sessionDidDeactivate(_ session: WCSession) {
@@ -294,7 +308,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     }
 
 
-    func epochToTimeString(_ epochDate: UInt32) -> String {
+/*    func epochToTimeString(_ epochDate: UInt32) -> String {
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
@@ -304,6 +318,20 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
 
         return dateFormatter.string(from: dateTime)
     }
+*/
+    func epochToTimeString(epochTime:UInt32) -> String{
+        print(epochTime)
+        let unixTimestamp = Double(epochTime)//1480134638.0
+        //let date = Date(timeIntervalSince1970: unixTimestamp)
+        
+        let date = Date(timeIntervalSince1970: unixTimestamp)
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "HH:mm:a" //Specify your format that you want
+        return dateFormatter.string(from: date)
+        
+    }
+
 
     // Centre map to the trail
     func centreToTrail() {
@@ -400,7 +428,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     }
     
     
-    /* MikeSaj Geo Implmentation: END */    
+    /* MikeSaj Geo Implmentation: START */
 
     // Compute current location and get the difference
     
@@ -450,40 +478,6 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
     }
     
     // MARK: - CLLocationManagerDelegate methods
-    
-    // This is called if:
-    // - the location manager is updating, and
-    // - it was able to get the user's location.
-    /*func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error) -> Void in
-            if (error != nil) {
-                print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
-                return
-            }
-            
-            if (placemarks?.count)! > 0 {
-                let pm = (placemarks?[0])! as CLPlacemark
-                self.displayLocationInfo(placemark: pm)
-            } else {
-                print("Problem with the data received from geocoder")
-            }
-        })
-     
-        
-        let newLocation = locations.last!
-        
-        let currLocation = newLocation.coordinate
-        
-        self.currLat  = Double(currLocation.latitude)
-        self.currLong = Double(currLocation.longitude)
-        
-        print( "Location: Lat\(currLat) lon\(currLong)")
-        //print(currLocation)
-        
-    }
-    */
-    
     // This is called if:
     // - the location manager is updating, and
     // - it WASN'T able to get the user's location.
@@ -491,23 +485,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         print("Error: \(error)")
     }
     
-    func displayLocationInfo(placemark: CLPlacemark) {
-        if placemark != nil {
-            //stop updating location to save battery life
-            locationManager.stopUpdatingLocation()
-            
-            //let city   = placemark.locality ?? ""
-            //let region = placemark.administrativeArea ?? ""
-            
-            //locationLabel.text = city + ", " + region
-            
-            print(placemark.locality ?? "")
-            print(placemark.administrativeArea ?? "")
-            print(placemark.country ?? "")
-        }
-    }
-    
-/* MikeSaj Geo Implmentation: END */    
+/* MikeSaj Geo Implmentation: END */
     
     func calculateDirections(nextIndex: Int){
         
@@ -562,7 +540,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             imageName = "straight"
             
             if self.isInitialTrial == false {
-                self.lblDistance.text =  ""
+                self.lblDistance.text =  "---"
                 dist = ""
             }
             else
@@ -601,7 +579,7 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
         self.currentStep = self.currentStep + 1
         
         if self.currentStep == self.coordinate2DList.count{
-            self.lblDistance.text = ""
+            self.lblDistance.text = "0m"
             self.lblInstructions.text =  "You have arrived at your destination"
 
             btnStartWalking.setTitle("Start Walking", for: .normal)
@@ -611,6 +589,9 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
             self.timerSimulateWalking.invalidate()
             self.stopTimer()
             self.displayMessage(ttl: "Congratulations!", msg: "You have completed this trail. ")
+            
+            // add hile event to user's history
+            scheduleDB.addHikeHistoryEventtoUser(hikeEventid:hikeid, userId:uid)
         }
         
     }
@@ -664,7 +645,6 @@ class ScheduleProfileController: UIViewController, MKMapViewDelegate, CLLocation
              //statusTitle.text = "Pedometer On"
  
             
-            lblDistance.isHidden = false
         
             //Directions Connected with Timer
             self.timerSimulateWalking = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) {
